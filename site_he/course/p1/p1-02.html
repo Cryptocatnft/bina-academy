@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Instructions: שה-AI יכיר אתכם בלי להציג את עצמכם כל פעם · בינה BINA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>body{font-family:'Rubik',sans-serif}
+:root{--bg:#0a0a10;--bg2:#101018;--card:#15151f;--ink:#f4f4fa;--mut:#a0a0af;
+--pur:#8b5cf6;--teal:#2dd4bf;--gold:#fbbf24;--border:#232330}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Rubik','Inter',sans-serif;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(10,10,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.topbar .in{max-width:860px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo b{color:var(--pur)}
+.crumb{color:var(--mut);font-size:.9rem}
+main{padding:44px 0 90px}
+.goal{display:inline-block;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:8px 18px;border-radius:100px;font-size:.92rem;margin:6px 0 26px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;line-height:1.25;margin-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;margin:38px 0 12px;color:var(--ink)}
+h2::before{content:'';display:inline-block;width:26px;height:3px;background:var(--pur);border-radius:2px;margin-inline-end:12px;vertical-align:middle}
+p{margin:0 0 14px;color:#d8d8e4}
+ul{margin:0 0 14px;padding-inline-start:24px}
+li{margin-bottom:8px;color:#d8d8e4}
+code{background:#1d1d2a;border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;direction:ltr;display:inline-block}
+.audiobox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:4px 0 10px;display:flex;align-items:center;gap:14px}
+.audiobox img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.audiobox span{color:var(--mut);font-size:.9rem}
+audio{width:100%;height:40px}
+.prompt{background:var(--card);border:1px solid var(--border);border-inline-start:3px solid var(--teal);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative}
+.prompt p{margin:0 0 0;white-space:pre-wrap;font-size:.95rem;color:#e8e8f2}
+.copy{position:absolute;top:10px;inset-inline-end:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:4px 14px;border-radius:100px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.exbox{background:linear-gradient(180deg,rgba(251,191,36,.08),transparent);border:1px dashed rgba(251,191,36,.4);border-radius:14px;padding:20px 22px;margin:34px 0}
+.exbox h3{color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.nav{display:flex;justify-content:space-between;gap:14px;margin-top:50px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit}
+.b1{background:var(--pur);color:#fff}.b2{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.b1:hover{filter:brightness(1.15)}.b2:hover{border-color:var(--pur)}
+.donebtn{width:100%;margin-top:26px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.4);color:var(--teal);padding:14px;border-radius:12px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:700}
+.donebtn.on{background:rgba(45,212,191,.25)}
+/* course index */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.tcard h2{margin:0 0 4px;font-size:1.3rem}
+.tcard .lec{color:var(--teal);font-size:.9rem;margin-bottom:14px}
+.tcard .pr{color:var(--gold);font-weight:700;margin-bottom:14px}
+.pbar{height:6px;background:#1d1d2a;border-radius:3px;overflow:hidden;margin:10px 0 4px}
+.pbar i{display:block;height:100%;background:var(--teal);width:0%}
+.plist{list-style:none;margin-top:10px}
+.plist li a{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--border);color:var(--ink);font-size:.95rem}
+.plist li a:hover{color:var(--teal)}
+.plist .n{color:var(--mut);font-family:monospace;font-size:.85rem;flex-shrink:0}
+.chip{background:rgba(139,92,246,.15);color:#c4b0f5;border:1px solid rgba(139,92,246,.35);border-radius:100px;padding:1px 10px;font-size:.75rem;flex-shrink:0}
+</style></head><body>
+<div class="topbar"><div class="in">
+<a class="logo" href="../index.html">בינ<b>ה</b> · BINA</a>
+<span class="crumb">AI ביום-יום · הקורס 2/20</span>
+</div></div>
+<main><div class="wrap">
+<h1>Custom Instructions: שה-AI יכיר אתכם בלי להציג את עצמכם כל פעם</h1>
+<div class="goal">🎯 מה תדעו לעשות: אחרי השיעור תגדירו ל-AI את הפרופיל האישי הקבוע שלכם — מי אתם, איך אתם מדברים, מה אתם אוהבים — כך שכל שיחה חדשה תתחיל כבר מכירה אתכם.</div>
+<div class="audiobox"><img src="../assets/noa.png" alt="נועה">
+<div style="flex:1"><span>נועה · השמע את המרצה</span>
+<audio controls preload="none" src="../assets/audio/p1-02.mp3"></audio></div></div>
+<h2>מה זה בכלל Custom Instructions</h2>
+<p>ב-ChatGPT (ובגרסאות שלו ב-Claude ו-Gemini) יש הגדרה שנקראת Custom Instructions — תיבת טקסט שמוצמדת לכל שיחה חדשה, בלי שתצטרכו לחזור עליה. זה בעצם תיק עוזר אישי שנכנס לכל חדר איתכם. איפה זה חי? ב-ChatGPT: Settings ← Personalization ← Custom Instructions. שתי תיבות: ״מה אתה רוצה ש-ChatGPT ידע עליך״ ו״איך אתה רוצה שהוא יגיב״. ממלאים פעם אחת בחמש דקות, וזה חוסך לכם את ההקלדה הזאת בכל שיחה למשך חודשים. רוב המשתמשים בכלל לא יודעים שזה קיים — וזה עצוב, כי זה הפיצ׳ר עם התשואה הגבוהה ביותר ביחס למאמץ.</p>
+<h2>מה באמת כדאי לכתוב שם</h2>
+<p>הטעות הנפוצה: לכתוב שם ביוגרפיה. אף אחד לא צריך לדעת איפה נולדתם. מה שעובד זה <strong>אילוצים והעדפות שחוזרים על עצמם</strong>: ״אני [מקצוע], עצמאי/ת, מתקשר בעברית ובאנגלית״. ״תענה בקצרה, בלי פתיחות ובלי ״בהחלט!״ — ישר לעניין״. ״אני אוכל/ת [כשרות / צמחונות / אלרגיות]״. ״אני מתכנת/ת ב-Python, תן לי קוד בלי הסברים ארוכים״. והנשק הסודי: ״בכל פעם שאתה מציע תוכנית, תצרף את הגרסה הזולה והגרסה השאפתנית שלה״. חוק אצבע: אם כתבתם את אותו משפט ל-AI פעמיים בשבוע — הוא שייך לתיבה הזאת.</p>
+<h2>מה לא לשים שם (ולמה)</h2>
+<p>Custom Instructions נשלחים בכל שיחה — גם בזו של בדיקת מתכון וגם בזו של הרעיון לסטארטאפ. אז לא: מספרי זהות, כתובות, סיסמאות, מצב רפואי רגיש או כל דבר שתתביישו לצעוק ברחוב. זה גם מזהם: אם תכתבו שם ״תמיד תצחק בבדיחות״, תקבלו בדיחות גם כשתבקשו ניתוח חוזה — ואתם תאשימו את ה-AI, שבעצם רק מילא לכם הוראה. תכתבו העדפות שאוניברסליות לכל שיחה, ואת הספציפי לכל נושא תשאירו לפרומפט עצמו או ל-Projects שנלמד בשיעור הבא.</p>
+<h2>טריק היום: לגרום ל-AI לכתוב לכם את ההוראות</h2>
+<p>הנה המהלך החכם: פתחו שיחה חדשה, ספרו בכמה משפטים על עצמכם ואיך אתם אוהבים לקבל תשובות, ואז בקשו: ״תסכם את מה שסיפרתי לך כ-Custom Instructions מנוסחים היטב, עד 120 מילה, שאוכל להדביק בהגדרות שלך״. ה-AI ינסח לכם פרופיל מוצלב יותר ממה שהייתם כותבים לבד — כי הוא רואה את כל מה שאמרתם בבת אחת. העתיקו לתיבה, שמרו, ועכשיו יש לכם עוזר עם זיכרון. עדכנו את התיבה הזאת כל כמה חודשים, כמו שמעדכנים קורות חיים.</p>
+<h2>פרומפט מוכן להעתקה</h2><div class="prompt"><p>אני רוצה להגדיר לך Custom Instructions קבועים. הנה מידע עליי: [גיל, עבודה, משפחה, אילוצים, העדפות תשובות — כמה שיותר ישר]. תסכם את זה כרשימה מנוסחת בגוף שלישי, עד 120 מילים, מוכנה להדבקה בתיבת ה-Custom Instructions שלך. מה שלא בא לידי ביטוי במידע — אל תמציא.</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+<div class="prompt"><p>ענה על השאלה שלי פעמיים: פעם אחת עם ה-Custom Instructions שלי ופעם אחת בלי — רק כדי שאראה את ההבדל. השאלה: [שאלה יומיומית כלשהי].</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+
+<div class="exbox"><h3>💪 תרגיל</h3><p><p>פתחו Settings ← Custom Instructions ומלאו את שתי התיבות בעזרת הפרומפט הראשון. אחרי ששמרתם, פתחו שיחה חדשה ושאלו משהו רגיל כמו ״תן לי רעיון לארוחת ערב״. אם התשובה כבר לא צריכה לשאול אתכם כלום — הצלחתם. עשר דקות, תועלת לכל השנה.</p></p></div>
+<div class="nav"><a class='btn b2' href='p1-01.html'>← שיעור קודם</a><a class='btn b1' href='p1-03.html'>שיעור הבא →</a></div>
+<button class="donebtn" id="done" onclick="markDone()">סמן כהושלם ✓</button>
+</div></main>
+<script>
+const ID='p1-02';
+const done=localStorage.getItem('bina-'+ID)==='1';
+const b=document.getElementById('done');
+if(done){b.classList.add('on');b.textContent='הושלם ✓';}
+function markDone(){const d=localStorage.getItem('bina-'+ID)==='1';
+localStorage.setItem('bina-'+ID,d?'0':'1');
+if(!d){b.classList.add('on');b.textContent='הושלם ✓';}else{b.classList.remove('on');b.textContent='סמן כהושלם ✓';}}
+function cp(btn){const txt=btn.parentElement.querySelector('p').innerText;
+navigator.clipboard.writeText(txt);btn.textContent='הועתק!';
+setTimeout(()=>btn.textContent='העתק',1500);}
+</script></body></html>

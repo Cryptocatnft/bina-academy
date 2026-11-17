@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cost & Latency Engineering: Caching, Batching, and Model Routing · בינה BINA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}
+:root{--bg:#0a0a10;--bg2:#101018;--card:#15151f;--ink:#f4f4fa;--mut:#a0a0af;
+--pur:#8b5cf6;--teal:#2dd4bf;--gold:#fbbf24;--border:#232330}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Rubik','Inter',sans-serif;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(10,10,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.topbar .in{max-width:860px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo b{color:var(--pur)}
+.crumb{color:var(--mut);font-size:.9rem}
+main{padding:44px 0 90px}
+.goal{display:inline-block;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:8px 18px;border-radius:100px;font-size:.92rem;margin:6px 0 26px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;line-height:1.25;margin-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;margin:38px 0 12px;color:var(--ink)}
+h2::before{content:'';display:inline-block;width:26px;height:3px;background:var(--pur);border-radius:2px;margin-inline-end:12px;vertical-align:middle}
+p{margin:0 0 14px;color:#d8d8e4}
+ul{margin:0 0 14px;padding-inline-start:24px}
+li{margin-bottom:8px;color:#d8d8e4}
+code{background:#1d1d2a;border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;direction:ltr;display:inline-block}
+.audiobox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:4px 0 10px;display:flex;align-items:center;gap:14px}
+.audiobox img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.audiobox span{color:var(--mut);font-size:.9rem}
+audio{width:100%;height:40px}
+.prompt{background:var(--card);border:1px solid var(--border);border-inline-start:3px solid var(--teal);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative}
+.prompt p{margin:0 0 0;white-space:pre-wrap;font-size:.95rem;color:#e8e8f2}
+.copy{position:absolute;top:10px;inset-inline-end:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:4px 14px;border-radius:100px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.exbox{background:linear-gradient(180deg,rgba(251,191,36,.08),transparent);border:1px dashed rgba(251,191,36,.4);border-radius:14px;padding:20px 22px;margin:34px 0}
+.exbox h3{color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.nav{display:flex;justify-content:space-between;gap:14px;margin-top:50px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit}
+.b1{background:var(--pur);color:#fff}.b2{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.b1:hover{filter:brightness(1.15)}.b2:hover{border-color:var(--pur)}
+.donebtn{width:100%;margin-top:26px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.4);color:var(--teal);padding:14px;border-radius:12px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:700}
+.donebtn.on{background:rgba(45,212,191,.25)}
+/* course index */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.tcard h2{margin:0 0 4px;font-size:1.3rem}
+.tcard .lec{color:var(--teal);font-size:.9rem;margin-bottom:14px}
+.tcard .pr{color:var(--gold);font-weight:700;margin-bottom:14px}
+.pbar{height:6px;background:#1d1d2a;border-radius:3px;overflow:hidden;margin:10px 0 4px}
+.pbar i{display:block;height:100%;background:var(--teal);width:0%}
+.plist{list-style:none;margin-top:10px}
+.plist li a{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--border);color:var(--ink);font-size:.95rem}
+.plist li a:hover{color:var(--teal)}
+.plist .n{color:var(--mut);font-family:monospace;font-size:.85rem;flex-shrink:0}
+.chip{background:rgba(139,92,246,.15);color:#c4b0f5;border:1px solid rgba(139,92,246,.35);border-radius:100px;padding:1px 10px;font-size:.75rem;flex-shrink:0}
+</style></head><body>
+<div class="topbar"><div class="in">
+<a class="logo" href="../index.html">בינ<b>ה</b> · BINA</a>
+<span class="crumb">Advanced AI · Course 10/12</span>
+</div></div>
+<main><div class="wrap">
+<h1>Cost & Latency Engineering: Caching, Batching, and Model Routing</h1>
+<div class="goal">🎯 What you'll be able to do: Systematically reduce the cost and latency of an LLM system without hurting quality.</div>
+<div class="audiobox"><img src="../assets/roni.png" alt="Roni">
+<div style="flex:1"><span>Roni · Play the lecturer</span>
+<audio controls preload="none" src="../assets/audio/p3-10.mp3"></audio></div></div>
+<h2>Measure first: p50, p95, and cost per request</h2>
+<p>Optimization without measurement is faith, not engineering. Three numbers every system must report: p50 and p95 of time-to-first-token (TTFT) and to last token, average cost per request, and a breakdown by request type.</p>
+<p><code>`</code>python</p>
+<p>import time, statistics</p>
+<p>lat = []</p>
+<p>for req in sample:</p>
+<p>t = time.time(); resp = call(req); lat.append(time.time() - t)</p>
+<p>print(statistics.median(lat), sorted(lat)[int(len(lat)*0.95)])</p>
+<p><code>`</code></p>
+<p>p95 is what users feel — they don't live in the average, they live in the tail. And cost by request type will reveal that ten percent of paths burn sixty percent of the budget. That's where you start.</p>
+<h2>Cache layers</h2>
+<p>Four layers, cheapest to smartest: (1) <strong>prompt caching</strong> — fixed prefix at the top (system + tools), up to 90% off input; (2) <strong>exact-result cache</strong> — identical repeat requests keyed by message hash + prompt version; (3) <strong>semantic cache</strong> — similar enough (cosine over a threshold like 0.95) returns a stored answer — careful, good for factual questions, risky for sensitive conversations; (4) <strong>tool-result cache</strong> — an expensive API call the agent repeats over and over, keyed by TTL. Before every layer: measure the hit rate. A cache with 5% hits is maintenance pain, not savings.</p>
+<h2>Batching: what isn't needed now is cheaper later</h2>
+<p>Most providers give 50% off the Batch API — an asynchronous run of thousands of requests with no real-time requirement, results within hours. Perfect for: bulk email classification, archive data extraction, generating embeddings, building datasets. The rule: anything the user isn't waiting on right now is almost always cheaper in batch. What is interactive — that's where you play with latency: streaming (a fast first token feels twice as fast as it is), prefetching predictable tools, and running independent calls concurrently.</p>
+<h2>Routing: the cheap model goes first</h2>
+<p>Not every request needs the big model. A cascade: try the cheap model, escalate only on a sign of trouble — invalid output, or a classifier flagging complexity.</p>
+<p><code>`</code>python</p>
+<p>def route(msg):</p>
+<p>if simple_intent(msg):</p>
+<p>return call('gpt-4o-mini', msg, fallback=True)</p>
+<p>return call('gpt-4o', msg)</p>
+<p>def call(model, msg, fallback=False):</p>
+<p>out = run(model, msg)</p>
+<p>if fallback and not valid(out):</p>
+<p>return run('gpt-4o', msg)</p>
+<p>return out</p>
+<p><code>`</code></p>
+<p>In practice, 60–80% of traffic resolves on the cheap model. Keep measuring: how many requests escalated, and accuracy on the golden set — a router that's wrong on 5% of cases eats its savings in bugs.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Cost breakdown measurement (run over a day of logs):
+```python
+from collections import defaultdict
+cost = defaultdict(float)
+for r in logs:
+    cost[r['route']] += r['usage']['total_tokens'] * PRICE[r['model']]
+print(sorted(cost.items(), key=lambda x: -x[1]))
+```</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Classification prompt before routing:
+```
+Classify the request: simple | complex.
+simple = factual question, classification, or rephrasing.
+complex = multi-step reasoning, code, or uncertainty.
+Return one word.
+Request: {message}
+```</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Add a simple/complex router to your agent using the prompt above. Run 50 requests from your golden set: measure accuracy and cost with and without the router, and compute the percentage saved while keeping accuracy (allowed delta: up to 2%). Submit both lines of numbers.</p></p></div>
+<div class="nav"><a class='btn b2' href='p3-09.html'>← Previous</a><a class='btn b1' href='p3-11.html'>Next →</a></div>
+<button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
+</div></main>
+<script>
+const ID='p3-10';
+const done=localStorage.getItem('bina-'+ID)==='1';
+const b=document.getElementById('done');
+if(done){b.classList.add('on');b.textContent='Done ✓';}
+function markDone(){const d=localStorage.getItem('bina-'+ID)==='1';
+localStorage.setItem('bina-'+ID,d?'0':'1');
+if(!d){b.classList.add('on');b.textContent='Done ✓';}else{b.classList.remove('on');b.textContent='Mark complete ✓';}}
+function cp(btn){const txt=btn.parentElement.querySelector('p').innerText;
+navigator.clipboard.writeText(txt);btn.textContent='Copied!';
+setTimeout(()=>btn.textContent='Copy',1500);}
+</script></body></html>

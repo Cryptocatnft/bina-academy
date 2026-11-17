@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הקורס · בינה BINA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>body{font-family:'Rubik',sans-serif}
+:root{--bg:#0a0a10;--bg2:#101018;--card:#15151f;--ink:#f4f4fa;--mut:#a0a0af;
+--pur:#8b5cf6;--teal:#2dd4bf;--gold:#fbbf24;--border:#232330}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Rubik','Inter',sans-serif;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(10,10,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.topbar .in{max-width:860px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo b{color:var(--pur)}
+.crumb{color:var(--mut);font-size:.9rem}
+main{padding:44px 0 90px}
+.goal{display:inline-block;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:8px 18px;border-radius:100px;font-size:.92rem;margin:6px 0 26px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;line-height:1.25;margin-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;margin:38px 0 12px;color:var(--ink)}
+h2::before{content:'';display:inline-block;width:26px;height:3px;background:var(--pur);border-radius:2px;margin-inline-end:12px;vertical-align:middle}
+p{margin:0 0 14px;color:#d8d8e4}
+ul{margin:0 0 14px;padding-inline-start:24px}
+li{margin-bottom:8px;color:#d8d8e4}
+code{background:#1d1d2a;border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;direction:ltr;display:inline-block}
+.audiobox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:4px 0 10px;display:flex;align-items:center;gap:14px}
+.audiobox img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.audiobox span{color:var(--mut);font-size:.9rem}
+audio{width:100%;height:40px}
+.prompt{background:var(--card);border:1px solid var(--border);border-inline-start:3px solid var(--teal);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative}
+.prompt p{margin:0 0 0;white-space:pre-wrap;font-size:.95rem;color:#e8e8f2}
+.copy{position:absolute;top:10px;inset-inline-end:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:4px 14px;border-radius:100px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.exbox{background:linear-gradient(180deg,rgba(251,191,36,.08),transparent);border:1px dashed rgba(251,191,36,.4);border-radius:14px;padding:20px 22px;margin:34px 0}
+.exbox h3{color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.nav{display:flex;justify-content:space-between;gap:14px;margin-top:50px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit}
+.b1{background:var(--pur);color:#fff}.b2{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.b1:hover{filter:brightness(1.15)}.b2:hover{border-color:var(--pur)}
+.donebtn{width:100%;margin-top:26px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.4);color:var(--teal);padding:14px;border-radius:12px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:700}
+.donebtn.on{background:rgba(45,212,191,.25)}
+/* course index */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.tcard h2{margin:0 0 4px;font-size:1.3rem}
+.tcard .lec{color:var(--teal);font-size:.9rem;margin-bottom:14px}
+.tcard .pr{color:var(--gold);font-weight:700;margin-bottom:14px}
+.pbar{height:6px;background:#1d1d2a;border-radius:3px;overflow:hidden;margin:10px 0 4px}
+.pbar i{display:block;height:100%;background:var(--teal);width:0%}
+.plist{list-style:none;margin-top:10px}
+.plist li a{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--border);color:var(--ink);font-size:.95rem}
+.plist li a:hover{color:var(--teal)}
+.plist .n{color:var(--mut);font-family:monospace;font-size:.85rem;flex-shrink:0}
+.chip{background:rgba(139,92,246,.15);color:#c4b0f5;border:1px solid rgba(139,92,246,.35);border-radius:100px;padding:1px 10px;font-size:.75rem;flex-shrink:0}
+</style></head><body>
+<div class="topbar"><div class="in">
+<a class="logo" href="../index.html">בינ<b>ה</b> · BINA</a>
+<span class="crumb">הקורס</span>
+</div></div>
+<main><div class="wrap">
+<h1>ההתקדמות שלך</h1>
+<div class="tracks"><div class="tcard"><h2>AI ביום-יום</h2>
+<div class="lec">🎓 נועה · 20 שיעורים</div>
+<div class="pr">197₪</div>
+<div class="pbar" data-track="p1"><i></i></div>
+<span style="font-size:.8rem;color:var(--mut)" data-plabel="p1"></span>
+<ul class="plist"><li><a href='p1/p1-01.html'><span class='n'>p1-01</span>לכתוב פרומפט שעובד: תפקיד, הקשר, פורמט, דוגמאות<span class='chip' data-done='p1-01'></span></a></li><li><a href='p1/p1-02.html'><span class='n'>p1-02</span>Custom Instructions: שה-AI יכיר אתכם בלי להציג את עצמכם כל פעם<span class='chip' data-done='p1-02'></span></a></li><li><a href='p1/p1-03.html'><span class='n'>p1-03</span>Projects ו-Memory: ה-AI שזוכר הכל בשבילכם<span class='chip' data-done='p1-03'></span></a></li><li><a href='p1/p1-04.html'><span class='n'>p1-04</span>מטא-פרומפטים: תנו ל-AI לכתוב לכם את הפרומפטים<span class='chip' data-done='p1-04'></span></a></li><li><a href='p1/p1-05.html'><span class='n'>p1-05</span>Deep Research: דוחות ברמת יועץ, בלי לשלם ליועץ<span class='chip' data-done='p1-05'></span></a></li><li><a href='p1/p1-06.html'><span class='n'>p1-06</span>לצלם ולשאול: תמונות בשירות היומן שלכם<span class='chip' data-done='p1-06'></span></a></li><li><a href='p1/p1-07.html'><span class='n'>p1-07</span>Voice Mode: העוזר שמדבר איתכם כשאתם עסוקים<span class='chip' data-done='p1-07'></span></a></li><li><a href='p1/p1-08.html'><span class='n'>p1-08</span>מיילים והודעות: לכתוב פחות זמן, להישמע טוב יותר<span class='chip' data-done='p1-08'></span></a></li><li><a href='p1/p1-09.html'><span class='n'>p1-09</span>יומן שבועי שבונה את עצמו: תכנון חכם עם AI<span class='chip' data-done='p1-09'></span></a></li><li><a href='p1/p1-10.html'><span class='n'>p1-10</span>תקציב משפחתי עם AI: לראות את הכסף בלי לפחד ממנו<span class='chip' data-done='p1-10'></span></a></li><li><a href='p1/p1-11.html'><span class='n'>p1-11</span>מורה פרטי בבית: עוזרים לילד בלי לעשות בשבילו<span class='chip' data-done='p1-11'></span></a></li><li><a href='p1/p1-12.html'><span class='n'>p1-12</span>קניות חכמות והודעות מו״מ: לשלם פחות בלי לריב<span class='chip' data-done='p1-12'></span></a></li><li><a href='p1/p1-13.html'><span class='n'>p1-13</span>בריאות: תפריטים ואימונים — עם יושר מקצועי<span class='chip' data-done='p1-13'></span></a></li><li><a href='p1/p1-14.html'><span class='n'>p1-14</span>תוכן שנשמע כמוכם: שיבוט הסגנון האישי<span class='chip' data-done='p1-14'></span></a></li><li><a href='p1/p1-15.html'><span class='n'>p1-15</span>ניתוח מסמכים: חוזים, ביטוחים ותנאים מסתוריים<span class='chip' data-done='p1-15'></span></a></li><li><a href='p1/p1-16.html'><span class='n'>p1-16</span>Custom GPTs: לבנות עובד מומחה אחד וצר<span class='chip' data-done='p1-16'></span></a></li><li><a href='p1/p1-17.html'><span class='n'>p1-17</span>משימות מתוזמנות: ה-AI שמתעורר לבד<span class='chip' data-done='p1-17'></span></a></li><li><a href='p1/p1-18.html'><span class='n'>p1-18</span>איזה מודל מתי: ChatGPT, Claude, Gemini ו-Perplexity<span class='chip' data-done='p1-18'></span></a></li><li><a href='p1/p1-19.html'><span class='n'>p1-19</span>פרטיות ובטיחות: מה לעולם לא מקלידים ל-AI<span class='chip' data-done='p1-19'></span></a></li><li><a href='p1/p1-20.html'><span class='n'>p1-20</span>פרויקט גמר: בונים את מערכת ה-AI האישית שלכם<span class='chip' data-done='p1-20'></span></a></li></ul></div>
+<div class="tcard"><h2>קריירה ב-AI</h2>
+<div class="lec">🎓 נועה · 24 שיעורים</div>
+<div class="pr">997₪</div>
+<div class="pbar" data-track="p2"><i></i></div>
+<span style="font-size:.8rem;color:var(--mut)" data-plabel="p2"></span>
+<ul class="plist"><li><a href='p2/p2-01.html'><span class='n'>p2-01</span>איך מודלים של שפה באמת עובדים (במילים פשוטות)<span class='chip' data-done='p2-01'></span></a></li><li><a href='p2/p2-02.html'><span class='n'>p2-02</span>סטאק הכלים של AI ב-2026<span class='chip' data-done='p2-02'></span></a></li><li><a href='p2/p2-03.html'><span class='n'>p2-03</span>חלונות קונטקסט ולמה AI 'שוכח'<span class='chip' data-done='p2-03'></span></a></li><li><a href='p2/p2-04.html'><span class='n'>p2-04</span>הזיות — ואיך תופסים אותן<span class='chip' data-done='p2-04'></span></a></li><li><a href='p2/p2-05.html'><span class='n'>p2-05</span>פלטים מובנים: JSON בכל פעם<span class='chip' data-done='p2-05'></span></a></li><li><a href='p2/p2-06.html'><span class='n'>p2-06</span>תבניות Few-Shot: ללמד באמצעות דוגמאות<span class='chip' data-done='p2-06'></span></a></li><li><a href='p2/p2-07.html'><span class='n'>p2-07</span>שרשרת מחשבה (Chain-of-Thought) — ומתי לא להשתמש<span class='chip' data-done='p2-07'></span></a></li><li><a href='p2/p2-08.html'><span class='n'>p2-08</span>הודעות מערכת ופרסונות<span class='chip' data-done='p2-08'></span></a></li><li><a href='p2/p2-09.html'><span class='n'>p2-09</span>מה זה בעצם אייג'נט<span class='chip' data-done='p2-09'></span></a></li><li><a href='p2/p2-10.html'><span class='n'>p2-10</span>בונים את האייג'נט הראשון שלכם (No-Code)<span class='chip' data-done='p2-10'></span></a></li><li><a href='p2/p2-11.html'><span class='n'>p2-11</span>Function Calling וכלים — הקונספטים<span class='chip' data-done='p2-11'></span></a></li><li><a href='p2/p2-12.html'><span class='n'>p2-12</span>חיבור AI למייל, יומן וקבצים<span class='chip' data-done='p2-12'></span></a></li><li><a href='p2/p2-13.html'><span class='n'>p2-13</span>פרויקט תיק 1: אייג'נט תמיכת לקוחות<span class='chip' data-done='p2-13'></span></a></li><li><a href='p2/p2-14.html'><span class='n'>p2-14</span>פרויקט תיק 2: מנתח מסמכים (יסודות RAG)<span class='chip' data-done='p2-14'></span></a></li><li><a href='p2/p2-15.html'><span class='n'>p2-15</span>פרויקט תיק 3: צינור תוכן<span class='chip' data-done='p2-15'></span></a></li><li><a href='p2/p2-16.html'><span class='n'>p2-16</span>פרויקט תיק 4: אייג'נט ניקוי דאטה<span class='chip' data-done='p2-16'></span></a></li><li><a href='p2/p2-17.html'><span class='n'>p2-17</span>קורות חיים שעוברים סינון AI<span class='chip' data-done='p2-17'></span></a></li><li><a href='p2/p2-18.html'><span class='n'>p2-18</span>אופטימיזציה של פרופיל לינקדאין<span class='chip' data-done='p2-18'></span></a></li><li><a href='p2/p2-19.html'><span class='n'>p2-19</span>מכתבי מלצה שלא מביכים<span class='chip' data-done='p2-19'></span></a></li><li><a href='p2/p2-20.html'><span class='n'>p2-20</span>בונים נוכחות אונליין: GitHub ותיק עבודות<span class='chip' data-done='p2-20'></span></a></li><li><a href='p2/p2-21.html'><span class='n'>p2-21</span>איפה באמת נמצאות משרות ה-AI<span class='chip' data-done='p2-21'></span></a></li><li><a href='p2/p2-22.html'><span class='n'>p2-22</span>הכנה לראיון עם מראיין AI<span class='chip' data-done='p2-22'></span></a></li><li><a href='p2/p2-23.html'><span class='n'>p2-23</span>מטלות בית (Take-Home) — ואיך למחוץ אותן<span class='chip' data-done='p2-23'></span></a></li><li><a href='p2/p2-24.html'><span class='n'>p2-24</span>בחינת התעודה ופרויקט הגמר<span class='chip' data-done='p2-24'></span></a></li></ul></div>
+<div class="tcard"><h2>AI מתקדם</h2>
+<div class="lec">🎓 רוני · 12 שיעורים</div>
+<div class="pr">1,997₪</div>
+<div class="pbar" data-track="p3"><i></i></div>
+<span style="font-size:.8rem;color:var(--mut)" data-plabel="p3"></span>
+<ul class="plist"><li><a href='p3/p3-01.html'><span class='n'>p3-01</span>פנים המנוע: טוקנים, KV Cache ופרמטרי דגימה<span class='chip' data-done='p3-01'></span></a></li><li><a href='p3/p3-02.html'><span class='n'>p3-02</span>פלט מובנה בלי להמר: JSON, סכמות ו-pydantic<span class='chip' data-done='p3-02'></span></a></li><li><a href='p3/p3-03.html'><span class='n'>p3-03</span>Function Calling מקצה לקצה<span class='chip' data-done='p3-03'></span></a></li><li><a href='p3/p3-04.html'><span class='n'>p3-04</span>MCP והמגרש החדש של הכלים<span class='chip' data-done='p3-04'></span></a></li><li><a href='p3/p3-05.html'><span class='n'>p3-05</span>RAG בעומק: חיתוכים, אמבדינגים, חיפוש היברידי ורי-ראנקינג<span class='chip' data-done='p3-05'></span></a></li><li><a href='p3/p3-06.html'><span class='n'>p3-06</span>איכות RAG: למדוד, לא להרגיש<span class='chip' data-done='p3-06'></span></a></li><li><a href='p3/p3-07.html'><span class='n'>p3-07</span>תזמורת סוכנים: Router, Critic ו-Planner-Executor<span class='chip' data-done='p3-07'></span></a></li><li><a href='p3/p3-08.html'><span class='n'>p3-08</span>Fine-tuning מול Prompting: מתי לאמן ומתי לא<span class='chip' data-done='p3-08'></span></a></li><li><a href='p3/p3-09.html'><span class='n'>p3-09</span>Evals: מווייבז למספרים — סטים זהובים ו-LLM-as-judge<span class='chip' data-done='p3-09'></span></a></li><li><a href='p3/p3-10.html'><span class='n'>p3-10</span>הנדסת עלות ו-latency: caching, batching וראוטינג מודלים<span class='chip' data-done='p3-10'></span></a></li><li><a href='p3/p3-11.html'><span class='n'>p3-11</span>אבטחה: Prompt Injection, אקספילטרציה וסנדבוקסינג<span class='chip' data-done='p3-11'></span></a></li><li><a href='p3/p3-12.html'><span class='n'>p3-12</span>קאפסטון: בונים ומעלים סוכן לפרודקשן<span class='chip' data-done='p3-12'></span></a></li></ul></div>
+</div>
+</div></main>
+<script>
+const TRACKS=["p1", "p2", "p3"];
+const COUNTS={"p1": 20, "p2": 24, "p3": 12};
+let tot=0,dn=0;
+TRACKS.forEach(tr=>{let d=0;
+for(let i=1;i<=COUNTS[tr];i++){const id=tr+'-'+String(i).padStart(2,'0');
+if(localStorage.getItem('bina-'+id)==='1'){d++;const c=document.querySelector(`[data-done="${id}"]`);if(c)c.textContent='✓';}}
+tot+=COUNTS[tr];dn+=d;
+const bar=document.querySelector(`[data-track="${tr}"] i`);
+if(bar)bar.style.width=(d/COUNTS[tr]*100)+'%';
+const lab=document.querySelector(`[data-plabel="${tr}"]`);
+if(lab)lab.textContent=d+'/'+COUNTS[tr];});
+document.title+=dn>0?` (${dn}✓)`:'';
+</script></body></html>

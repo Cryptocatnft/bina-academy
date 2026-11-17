@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP and the Tool Ecosystem · בינה BINA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}
+:root{--bg:#0a0a10;--bg2:#101018;--card:#15151f;--ink:#f4f4fa;--mut:#a0a0af;
+--pur:#8b5cf6;--teal:#2dd4bf;--gold:#fbbf24;--border:#232330}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Rubik','Inter',sans-serif;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(10,10,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.topbar .in{max-width:860px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo b{color:var(--pur)}
+.crumb{color:var(--mut);font-size:.9rem}
+main{padding:44px 0 90px}
+.goal{display:inline-block;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:8px 18px;border-radius:100px;font-size:.92rem;margin:6px 0 26px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;line-height:1.25;margin-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;margin:38px 0 12px;color:var(--ink)}
+h2::before{content:'';display:inline-block;width:26px;height:3px;background:var(--pur);border-radius:2px;margin-inline-end:12px;vertical-align:middle}
+p{margin:0 0 14px;color:#d8d8e4}
+ul{margin:0 0 14px;padding-inline-start:24px}
+li{margin-bottom:8px;color:#d8d8e4}
+code{background:#1d1d2a;border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;direction:ltr;display:inline-block}
+.audiobox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:4px 0 10px;display:flex;align-items:center;gap:14px}
+.audiobox img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.audiobox span{color:var(--mut);font-size:.9rem}
+audio{width:100%;height:40px}
+.prompt{background:var(--card);border:1px solid var(--border);border-inline-start:3px solid var(--teal);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative}
+.prompt p{margin:0 0 0;white-space:pre-wrap;font-size:.95rem;color:#e8e8f2}
+.copy{position:absolute;top:10px;inset-inline-end:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:4px 14px;border-radius:100px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.exbox{background:linear-gradient(180deg,rgba(251,191,36,.08),transparent);border:1px dashed rgba(251,191,36,.4);border-radius:14px;padding:20px 22px;margin:34px 0}
+.exbox h3{color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.nav{display:flex;justify-content:space-between;gap:14px;margin-top:50px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit}
+.b1{background:var(--pur);color:#fff}.b2{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.b1:hover{filter:brightness(1.15)}.b2:hover{border-color:var(--pur)}
+.donebtn{width:100%;margin-top:26px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.4);color:var(--teal);padding:14px;border-radius:12px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:700}
+.donebtn.on{background:rgba(45,212,191,.25)}
+/* course index */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.tcard h2{margin:0 0 4px;font-size:1.3rem}
+.tcard .lec{color:var(--teal);font-size:.9rem;margin-bottom:14px}
+.tcard .pr{color:var(--gold);font-weight:700;margin-bottom:14px}
+.pbar{height:6px;background:#1d1d2a;border-radius:3px;overflow:hidden;margin:10px 0 4px}
+.pbar i{display:block;height:100%;background:var(--teal);width:0%}
+.plist{list-style:none;margin-top:10px}
+.plist li a{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--border);color:var(--ink);font-size:.95rem}
+.plist li a:hover{color:var(--teal)}
+.plist .n{color:var(--mut);font-family:monospace;font-size:.85rem;flex-shrink:0}
+.chip{background:rgba(139,92,246,.15);color:#c4b0f5;border:1px solid rgba(139,92,246,.35);border-radius:100px;padding:1px 10px;font-size:.75rem;flex-shrink:0}
+</style></head><body>
+<div class="topbar"><div class="in">
+<a class="logo" href="../index.html">בינ<b>ה</b> · BINA</a>
+<span class="crumb">Advanced AI · Course 4/12</span>
+</div></div>
+<main><div class="wrap">
+<h1>MCP and the Tool Ecosystem</h1>
+<div class="goal">🎯 What you'll be able to do: Understand the MCP protocol, write one MCP server, and consume it from an existing client.</div>
+<div class="audiobox"><img src="../assets/roni.png" alt="Roni">
+<div style="flex:1"><span>Roni · Play the lecturer</span>
+<audio controls preload="none" src="../assets/audio/p3-04.mp3"></audio></div></div>
+<h2>What MCP actually solves</h2>
+<p>MCP is an open protocol separating 'who provides capabilities' (an MCP server) from 'who consumes them' (a client — Claude Desktop, your IDE, your agent). A server exposes three types: <strong>tools</strong> (actions the model runs), <strong>resources</strong> (readable data — files, DB rows), <strong>prompts</strong> (ready-made templates). Transport is stdio or HTTP, messages are JSON-RPC. The big win: write a GitHub integration once and every client in the world can use it — and in reverse, you get thousands of ready servers for free.</p>
+<h2>A first MCP server in ten minutes</h2>
+<p><code>`</code>python</p>
+<p>from mcp.server.fastmcp import FastMCP</p>
+<p>mcp = FastMCP('currency')</p>
+<p>@mcp.tool()</p>
+<p>def convert(amount: float, from_: str, to: str) -> str:</p>
+<p>'''Converts currencies at a fixed demo rate.'''</p>
+<p>rates = {'USD': 1.0, 'ILS': 3.7, 'EUR': 0.92}</p>
+<p>usd = amount / rates[from_]</p>
+<p>return f'{usd * rates[to]:.2f} {to}'</p>
+<p>if __name__ == '__main__':</p>
+<p>mcp.run()  # stdio</p>
+<p><code>`</code></p>
+<p>That's the whole trick: the docstring is the description, type hints are the schema, and FastMCP does the rest. A few more lines add resources (<code>@mcp.resource</code>) and prompts (<code>@mcp.prompt</code>).</p>
+<h2>Consuming from the client side</h2>
+<p>In Claude Desktop you add to the config file:</p>
+<p><code>`</code>json</p>
+<p>{</p>
+<p>"mcpServers": {</p>
+<p>"currency": {</p>
+<p>"command": "python",</p>
+<p>"args": ["/abs/path/server.py"]</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p><code>`</code></p>
+<p>From code, a standard MCP client (the SDK or adapters from LangChain/openai-agents) connects, discovers the tool list dynamically (<code>tools/list</code>), and maps it onto the tool definitions from the previous lesson. Note: tool lists change between servers — your code must handle tools appearing or disappearing between versions, not hard-code names.</p>
+<h2>The ecosystem — and the caution it deserves</h2>
+<p>There are thousands of public MCP servers: GitHub, Postgres, Slack, browsers, file systems. A huge development-time saving — and attack surface: you run strangers' code and give the model access to their tools. My rules: (1) public servers only in a container or with minimal permissions; (2) every new server gets a five-minute code read; (3) destructive tools (delete, charge) don't enter an autonomous agent without human approval. We'll expand in the security lesson, but start thinking about it now.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Minimal MCP server:
+```python
+from mcp.server.fastmcp import FastMCP
+mcp = FastMCP('notes')
+
+@mcp.tool()
+def add_note(text: str) -&gt; str:
+    '''Saves a note to a local file.'''
+    with open('notes.txt', 'a') as f:
+        f.write(text + '\n')
+    return 'saved'
+
+mcp.run()
+```</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Test prompt for the client (after connecting the server):
+```
+Call the convert tool with amount=100, from_=ILS, to=USD,
+then describe in one word whether the result seems reasonable.
+Do not use any other tools.
+```</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Wrap a public API you like (Open-Meteo, say) into an MCP server with two tools: <code>forecast(city, days)</code> and <code>compare(city_a, city_b)</code>. Connect it to Claude Desktop or a code client, and log a conversation where the model chooses between the two tools on its own.</p></p></div>
+<div class="nav"><a class='btn b2' href='p3-03.html'>← Previous</a><a class='btn b1' href='p3-05.html'>Next →</a></div>
+<button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
+</div></main>
+<script>
+const ID='p3-04';
+const done=localStorage.getItem('bina-'+ID)==='1';
+const b=document.getElementById('done');
+if(done){b.classList.add('on');b.textContent='Done ✓';}
+function markDone(){const d=localStorage.getItem('bina-'+ID)==='1';
+localStorage.setItem('bina-'+ID,d?'0':'1');
+if(!d){b.classList.add('on');b.textContent='Done ✓';}else{b.classList.remove('on');b.textContent='Mark complete ✓';}}
+function cp(btn){const txt=btn.parentElement.querySelector('p').innerText;
+navigator.clipboard.writeText(txt);btn.textContent='Copied!';
+setTimeout(()=>btn.textContent='Copy',1500);}
+</script></body></html>

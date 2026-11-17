@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>קאפסטון: בונים ומעלים סוכן לפרודקשן · בינה BINA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>body{font-family:'Rubik',sans-serif}
+:root{--bg:#0a0a10;--bg2:#101018;--card:#15151f;--ink:#f4f4fa;--mut:#a0a0af;
+--pur:#8b5cf6;--teal:#2dd4bf;--gold:#fbbf24;--border:#232330}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Rubik','Inter',sans-serif;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(10,10,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.topbar .in{max-width:860px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo b{color:var(--pur)}
+.crumb{color:var(--mut);font-size:.9rem}
+main{padding:44px 0 90px}
+.goal{display:inline-block;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:8px 18px;border-radius:100px;font-size:.92rem;margin:6px 0 26px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;line-height:1.25;margin-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;margin:38px 0 12px;color:var(--ink)}
+h2::before{content:'';display:inline-block;width:26px;height:3px;background:var(--pur);border-radius:2px;margin-inline-end:12px;vertical-align:middle}
+p{margin:0 0 14px;color:#d8d8e4}
+ul{margin:0 0 14px;padding-inline-start:24px}
+li{margin-bottom:8px;color:#d8d8e4}
+code{background:#1d1d2a;border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;direction:ltr;display:inline-block}
+.audiobox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:4px 0 10px;display:flex;align-items:center;gap:14px}
+.audiobox img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.audiobox span{color:var(--mut);font-size:.9rem}
+audio{width:100%;height:40px}
+.prompt{background:var(--card);border:1px solid var(--border);border-inline-start:3px solid var(--teal);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative}
+.prompt p{margin:0 0 0;white-space:pre-wrap;font-size:.95rem;color:#e8e8f2}
+.copy{position:absolute;top:10px;inset-inline-end:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:4px 14px;border-radius:100px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.exbox{background:linear-gradient(180deg,rgba(251,191,36,.08),transparent);border:1px dashed rgba(251,191,36,.4);border-radius:14px;padding:20px 22px;margin:34px 0}
+.exbox h3{color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.nav{display:flex;justify-content:space-between;gap:14px;margin-top:50px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit}
+.b1{background:var(--pur);color:#fff}.b2{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.b1:hover{filter:brightness(1.15)}.b2:hover{border-color:var(--pur)}
+.donebtn{width:100%;margin-top:26px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.4);color:var(--teal);padding:14px;border-radius:12px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:700}
+.donebtn.on{background:rgba(45,212,191,.25)}
+/* course index */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.tcard h2{margin:0 0 4px;font-size:1.3rem}
+.tcard .lec{color:var(--teal);font-size:.9rem;margin-bottom:14px}
+.tcard .pr{color:var(--gold);font-weight:700;margin-bottom:14px}
+.pbar{height:6px;background:#1d1d2a;border-radius:3px;overflow:hidden;margin:10px 0 4px}
+.pbar i{display:block;height:100%;background:var(--teal);width:0%}
+.plist{list-style:none;margin-top:10px}
+.plist li a{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--border);color:var(--ink);font-size:.95rem}
+.plist li a:hover{color:var(--teal)}
+.plist .n{color:var(--mut);font-family:monospace;font-size:.85rem;flex-shrink:0}
+.chip{background:rgba(139,92,246,.15);color:#c4b0f5;border:1px solid rgba(139,92,246,.35);border-radius:100px;padding:1px 10px;font-size:.75rem;flex-shrink:0}
+</style></head><body>
+<div class="topbar"><div class="in">
+<a class="logo" href="../index.html">בינ<b>ה</b> · BINA</a>
+<span class="crumb">AI מתקדם · הקורס 12/12</span>
+</div></div>
+<main><div class="wrap">
+<h1>קאפסטון: בונים ומעלים סוכן לפרודקשן</h1>
+<div class="goal">🎯 מה תדעו לעשות: להעביר סוכן AI מספסיפיקציה לפרודקשן — כולל הערכה, ניטור ותיעוד.</div>
+<div class="audiobox"><img src="../assets/noa.png" alt="נועה">
+<div style="flex:1"><span>נועה · השמע את המרצה</span>
+<audio controls preload="none" src="../assets/audio/p3-12.mp3"></audio></div></div>
+<h2>שלב 1: ספסיפיקציה — מה זה 'עובד'</h2>
+<p>לפני שורת קוד אחת, כותבים עמוד: מה הסוכן עושה, למי, מה הכלים שלו, ובעיקר — איך יודעים שהוא טוב. יעדים בניתנים: 'עונה נכון על 85% מסט הזהב', 'p95 מתחת ל-6 שניות', 'עלות ממוצעת מתחת לסכום X לבקשה'. גבולות מפורשים: מה הסוכן לא עושה ('לא מוחק קבצים', 'לא עונה על נושאים מחוץ לתיעוד'). בחר משימה אמיתית וצרה — סוכן תמיכה למוצר אחד, מנתח לוגים, מסכם PR. צר וטוב מרחב ועצוב. וכן, גם אני הייתי רוצה סוכן שעושה הכול. אחרי הקאפסטון.</p>
+<h2>שלב 2: בנייה עם גרדריילים</h2>
+<p>ארכיטקטורה מוכרת מהקורס: לולאת כלים אחת או router+מומחים, RAG על מקור אחד, ופלט מובנה. גרדריילים שאסור לדלג עליהם: <code>max_tokens</code> לכל קריאה, תקרת איטרציות לכל כלי, timeout לכל שרת MCP, allowlist לכל פעולת רשת, try/except שמחזיר למודל שגיאה מפורטת, ולוג מלא של כל סבב (input, tool calls, output, latency, cost).</p>
+<p><code>`</code>python</p>
+<p>def handle(msg):</p>
+<p>with trace(user=msg):</p>
+<p>return agent_loop(msg, max_iters=10)</p>
+<p><code>`</code></p>
+<p>לוגים טובים בשלב הזה הם ההבדל בין דיבוג של חמש דקות לחמש שעות.</p>
+<h2>שלב 3: הערכה לפני שיגור</h2>
+<p>סט זהב של 30+ מקרים (מהשיעור על evals), ריצה מלאה, ודוח ברור: דיוק, latency p95, עלות ממוצעת, וספציפית לסוכן — אחוז כישלונות כלים ואחוז פניות שדרשו fallback. בדיקות אבטחה: הרץ את מתקפת ה-injection שלך נגדו ותעד שהוא עומד. רק אחרי שהמספרים עומדים ביעדים מהספסיפיקציה — עוברים לדיפלוי. אם לא עומדים, חוזרים לשלב שצריך (חיפוש? פרומפט? מודל?). דיפלוי של סוכן בלי מספרים זה לא שחרור, זה הימור.</p>
+<h2>שלב 4: דיפלוי, ניטור ותחזוקה</h2>
+<p>עוטפים ב-API (FastAPI) עם endpoint אחד נקי, auth, והחזרת stream ללקוח. ניטור יומי: dashboard אחד עם דיוק על סימולציה קטנה שרצה כל שעה, התפלגות latency, עלות יומית, אחוז שגיאות כלים, ו-alert כשמשהו סוטה. שמור כל שינוי ב-git עם הציון שקיבל — ככה כל שדרוג מודל (והם יגיעו) נמדד באותו סט. README עם הספסיפיקציה, המספרים והארכיטקטורה — זה גם התיעוד וגם פורטפוליו. מכאן זה כבר לא קורס, זו עבודה. ואתה מוכן לה.</p>
+<h2>פרומפט מוכן להעתקה</h2><div class="prompt"><p>תבנית ספסיפיקציה (מלא ושמור כ-SPEC.md):
+```
+# Agent: שם
+## מטרה: במשפט אחד
+## כלים: רשימה + מה מותר לכל אחד
+## יעדי איכות: דיוק &gt;= X% על סט זהב של 30 מקרים
+## יעדי latency/עלות: p95 &lt;= X שניות, &lt;= X אגורות לבקשה
+## גבולות: מה הסוכן לא עושה לעולם
+## אבטחה: injection test עובר? רשימת יעדים מאושרת
+```</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+<div class="prompt"><p>בדיקת עשן אחרי דיפלוי (הרץ ב-cron):
+```python
+def smoke():
+    ok = sum(run_case(c) for c in SMOKE_SET) / len(SMOKE_SET)
+    if ok &lt; 0.8:
+        alert(f'agent degraded: {ok:.0%}')
+```</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+
+<div class="exbox"><h3>💪 תרגיל</h3><p><p>הקאפסטון: בחר משימה אמיתית וצרה, כתוב SPEC.md לפי התבנית, בנה את הסוכן (כלים + RAG + פלט מובנה), הרץ הערכה על 30 מקרים, הגן מפני injection, ודפלוי כ-API עם smoke test. הגש: לינק לריפו + README עם המספרים. זו התעודה שלך.</p></p></div>
+<div class="nav"><a class='btn b2' href='p3-11.html'>← שיעור קודם</a><a class='btn b1' href='index.html'>כל המסלולים →</a></div>
+<button class="donebtn" id="done" onclick="markDone()">סמן כהושלם ✓</button>
+</div></main>
+<script>
+const ID='p3-12';
+const done=localStorage.getItem('bina-'+ID)==='1';
+const b=document.getElementById('done');
+if(done){b.classList.add('on');b.textContent='הושלם ✓';}
+function markDone(){const d=localStorage.getItem('bina-'+ID)==='1';
+localStorage.setItem('bina-'+ID,d?'0':'1');
+if(!d){b.classList.add('on');b.textContent='הושלם ✓';}else{b.classList.remove('on');b.textContent='סמן כהושלם ✓';}}
+function cp(btn){const txt=btn.parentElement.querySelector('p').innerText;
+navigator.clipboard.writeText(txt);btn.textContent='הועתק!';
+setTimeout(()=>btn.textContent='העתק',1500);}
+</script></body></html>

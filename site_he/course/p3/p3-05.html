@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAG בעומק: חיתוכים, אמבדינגים, חיפוש היברידי ורי-ראנקינג · בינה BINA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>body{font-family:'Rubik',sans-serif}
+:root{--bg:#0a0a10;--bg2:#101018;--card:#15151f;--ink:#f4f4fa;--mut:#a0a0af;
+--pur:#8b5cf6;--teal:#2dd4bf;--gold:#fbbf24;--border:#232330}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Rubik','Inter',sans-serif;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(10,10,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.topbar .in{max-width:860px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo b{color:var(--pur)}
+.crumb{color:var(--mut);font-size:.9rem}
+main{padding:44px 0 90px}
+.goal{display:inline-block;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:8px 18px;border-radius:100px;font-size:.92rem;margin:6px 0 26px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;line-height:1.25;margin-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;margin:38px 0 12px;color:var(--ink)}
+h2::before{content:'';display:inline-block;width:26px;height:3px;background:var(--pur);border-radius:2px;margin-inline-end:12px;vertical-align:middle}
+p{margin:0 0 14px;color:#d8d8e4}
+ul{margin:0 0 14px;padding-inline-start:24px}
+li{margin-bottom:8px;color:#d8d8e4}
+code{background:#1d1d2a;border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;direction:ltr;display:inline-block}
+.audiobox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:4px 0 10px;display:flex;align-items:center;gap:14px}
+.audiobox img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.audiobox span{color:var(--mut);font-size:.9rem}
+audio{width:100%;height:40px}
+.prompt{background:var(--card);border:1px solid var(--border);border-inline-start:3px solid var(--teal);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative}
+.prompt p{margin:0 0 0;white-space:pre-wrap;font-size:.95rem;color:#e8e8f2}
+.copy{position:absolute;top:10px;inset-inline-end:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:4px 14px;border-radius:100px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.exbox{background:linear-gradient(180deg,rgba(251,191,36,.08),transparent);border:1px dashed rgba(251,191,36,.4);border-radius:14px;padding:20px 22px;margin:34px 0}
+.exbox h3{color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.nav{display:flex;justify-content:space-between;gap:14px;margin-top:50px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit}
+.b1{background:var(--pur);color:#fff}.b2{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.b1:hover{filter:brightness(1.15)}.b2:hover{border-color:var(--pur)}
+.donebtn{width:100%;margin-top:26px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.4);color:var(--teal);padding:14px;border-radius:12px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:700}
+.donebtn.on{background:rgba(45,212,191,.25)}
+/* course index */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.tcard h2{margin:0 0 4px;font-size:1.3rem}
+.tcard .lec{color:var(--teal);font-size:.9rem;margin-bottom:14px}
+.tcard .pr{color:var(--gold);font-weight:700;margin-bottom:14px}
+.pbar{height:6px;background:#1d1d2a;border-radius:3px;overflow:hidden;margin:10px 0 4px}
+.pbar i{display:block;height:100%;background:var(--teal);width:0%}
+.plist{list-style:none;margin-top:10px}
+.plist li a{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--border);color:var(--ink);font-size:.95rem}
+.plist li a:hover{color:var(--teal)}
+.plist .n{color:var(--mut);font-family:monospace;font-size:.85rem;flex-shrink:0}
+.chip{background:rgba(139,92,246,.15);color:#c4b0f5;border:1px solid rgba(139,92,246,.35);border-radius:100px;padding:1px 10px;font-size:.75rem;flex-shrink:0}
+</style></head><body>
+<div class="topbar"><div class="in">
+<a class="logo" href="../index.html">בינ<b>ה</b> · BINA</a>
+<span class="crumb">AI מתקדם · הקורס 5/12</span>
+</div></div>
+<main><div class="wrap">
+<h1>RAG בעומק: חיתוכים, אמבדינגים, חיפוש היברידי ורי-ראנקינג</h1>
+<div class="goal">🎯 מה תדעו לעשות: לבנות pipeline RAG איכותי מקצה לקצה — מחיתוך מסמכים ועד תשובה שמבוססת על הקטע הנכון.</div>
+<div class="audiobox"><img src="../assets/noa.png" alt="נועה">
+<div style="flex:1"><span>נועה · השמע את המרצה</span>
+<audio controls preload="none" src="../assets/audio/p3-05.mp3"></audio></div></div>
+<h2>הפייפליין ונקודות הכישלון שלו</h2>
+<p>RAG בנוי מחמישה שלבים: ingest (parse לטקסט) → chunk (חיתוך) → embed (וקטורים) → retrieve (חיפוש top-k) → generate (תשובה עם ציטוטים). התשובה הגרועה של המודל היא בתשעים אחוז מהמקרים לא אשמת המודל — הוא פשוט לא קיבל את הקטע הנכון. הכלל המנחה: שפר את השליפה לפני שאתה נוגע בפרומפט. כל שקל שאתה משקיע בפרומפט של הגנרטור שווה שקל; כל שקל בשליפה שווה עשרת. עכשיו בוא נדבר על מה שבאמת קובע.</p>
+<h2>חיתוך: chunking בלי לערוף</h2>
+<p>ברירת מחדל: חלון קבוע של 500–1000 טוקנים עם overlap של 10–20%. זה פוגע בשתי חזיתות: קטע גדול מדי מדלל את הסיגנל באמבדינג, קטע קטן מדי מאבד הקשר. שדרוגים שמשתלמים: חיתוך לפי מבנה (כותרות markdown, תאי טבלה), חיתוך סמנטי לפי משפטים, ו-late chunking שמחשב אמבדינג לפסקה עם הקשר המסמך. שמור metadata (שם קובץ, כותרת, מספר קטע) — בלי זה אין ציטוטים ואין דיבוג.</p>
+<p><code>`</code>python</p>
+<p>from langchain_text_splitters import MarkdownHeaderTextSplitter</p>
+<p>splitter = MarkdownHeaderTextSplitter(['#', '##', '###'])</p>
+<p>chunks = splitter.split_text(doc)</p>
+<p><code>`</code></p>
+<h2>אמבדינגים וחיפוש וקטורי</h2>
+<p>אמבדינג הופך טקסט לוקטור; קרבה סמנטית = קרבה גיאומטרית (cosine). מודלים נפוצים: text-embedding-3, Cohere embed, BGE. טעויות מתחילים: לערבב מודלי אמבדינג בין יצירה לשאילתה (חובה זהה), לא לנרמל וקטורים, לשכוח ששאילתה קצרה ('מה המחיר?') זקוקה לשכתוב — תבנית שאילתה שהופכת אותה לפסקת תשובה משוערת. עברית עובדת טוב במודלים המובילים, אבל תמיד תבדוק על הנתונים שלך, לא על הבלוג של מישהו.</p>
+<p><code>`</code>python</p>
+<p>q = client.embeddings.create(model='text-embedding-3-small', input=query).data[0].embedding</p>
+<p>hits = index.search(np.array(q), k=8)</p>
+<p><code>`</code></p>
+<h2>היברידי + רי-ראנקינג: השדרוג הגדול</h2>
+<p>חיפוש וקטורי מפספס שמות מדויקים, קודי שגיאה ומונחים טכניים — שם BM25 מנצח. חיפוש היברידי מריץ את שניהם וממזג דירוגים (RRF — Reciprocal Rank Fusion):</p>
+<p><code>`</code>python</p>
+<p>def rrf(list_a, list_b, k=60):</p>
+<p>scores = {}</p>
+<p>for lst in (list_a, list_b):</p>
+<p>for i, doc in enumerate(lst):</p>
+<p>scores[doc] = scores.get(doc, 0) + 1 / (k + i + 1)</p>
+<p>return sorted(scores, key=scores.get, reverse=True)</p>
+<p><code>`</code></p>
+<p>ואז reranker צולב (Cohere Rerank, BGE-reranker) מדרג מחדש את 50 המועמדים ומחזיר top-3 איכותיים בהרבה. זה הכפתור שמרים את ה-RAG שלך מ'סביר' ל'טוב'.</p>
+<h2>פרומפט מוכן להעתקה</h2><div class="prompt"><p>פרומפט תשובה מבוסס-קטעים:
+```
+ענה רק על סמך הקטעים שסופקו.
+צטט מזהה קטע בסוף כל טענה כמו [3].
+אם הקטעים לא מכילים את התשובה — כתוב בדיוק: 'לא מצאתי במסמכים'.
+אל תשלים מידע מהידע הכללי שלך.
+```</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+<div class="prompt"><p>שאילתה משודרגת לפני שליפה:
+```
+שכתב את שאלת המשתמש כפסקת חיפוש עצמאית בת 2–3 משפטים,
+כולל מונחים נרדפים וקודי מוצר רלוונטיים.
+החזר רק את הפסקה.
+```</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+
+<div class="exbox"><h3>💪 תרגיל</h3><p><p>בנה RAG על תיקיית markdown של תיעוד מוצר (לפחות 20 קבצים). הרץ את אותן 10 שאלות בשלוש קונפיגורציות: chunk=256, chunk=1024, והיברידי+rerank. תעד עבור כל שאלה אם הקטע הנכון היה בטופ-5 — והסק מסקנות.</p></p></div>
+<div class="nav"><a class='btn b2' href='p3-04.html'>← שיעור קודם</a><a class='btn b1' href='p3-06.html'>שיעור הבא →</a></div>
+<button class="donebtn" id="done" onclick="markDone()">סמן כהושלם ✓</button>
+</div></main>
+<script>
+const ID='p3-05';
+const done=localStorage.getItem('bina-'+ID)==='1';
+const b=document.getElementById('done');
+if(done){b.classList.add('on');b.textContent='הושלם ✓';}
+function markDone(){const d=localStorage.getItem('bina-'+ID)==='1';
+localStorage.setItem('bina-'+ID,d?'0':'1');
+if(!d){b.classList.add('on');b.textContent='הושלם ✓';}else{b.classList.remove('on');b.textContent='סמן כהושלם ✓';}}
+function cp(btn){const txt=btn.parentElement.querySelector('p').innerText;
+navigator.clipboard.writeText(txt);btn.textContent='הועתק!';
+setTimeout(()=>btn.textContent='העתק',1500);}
+</script></body></html>

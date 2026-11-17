@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פרטיות ובטיחות: מה לעולם לא מקלידים ל-AI · בינה BINA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>body{font-family:'Rubik',sans-serif}
+:root{--bg:#0a0a10;--bg2:#101018;--card:#15151f;--ink:#f4f4fa;--mut:#a0a0af;
+--pur:#8b5cf6;--teal:#2dd4bf;--gold:#fbbf24;--border:#232330}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Rubik','Inter',sans-serif;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(10,10,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.topbar .in{max-width:860px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo b{color:var(--pur)}
+.crumb{color:var(--mut);font-size:.9rem}
+main{padding:44px 0 90px}
+.goal{display:inline-block;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:8px 18px;border-radius:100px;font-size:.92rem;margin:6px 0 26px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;line-height:1.25;margin-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;margin:38px 0 12px;color:var(--ink)}
+h2::before{content:'';display:inline-block;width:26px;height:3px;background:var(--pur);border-radius:2px;margin-inline-end:12px;vertical-align:middle}
+p{margin:0 0 14px;color:#d8d8e4}
+ul{margin:0 0 14px;padding-inline-start:24px}
+li{margin-bottom:8px;color:#d8d8e4}
+code{background:#1d1d2a;border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;direction:ltr;display:inline-block}
+.audiobox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:4px 0 10px;display:flex;align-items:center;gap:14px}
+.audiobox img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.audiobox span{color:var(--mut);font-size:.9rem}
+audio{width:100%;height:40px}
+.prompt{background:var(--card);border:1px solid var(--border);border-inline-start:3px solid var(--teal);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative}
+.prompt p{margin:0 0 0;white-space:pre-wrap;font-size:.95rem;color:#e8e8f2}
+.copy{position:absolute;top:10px;inset-inline-end:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:4px 14px;border-radius:100px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.exbox{background:linear-gradient(180deg,rgba(251,191,36,.08),transparent);border:1px dashed rgba(251,191,36,.4);border-radius:14px;padding:20px 22px;margin:34px 0}
+.exbox h3{color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.nav{display:flex;justify-content:space-between;gap:14px;margin-top:50px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit}
+.b1{background:var(--pur);color:#fff}.b2{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.b1:hover{filter:brightness(1.15)}.b2:hover{border-color:var(--pur)}
+.donebtn{width:100%;margin-top:26px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.4);color:var(--teal);padding:14px;border-radius:12px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:700}
+.donebtn.on{background:rgba(45,212,191,.25)}
+/* course index */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.tcard h2{margin:0 0 4px;font-size:1.3rem}
+.tcard .lec{color:var(--teal);font-size:.9rem;margin-bottom:14px}
+.tcard .pr{color:var(--gold);font-weight:700;margin-bottom:14px}
+.pbar{height:6px;background:#1d1d2a;border-radius:3px;overflow:hidden;margin:10px 0 4px}
+.pbar i{display:block;height:100%;background:var(--teal);width:0%}
+.plist{list-style:none;margin-top:10px}
+.plist li a{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--border);color:var(--ink);font-size:.95rem}
+.plist li a:hover{color:var(--teal)}
+.plist .n{color:var(--mut);font-family:monospace;font-size:.85rem;flex-shrink:0}
+.chip{background:rgba(139,92,246,.15);color:#c4b0f5;border:1px solid rgba(139,92,246,.35);border-radius:100px;padding:1px 10px;font-size:.75rem;flex-shrink:0}
+</style></head><body>
+<div class="topbar"><div class="in">
+<a class="logo" href="../index.html">בינ<b>ה</b> · BINA</a>
+<span class="crumb">AI ביום-יום · הקורס 19/20</span>
+</div></div>
+<main><div class="wrap">
+<h1>פרטיות ובטיחות: מה לעולם לא מקלידים ל-AI</h1>
+<div class="goal">🎯 מה תדעו לעשות: אחרי השיעור תדעו בדיוק מה מותר, מה עדיף ומה אסור לשתף עם AI — ותכיילו את כל הכלים שלכם כך שתוכלו להשתמש בביטחון בלי להקריב את הפרטיות שלכם.</div>
+<div class="audiobox"><img src="../assets/noa.png" alt="נועה">
+<div style="flex:1"><span>נועה · השמע את המרצה</span>
+<audio controls preload="none" src="../assets/audio/p1-19.mp3"></audio></div></div>
+<h2>שלוש הקטגוריות: מותר, עדיף, אסור</h2>
+<p>סדר בבלגן. <strong>מותר חופשי</strong> — כל דבר שהוא כבר פומבי או חסר מזהיר: רעיונות, משפטים לאימון, מתכונים, שאלות כלליות, טיוטות טקסט בלי שמות. <strong>עדיף לערוך</strong> — דברים אישיים שמועילים: פירוט הוצאות (מחקו מספרי חשבון), מיילים רגישים (מחקו כתובות), היסטוריה רפואית כללית (בלי תעודת זהות בצמוד). זו הקטגוריה של רוב השימוש הנבון. <strong>אסור בעיניי</strong> — מזהירים ישירים: מספרי תעודת זהות, כרטיסי אשראי וקודים חשאיים, סיסמאות וקודי אימות, צילומי תעודות מזהות ודרכונים, חוזה עם תנאים סודיים. ההיגיון: לא מפני שהמודל ״גונב״ — אלא שאחרי שנשלח, אין דרך להחזיר, ומי שקורא את הצ׳אט הוא לא תמיד רק המודל.</p>
+<h2>מה באמת קורה למה שכותבים</h2>
+<p>בואו נהיה מדויקים, בלי פאניקה ובלי תמימות. כברירת מחדל, במנויים בתשלום ברוב השירותים, השיחות יכולות לשמש לשיפור המודלים אלא אם כיביתם את זה — ובגרסאות החינמיות לעיתים קרובות גם ככה. יש הגדרה בשם ״שיפור המודל / Data controls״ בכל שירות, ולכבות אותה לוקח דקה. אבל גם כשכבוי — הנתונים עוברים דרך שרתים, נשמרים בהיסטוריה שאפשר למחוק (Settings ← Data controls ← Delete all chats), ובעתיד עשויים להיות חשופים גם לגורמים משפטיים. זה לא סיבה להפסיק להשתמש — זו סיבה לכתוב ל-AI כמו שמדברים עם קולגה חכם בבית קפה ציבורי: לגמרי בסדר להתייעץ, רק לא לצעוק את מספר כרטיס האשראי.</p>
+<h2>סדנת היגיינה: עשר דקות בכלים שלכם</h2>
+<p>הריצו עכשיו, פעם אחת, את חמשת הצעדים האלה: 1. בכל שירות שאתם משתמשים בו — עברו על Settings ← Data/Privacy וכבו ״שימוש בנתונים לאימון״ אם זה חשוב לכם. 2. מחקו שיחות ישנות שמכילות מזהירים — לא צריך לשמור את החוזה מ-2023. 3. עברו על ה-Memory (שיעור 3) ומחקו זיכרונות שאינם חייבים להישאר. 4. בקשו מה-AI עצמו: ״עבור על ההיסטוריה שלנו ותגיד לי אילו פרטים רגישים השארתי לך״ — הוא יפתיע אתכם. 5. מהיום, כלל: מסמך רגיש עולה לצ׳אט רק אחרי מחיקת מזהירים. חמש דקות היגיינה דיגיטלית, ואתם משתמשים מתוחכמים במקום מפוזרים.</p>
+<h2>טריק היום: ״האם זה בסדר לשלוח?״</h2>
+<p>לפני שאתם מדביקים משהו רגיש — שאלו קודם, במילים אלו: ״אני עומד/ת לשלוח לך [תיאור המסמך/הטקסט]. לפני שאני שולח/ת: אמור לי אם יש בזה מזהיר שכדאי להסיר, ותן לי רשימת ניקוי — מה למחוק או להחליף בשביל שהעזרה שלך תישאר טובה אבל פחות חשופה״. לדוגמה: תעודת זהות → ״מספר ת.ז. בן 9 ספרות״; שמות ילדים → ״הבן, הבת״; כתובת → ״אזור מגורים״. הפלא הוא שב-90% מהמקרים התשובה לא נפגעת כלל — ה-AI לא באמת צריך את המספר המדויק, הוא צריך את הפורמט. זה נותן לכם את התועלת בלי החשיפה. כמו שאני אומרת לתלמידים שלי: תגידו לי מה קורה, לא מי הבוס.</p>
+<h2>פרומפט מוכן להעתקה</h2><div class="prompt"><p>אני עומד/ת לשלוח לך את הדבר הבא: [תארו בקצרה — למשל: חוזה שכירות, מייל מהעבודה, פירוט עסקות]. לפני השליחה: רשום לי אילו מזהירים כדאי להסיר או לטשטש, ותן רשימת החלפות מדויקת (מה למחוק, במה להחליף) כך שהעזרה שלך תישאר מלאה אבל הפרטיות שלי תישמר.</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+<div class="prompt"><p>עבור על השיחות האחרונות שלנו ותגיד לי: אילו פרטים רגישים השארתי לך לאורך זמן? רשום אותם בקטגוריות (מזהירים פיננסיים / רפואיים / משפחתיים), בלי לחזור על המספרים עצמם. והצע לי מה כדאי למחוק מה-Memory או מההיסטוריה.</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+
+<div class="exbox"><h3>💪 תרגיל</h3><p><p>עשו עכשיו את סדנת ההיגיינה: היכנסו להגדרות של הכלי הראשי שלכם, כבו שימוש בנתונים לאימון אם רוצים, מחקו שיחות רגישות ישנות, והריצו את הפרומפט השני. עשר דקות — ומהיום אתם משתמשים חופשי בלי להשאיר עקבות מסוכנים. זה השיעור שאף אחד לא עושה וכולם צריכים. עשיתם? יופי. אני גאה בכם, ואני לא אומרת את זה סתם ככה.</p></p></div>
+<div class="nav"><a class='btn b2' href='p1-18.html'>← שיעור קודם</a><a class='btn b1' href='p1-20.html'>שיעור הבא →</a></div>
+<button class="donebtn" id="done" onclick="markDone()">סמן כהושלם ✓</button>
+</div></main>
+<script>
+const ID='p1-19';
+const done=localStorage.getItem('bina-'+ID)==='1';
+const b=document.getElementById('done');
+if(done){b.classList.add('on');b.textContent='הושלם ✓';}
+function markDone(){const d=localStorage.getItem('bina-'+ID)==='1';
+localStorage.setItem('bina-'+ID,d?'0':'1');
+if(!d){b.classList.add('on');b.textContent='הושלם ✓';}else{b.classList.remove('on');b.textContent='סמן כהושלם ✓';}}
+function cp(btn){const txt=btn.parentElement.querySelector('p').innerText;
+navigator.clipboard.writeText(txt);btn.textContent='הועתק!';
+setTimeout(()=>btn.textContent='העתק',1500);}
+</script></body></html>

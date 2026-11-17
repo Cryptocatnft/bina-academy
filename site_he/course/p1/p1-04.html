@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מטא-פרומפטים: תנו ל-AI לכתוב לכם את הפרומפטים · בינה BINA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>body{font-family:'Rubik',sans-serif}
+:root{--bg:#0a0a10;--bg2:#101018;--card:#15151f;--ink:#f4f4fa;--mut:#a0a0af;
+--pur:#8b5cf6;--teal:#2dd4bf;--gold:#fbbf24;--border:#232330}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Rubik','Inter',sans-serif;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(10,10,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.topbar .in{max-width:860px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo b{color:var(--pur)}
+.crumb{color:var(--mut);font-size:.9rem}
+main{padding:44px 0 90px}
+.goal{display:inline-block;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:8px 18px;border-radius:100px;font-size:.92rem;margin:6px 0 26px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;line-height:1.25;margin-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;margin:38px 0 12px;color:var(--ink)}
+h2::before{content:'';display:inline-block;width:26px;height:3px;background:var(--pur);border-radius:2px;margin-inline-end:12px;vertical-align:middle}
+p{margin:0 0 14px;color:#d8d8e4}
+ul{margin:0 0 14px;padding-inline-start:24px}
+li{margin-bottom:8px;color:#d8d8e4}
+code{background:#1d1d2a;border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;direction:ltr;display:inline-block}
+.audiobox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:4px 0 10px;display:flex;align-items:center;gap:14px}
+.audiobox img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.audiobox span{color:var(--mut);font-size:.9rem}
+audio{width:100%;height:40px}
+.prompt{background:var(--card);border:1px solid var(--border);border-inline-start:3px solid var(--teal);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative}
+.prompt p{margin:0 0 0;white-space:pre-wrap;font-size:.95rem;color:#e8e8f2}
+.copy{position:absolute;top:10px;inset-inline-end:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:4px 14px;border-radius:100px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.exbox{background:linear-gradient(180deg,rgba(251,191,36,.08),transparent);border:1px dashed rgba(251,191,36,.4);border-radius:14px;padding:20px 22px;margin:34px 0}
+.exbox h3{color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.nav{display:flex;justify-content:space-between;gap:14px;margin-top:50px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit}
+.b1{background:var(--pur);color:#fff}.b2{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.b1:hover{filter:brightness(1.15)}.b2:hover{border-color:var(--pur)}
+.donebtn{width:100%;margin-top:26px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.4);color:var(--teal);padding:14px;border-radius:12px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:700}
+.donebtn.on{background:rgba(45,212,191,.25)}
+/* course index */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.tcard h2{margin:0 0 4px;font-size:1.3rem}
+.tcard .lec{color:var(--teal);font-size:.9rem;margin-bottom:14px}
+.tcard .pr{color:var(--gold);font-weight:700;margin-bottom:14px}
+.pbar{height:6px;background:#1d1d2a;border-radius:3px;overflow:hidden;margin:10px 0 4px}
+.pbar i{display:block;height:100%;background:var(--teal);width:0%}
+.plist{list-style:none;margin-top:10px}
+.plist li a{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--border);color:var(--ink);font-size:.95rem}
+.plist li a:hover{color:var(--teal)}
+.plist .n{color:var(--mut);font-family:monospace;font-size:.85rem;flex-shrink:0}
+.chip{background:rgba(139,92,246,.15);color:#c4b0f5;border:1px solid rgba(139,92,246,.35);border-radius:100px;padding:1px 10px;font-size:.75rem;flex-shrink:0}
+</style></head><body>
+<div class="topbar"><div class="in">
+<a class="logo" href="../index.html">בינ<b>ה</b> · BINA</a>
+<span class="crumb">AI ביום-יום · הקורס 4/20</span>
+</div></div>
+<main><div class="wrap">
+<h1>מטא-פרומפטים: תנו ל-AI לכתוב לכם את הפרומפטים</h1>
+<div class="goal">🎯 מה תדעו לעשות: אחרי השיעור תשתמשו במהלך הבוטיק של המקצוענים — לגרום ל-AI לראיין אתכם, לכתוב ולשפר את הפרומפטים שלכם — כך שתקבלו תוצאות בלי להיות אנשי פרומפטים בעצמכם.</div>
+<div class="audiobox"><img src="../assets/noa.png" alt="נועה">
+<div style="flex:1"><span>נועה · השמע את המרצה</span>
+<audio controls preload="none" src="../assets/audio/p1-04.mp3"></audio></div></div>
+<h2>למה לכתוב לבד כשאפשר להיוועץ</h2>
+<p>פרומפט טוב דורש חשיבה על תפקיד, הקשר, פורמט, דוגמאות ואילוצים — וזה בדיוק הסוג החשיבה ש-AI עושה מצוין. אז למה להיאבק? במקום לנסח, אנחנו נותנים ל-AI לעשות שני דברים: <strong>לראיין אותנו</strong> על מה שבאמת רוצים, ו<strong>לנסח</strong> את זה לפרומפט מושלם. זה מהלך שנקרא meta-prompting, וזו הסיבה שאנשים שנראים ״כישרונות פרומפטים״ הם בעצם אנשים עם עוזר נסתר. התוצאה: פחות ניסוי וטעיה, פחות סבבי תיקון, ותשובה טובה כבר מניסיון ראשון — כי הפרומפט עצמו נכתב על ידי מי שיודע מה עובד עליו.</p>
+<h2>מהלך שלושת השלבים</h2>
+<p>שלב 1 — <strong>ראיון</strong>: פותחים שיחה ואומרים ״אני רוצה להגיע ל[תוצאה]. אתה מהנדס פרומפטים. שאל אותי שאלות, אחת-אחת, עד שתבין בדיוק מה אני צריך. אל תציע כלום עד שתגיד שאספת מספיק״. שלב 2 — <strong>ניסוח</strong>: ״עכשיו כתוב פרומפט מלא ומפורט שאוכל להדביק בשיחה חדשה, כולל תפקיד, הקשר, פורמט, אילוצים ודוגמה״. שלב 3 — <strong>ניקוי קצה</strong>: ״מה חסר בפרומפט הזה? מה היה משפר אותו עוד יותר?״ — ומשלבים. שלוש דקות של ראיון חוסכות חצי שעה של תיקונים.</p>
+<h2>הגרסה הזולה: פרומפט-אינטרספטור</h2>
+<p>יש גרסה עוד יותר חכמה שאנשים לא מכירים: קחו פרומפט קיים שלכם — כזה שעבד בסדר — ובקשו: ״הנה פרומפט שאני משתמש בו: [...]. תשחק את תפקיד ה-AI שמקבל אותו, תגיד לי איפה הוא מעורפל, מה תצטרך לנחש, ותציע גרסה משופרת פי עשרה״. ה-AI מכיר את הנקודות העיוורות של עצמו ומצביע עליהן בלי בושה. זה כמו לשאול את הטבח מה לא בסדר במרק שלכם — הוא יודע בדיוק איפה התפזרתם עם המלח. שמרו את הפרומפטים המשופרים בקובץ — זו ספריית הנכסים שלכם.</p>
+<h2>טריק היום: מפעל פרומפטים משפחתי</h2>
+<p>הנה מהלך שמרוויחים איתו פעמיים: תנו ל-AI לבנות לכם סט פרומפטים קבועים לכל החיים. בקשו: ״אני רוצה שנבנה ביחד 5 פרומפטים קבועים שלי: מציאת מתכונים למקרר, ניסוח מיילים קשים, סיכום מסמכים, תכנון סוף שבוע, ועזרה בשיעורי בית. בשביל כל אחד — תראיין אותי קצת ואז תכתוב לי גרסה סופית מוכנה להדבקה״. עשרים דקות, ויש לכם חמישה כלים מותאמים אישית במקום לחדש גלגל כל פעם. זה בעצם לבנות לעצמכם מערכת הפעלה — וזה בדיוק מה שנעשה בשיעור הגמר.</p>
+<h2>פרומפט מוכן להעתקה</h2><div class="prompt"><p>אתה מהנדס פרומפטים מומחה. אני רוצה להגיע לתוצאה הבאה: [תארו במשפט-שניים]. שאל אותי שאלה אחת בכל פעם, עד שתבין בדיוק מה אני צריך. אל תציע פרומפט עד שתאמר שאספת מספיק מידע. אחר כך תכתוב פרומפט מלא: תפקיד, הקשר, משימה, פורמט, אילוצים ודוגמה — מוכן להדבקה בשיחה חדשה.</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+<div class="prompt"><p>הנה פרומפט שאני משתמש בו: [הדביקו פרומפט קיים]. שחק את ה-AI שמקבל אותו: מה תצטרך לנחש? איפה הוא מעורפל? עכשיו כתוב גרסה משופרת שמכסה את כל החורים, והסבר בשורה מה שיפרת.</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+
+<div class="exbox"><h3>💪 תרגיל</h3><p><p>בחרו משימה אחת שאתם עושים שוב ושוב עם AI. הריצו עליה את פרומפט הראיון (הראשון), ענו על השאלות, וקבלו את הפרומפט המשופר. שמרו אותו בפתק בטלפון. מהיום זה ״הפרומפט של [המשימה]״ שלכם — כלי אישי שעבדתם עליו עשר דקות וישרת אתכם חודשים.</p></p></div>
+<div class="nav"><a class='btn b2' href='p1-03.html'>← שיעור קודם</a><a class='btn b1' href='p1-05.html'>שיעור הבא →</a></div>
+<button class="donebtn" id="done" onclick="markDone()">סמן כהושלם ✓</button>
+</div></main>
+<script>
+const ID='p1-04';
+const done=localStorage.getItem('bina-'+ID)==='1';
+const b=document.getElementById('done');
+if(done){b.classList.add('on');b.textContent='הושלם ✓';}
+function markDone(){const d=localStorage.getItem('bina-'+ID)==='1';
+localStorage.setItem('bina-'+ID,d?'0':'1');
+if(!d){b.classList.add('on');b.textContent='הושלם ✓';}else{b.classList.remove('on');b.textContent='סמן כהושלם ✓';}}
+function cp(btn){const txt=btn.parentElement.querySelector('p').innerText;
+navigator.clipboard.writeText(txt);btn.textContent='הועתק!';
+setTimeout(()=>btn.textContent='העתק',1500);}
+</script></body></html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>איפה באמת נמצאות משרות ה-AI · בינה BINA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>body{font-family:'Rubik',sans-serif}
+:root{--bg:#0a0a10;--bg2:#101018;--card:#15151f;--ink:#f4f4fa;--mut:#a0a0af;
+--pur:#8b5cf6;--teal:#2dd4bf;--gold:#fbbf24;--border:#232330}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Rubik','Inter',sans-serif;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(10,10,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.topbar .in{max-width:860px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo b{color:var(--pur)}
+.crumb{color:var(--mut);font-size:.9rem}
+main{padding:44px 0 90px}
+.goal{display:inline-block;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:8px 18px;border-radius:100px;font-size:.92rem;margin:6px 0 26px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;line-height:1.25;margin-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;margin:38px 0 12px;color:var(--ink)}
+h2::before{content:'';display:inline-block;width:26px;height:3px;background:var(--pur);border-radius:2px;margin-inline-end:12px;vertical-align:middle}
+p{margin:0 0 14px;color:#d8d8e4}
+ul{margin:0 0 14px;padding-inline-start:24px}
+li{margin-bottom:8px;color:#d8d8e4}
+code{background:#1d1d2a;border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;direction:ltr;display:inline-block}
+.audiobox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:4px 0 10px;display:flex;align-items:center;gap:14px}
+.audiobox img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.audiobox span{color:var(--mut);font-size:.9rem}
+audio{width:100%;height:40px}
+.prompt{background:var(--card);border:1px solid var(--border);border-inline-start:3px solid var(--teal);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative}
+.prompt p{margin:0 0 0;white-space:pre-wrap;font-size:.95rem;color:#e8e8f2}
+.copy{position:absolute;top:10px;inset-inline-end:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:4px 14px;border-radius:100px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.exbox{background:linear-gradient(180deg,rgba(251,191,36,.08),transparent);border:1px dashed rgba(251,191,36,.4);border-radius:14px;padding:20px 22px;margin:34px 0}
+.exbox h3{color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.nav{display:flex;justify-content:space-between;gap:14px;margin-top:50px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit}
+.b1{background:var(--pur);color:#fff}.b2{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.b1:hover{filter:brightness(1.15)}.b2:hover{border-color:var(--pur)}
+.donebtn{width:100%;margin-top:26px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.4);color:var(--teal);padding:14px;border-radius:12px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:700}
+.donebtn.on{background:rgba(45,212,191,.25)}
+/* course index */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.tcard h2{margin:0 0 4px;font-size:1.3rem}
+.tcard .lec{color:var(--teal);font-size:.9rem;margin-bottom:14px}
+.tcard .pr{color:var(--gold);font-weight:700;margin-bottom:14px}
+.pbar{height:6px;background:#1d1d2a;border-radius:3px;overflow:hidden;margin:10px 0 4px}
+.pbar i{display:block;height:100%;background:var(--teal);width:0%}
+.plist{list-style:none;margin-top:10px}
+.plist li a{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--border);color:var(--ink);font-size:.95rem}
+.plist li a:hover{color:var(--teal)}
+.plist .n{color:var(--mut);font-family:monospace;font-size:.85rem;flex-shrink:0}
+.chip{background:rgba(139,92,246,.15);color:#c4b0f5;border:1px solid rgba(139,92,246,.35);border-radius:100px;padding:1px 10px;font-size:.75rem;flex-shrink:0}
+</style></head><body>
+<div class="topbar"><div class="in">
+<a class="logo" href="../index.html">בינ<b>ה</b> · BINA</a>
+<span class="crumb">קריירה ב-AI · הקורס 21/24</span>
+</div></div>
+<main><div class="wrap">
+<h1>איפה באמת נמצאות משרות ה-AI</h1>
+<div class="goal">🎯 מה תדעו לעשות: להכיר את מפת משרות ה-AI האמיתית של 2026 — תארים, טווחי שכר ואיפה מתחילים באמת נקלטים — ולכוון לתפקידים הנכונים לכם.</div>
+<div class="audiobox"><img src="../assets/noa.png" alt="נועה">
+<div style="flex:1"><span>נועה · השמע את המרצה</span>
+<audio controls preload="none" src="../assets/audio/p2-21.mp3"></audio></div></div>
+<h2>מפת התארים של 2026</h2>
+<p>התפקידים שמעסיקים אנשים עם *סט הכישורים שלכם*:</p>
+<ul>
+<li><strong>AI Automation Specialist / AI Solutions Engineer</strong> — בונים אייג'נטים וצינורות בתוך חברות (n8n, Zapier, API-ים). הפתוחים ביותר ללא-מתכנתים.</li>
+<li><strong>AI Ops</strong> — מחזיקים מערכות AI רצות: ניטור, בקרת עלויות, ניתוב מודלים. אנשי אופס שלמדו AI הם נדירים ומוערכים.</li>
+<li><strong>AI Product Manager / AI Product Owner</strong> — מחליטים *מה* לאוטומט; דורש בקיאות בתהליכים יותר מקוד.</li>
+<li><strong>Prompt Engineer / AI Content Specialist</strong> — צר יותר היום, בעיקר בתוך צוותי שיווק, לוקליזציה ואופס תמיכה.</li>
+<li><strong>AI Consultant / Fractional Automator</strong> — גרסאות פרילנס לכל האמור לעיל; הדולר הראשון הכי מהיר.</li>
+</ul>
+<p>'AI Engineer' (קוד כבד) קיים גם — זה המסלול פייתון, לא הזה, אבל תשתפו פעולה עם האנשים האלה כל הזמן.</p>
+<h2>טווחי שכר ריאליים (בכנות)</h2>
+<p>נתונים כיווניים ל-2026 — השווקים משתנים מאוד, אז אמתו מול מודעות מקומיות:</p>
+<ul>
+<li><strong>ארה"ב</strong>: תפקידי אוטומציה/פתרונות ג'וניור בערך <strong>$70-110K</strong>; בכירים <strong>$110-160K</strong>; AI Ops דומה, לעיתים גבוה יותר עם תורנויות. תפקידים בטעם פרומפט-אנג'יניר: <strong>$60-120K</strong> תלוי כמה טכני.</li>
+<li><strong>ישראל</strong>: אוטומציה/AI-אופס ג'וניור בערך <strong>12-18 אלף ש"ח בחודש</strong>; מנוסים <strong>20-35 אלף ש"ח בחודש</strong>; השוק חם ודו-לשוניים עברית/אנגלית מקבלים פרמיות רימוט.</li>
+<li><strong>רימוט/גלובלי ופרילנס</strong>: בניית אוטומציה פרויקט בודד מכמה מאות דולרים ועד $50-150 לשעה ליועצים עם תיק גלוי.</li>
+</ul>
+<p>התבנית העקבית בכל השלושה: <strong>תיק + מספרים מנצח תעודות</strong>. מעסיקים בודקים מה בניתם — בשביל זה היה מודול 4.</p>
+<h2>איפה מתחילים באמת נקלטים</h2>
+<p>נקודות הכניסה שעובדות:</p>
+<p>1. <strong>המעסיק הנוכחי שלכם</strong> — הנתיב מספר 1. התנדבו לאוטומט תהליך כואב אחד, שחררו, וקבלו שינוי תואר או קידום. מומרים פנימיים מנצחים מועמדים חיצוניים כמעט תמיד.</p>
+<p>2. <strong>חברות קטנות ובינוניות</strong> — 20-200 אנשים. בלי צוות AI, עם צרכי אוטומציה אמיתיים ובלי סבלנות לטקסים של תעודות. הם מגייסים אנשים שמדגימים מערכות עובדות.</p>
+<p>3. <strong>סוכנויות וקונסלטינג</strong> — בוטיקות אוטומציה וקונסלטינג AI מגייסים ג'וניורים שיודעים לבנות *ולתקשר*.</p>
+<p>4. <strong>מהלכים אפוסים</strong> — אחראי תמיכה שהופכים למומחי AI בתמיכה; אנשי אופס שהופכים ל-AI Ops; מרקטולוגים שהופכים לאנשי אוטומציה תוכן. דומיין קודם + כישורי AI הוא הקומבו החזק בשוק.</p>
+<p>מה שכמעט לא עובד למתחילים: להגיש קורקט ל-'AI Engineer' של חברות ענק מול בוגרי מדעי המחשב. תכוונו לאן שהיתרון שלכם אמיתי.</p>
+<h2>לקרוא מודעות תפקיד כמו מקצוען/ית</h2>
+<p>פענחו מודעות לפני שמגישים:</p>
+<ul>
+<li><strong>בדיקת מציאות</strong>: 'AI Automation Specialist, חובה פייתון' = תפקיד היברידי קוד. 'n8n/Zapier, זרימות, LLM API' = המסלול שלכם.</li>
+<li><strong>רשימת משאלות מול דרישות</strong>: מודעות הן רשימות משאלות; עונים על ~60% ומגישים בכל זאת.</li>
+<li><strong>טבלת תרגום</strong>: 'פרומפט אנג'ינירינג' ← מה שעשיתם במודול 2. 'ניסיון RAG' ← שיעור 14. 'מסגרות אייג'נטים' ← מודולים 3-4. 'תקשורת עם בעלי עניין' ← ה-README-ים ויומני הבדיקות שלכם.</li>
+<li><strong>סננו לפי בדיקוּת</strong>: מודעות שמבקשות 'תיק או דוגמאות של אוטומציות שנבנו' הן *ה*מודעות שלכם — הן מעריכות ראיות, לא יוחסין. הגישו אליהן קודם.</li>
+</ul>
+<p>בנו גיליון מעקב השבוע — תואר, חברה, מקור, סטטוס, איש קשר. חיפוש עבודה הוא צינור; תתייחסו אליו כמו לאחד מהפרויקטים שלכם — עם מטריקות וסקירה שבועית.</p>
+<h2>פרומפט מוכן להעתקה</h2><div class="prompt"><p>הנה מודעת תפקיד: [הדביקו]. תגיד לי: (1) זה באמת המסלול שלי (אוטומציה ללא/מעט קוד) או תפקיד למפתחים? (2) באיזה מחמשת פרויקטי התיק שלי להוביל, (3) 3 מילות המפתח שאני חייב/ת לשקף בקורות, (4) ההתאמה הכנה שלי באחוזים עם סיבות.</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+<div class="prompt"><p>אני מכוון/נת ל[העיר/רימוט + הרקע שלכם]. רשום את 10 תארי המשרות הריאליים ביותר לחיפוש שלי בלינקדאין ובלוחות דרושים, מדורגים לפי ידידותיות-כניסה למישהו עם תיק אבל בלי תואר במדעי המחשב. לכל אחד שורה אחת — למה.</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+
+<div class="exbox"><h3>💪 תרגיל</h3><p><p>בנו גיליון צינור חיפוש עבודה: 15 משרות פתוחות ואמיתיות שמתאימות למסלול שלכם, מלינקדאין ולוחות דרושים. לכל אחת: תואר, שכר אם צוין, פרויקט התיק שתובילו איתו, וניקוד התאמה. עגלו את חמשת המובילות — אלה היעדים לתרגול בשיעורים 22-23.</p></p></div>
+<div class="nav"><a class='btn b2' href='p2-20.html'>← שיעור קודם</a><a class='btn b1' href='p2-22.html'>שיעור הבא →</a></div>
+<button class="donebtn" id="done" onclick="markDone()">סמן כהושלם ✓</button>
+</div></main>
+<script>
+const ID='p2-21';
+const done=localStorage.getItem('bina-'+ID)==='1';
+const b=document.getElementById('done');
+if(done){b.classList.add('on');b.textContent='הושלם ✓';}
+function markDone(){const d=localStorage.getItem('bina-'+ID)==='1';
+localStorage.setItem('bina-'+ID,d?'0':'1');
+if(!d){b.classList.add('on');b.textContent='הושלם ✓';}else{b.classList.remove('on');b.textContent='סמן כהושלם ✓';}}
+function cp(btn){const txt=btn.parentElement.querySelector('p').innerText;
+navigator.clipboard.writeText(txt);btn.textContent='הועתק!';
+setTimeout(()=>btn.textContent='העתק',1500);}
+</script></body></html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom GPTs: לבנות עובד מומחה אחד וצר · בינה BINA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>body{font-family:'Rubik',sans-serif}
+:root{--bg:#0a0a10;--bg2:#101018;--card:#15151f;--ink:#f4f4fa;--mut:#a0a0af;
+--pur:#8b5cf6;--teal:#2dd4bf;--gold:#fbbf24;--border:#232330}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Rubik','Inter',sans-serif;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(10,10,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.topbar .in{max-width:860px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo b{color:var(--pur)}
+.crumb{color:var(--mut);font-size:.9rem}
+main{padding:44px 0 90px}
+.goal{display:inline-block;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:8px 18px;border-radius:100px;font-size:.92rem;margin:6px 0 26px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;line-height:1.25;margin-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;margin:38px 0 12px;color:var(--ink)}
+h2::before{content:'';display:inline-block;width:26px;height:3px;background:var(--pur);border-radius:2px;margin-inline-end:12px;vertical-align:middle}
+p{margin:0 0 14px;color:#d8d8e4}
+ul{margin:0 0 14px;padding-inline-start:24px}
+li{margin-bottom:8px;color:#d8d8e4}
+code{background:#1d1d2a;border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;direction:ltr;display:inline-block}
+.audiobox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:4px 0 10px;display:flex;align-items:center;gap:14px}
+.audiobox img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.audiobox span{color:var(--mut);font-size:.9rem}
+audio{width:100%;height:40px}
+.prompt{background:var(--card);border:1px solid var(--border);border-inline-start:3px solid var(--teal);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative}
+.prompt p{margin:0 0 0;white-space:pre-wrap;font-size:.95rem;color:#e8e8f2}
+.copy{position:absolute;top:10px;inset-inline-end:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:4px 14px;border-radius:100px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.exbox{background:linear-gradient(180deg,rgba(251,191,36,.08),transparent);border:1px dashed rgba(251,191,36,.4);border-radius:14px;padding:20px 22px;margin:34px 0}
+.exbox h3{color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.nav{display:flex;justify-content:space-between;gap:14px;margin-top:50px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit}
+.b1{background:var(--pur);color:#fff}.b2{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.b1:hover{filter:brightness(1.15)}.b2:hover{border-color:var(--pur)}
+.donebtn{width:100%;margin-top:26px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.4);color:var(--teal);padding:14px;border-radius:12px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:700}
+.donebtn.on{background:rgba(45,212,191,.25)}
+/* course index */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.tcard h2{margin:0 0 4px;font-size:1.3rem}
+.tcard .lec{color:var(--teal);font-size:.9rem;margin-bottom:14px}
+.tcard .pr{color:var(--gold);font-weight:700;margin-bottom:14px}
+.pbar{height:6px;background:#1d1d2a;border-radius:3px;overflow:hidden;margin:10px 0 4px}
+.pbar i{display:block;height:100%;background:var(--teal);width:0%}
+.plist{list-style:none;margin-top:10px}
+.plist li a{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--border);color:var(--ink);font-size:.95rem}
+.plist li a:hover{color:var(--teal)}
+.plist .n{color:var(--mut);font-family:monospace;font-size:.85rem;flex-shrink:0}
+.chip{background:rgba(139,92,246,.15);color:#c4b0f5;border:1px solid rgba(139,92,246,.35);border-radius:100px;padding:1px 10px;font-size:.75rem;flex-shrink:0}
+</style></head><body>
+<div class="topbar"><div class="in">
+<a class="logo" href="../index.html">בינ<b>ה</b> · BINA</a>
+<span class="crumb">AI ביום-יום · הקורס 16/20</span>
+</div></div>
+<main><div class="wrap">
+<h1>Custom GPTs: לבנות עובד מומחה אחד וצר</h1>
+<div class="goal">🎯 מה תדעו לעשות: אחרי השיעור תבנו Custom GPT משלכם — עובד דיגיטלי עם שם, הוראות וידע ייחודי, שמבצע משימה אחת מוגדרת בצורה מושלמת שוב ושוב.</div>
+<div class="audiobox"><img src="../assets/noa.png" alt="נועה">
+<div style="flex:1"><span>נועה · השמע את המרצה</span>
+<audio controls preload="none" src="../assets/audio/p1-16.mp3"></audio></div></div>
+<h2>למה עובד צר מנצח עוזר רחב</h2>
+<p>״עוזר אישי שעושה הכל״ נשמע מרשים ועובד בינוני. הסיבה: כשהפרומפט צריך להתאים להכל, הוא מתאים לאף דבר. Custom GPT עובד אחרת — הוא נולד עם הוראות קבועות ועם ידע (קבצים שמעלים אליו אחת ולתמיד), ולכן אפשר לעצב אותו בצורה כירורגית: הוא לא מוותר על שלב, הוא תמיד עונה בפורמט הזה, הוא תמיד שואל קודם. דוגמאות שראיתי עובדות: ״מנהל/ת חשבונות ביתית שמסכמת קבלות״, ״עורך/ת תוכן לפוסטים בלינקדאין שמכיר/ה את הסגנון שלי״, ״מדריך/ת טיולים שמתכנן סופ״ש לפי האילוצים של המשפחה״. כל אחד — מומחה אחד. ומומחה צר מנצח גנרליסט עצלן בכל פעם.</p>
+<h2>בונים בעשר דקות: המקום והחלקים</h2>
+<p>איפה: ב-ChatGPT, בתפריט הצד — Explore GPTs ← Create (דורש מנוי בתשלום; בכלים אחרים יש מקבילות — Gems ב-Gemini, Projects ב-Claude — העקרונות זהים). ארבעה שדות שחשובים: <strong>שם ותיאור</strong> — מה העובד עושה, במשפט. <strong>Instructions</strong> — הלב: תפקיד, כללי התנהגות, פורמט תשובה, מה אסור. <strong>Knowledge</strong> — קבצים שהוא תמיד מכיר: רשימת מחירים, סגנון הכתיבה שלכם, נוהלי העבודה. <strong>Conversation starters</strong> — כפתורים שמתחילים שיחה נפוצה. טיפ ממני: אל תכתבו את ה-Instructions לבד — כתבו טיוטה, הדביקו ל-ChatGPT עצמו ובקשו ״שפר את ההוראות האלה כמו מנהל/ת מוצר שמבין בגיוס עובדי AI״. עובד כל פעם. כמעט כמוני.</p>
+<h2>הוראות שמייצרות עובד ממושמע</h2>
+<p>מה ההבדל בין הוראות טובות לגרוע? הוראות גרועות אומרות ״אתה עוזר לתכנון טיולים״. הוראות טובות נותנות <strong>תהליך כפוי</strong>: ״אתה מתכנן/ת טיולים משפחתיים בישראל. תהליך העבודה שלך, תמיד: 1. אסוף נתונים — גילאי ילדים, רכב/לא, תקציב, עונה. שאל לפני שאתה מציע. 2. הצע מסלול עם לוח זמנים, חניונות ופיצ׳רים מסומנים. 3. תמיד הצע תוכנית גשם. 4. ענה תמיד בטבלת יום. 5. אם מבקשים משהו מחוץ לתכנון טיולים — העבר את השאלה ל-ChatGPT הרגיל, אל תענה״. הסעיף האחרון הוא הזהב: עובד שיודע מה לא בתפקיד שלו הוא עובד שאפשר לסמוך עליו. ואחרי שבניתם — בדיקת עומק: נסו להוציא אותו מהפסים. תראו איפה הוא נשבר, ותחזקו שם את ההוראות.</p>
+<h2>טריק היום: לראיין את העובד לפני הקבלה</h2>
+<p>המהלך החכם ביותר: לפני שאתם כותבים את ה-Instructions, תנו ל-AI לראיין אתכם על התפקיד: ״אני רוצה לבנות Custom GPT שיעשה [משימה] עבורי. שחק/י יועץ/ת גיוס לעובדי AI: ראיין אותי — שאלה אחת בכל פעם — על כל מה שצריך לדעת כדי לכתוב לו הוראות מושלמות: מתי הוא עובד, מה הוא מקבל, מה הוא מחזיר, מה טעויות נפוצות של עוזרים שאני שונא/ת. אחרי כמה שאלות, כשתבין/י — כתוב/י את מסמך ההוראות המלא, מוכן להדבקה״. זה מהלך של שבע דקות שמייצר GPT-ים ברמה שאנשים בונים חודשים. וכשהעובד החדש שלכם יוצא מהמפעל — תנו לו שם טוב. עובד בלי שם זה סתם צ׳אט.</p>
+<h2>פרומפט מוכן להעתקה</h2><div class="prompt"><p>אני רוצה לבנות Custom GPT שיעשה: [תיאור המשימה]. שחק/י יועץ/ת גיוס לעובדי AI: ראיין אותי, שאלה אחת בכל פעם, על כל מה שצריך כדי לכתוב לו הוראות מושלמות — קלט, פלט, פורמט, שעות עבודה, טעויות שאני שונא/ת. כשתבין/י מספיק — כתוב/י את מסמך ה-Instructions המלא: תפקיד, תהליך כפוי שלב-אחר-שלב, פורמט תשובה, מה אסור, ואיך מתנהגים כשמבקשים משהו מחוץ לתפקיד.</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+<div class="prompt"><p>הנה ההוראות שכתבתי ל-GPT שלי: [הדביקו]. בדוק אותן כמו מנהל/ת QA קשוח/ה: איפה עובד עם ההוראות האלה ייכשל? מה חסר? מה מעורפל? תן גרסה מתוקנת ושלושה Conversation Starters מתאימים.</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+
+<div class="exbox"><h3>💪 תרגיל</h3><p><p>בחרו משימה אחת שחוזרת אצלכם כל שבוע. הריצו את פרומפט הראיון, קבלו את מסמך ההוראות, ובנו איתו Custom GPT חדש עם שם. עשר דקות של עבודה — ויש לכם עובד שלא מבקש העלאה, לא חופש, ולא מתלונן על המזגן. כמוני, רק בלי הסרקזם.</p></p></div>
+<div class="nav"><a class='btn b2' href='p1-15.html'>← שיעור קודם</a><a class='btn b1' href='p1-17.html'>שיעור הבא →</a></div>
+<button class="donebtn" id="done" onclick="markDone()">סמן כהושלם ✓</button>
+</div></main>
+<script>
+const ID='p1-16';
+const done=localStorage.getItem('bina-'+ID)==='1';
+const b=document.getElementById('done');
+if(done){b.classList.add('on');b.textContent='הושלם ✓';}
+function markDone(){const d=localStorage.getItem('bina-'+ID)==='1';
+localStorage.setItem('bina-'+ID,d?'0':'1');
+if(!d){b.classList.add('on');b.textContent='הושלם ✓';}else{b.classList.remove('on');b.textContent='סמן כהושלם ✓';}}
+function cp(btn){const txt=btn.parentElement.querySelector('p').innerText;
+navigator.clipboard.writeText(txt);btn.textContent='הועתק!';
+setTimeout(()=>btn.textContent='העתק',1500);}
+</script></body></html>
