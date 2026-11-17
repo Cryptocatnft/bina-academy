@@ -1,0 +1,80 @@
+{
+  "langs": {
+    "he": {"voice": "he-IL-HilaNeural", "avatar": "noa.png", "font": "Rubik.ttf", "font_weight": 700, "rtl": true, "name": "נועה", "cta": "קישור בביו 🚀", "steps_word": ["אחד:", "שתיים:", "שלושה:"], "series": "טריק AI שאף אחד לא מכיר"},
+    "en": {"voice": "en-US-ChristopherNeural", "avatar": "alex.png", "font": "SpaceGrotesk.ttf", "font_weight": 700, "rtl": false, "name": "Alex", "cta": "Link in bio 🚀", "steps_word": ["One:", "Two:", "Three:"], "series": "An AI trick nobody knows"},
+    "ar": {"voice": "ar-EG-SalmaNeural", "avatar": "layla.png", "font": "Tajawal-Bold.ttf", "font_weight": null, "rtl": true, "name": "ليلى", "cta": "الرابط في البايو 🚀", "steps_word": ["أولاً:", "ثانياً:", "ثالثاً:"], "series": "حيلة ذكاء اصطناعي لا يعرفها أحد"},
+    "ru": {"voice": "ru-RU-SvetlanaNeural", "avatar": "daria.png", "font": "Rubik.ttf", "font_weight": 700, "rtl": false, "name": "Дарья", "cta": "Ссылка в профиле 🚀", "steps_word": ["Раз:", "Два:", "Три:"], "series": "Приём ИИ, о котором никто не знает"}
+  },
+  "topics": [
+    {
+      "n": 1,
+      "he": {"hook": "המקרר שלך מחליט היום מה לאכול", "steps": ["צלמו את תוכן המקרר", "שלחו ל-ChatGPT עם בקשה לתפריט", "קבלו ארוחה + רשימת קניות"]},
+      "en": {"hook": "Your fridge decides dinner tonight", "steps": ["Photograph your fridge contents", "Send it to ChatGPT asking for a menu", "Get a meal plan + shopping list"]},
+      "ar": {"hook": "ثلاجتك تقرر عشاء اليوم", "steps": ["صوّر محتويات الثلاجة", "أرسلها إلى ChatGPT واطلب قائمة طعام", "احصل على وجبة وقائمة مشتريات"]},
+      "ru": {"hook": "Холодильник сам решает, что на ужин", "steps": ["Сфотографируйте содержимое холодильника", "Отправьте в ChatGPT с просьбой составить меню", "Получите ужин и список покупок"]}
+    },
+    {
+      "n": 2,
+      "he": {"hook": "צילום מסך = תשובה מיידית", "steps": ["צלמו מסך של כל דבר מבלבל", "בקשו: תסביר לי מה רואים פה", "קבלו הסבר צעד אחר צעד"]},
+      "en": {"hook": "A screenshot = an instant answer", "steps": ["Screenshot anything confusing", "Ask: explain what I'm looking at", "Get a step-by-step breakdown"]},
+      "ar": {"hook": "لقطة شاشة = إجابة فورية", "steps": ["صوّر أي شيء مربك على الشاشة", "اطلب: اشرح لي ما أرى هنا", "احصل على شرح خطوة بخطوة"]},
+      "ru": {"hook": "Скриншот = мгновенный ответ", "steps": ["Сфотографируйте любой непонятный экран", "Попросите: объясни, что я вижу", "Получите разбор по шагам"]}
+    },
+    {
+      "n": 3,
+      "he": {"hook": "תנו ל-AI לכתוב את הפרומפט בשבילכם", "steps": ["כתבו מה אתם רוצים להשיג", "בקשו את הפרומפט המושלם לזה", "הפעילו את מה שיצא — וואו"]},
+      "en": {"hook": "Let AI write the prompt for you", "steps": ["Describe what you want to achieve", "Ask for the perfect prompt for it", "Run it — and watch the magic"]},
+      "ar": {"hook": "دع الذكاء الاصطناعي يكتب البرومبت عنك", "steps": ["اكتب ما تريد تحقيقه", "اطلب البرومبت المثالي لذلك", "شغّله وشاهد السحر"]},
+      "ru": {"hook": "Пусть ИИ напишет промпт за вас", "steps": ["Опишите, чего хотите добиться", "Попросите идеальный промпт для этого", "Запустите — и смотрите на магию"]}
+    },
+    {
+      "n": 4,
+      "he": {"hook": "דברו אל הטלפון — קבלו סיכום מסודר", "steps": ["הקליטו מחשבות או פגישה", "בקשו סיכום ומשימות", "העבירו ליומן — זהו"]},
+      "en": {"hook": "Talk to your phone — get clean notes", "steps": ["Record your thoughts or a meeting", "Ask for a summary and action items", "Drop it into your calendar — done"]},
+      "ar": {"hook": "تحدث إلى هاتفك واحصل على ملخص منظم", "steps": ["سجّل أفكارك أو اجتماعك", "اطلب ملخصاً ومهام محددة", "انقله إلى تقويمك — انتهى"]},
+      "ru": {"hook": "Говорите в телефон — получайте конспект", "steps": ["Запишите мысли или встречу", "Попросите конспект и список задач", "Перенесите в календарь — готово"]}
+    },
+    {
+      "n": 5,
+      "he": {"hook": "גרמו ל-AI להכיר אותכם אישית", "steps": ["מלאו Custom Instructions פעם אחת", "תארו אתכם, העבודה והסגנון", "מעכשיו כל תשובה מותאמת אליכם"]},
+      "en": {"hook": "Make AI know you personally", "steps": ["Fill in Custom Instructions once", "Describe yourself, work and style", "Every answer is now tailored to you"]},
+      "ar": {"hook": "اجعل الذكاء الاصطناعي يعرفك شخصياً", "steps": ["املأ التعليمات المخصصة مرة واحدة", "صف نفسك وعملك وأسلوبك", "كل إجابة الآن مفصّلة عليك"]},
+      "ru": {"hook": "Заставьте ИИ узнать вас лично", "steps": ["Заполните Custom Instructions один раз", "Опишите себя, работу и стиль", "Теперь каждый ответ подстроен под вас"]}
+    },
+    {
+      "n": 6,
+      "he": {"hook": "מורה פרטי לילד — בחינם", "steps": ["צלמו את שיעור הבית", "בקשו הסבר כמו לילד בן 10", "בקשו עוד 3 תרגילים דומים"]},
+      "en": {"hook": "A free private tutor for your kid", "steps": ["Photograph the homework", "Ask for an explanation for a 10-year-old", "Request 3 more similar exercises"]},
+      "ar": {"hook": "مدرّس خاص مجاني لطفلك", "steps": ["صوّر واجب المنزل", "اطلب شرحاً لطفل بعمر عشر سنوات", "اطلب ثلاثة تمارين مشابهة إضافية"]},
+      "ru": {"hook": "Бесплатный репетитор для ребёнка", "steps": ["Сфотографируйте домашку", "Попросите объяснение для 10-летнего", "Запросите ещё 3 похожих задания"]}
+    },
+    {
+      "n": 7,
+      "he": {"hook": "דוח ברמת יועצים ב-10 דקות", "steps": ["בחרו Deep Research ב-ChatGPT", "שאלו שאלה אחת ממוקדת", "קבלו דוח עם מקורות והמלצות"]},
+      "en": {"hook": "Consultant-grade reports in 10 minutes", "steps": ["Pick Deep Research in ChatGPT", "Ask one focused question", "Get a report with sources and actions"]},
+      "ar": {"hook": "تقرير بمستوى المستشارين في 10 دقائق", "steps": ["اختر Deep Research في ChatGPT", "اطرح سؤالاً واحداً محدداً", "احصل على تقرير بمصادر وتوصيات"]},
+      "ru": {"hook": "Отчёт уровня консалтинга за 10 минут", "steps": ["Выберите Deep Research в ChatGPT", "Задайте один сфокусированный вопрос", "Получите отчёт с источниками и выводами"]}
+    },
+    {
+      "n": 8,
+      "he": {"hook": "השבוע מתכנן את עצמו", "steps": ["הדביקו משימות, מיילים ופגישות", "בקשו לוח שבוע מסודר לפי עדיפויות", "אשרו פעם אחת — והמשיכו הלאה"]},
+      "en": {"hook": "Your week plans itself", "steps": ["Paste tasks, emails and meetings", "Ask for a prioritized weekly schedule", "Approve once — and move on"]},
+      "ar": {"hook": "أسبوعك يخطط نفسه بنفسه", "steps": ["الصق المهام والرسائل والاجتماعات", "اطلب جدولاً أسبوعياً مرتباً حسب الأولوية", "وافق مرة واحدة وامضِ في طريقك"]},
+      "ru": {"hook": "Ваша неделя планирует себя сама", "steps": ["Вставьте задачи, письма и встречи", "Попросите расписание недели по приоритетам", "Согласуйте раз — и дальше сами"]}
+    },
+    {
+      "n": 9,
+      "he": {"hook": "חוזה של 20 עמודים ב-5 נקודות", "steps": ["צלמו או העלו את המסמך", "בקשו: 5 נקודות חשובות וסיכונים", "בקשו רשימת שאלות לחתימה"]},
+      "en": {"hook": "A 20-page contract in 5 bullet points", "steps": ["Photograph or upload the document", "Ask for: 5 key points and risks", "Request questions to ask before signing"]},
+      "ar": {"hook": "عقد من 20 صفحة في 5 نقاط", "steps": ["صوّر الوثيقة أو ارفعها", "اطلب: خمس نقاط رئيسية والمخاطر", "اطلب أسئلة تطرحها قبل التوقيع"]},
+      "ru": {"hook": "Договор на 20 страниц — в 5 пунктах", "steps": ["Сфотографируйте или загрузите документ", "Попросите: 5 ключевых пунктов и рисков", "Запросите вопросы до подписания"]}
+    },
+    {
+      "n": 10,
+      "he": {"hook": "כל הטריקים האלה — בקורס אחד", "steps": ["20 שיעורים קצרים בעברית", "מרצה AI. כן, באמת", "גישה מיידית מהיום"]},
+      "en": {"hook": "All these tricks — in one course", "steps": ["20 short video lessons", "An AI lecturer. Yes, really", "Instant access, start today"]},
+      "ar": {"hook": "كل هذه الحيل — في دورة واحدة", "steps": ["20 درساً قصيراً بالفيديو", "مدرّسة ذكاء اصطناعي. نعم، حقاً", "وصول فوري، ابدأ اليوم"]},
+      "ru": {"hook": "Все эти приёмы — в одном курсе", "steps": ["20 коротких видеоуроков", "Преподаватель — ИИ. Да, серьёзно", "Мгновенный доступ, старт сегодня"]}
+    }
+  ]
+}

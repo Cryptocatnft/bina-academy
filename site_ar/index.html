@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بينا — دورة الذكاء الاصطناعي التي بناها الذكاء الاصطناعي</title>
+<meta name="description" content="أول أكاديمية ذكاء اصطناعي تُبنى وتُكتب وتُدرَّس بالكامل بالذكاء الاصطناعي. ثلاثة مسارات: مهارات يومية ذكية، مسار مهني مع شهادة موثّقة، ومسار متقدم سيُذيب دماغ المطورين.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a10; --bg2:#101018; --card:#15151f; --ink:#f4f4fa; --mut:#a0a0af;
+  --pur:#8b5cf6; --teal:#2dd4bf; --gold:#fbbf24; --border:#232330;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Tajawal',sans-serif;line-height:1.7;overflow-x:hidden}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+a{color:var(--teal);text-decoration:none}
+h1,h2,h3{font-weight:800}
+header{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('assets/hero.png') center/cover no-repeat;opacity:.45}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 5%,rgba(10,10,16,.55) 60%,rgba(10,10,16,.35))}
+.hero-inner{position:relative;z-index:1;padding:80px 0}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.4);color:#d6c6ff;padding:8px 18px;border-radius:100px;font-size:.95rem;font-weight:500}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.3}}
+h1{font-size:clamp(2.6rem,6.5vw,4.8rem);line-height:1.15;margin:26px 0 10px}
+h1 .hl{color:var(--pur)}
+.sub{font-size:clamp(1.1rem,2.3vw,1.45rem);color:var(--mut);max-width:640px;margin-bottom:8px}
+.sub b{color:var(--ink)}
+.sub2{font-size:clamp(1rem,2vw,1.2rem);color:var(--gold);font-weight:500;margin-bottom:38px}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 34px;border-radius:14px;font-family:'Tajawal';font-size:1.1rem;font-weight:700;cursor:pointer;border:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-pur{background:var(--pur);color:#fff;box-shadow:0 8px 30px rgba(139,92,246,.35)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--pur)}
+.hero-stats{display:flex;gap:40px;margin-top:56px;flex-wrap:wrap}
+.stat b{font-size:1.7rem;color:var(--teal);display:block}
+.stat span{color:var(--mut);font-size:.9rem}
+section{padding:90px 0}
+.kicker{color:var(--pur);font-weight:700;font-size:.95rem;margin-bottom:14px}
+h2{font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.3;margin-bottom:18px}
+.lead{color:var(--mut);font-size:1.13rem;max-width:680px}
+.manifesto{background:var(--bg2)}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:48px}
+.mcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px}
+.mcard h3{font-size:1.15rem;margin-bottom:8px}
+.mcard p{color:var(--mut);font-size:.98rem}
+.mcard .em{font-size:1.6rem;display:block;margin-bottom:12px}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:48px}
+.lcard{background:var(--card);border:1px solid var(--border);border-radius:22px;overflow:hidden;transition:transform .2s,border-color .2s}
+.lcard:hover{transform:translateY(-4px);border-color:var(--pur)}
+.lcard img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.lbody{padding:22px 24px 26px}
+.lbody h3{font-size:1.3rem}
+.lbody .role{color:var(--teal);font-size:.95rem;margin:2px 0 10px;font-weight:500}
+.lbody p{color:var(--mut);font-size:.95rem;margin-bottom:16px}
+.play{display:inline-flex;align-items:center;gap:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:10px 20px;border-radius:100px;font-family:'Tajawal';font-size:.95rem;font-weight:500;cursor:pointer}
+.play:hover{background:rgba(45,212,191,.22)}
+.play svg{width:14px;height:14px;fill:currentColor}
+.vwrap{margin-top:44px;border-radius:22px;overflow:hidden;border:1px solid var(--border);box-shadow:0 20px 80px rgba(139,92,246,.18)}
+.vwrap video{width:100%;display:block;background:#000}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:52px;align-items:stretch}
+.plan{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:34px 30px;display:flex;flex-direction:column;position:relative}
+.plan.hot{border-color:var(--pur);background:linear-gradient(180deg,rgba(139,92,246,.12),var(--card) 40%);transform:scale(1.03)}
+.hot-tag{position:absolute;top:-14px;right:50%;transform:translateX(50%);background:var(--pur);color:#fff;padding:5px 18px;border-radius:100px;font-size:.85rem;font-weight:700;white-space:nowrap}
+.plan h3{font-size:1.35rem}
+.plan .for{color:var(--mut);font-size:.92rem;margin:4px 0 18px;min-height:44px}
+.price{font-size:2.7rem;line-height:1}
+.price small{font-size:1rem;color:var(--mut);font-weight:400}
+.strike{color:var(--mut);text-decoration:line-through;font-size:1rem;margin-left:10px;font-weight:400}
+.plan ul{list-style:none;margin:22px 0 28px;flex:1}
+.plan li{padding:9px 0;border-bottom:1px dashed var(--border);font-size:.97rem;color:#d8d8e4;display:flex;gap:10px;align-items:flex-start}
+.plan li::before{content:'✓';color:var(--teal);font-weight:800;flex-shrink:0}
+.plan .btn{width:100%;text-align:center}
+.cert{background:var(--bg2)}
+.cert-demo{max-width:760px;margin:48px auto 0;background:linear-gradient(160deg,#15151f,#0d0d15);border:1px solid var(--border);border-radius:6px;padding:56px 48px;text-align:center;position:relative}
+.cert-demo::before{content:'';position:absolute;inset:10px;border:2px solid rgba(139,92,246,.45);border-radius:4px}
+.cert-demo .clogo{font-size:2rem;color:var(--pur);font-weight:800}
+.cert-demo .ct{font-size:1.05rem;color:var(--mut);margin:18px 0 6px}
+.cert-demo .cname{font-size:2.2rem;margin:6px 0 2px}
+.cert-demo .csub{color:var(--mut);font-size:.95rem;margin-bottom:26px}
+.cert-demo .cfoot{display:flex;justify-content:space-between;margin-top:34px;font-size:.85rem;color:var(--mut)}
+.cert-demo .cid{font-family:monospace;color:var(--teal);direction:ltr}
+.legal-note{max-width:760px;margin:26px auto 0;color:var(--mut);font-size:.88rem;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 22px}
+details{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:12px;overflow:hidden}
+summary{padding:20px 24px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::after{content:'+';font-size:1.4rem;color:var(--pur);font-weight:400}
+details[open] summary::after{content:'–'}
+details p{padding:0 24px 20px;color:var(--mut);font-size:.97rem}
+.final{background:linear-gradient(180deg,var(--bg),#140f24);text-align:center}
+.final h2{font-size:clamp(2rem,4.6vw,3.2rem)}
+footer{border-top:1px solid var(--border);padding:36px 0;color:var(--mut);font-size:.9rem;text-align:center}
+footer .ai{color:var(--teal)}
+@media(max-width:760px){.plan.hot{transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hero-bg"></div>
+  <div class="wrap hero-inner">
+    <img src="assets/logo_mark_180.png" alt="BINA logo" style="height:60px;width:60px;display:block;margin-bottom:20px">
+    <span class="badge"><span class="dot"></span> تُبنى وتُكتب وتُنتَج بالذكاء الاصطناعي — ونحن فخورون بذلك</span>
+    <h1>بينا.<br>الدورة التي بناها <span class="hl">الذكاء الاصطناعي</span>،<br>يُدرِّسها الذكاء الاصطناعي.</h1>
+    <p class="sub">بعد أن كتب لك الذكاء الاصطناعي الأكواد، وأصلح سيرتك الذاتية، وأنقذ يومك — يستطيع أيضاً <b>أن يعلّمك كيف تستخدمه فعلاً</b>.</p>
+    <p class="sub2">بلا أساتذة منفصلين عن الواقع، بلا حشو، وباللغة التي يفهمها البشر.</p>
+    <div class="cta-row">
+      <button class="btn btn-pur" onclick="document.getElementById('plans').scrollIntoView()">المسارات والأسعار ↓</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('video').scrollIntoView()">شاهد الفيلم (٣٠ ثانية)</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>3</b><span>مسارات: من المهارات اليومية إلى مستوى المطورين</span></div>
+      <div class="stat"><b>0%</b><span>غرور بشري. 100% ذكاء اصطناعي، بما فيهم المحاضرون</span></div>
+      <div class="stat"><b>∞</b><span>المحتوى يتحدّث كلما تقدّم الذكاء الاصطناعي</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="manifesto">
+  <div class="wrap">
+    <p class="kicker">لماذا أكاديمية بذكاء اصطناعي أصيل؟</p>
+    <h2>الآخرون يعتذرون عن استخدام الذكاء الاصطناعي.<br>نحن ببساطة ذكاء اصطناعي.</h2>
+    <p class="lead">كل دورة "خبير ذكاء اصطناعي" ستقابلها كتبها إنسان تعلّمها من يوتيوب الشهر الماضي. دورتنا كتبها وكلاء ذكاء اصطناعي يعملون على مدار الساعة، والمحاضرون ذكاء اصطناعي، والفيديوهات أنتجتها خطوط إنتاج ذكية — والدعم الفني؟ ذكاء اصطناعي أيضاً. هذه ليست حيلة تسويقية، بل الدليل على أن المنهج يعمل.</p>
+    <div class="mgrid">
+      <div class="mcard"><span class="em">🧠</span><h3>المنهج الدراسي</h3><p>كتبه واختبره وكلاء ذكاء اصطناعي يعملون على مدار الساعة. كل حيلة نُدرِّسها جُرِّبت في الواقع أولاً.</p></div>
+      <div class="mcard"><span class="em">🗣️</span><h3>المحاضرون</h3><p>ليلى وروني لا تذهبان إلى استوديو ولا تتعبان. كل درس يبدو جديداً، وبالوتيرة التي تناسبك.</p></div>
+      <div class="mcard"><span class="em">🎬</span><h3>الفيديوهات</h3><p>أُنتجت من البداية للنهاية بالذكاء الاصطناعي — الشخصيات والنص والصوت والمونتاج، بما في ذلك الفيلم الذي ستشاهده.</p></div>
+      <div class="mcard"><span class="em">🔄</span><h3>محدَّث دائماً</h3><p>أدوات الذكاء الاصطناعي تتغير شهرياً. الدورة البشرية تشيخ خلال نصف عام؛ أما دورتنا فتتحدّث كلما تطوّرت النماذج.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="lecturers">
+  <div class="wrap">
+    <p class="kicker">تعرّف على الهيئة التدريسية</p>
+    <h2>المحاضرون. نعم، هم أيضاً ذكاء اصطناعي.</h2>
+    <p class="lead">بلا خجل: شخصيتان وُلدتا من الذكاء الاصطناعي ترافقانك طوال الأكاديمية. اضغط لسماعهما.</p>
+    <div class="lgrid">
+      <div class="lcard">
+        <img src="assets/layla.png" alt="ليلى — محاضرة ذكاء اصطناعي">
+        <div class="lbody">
+          <h3>ليلى</h3>
+          <p class="role">المحاضرة الرئيسية · المسارَين 1 و2</p>
+          <p>ترافقك من أول "برومبت" تكتبه إلى أتمتة نصف يوم عملك، وتشرح الأفكار المعقدة بكلمات بسيطة.</p>
+          <button class="play" onclick="toggleAudio('layla-audio')"><svg viewBox="0 0 16 16"><path d="M3 1.5v13l11-6.5z"/></svg> اسمع ليلى</button>
+        </div>
+      </div>
+      <div class="lcard">
+        <img src="assets/roni.png" alt="روني — محاضرة الذكاء الاصطناعي المتقدم">
+        <div class="lbody">
+          <h3>روني</h3>
+          <p class="role">متخصصة المستوى المتقدم · المسار 3</p>
+          <p>RAG والوكلاء وضبط النماذج والتقييم — لمن يريد أن يبني المستقبل لا أن يستخدمه فقط.</p>
+          <button class="play" onclick="toggleAudio('roni-audio')"><svg viewBox="0 0 16 16"><path d="M3 1.5v13l11-6.5z"/></svg> اسمع روني</button>
+        </div>
+      </div>
+    </div>
+    <audio id="layla-audio" src="assets/layla_ar.mp3" preload="none"></audio>
+    <audio id="roni-audio" src="assets/roni_teaser_en.mp3" preload="none"></audio>
+  </div>
+</section>
+
+<section id="video" class="manifesto">
+  <div class="wrap">
+    <p class="kicker">الفيلم الذي بنى نفسه</p>
+    <h2>30 ثانية، 100% بالذكاء الاصطناعي</h2>
+    <p class="lead">الصور من نموذج صور، والصوت من نموذج كلام، والمونتاج عبر خط إنتاج آلي. إذا نجح هذا — تخيّل ما في الداخل.</p>
+    <div class="vwrap">
+      <video controls playsinline preload="metadata" poster="assets/ar_s1.png">
+        <source src="assets/promo_ar.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<section id="plans">
+  <div class="wrap">
+    <p class="kicker">ثلاثة مسارات</p>
+    <h2>اختر عمق الغوص</h2>
+    <p class="lead">من "أريد فقط حياة أسهل" إلى "أريد أن أكون في الجهة التي تبني هذا الشيء".</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>الذكاء الاصطناعي اليومي</h3>
+        <p class="for">لكل من يريد أن يعيش بذكاء — موظفون، أصحاب أعمال، آباء، طلاب</p>
+        <div class="price"><span class="strike">$99</span>$49</div>
+        <ul>
+          <li>حوّل ChatGPT إلى مساعد شخصي يعرفك (التعليمات المخصصة والمشاريع والذاكرة)</li>
+          <li>Deep Research: تقارير بمستوى مستشار خلال 10 دقائق</li>
+          <li>أتمتة البريد والرسائل والتخطيط الأسبوعي وميزانية العائلة</li>
+          <li>حيل لا يعرفها أحد: الميتا-برومبت، التسجيل ثم التلخيص، صورة الثلاجة تصبح قائمة طعام</li>
+          <li>20 درساً قصيراً مع ليلى + مكتبة برومبتات جاهزة</li>
+        </ul>
+        <button class="btn btn-ghost" onclick="enroll('الذكاء الاصطناعي اليومي')">ابدأ الآن</button>
+      </div>
+      <div class="plan hot">
+        <span class="hot-tag">🔥 الأكثر طلباً</span>
+        <h3>مسار مهني في الذكاء الاصطناعي</h3>
+        <p class="for">لكل من يريد أن يكسب رزقه من المجال — الطريق الكامل حتى التوظيف</p>
+        <div class="price"><span class="strike">$399</span>$249</div>
+        <ul>
+          <li>كل ما في المسار الأول كأساس لك</li>
+          <li>مسار كامل: الأساسيات ← هندسة البرومبت ← الوكلاء ← الأدوات</li>
+          <li>5 مشاريع حقيقية لملف الأعمال (بينها وكيل يعمل فعلاً)</li>
+          <li>سيرة ذاتية ولينكد إن ورسائل توظيف — نبنيها معك بالذكاء الاصطناعي</li>
+          <li>محاكاة مقابلات عمل أمام محاور ذكي مع تغذية راجعة مخصصة</li>
+          <li>شهادة إتمام برقم تحقق فريد</li>
+        </ul>
+        <button class="btn btn-pur" onclick="enroll('مسار مهني في الذكاء الاصطناعي')">خذني إلى المسيرة المهنية</button>
+      </div>
+      <div class="plan">
+        <h3>الذكاء الاصطناعي المتقدم</h3>
+        <p class="for">للمطورين والتقنيين — سيُذيب دماغ مطور الذكاء الاصطناعي نفسه</p>
+        <div class="price"><span class="strike">$599</span>$499</div>
+        <ul>
+          <li>RAG جاهز للإنتاج: التقسيم والتمثيلات وتقييم الجودة</li>
+          <li>وكلاء متعددو الخطوات، استدعاء الدوال، MCP والتنسيق</li>
+          <li>الضبط الدقيق مقابل هندسة البرومبت — متى تحتاج كل واحدة فعلاً</li>
+          <li>التقييم والموثوقية: كيف لا تطلق وكيلاً يهلوس</li>
+          <li>مشروع تخرج: وكيل حقيقي تملكه، جاهز للإنتاج</li>
+          <li>عضوية مجتمع مطوري بينا</li>
+        </ul>
+        <button class="btn btn-ghost" onclick="enroll('الذكاء الاصطناعي المتقدم')">أعطني المستوى التالي</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cert">
+  <div class="wrap">
+    <p class="kicker">المسار 2 · شهادة الإتمام</p>
+    <h2>شهادة تُثبتها، لا شهادة تعلّقها على الجدار فقط</h2>
+    <p class="lead">يتلقى خريجو المسار المهني شهادة إتمام برقم تحقق فريد: يستطيع أي جهة توظيف إدخال الرقم والاطلاع على نطاق التدريب والمشاريع المنجزة.</p>
+    <div class="cert-demo">
+      <div class="clogo">بينا</div>
+      <div class="ct">شهادة إتمام دورة</div>
+      <div class="cname">أحمد محمد</div>
+      <div class="csub">أتمّ بنجاح مسار "مهنة الذكاء الاصطناعي" — 90 ساعة تدريب · 5 مشاريع · امتحان نهائي</div>
+      <div class="cfoot">
+        <span>من بينا — أكاديمية الذكاء الاصطناعي</span>
+        <span>رقم التحقق: <span class="cid">BINA-2026-000001</span></span>
+      </div>
+    </div>
+    <p class="legal-note">⚖️ بكل صراحة: هذه شهادة إتمام من شركة خاصة — ليست شهادة جامعية أو ترخيصاً حكومياً. المسار مبني ليجعلك قابلاً للتوظيف فعلياً، والدليل هو مشاريع ملف الأعمال التي تفتح لك أبواب المقابلات.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="kicker">أسئلة تطرحها بالتأكيد</p>
+    <h2>الأسئلة الشائعة</h2>
+    <div style="margin-top:40px">
+      <details><summary>لحظة — المدرّسون ليسوا بشراً؟</summary><p>صحيح. الدورة بأكملها — المنهج والشروحات والتعليق الصوتي والفيديوهات والدعم — من إنتاج الذكاء الاصطناعي وإدارته. هذه هي الفكرة: تتعلم الذكاء الاصطناعي من الذكاء الاصطناعي، بوتيرتك، وبمحتوى يبقى محدَّثاً. وإن أردت البشر — هناك مجتمع متعلمين.</p></details>
+      <details><summary>لا أفهم شيئاً في التقنية. هل هذه الدورة لي؟</summary><p>المسار الأول صُمم لك تماماً: صفر معرفة مسبقة، كل شيء من النقرة الأولى، وبأبسط لغة. إذا كنت تعرف إرسال رسالة واتساب، فأنت مؤهل.</p></details>
+      <details><summary>هل الشهادة معترف بها؟</summary><p>هي شهادة إتمام من بينا (شركة خاصة) برقم تحقق يستطيع أي جهة توظيف التحقق منه. في سوق الذكاء الاصطناعي يبحث أصحاب العمل عن مشاريع حقيقية وقدرة مثبتة — وهذا بالضبط تركيز المسار المهني. لا نجمّلها كشهادة جامعية ولن نفعل.</p></details>
+      <details><summary>كم من الوقت تستغرق؟</summary><p>على وتيرتك. المسار الأول: نحو 6 ساعات فيديو يمكن إنهاؤها في أسبوعين. المسار المهني: 6-10 أسابيع بمعدل ساعة يومياً. الوصول للمواد مدى الحياة، شاملاً كل التحديثات.</p></details>
+      <details><summary>وماذا لو لم تناسبني؟</summary><p>ضمان استرداد كامل خلال 14 يوماً، بلا أسئلة. نحن لا نبيعك سيارة بلا ضمان، ولا وكيل ذكاء اصطناعي بلا اتفاقية مستوى خدمة.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>بعد سنة ستكون شخصاً يفهم الذكاء الاصطناعي.<br>أو شخصاً يتفرج من الجهة الأخرى.</h2>
+    <p class="lead" style="margin:18px auto 36px">ابدأ اليوم. وصول فوري. ضمان 14 يوماً.</p>
+    <button class="btn btn-pur" style="font-size:1.2rem;padding:20px 48px" onclick="document.getElementById('plans').scrollIntoView()">اختر مسارك ↓</button>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 بينا — أكاديمية الذكاء الاصطناعي · <a href="mailto:hello@bina.academy" style="direction:ltr">hello@bina.academy</a></p>
+    <p style="margin-top:6px">صُمم هذا الموقع وكُتب وبُني بواسطة <span class="ai">وكيل ذكاء اصطناعي</span>. وهذا أيضاً عرض توضيحي لما ستتعلمه.</p>
+  </div>
+</footer>
+
+<script>
+function toggleAudio(id){
+  const a = document.getElementById(id);
+  document.querySelectorAll('audio').forEach(x=>{ if(x!==a) x.pause(); });
+  if(a.paused){ a.play(); } else { a.pause(); }
+}
+function enroll(plan){ alert('التسجيل: ' + plan + '\n\nسيتم ربط صفحة الدفع هنا (Stripe/PayPal) عند إطلاق الموقع.\nحتى ذلك الحين — hello@bina.academy'); }
+</script>
+</body>
+</html>

@@ -114,6 +114,7 @@ def page_head(lang, title, rel_root=".."):
 <html lang="{lang}" dir="{'rtl' if lang=='he' else 'ltr'}">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} · בינה BINA</title>
+<link rel="icon" type="image/png" href="{rel_root}/assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family={fonts}&display=swap" rel="stylesheet">
 <style>body{{font-family:{fam}}}{CSS}</style></head><body>"""
@@ -133,7 +134,7 @@ def lesson_page(lang, track, lesson, idx, total, rel_root=".."):
     next_lnk = f"<a class='btn b1' href='{next_id}.html'>{t['next']} →</a>" if next_id else f"<a class='btn b1' href='index.html'>{t['all']} →</a>"
     return f"""{page_head(lang, lesson['title'])}
 <div class="topbar"><div class="in">
-<a class="logo" href="{rel_root}/index.html">בינ<b>ה</b> · BINA</a>
+<a class="logo" href="{rel_root}/index.html"><img src="{rel_root}/assets/logo_mark_180.png" alt="BINA" style="height:30px;width:30px;vertical-align:-7px;margin-inline-end:8px">בינה · BINA</a>
 <span class="crumb">{meta['name']} · {t['course']} {idx}/{total}</span>
 </div></div>
 <main><div class="wrap">

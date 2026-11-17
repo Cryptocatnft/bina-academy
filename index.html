@@ -4,12 +4,17 @@
 <meta charset="UTF-8">
 <meta http-equiv="refresh" content="0;url=site_he/index.html">
 <title>בינה · BINA — The AI Academy</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <script>
 (function(){
-  var lang = (navigator.language || navigator.userLanguage || "he").toLowerCase();
-  location.replace(lang.indexOf("he") === 0 ? "site_he/index.html" : "site_en/index.html");
+  var langs = ((navigator.languages && navigator.languages.join(",")) || navigator.language || "he").toLowerCase();
+  var target = "site_en/index.html";
+  if (langs.indexOf("he") >= 0) target = "site_he/index.html";
+  else if (langs.indexOf("ar") >= 0) target = "site_ar/index.html";
+  else if (langs.indexOf("ru") >= 0) target = "site_ru/index.html";
+  location.replace(target);
 })();
 </script>
 </head>
-<body><a href="site_he/index.html">עברית</a> · <a href="site_en/index.html">English</a></body>
+<body><a href="site_he/index.html">עברית</a> · <a href="site_en/index.html">English</a> · <a href="site_ar/index.html">العربية</a> · <a href="site_ru/index.html">Русский</a></body>
 </html>
