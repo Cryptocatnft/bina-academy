@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What an Agent Actually Is · בינה BINA</title>
+<title>RAG from Scratch: Chunking, Embeddings, Vector DB · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,43 +60,50 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 9/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>What an Agent Actually Is</h1>
-<div class="goal">🎯 What you'll be able to do: Understand the agent loop — model, tools, memory, decisions — and see how it differs from a chatbot and why it's the center of AI work in 2026.</div>
+<h1>RAG from Scratch: Chunking, Embeddings, Vector DB</h1>
+<div class="goal">🎯 What you'll be able to do: Build retrieval-augmented generation from first principles — chunking, embeddings, vector search, and grounded answering — the skill behind 26% of agentic job postings.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-09.mp3"></audio></div></div>
-<h2>The agent loop</h2>
-<p>A chatbot answers, then waits. An <strong>agent</strong> runs a loop:</p>
-<p>1. <strong>Perceive</strong> — read the task and current state.</p>
-<p>2. <strong>Decide</strong> — the model chooses the next action: call a tool, ask the user, or finish.</p>
-<p>3. <strong>Act</strong> — execute: search the web, read email, run code, update a spreadsheet.</p>
-<p>4. <strong>Observe</strong> — feed the result back in.</p>
-<p>5. <strong>Repeat</strong> until done.</p>
-<p>That loop — decide, act, observe — is the entire secret. Everything called 'agentic AI' in 2026, from coding agents to support automation, is this loop with different tools plugged in. Master the loop and you can build any of them.</p>
-<h2>Brain, hands, and notebook</h2>
-<p>Three components make the loop work:</p>
-<ul>
-<li><strong>The model (brain)</strong>: chooses actions and interprets results. Reasoning models make better decision-makers; fast models are fine for simple flows.</li>
-<li><strong>Tools (hands)</strong>: functions the agent can call — search, email, calendar, database, file operations, even other agents. Lesson 11 covers how tools are defined.</li>
-<li><strong>Memory (notebook)</strong>: anything that survives between steps — a summary of what's been done, a checklist of goals, or long-term storage like a vector database. Without memory, agents repeat themselves; without tools, they just talk.</li>
-</ul>
-<p><strong>Autonomy level</strong> is the fourth dial: from 'suggest every action, human approves' to 'full auto within guardrails.' Start low; earn trust; raise gradually.</p>
-<h2>Agents vs. chatbots vs. automations</h2>
-<p>Three cousins worth separating:</p>
-<ul>
-<li><strong>Chatbot</strong>: text in, text out, human drives every step.</li>
-<li><strong>Classic automation</strong> (a Zapier flow): fixed path — when email arrives, forward to Slack. Reliable, dumb, can't handle surprises.</li>
-<li><strong>Agent</strong>: the model *decides the path*, handling cases you didn't script.</li>
-</ul>
-<p>The tradeoff is flexibility versus predictability. That's why the winning 2026 pattern is the <strong>hybrid</strong>: deterministic automation for the routine 90%, an agent for the weird 10%, humans for the exceptions. Knowing when *not* to use an agent is a more valuable skill than building one — it's the difference between a demo and a system that runs for a year.</p>
-<h2>Why this is the job market</h2>
-<p>Titles like AI Automation Specialist, AI Ops, and AI Solutions Engineer are, underneath the branding, *agent work*: understand a business process, decide which parts to automate deterministically, where the agent goes, and what guardrails it needs. The skills stack directly from this course — prompt engineering (Module 2), tool connections (Lesson 12), and the four portfolio projects (Module 4) are all agent builds. An agent you can demo in an interview, with a README explaining your autonomy and guardrail choices, is worth more than any certificate alone. You'll have five.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Here is a business process: [DESCRIBE A PROCESS — e.g. 'handling new customer emails at a small company']. Break it into steps and mark each one: (a) fixed rule/automation, (b) needs judgment → agent step, (c) human only. Explain each choice in one line.</p>
+<h2>Why RAG exists</h2>
+<p>Two problems, one solution. Models don't know your private data, and context windows choke on whole archives. RAG fixes both: at <strong>index time</strong>, split documents into chunks, convert each to an <strong>embedding</strong> (a vector of numbers where similar meanings sit close together), and store them in a <strong>vector database</strong>. At <strong>query time</strong>, embed the user's question, find the nearest chunks, and paste only those into the prompt as context. The model now answers from fresh, specific, *citable* sources — hallucinations drop, and you can show exactly which paragraph produced the answer. That's the whole idea; everything else is engineering.</p>
+<h2>Chunking: the underrated skill</h2>
+<p>Chunk size decides RAG quality. Too small: you retrieve fragments without context. Too big: noise dilutes the signal and costs tokens. Start around 300–500 tokens with 10–15% overlap, and — the pro move — chunk on structure: headers, paragraphs, or sections, not arbitrary character counts. A basic splitter:</p>
+<p><code>`</code>python</p>
+<p>def chunk(text: str, size: int = 400, overlap: int = 50) -> list[str]:</p>
+<p>words = text.split()</p>
+<p>return [" ".join(words[i:i+size])</p>
+<p>for i in range(0, len(words), size - overlap)]</p>
+<p><code>`</code></p>
+<p>Always attach metadata — source file, heading, page — or your answers can't cite. Interview classic: 'how would you chunk a 200-page PDF with tables?' Have an opinion.</p>
+<h2>Embeddings and the vector DB</h2>
+<p>An embedding model maps text to a point in space where meaning = distance: 'refund policy' lands near 'money-back guarantee', far from 'kubernetes'. OpenAI's <code>text-embedding-3-small</code> or open alternatives both work fine. Store vectors in a vector DB — Chroma for local dev, pgvector for Postgres shops, Pinecone for managed scale:</p>
+<p><code>`</code>python</p>
+<p>import chromadb</p>
+<p>db = chromadb.PersistentClient(path="./rag_data")</p>
+<p>col = db.get_or_create_collection("docs")</p>
+<p>col.add(documents=chunks, ids=[str(i) for i in range(len(chunks))])</p>
+<p>hits = col.query(query_texts=[question], n_results=4)</p>
+<p><code>`</code></p>
+<p>Top-k similarity search (k=3–5) returns the chunks you paste into the prompt. Vector DBs are in 13% of agentic postings — this is that skill.</p>
+<h2>The grounded answer loop</h2>
+<p>The final pattern, combining everything from Modules 2 and 3:</p>
+<p><code>`</code>python</p>
+<p>context = "\n\n".join(</p>
+<p>f"[S{i+1}] {c}" for i, c in enumerate(hits["documents"][0])</p>
+<p>)</p>
+<p>prompt = (f"Answer ONLY from the sources. Cite [S#] after each claim. "</p>
+<p>f"Say 'not in sources' if absent.\n\n{context}\n\nQ: {question}")</p>
+<p><code>`</code></p>
+<p>Then the discipline that separates pros from demo-builders: test it. Keep 20 golden questions with known answers; when you change chunk size, model, or top-k, re-run and compare (Lesson 12 makes this automated). Bad retrieval is silent — only evals catch it. Next lesson we wrap this engine in an API and ship it to the internet.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>I'm building RAG over [DESCRIBE YOUR DOCUMENTS: contracts / docs / wiki]. Recommend a chunking strategy: size, overlap, what structure to split on, and what metadata to store. Explain trade-offs in a table.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>I want to build an agent that [GOAL]. List: the 3-5 tools it would need, what it should never be allowed to do, and where a human checkpoint should be. Format as three short lists.</p>
+<div class="prompt"><p>Explain embeddings to a non-technical product manager in 120 words, using a real-world analogy. Then list 3 cases where keyword search beats embeddings and how hybrid search combines both.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>My RAG returns irrelevant chunks for [EXAMPLE QUESTION]. Give me a debugging checklist in priority order: chunking, embedding choice, top-k, query rewriting, metadata filters. For each, one quick experiment to isolate the problem.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Pick one recurring task in your week (personal or work). Write its agent loop on paper: the goal, the tools it needs, what it must remember between steps, and the guardrails. Then mark the two riskiest decisions it would make — those are your human checkpoints.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Build <code>mini_rag.py</code> from scratch — no LangChain: chunk 10 real documents (your company wiki, or public docs) with your own splitter, embed them, store in Chroma, and answer 5 test questions with [S#] citations. Save the retrieval hits for one good and one bad answer, and write 3 sentences diagnosing the bad one. Push to GitHub: 'RAG from scratch' is a resume line the moment it's public.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-08.html'>← Previous</a><a class='btn b1' href='p2-10.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

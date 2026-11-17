@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>תבניות Few-Shot: ללמד באמצעות דוגמאות · בינה BINA</title>
+<title>קריאה ל-API של LLM מקוד: מפתחות, עלויות וניסיונות חוזרים · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -60,40 +60,51 @@ audio{width:100%;height:40px}
 <span class="crumb">קריירה ב-AI · הקורס 6/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>תבניות Few-Shot: ללמד באמצעות דוגמאות</h1>
-<div class="goal">🎯 מה תדעו לעשות: להשתמש בפרומפטינג מונע-דוגמאות כדי לנעול פורמט, טון ושיקול דעת — ולדעת בדיוק כמה דוגמאות כל משימה צריכה.</div>
+<h1>קריאה ל-API של LLM מקוד: מפתחות, עלויות וניסיונות חוזרים</h1>
+<div class="goal">🎯 מה תדעו לעשות: לכתוב קוד Python שקורא ל-OpenAI ו-Anthropic SDK, לנהל מפתחות API בבטחה, לשלוט בעלויות ולממש retries.</div>
 <div class="audiobox"><img src="../assets/noa.png" alt="נועה">
 <div style="flex:1"><span>נועה · השמע את המרצה</span>
 <audio controls preload="none" src="../assets/audio/p2-06.mp3"></audio></div></div>
-<h2>להראות, לא לספר</h2>
-<p><strong>Zero-shot</strong> זה הוראות בלבד: 'סווג את הסנטימנט של הביקורת הזאת.' עובד למשימות קלות. <strong>Few-shot</strong> מוסיף דוגמאות עבודה: הנה ביקורת, הנה בדיוק איך אני רוצה שהיא תסווג. מודלים הם מכונות חיקוי — דוגמה קונקרטית מקודדת יותר מידע פר טוקן מכל כלל. 'תהיה קצר וידידותי' זה מעורפל. שתי דוגמאות של תשובה קצרה וידידותית — זו ספסיפיקציה. כלל אצבע: ככל שהמשימה כרוכה יותר ב*סטייל, פורמט או שיקול דעת*, הדוגמאות מנצחות הוראות.</p>
-<h2>לעצב סט דוגמאות טוב</h2>
-<p>סט few-shot חזק הוא קטן — <strong>2 עד 5 דוגמאות</strong> בדרך כלל. מעבר לזה שורפים קונטקסט והתשואה מתמתנת. בחרו כמו בקסות בדיקה:</p>
-<ul>
-<li><strong>מקרה טיפוסי אחד</strong> — הנתיב השמח.</li>
-<li><strong>מקרה קצה או שניים</strong> — המקרים הדו-משמעיים שבהם אתם מראים את שיקול הדעת הרצוי.</li>
-<li>אופציונלי <strong>מקרה חריג</strong> — מה מחזירים כשהמשימה לא רלוונטית.</li>
-</ul>
-<p>שמרו על פורמט זהה בדיוק בכל דוגמה — המודל מעתיק את אי-העקביות שלכם באותה נאמנות כמו את הכללים. גיוון חשוב: חמש דוגמאות דומות מלמדות כמעט כלום.</p>
-<h2>תבניות שוות גניבה</h2>
-<ul>
-<li><strong>נעילת פורמט</strong>: 2 דוגמאות של צורת הפלט המדויקת שלכם לפני הבקשה האמיתית.</li>
-<li><strong>זוגות ניגוד</strong>: פלט רע ופלט טוב לאותו קלט — 'ככה, לא ככה.'</li>
-<li><strong>דוגמאות הסלמה</strong>: באייג'נט תמיכה, דוגמה אחת של *סירוב מנומס* ואחת של *העברה לבן אדם* — המודל לומד את הגבולות, לא רק את הנתיב השמח.</li>
-<li><strong>Few-shot סינתטי</strong>: בקשו מה-AI לייצר דוגמאות מועמדות למשימה שלכם, בידקו את הטובות, והשתמשו בהן. AI שבונה פרומפטים ל-AI — מאוד on-brand לקורס הזה.</li>
-</ul>
-<p>כל תבנית עוברת ישירות לאייג'נטים שתבנו במודול 3.</p>
-<h2>מתי few-shot לא שווה</h2>
-<p>Few-shot עולה בטוקנים, כסף ובהירות. למשימות טריוויאליות — 'תרגם לאנגלית', 'תקן שגיאת כתיב' — zero-shot בסדר וזול יותר. למשימות עתירות עובדות, דוגמאות עוזרות פחות מ*עיגון* (מתן טקסט מקור). והמלכודת הקלאסית: <strong>דוגמה פגומה מרעילה הכול</strong> — המודל ישחזר את השגיאה או ההטיה שלכם בקנה מידה, בצייתנות. אבדקו דוגמאות כמו קוד. המבחן הסופי: הריצו את הפרומפט על 5-10 קלטים חדשים ובדקו אם הפלט תואם לדוגמאות. כן — שיגרו. לא — הוסיפו דוגמת קצה ונסו שוב.</p>
-<h2>פרומפט מוכן להעתקה</h2><div class="prompt"><p>סווג כל פניית תמיכה לפי התבנית של הדוגמאות:
-קלט: "איפה ההזמנה #1234 שלי?" → {"category": "order_status", "sentiment": "neutral", "escalate": false}
-קלט: "זו הפעם השלישית שזה נשבר, אני זועם!" → {"category": "complaint", "sentiment": "negative", "escalate": true}
-עכשיו סווג: [הדביקו הודעות, אחת בשורה]. החזר שורות JSON בלבד.</p>
+<h2>הקריאה הראשונה</h2>
+<p>שתי ה-SDK-ים הנפוצות: OpenAI ו-Anthropic. התקנה: <code>pip install openai anthropic</code>. הקריאה:</p>
+<p><code>`</code>python</p>
+<p>from openai import OpenAI</p>
+<p>client = OpenAI()  # קורא מפתח ממשתנה הסביבה OPENAI_API_KEY</p>
+<p>resp = client.chat.completions.create(</p>
+<p>model="gpt-4o-mini",</p>
+<p>messages=[{"role": "user", "content": "תסכם במשפט: מה זה API"}],</p>
+<p>)</p>
+<p>print(resp.choices[0].message.content)</p>
+<p><code>`</code></p>
+<p>ב-Anthropic זה כמעט זהה: <code>client.messages.create(model=..., max_tokens=..., messages=[...])</code>. פרמטר <code>temperature</code> שולט ביצירתיות — 0 לעקביות, 0.7 לגיוון. זכרו: כל מודל יש לו שם ומחיר אחר — תמיד תדעו לאיזה מודל אתם קוראים.</p>
+<h2>מפתחות: אף פעם לא בקוד</h2>
+<p>מפתח API זה כמו כרטיס אשראי שמאפשר לכל אחד לחייב אתכם. הכלל הראשון: <strong>מפתח אף פעם לא נכנס לקוד או ל-Git</strong>. שומרים במשתנה סביבה:</p>
+<p><code>`</code>bash</p>
+<p>export OPENAI_API_KEY="sk-..."   # או בקובץ .env עם הספרייה python-dotenv</p>
+<p><code>`</code></p>
+<p>ומוסיפים את <code>.env</code> ל-<code>.gitignore</code> (ילמד בשיעור 8). אם מפתח דלף ל-GitHub ציבורי — בוטים ימצאו אותו תוך דקות וירוקנו לכם את החשבון. שנה את זה: גם אם עוד לא קרה לכם, זה קרה למישהו שראיינתם איתו.</p>
+<h2>שליטה בעלויות</h2>
+<p>מודלים נמדדים ב-$ למיליון טוקנים — קלט ופלט במחירים שונים. מודל מיני זול פי עשרות ממודל דגל. שלושה כללים של מהנדסים: (1) <strong>פיתוח על מודל זול, פריסה על חכם</strong> — בודקים לוגיקה במיני ומריצים בפרודקשן את המודל שנותן את האיכות. (2) <strong>הגבלת פלט</strong> — <code>max_tokens</code> חוסך כסף ומונע שיגעונות. (3) <strong>מדידה</strong> — מודלים כמה טוקנים עברו ביום וכפלו במחיר. קריאה טיפוסית של צ'אט קצר על מודל מיני עולה פחות מאגורלית בודדת — אבל מערכת עם אלף משתמשים זה כבר תקציב.</p>
+<h2>retries: ה-API תמיד נופל בסוף</h2>
+<p>רשת נופלת, rate limits נגמרים, שרתים משתעלים — קוד פרודקשן חייב להתמודד:</p>
+<p><code>`</code>python</p>
+<p>import time</p>
+<p>def call_llm(client, **kw):</p>
+<p>for attempt in range(3):</p>
+<p>try:</p>
+<p>return client.chat.completions.create(**kw)</p>
+<p>except Exception as e:</p>
+<p>if attempt == 2:</p>
+<p>raise</p>
+<p>time.sleep(2 ** attempt)  # 1s, 2s — backoff אקספוננציאלי</p>
+<p><code>`</code></p>
+<p>backoff אקספוננציאלי — המתנה שמכפילה את עצמה — הוא הסטנדרט. שאלת ראיון קלאסית: "מה קורה כשה-API נופל באמצע batch?" — עכשיו יש לכם תשובה עם קוד.</p>
+<h2>פרומפט מוכן להעתקה</h2><div class="prompt"><p>כתוב לי פונקציית Python `ask(prompt)` שקוראת ל-OpenAI עם: קריאת מפתח ממשתנה סביבה, retry עם backoff ל-3 ניסיונות, וטיפול בשגיאה עם הודעה ברורה. הוסף הערות בעברית לכל בלוק.</p>
 <button class="copy" onclick="cp(this)">העתק</button></div>
-<div class="prompt"><p>אני רוצה שת[המשימה שלכם, למשל 'תכתוב תיאורי מוצר בסטייל שלי']. צור 5 דוגמאות מגוונות של זוגות קלט-פלט למשימה. אבחר את הטובות ביותר כדוגמאות few-shot. הצג כרשימה ממוספרת: קלט ← פלט.</p>
+<div class="prompt"><p>אני משלם יותר מדי על קריאות API: [תאר כמות שיחות ומודל]. תחשב לי עלות חודשית משוערת ותציע 3 דרכים קונקרטיות להוריד אותה בלי לפגוע באיכות התוצאות.</p>
 <button class="copy" onclick="cp(this)">העתק</button></div>
 
-<div class="exbox"><h3>💪 תרגיל</h3><p><p>בחרו משימת כתיבה או סיווג חוזרת שלכם. בנו פרומפט few-shot עם 3 דוגמאות — טיפוסית, מקרה קצה, וחריג. בדקו על 5 קלטים חדשים. אחר כך הריצו את אותה משימה zero-shot והשוו. כתבו מה הדוגמאות תיקנו.</p></p></div>
+<div class="exbox"><h3>💪 תרגיל</h3><p><p>כתבו סקריפט <code>first_call.py</code>: קורא ל-LLM עם שאלה בעברית על בחירת מודל, עם retry ו-backoff, ומדפיס את התשובה וגם כמה טוקנים נצרכו (<code>resp.usage</code>). הריצו פעמיים: פעם רגיל, ופעם עם מפתח שגוי בכוונה כדי לראות שה-retry עובד. שמרו את שני הפלטים.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-05.html'>← שיעור קודם</a><a class='btn b1' href='p2-07.html'>שיעור הבא →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">סמן כהושלם ✓</button>
 </div></main>

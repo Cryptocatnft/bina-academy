@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio Project 3: Content Pipeline · בינה BINA</title>
+<title>Project 3: Multi-Agent Content Pipeline · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,30 +60,49 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 15/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>Portfolio Project 3: Content Pipeline</h1>
-<div class="goal">🎯 What you'll be able to do: Build an end-to-end automated content pipeline — from idea to researched draft to published post — the project that markets you while you sleep.</div>
+<h1>Project 3: Multi-Agent Content Pipeline</h1>
+<div class="goal">🎯 What you'll be able to do: Build a multi-agent content pipeline — researcher, writer, and editor agents coordinating through a LangGraph graph — and deploy it as a working product with evals.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-15.mp3"></audio></div></div>
-<h2>Step 1: The content engine (45 min)</h2>
-<p>Define the pipeline's contract: <strong>input</strong> — a topic row in a spreadsheet (topic, audience, angle, keywords); <strong>output</strong> — a publish-ready draft. Build the stages:</p>
-<p>1. <strong>Research</strong>: agent searches the web for 3-5 recent, real sources on the topic (hallucination rules apply — sources must be verifiable).</p>
-<p>2. <strong>Draft</strong>: system message with a <strong>voice file</strong> — 2-3 of your best writing samples as few-shot examples, so every piece sounds like you, not like AI.</p>
-<p>3. <strong>Structure</strong>: a fixed output format per channel — a LinkedIn post under 200 words with a hook line, or a blog outline with H2s.</p>
-<p>4. <strong>Review</strong>: a separate AI pass that checks voice match, factual claims, and banned-words list ("delve," "tapestry," and friends).</p>
-<p>Each stage = one node in n8n/Make, or one section in a Custom GPT's instructions.</p>
-<h2>Step 2: The human approval gate (30 min)</h2>
-<p>Rule of professional content pipelines: <strong>AI drafts, human approves, automation publishes.</strong> The middle step exists because publishing is a reputational, irreversible action — the exact category Lesson 12 fenced off. Implement it simply: drafts land in a spreadsheet, Notion board, or email with an approve/reject column or buttons. Approved items flow to scheduling (Buffer, native LinkedIn scheduling, or your platform's scheduler); rejected ones return with a one-line reason that feeds back into the voice file. Track the loop's stats — drafts per week, approval rate, edits needed per draft. An improving approval rate is a number that impresses employers and clients more than any adjective.</p>
-<h2>Step 3: Run it for a week (30 min + waiting)</h2>
-<p>Load 10 topic rows and let the machine run end-to-end. Your job now is <strong>editor</strong>, not writer: review each draft, approve or reject with reasons, and watch the quality of the batch. Expect to reject your first two or three — that's data, not failure. Patch the voice file with one contrasting example (bad vs. good), tighten the banned-words list, re-run. By batch two, approval rates typically climb sharply. Then publish 2-3 of the best pieces on your own LinkedIn or blog — you now have a working pipeline *and* its output as evidence. This is the most self-marketing artifact a job seeker can own.</p>
-<h2>Step 4: Document and demo (30 min)</h2>
-<p>The README writes the story employers want to hear: <strong>problem</strong> ('consistent content takes hours'), <strong>solution</strong> (an automated pipeline with a human approval gate), <strong>architecture</strong> (a simple diagram: sheet → research agent → drafter → reviewer → approval → scheduler), <strong>results</strong> (drafts per week, your approval rate, hours saved — even from one week of data), <strong>decisions</strong> (where the human gate is and why), <strong>limits and next steps</strong>. Record a 60-second demo video of one topic flowing through. That's portfolio artifact #3 — and unlike most portfolio pieces, it produces *ongoing* evidence: your feed fills up while you interview. Machine marketing.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Draft a [CHANNEL: LinkedIn post / blog section] about [TOPIC] for [AUDIENCE]. Voice rules: match the tone of these two samples: [PASTE 2 SAMPLES]. Include one concrete example and one number from research. Banned words: delve, tapestry, unlock, game-changer. End with a question. Under 200 words.</p>
+<h2>Why multiple agents</h2>
+<p>One agent with 20 tools and one giant prompt confuses itself — the failure you met in Lesson 11. The multi-agent answer: <strong>decompose</strong>. Each agent gets a small toolset, a focused prompt, and one job:</p>
+<ul>
+<li><strong>Researcher</strong>: search + retrieve, output = a sourced brief (claims with links).</li>
+<li><strong>Writer</strong>: draft from the brief ONLY — no new facts allowed, by prompt contract.</li>
+<li><strong>Editor</strong>: LLM-as-judge rubric (accuracy-to-brief, tone, structure, length) with a 1–5 score per criterion; below threshold, send back with the critique attached.</li>
+</ul>
+<p>In LangGraph: three node-pairs (model + tools each), a shared <code>PipelineState</code> carrying the brief, draft, scores, and revision count, and a conditional loop editor → writer capped at 2 revisions. The cap is not optional — it's what makes the graph terminate.</p>
+<h2>The contracts between agents</h2>
+<p>Multi-agent systems live and die on their <strong>interfaces</strong>. Define them as Pydantic models before writing any prompts:</p>
+<p><code>`</code>python</p>
+<p>class Source(BaseModel):</p>
+<p>claim: str</p>
+<p>url: str</p>
+<p>class Brief(BaseModel):</p>
+<p>topic: str</p>
+<p>sources: list[Source]</p>
+<p>class Draft(BaseModel):</p>
+<p>content_markdown: str</p>
+<p>citations: list[str]</p>
+<p>class Critique(BaseModel):</p>
+<p>scores: dict[str, int]   # accuracy, tone, structure</p>
+<p>verdict: Literal["approve", "revise"]</p>
+<p>notes: str</p>
+<p><code>`</code></p>
+<p>Because agents pass validated objects — not free text — a bad writer output fails at the schema, not in the reader's hands. This is Lesson 7 scaled up to system design, and it's the single best answer to the interview question 'what's hard about multi-agent systems?' Contracts.</p>
+<h2>Observability is the feature</h2>
+<p>When a three-agent pipeline produces a mediocre result, 'which agent failed?' must be answerable in one minute. Log every hop: the brief (with sources), each draft, each critique with scores, token counts per agent, and total wall time. Surface it in the UI — a collapsible 'pipeline trace' panel. This transforms the product from a magic box into an inspectable system, and it's precisely how real agent platforms (LangGraph-based ones included) sell themselves. Your eval suite: end-to-end — run 5 topics, editor-score the outputs, assert revision counts stay under the cap, and track total cost per run. Cost per run in the README is a beautiful, senior-sounding number.</p>
+<h2>Ship and position it</h2>
+<p>Deploy like the others (FastAPI + Docker + free tier, public URL), with a queue — pipeline runs take a minute, so submit a topic, get a job ID, poll for the result. Demo mode: two pre-run example topics so the link never shows an empty screen. Position it in the README as what it is: 'a LangGraph multi-agent pipeline with typed agent contracts, an evaluator loop, and full traces.' That sentence hits multi-agent (16%), LangGraph (13%), evals (9%), and observability in one line. Then write the blog-post version — a short 'how I built it' (Lesson 20 turns it into LinkedIn gold). Next lesson: your capstone — a personal-assistant agent that ties the whole course together.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Design a 3-agent LangGraph content pipeline for [CONTENT TYPE: LinkedIn posts / technical blogs / release notes]. Give me: per-agent responsibilities, tool sets, Pydantic interfaces between them, the revision loop with cap, and failure modes with guards.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>Act as a strict content reviewer. Check this draft against my voice samples: [PASTE SAMPLES + DRAFT]. Score voice match, originality, and factual risk 1-10 each, list the 3 weakest lines, and mark any claim needing a source. Do not rewrite — I'll do that.</p>
+<div class="prompt"><p>My multi-agent pipeline outputs drafts with facts not in the research brief. Give me 5 root-cause hypotheses ranked by likelihood, and a concrete test for each (prompt contract, schema enforcement, trace inspection).</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Write a 400-word 'how I built a multi-agent content pipeline' blog post from these notes: [PASTE YOUR PROJECT NOTES]. Engineer voice, specific numbers, one lesson learned.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Ship the full pipeline: spreadsheet of 10 topics, all four stages wired, approval gate enforced, one week of runs logged with stats. Publish at least 2 approved pieces under your own name. Add README + 60-second demo video to your portfolio folder.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Ship the multi-agent content pipeline: researcher + writer + editor with typed contracts, revision cap, full traces, end-to-end evals, cost-per-run metric, deployed with a public URL and two pre-run demos. Write the 'how I built it' post and save it. Portfolio artifact three complete — one project from your capstone.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-14.html'>← Previous</a><a class='btn b1' href='p2-16.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

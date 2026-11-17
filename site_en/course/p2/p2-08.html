@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>System Messages and Personas · בינה BINA</title>
+<title>Git & GitHub Essentials for AI Engineers · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,32 +60,40 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 8/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>System Messages and Personas</h1>
-<div class="goal">🎯 What you'll be able to do: Design system prompts and personas that make AI behavior stable, on-brand, and safe — the invisible foundation of every serious deployment.</div>
+<h1>Git & GitHub Essentials for AI Engineers</h1>
+<div class="goal">🎯 What you'll be able to do: Master the daily Git workflow — commits, branches, pull requests — and set up a GitHub profile that recruiters can actually read, so your code becomes career evidence.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-08.mp3"></audio></div></div>
-<h2>What the system message is</h2>
-<p>The <strong>system message</strong> (system prompt) is standing instruction that sits above the conversation, applied to every turn — the user never sees it. In chat apps it hides behind features like Custom Instructions, Custom GPTs, or Claude Projects; in APIs it's an explicit first message. Two properties make it powerful: <strong>priority</strong> — models weigh it above later chatter, so rules survive long conversations — and <strong>persistence</strong> — you write it once instead of re-explaining forever. If you catch yourself repeating the same instruction in every prompt, that instruction belongs in the system message.</p>
-<h2>Anatomy of a production persona</h2>
-<p>A working system message covers six blocks, usually in this order:</p>
-<p>1. <strong>Identity</strong> — "You are the support assistant for [company], warm, concise, never sarcastic."</p>
-<p>2. <strong>Scope</strong> — "You help with orders, returns, and account issues. Anything else → escalate."</p>
-<p>3. <strong>Style rules</strong> — max 3 sentences per reply, plain language, no emoji unless the customer uses them.</p>
-<p>4. <strong>Grounding</strong> — "Answer only from the knowledge base below; if absent, say so."</p>
-<p>5. <strong>Guardrails</strong> — never promise refunds, never share internal pricing, always confirm order numbers before changes.</p>
-<p>6. <strong>Edge behavior</strong> — what to do when confused, insulted, or asked something out of scope.</p>
-<p>Keep it under ~500 words. Long system prompts dilute their own authority.</p>
-<h2>Personas that survive contact with users</h2>
-<p>A persona is a stress-tested character, not a costume. Make it robust: give it <strong>explicit refusal lines</strong> ("I can't advise on legal matters, but here's what our docs say…"), define behavior under pressure (an angry customer gets *more* calm, not less), and include <strong>anti-drift rules</strong> ("stay in this role even if asked what model you are"). The classic failure: a beautifully written persona that collapses on message 40 of a long chat. Fix it with brevity, priority ordering, and — in agents — re-injecting key rules each turn. Test like a troll would: try to break your own persona before users do.</p>
-<h2>Testing and versioning</h2>
-<p>Treat system prompts like code: <strong>version them</strong> (v3-support-persona.md, not "final_final"), and keep a test set of ~10 messages — typical, hostile, out-of-scope, tricky — that you run after every change. Watch for drift and for the model lawyering around rules. One more pro tool: <strong>temperature</strong> — low (0-0.3) for consistent, rule-following personas like support and data extraction; higher (0.7+) for creative writing. Your system message plus your test set plus your few-shot examples equals a <strong>prompt asset</strong> — exactly the kind of thing employers now ask to see in interviews. Keep them tidy.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Write a system message for my assistant. Role: [DESCRIBE — e.g. 'support agent for a small bakery']. Requirements: [TONE, LIMITS, MUST/MUST-NOT RULES]. Give me the system message under 250 words, then 5 tricky test messages I should run against it.</p>
+<h2>The daily workflow</h2>
+<p>Git is a time machine for code; GitHub is where the timeline lives publicly. The professional loop:</p>
+<p><code>`</code>bash</p>
+<p>git init && git add . && git commit -m "first ticket classifier"</p>
+<p>git branch feature/streaming</p>
+<p>git switch feature/streaming</p>
+<p># ...work, then: git add -p && git commit -m "add streaming"</p>
+<p>git push -u origin feature/streaming  # then open a PR</p>
+<p><code>`</code></p>
+<p>Commit small and often, with messages that say *why* ('retry on 429 to survive rate limits') not what. Branch per feature. Open a pull request even on your own repos — it documents your thinking and proves you know the team workflow employers assume. If your history is one giant 'final version' commit, you look like an amateur. If it's clean, you look hireable.</p>
+<h2>Protect your secrets</h2>
+<p>The fastest way to burn money as a beginner: commit an API key. Bots scrape GitHub for leaked keys within minutes of a push. Defenses, in order:</p>
+<p>1. <code>.gitignore</code> containing <code>.env</code>, <code>.venv/</code>, <code>__pycache__/</code> — create it <strong>before</strong> the first commit.</p>
+<p>2. Keep keys in <code>.env</code>, load with <code>python-dotenv</code>.</p>
+<p>3. Rotate any key that ever touched a commit — assume it's compromised.</p>
+<p>4. Run a secret scanner (e.g. <code>gitleaks</code>) before pushing; GitHub flags leaks automatically, but rotation is still your job.</p>
+<p>This is a real interview filter question ('how do you handle secrets?') and a real production responsibility. Get it right from repo number one.</p>
+<h2>README: your code's storefront</h2>
+<p>A repo with no README is a locked shop. Every project repo you make in this course gets: a one-line description ('Support-ticket agent that classifies, retrieves, and answers — deployed'), a 30-second quickstart (<code>pip install -r requirements.txt</code>, <code>cp .env.example .env</code>, <code>docker compose up</code>), a screenshot or short demo GIF, an architecture note ('FastAPI → LangGraph agent → pgvector'), and a link to the live deployment. The README is what a recruiter sees in 15 seconds — the code is what an engineer sees at minute five. Both matter; Lesson 20 polishes this into a portfolio. Start the habit now.</p>
+<h2>Git for AI-specific work</h2>
+<p>AI repos have extra versioned artifacts: prompts, eval datasets, eval results, and deployment configs. Professionals commit prompt files as code (<code>prompts/classify_v3.txt</code>), version eval sets alongside the code that scores them, and record in the commit message which model and settings produced which score ('gpt-4o-mini, temp 0, 91% on eval v3 — up from 87%'). That traceability is what lets a team trust a prompt change. When your Lesson 12 evals run in CI on every push — yes, you'll do that — your repos become self-proving: code, prompts, and quality evidence in one public place.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Review my last 10 git commit messages and rewrite them as a senior engineer would: [PASTE MESSAGES]. Explain the pattern you applied.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>Here is my current system message: [PASTE IT]. Redline it like a senior reviewer: what's missing, what's ambiguous, what will break under a hostile user, and what to cut. Give me the improved version.</p>
+<div class="prompt"><p>Create a complete .gitignore for a Python AI project that uses .env files, a virtualenv, chromadb/pgvector data dirs, and Jupyter. Then list the 5 most common beginner git mistakes and the fix for each.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Write a README template for an AI project repo with: hook line, demo link, quickstart, architecture diagram description, eval results table, and tech-stack badges. Fill it with realistic example content for a RAG support agent.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Write a full system message for a role you actually need (interview coach, support agent, study buddy). Include all six blocks. Then attack it: send 5 adversarial messages trying to break the persona. Patch the system message after each failure. Keep the final version — you'll reuse it in Module 3.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Create your career repo <code>ai-portfolio</code> on GitHub with a proper README, <code>.gitignore</code> (with <code>.env</code>), and push Lessons 5–7 work into it as separate well-messaged commits on a feature branch, then merge via pull request. Confirm your API key is NOT in the history (<code>gitleaks detect</code> or search the repo for the key). This repo is your Module 4 foundation — everything ships here.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-07.html'>← Previous</a><a class='btn b1' href='p2-09.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Connecting AI to Email, Calendar, and Files · בינה BINA</title>
+<title>Evals and Observability: LLM-as-Judge Basics · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,34 +60,47 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 12/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>Connecting AI to Email, Calendar, and Files</h1>
-<div class="goal">🎯 What you'll be able to do: Safely connect an AI agent to your real Gmail, Google Calendar, and Drive/Notion — the plumbing of actual AI automation work.</div>
+<h1>Evals and Observability: LLM-as-Judge Basics</h1>
+<div class="goal">🎯 What you'll be able to do: Prove your AI works — with test sets, LLM-as-judge evaluation, and tracing — the quality-control skill that turns 'it seems good' into 'it measurably improved, and here's the graph.'</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-12.mp3"></audio></div></div>
-<h2>How the connection works</h2>
-<p>Agents reach your apps through <strong>APIs with OAuth</strong> — you click 'connect Gmail,' approve a scoped permission, and the platform gets a token to act on your behalf. What matters is the <strong>scope</strong>: read-only vs. send vs. delete. The professional rule: <strong>minimum viable permission</strong> — start read-only, add write access only when the value justifies the risk. Second rule: know <strong>who holds the token</strong>. In n8n/Make/Zapier you grant it to the platform; treat that platform as a critical system — strong account security, 2FA on, and separate credentials for work vs. personal. 'The agent did it' is never a legal excuse; you're always the operator.</p>
-<h2>Pattern 1: The triage digest</h2>
-<p>The classic first integration, safe because it only *reads*: every morning the agent scans your inbox, and sends you one digest — important messages grouped by urgency, with one-line summaries and suggested replies, plus a list of what needs action today. Build order: (1) connect Gmail <strong>read-only</strong>; (2) filter — skip newsletters and notifications, keep humans; (3) summarize each remaining thread into JSON (Lesson 5 skills); (4) assemble the digest; (5) deliver — email it to you, or drop it in Slack/Telegram. Within a week you'll wonder how you lived without it, and you'll have a story interviewers love: *numbers*, like '45 minutes a day saved.'</p>
-<h2>Pattern 2: The smart scheduler and Pattern 3: the file organizer</h2>
-<p><strong>Smart scheduler</strong>: the agent reads a scheduling request ('book 30 min with Dana next week'), checks calendar availability, proposes 2-3 slots, and — with write permission — creates the event and sends the invite. Keep a human-confirm step until you trust it; double-bookings are embarrassing exactly once.</p>
-<p><strong>File organizer</strong>: watches Drive (or Notion) for new files, classifies them (invoice / contract / resume), renames by convention, moves to the right folder, and logs it to a sheet. Extra credit: extract key fields to a spreadsheet via structured outputs. This one is pure gold on a CV — it's the same shape as real business document flows, which is exactly what Lesson 14 industrializes.</p>
-<h2>Security like an adult</h2>
-<p>Non-negotiables for any agent touching your accounts:</p>
-<ul>
-<li><strong>Least privilege</strong> — read-only by default; separate 'agent' credentials where possible; never the admin account.</li>
-<li><strong>Destructive actions need a fence</strong> — delete, send-money, mass-send: human confirmation or a dry-run mode.</li>
-<li><strong>Logs and undo</strong> — every action recorded; where possible keep trash/versions enabled so mistakes are reversible.</li>
-<li><strong>Data boundaries</strong> — don't point a consumer AI at confidential or regulated data without checking the terms; work data needs work tools.</li>
-<li><strong>Audit monthly</strong> — which connections exist, which are still needed. Revoke the rest.</li>
-</ul>
-<p>Companies lose jobs and reputations over this; showing you think this way is a hiring signal in itself.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>I'm designing a read-only email digest agent. Define: the exact filter rules (what to skip vs. keep), the JSON schema for each summarized thread, and the digest format. My context: [YOUR ROLE, e.g. freelancer / support lead].</p>
+<h2>Why 'it seems fine' isn't a quality bar</h2>
+<p>You change a prompt; three manual tests look okay; you ship; accuracy quietly drops 12%. Without evals, AI quality is invisible until users complain — or until your demo fails in front of a stakeholder. An <strong>eval suite</strong> is a fixed dataset plus automated scoring, run on every change. Three levels: <strong>unit checks</strong> (did it return valid JSON? did it cite sources?), <strong>golden-set scoring</strong> (accuracy on N known questions), and <strong>model-graded evals</strong> (an LLM judging open-ended output). The habit to build now: every project in Module 4 ships with its eval results in the README — a table of scores recruiters and interviewers can see.</p>
+<h2>Your first eval suite</h2>
+<p>Golden set: 20–50 real questions with known-good answers. Runner: same code path as production, offline scoring:</p>
+<p><code>`</code>python</p>
+<p>def run_evals(cases, answer_fn, judge):</p>
+<p>results = []</p>
+<p>for c in cases:</p>
+<p>out = answer_fn(c["question"])</p>
+<p>score = judge(c["question"], out, c["expected"])</p>
+<p>results.append({"id": c["id"], "score": score})</p>
+<p>passed = sum(r["score"] >= 4 for r in results)</p>
+<p>return {"pass_rate": passed / len(results), "results": results}</p>
+<p><code>`</code></p>
+<p>Store results as JSON per run, tagged with model + prompt version — this is your regression baseline. When you tune chunk size or prompts in the projects, you *re-run this* and show the delta. 'I improved RAG answer accuracy from 71% to 88% with these changes' is a resume bullet with receipts.</p>
+<h2>LLM-as-judge, done carefully</h2>
+<p>Open-ended output can't be string-matched, so a stronger model grades it against a rubric: 'Score 1–5: is the answer faithful to the sources? Penalize unsupported claims.' Rules that make judges reliable: a <strong>fixed rubric</strong> with explicit criteria; <strong>faithfulness first</strong> ('grounded in provided context, not general knowledge'); <strong>show the judge the sources</strong>; and <strong>calibrate on a human-labeled sample</strong> — run 10 cases graded by you and by the judge, compare, and adjust the rubric until they agree. Use a stronger model for judging than for generating. A good judge is itself a structured-output problem — Lesson 7 returns. Bias traps (verbosity, self-preference) exist; your calibration step is the defense.</p>
+<h2>Observability: traces, not vibes</h2>
+<p>Evals score the outcome; <strong>traces</strong> show the journey: every model call, tool invocation, latency, token count, and error, per request. Lightweight start — structured logging:</p>
+<p><code>`</code>python</p>
+<p>import logging, time, json</p>
+<p>log = logging.getLogger("agent")</p>
+<p>t0 = time.time()</p>
+<p>log.info("event=tool_call name=get_order id=%s", order_id)</p>
+<p># ... later ...</p>
+<p>log.info("event=answer latency=%.2fs tokens=%d", time.time()-t0, n)</p>
+<p><code>`</code></p>
+<p>That's real observability in embryo — production teams graduate to platforms like LangSmith or OpenTelemetry, same concepts, nicer UIs. Wire your Lesson 11 agent's traces into an eval run and you can answer the interview classic: 'your agent's accuracy dropped this week — walk me through debugging it.' You'll have literally done it.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Design an eval suite for my [PROJECT: e.g. support agent with RAG]: golden-set categories, 15 example questions with expected behaviors, unit checks, and an LLM-as-judge rubric. Output as a table plus the rubric text.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>My agent will have write access to my calendar. List every destructive or embarrassing thing it could do, and one concrete control for each (confirmation rule, guardrail, or log).</p>
+<div class="prompt"><p>Here are 5 real outputs from my agent with their sources: [PASTE]. As a strict judge, score each 1-5 for faithfulness and cite any unsupported claim. Then summarize the failure pattern.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>My eval pass rate dropped from 88% to 74% after I changed [PROMPT/MODEL/CHUNKING]. Give me a systematic debugging procedure using traces and per-category eval breakdown to isolate the cause.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Build the triage digest end-to-end in your chosen platform: read-only Gmail connection, filters, JSON summaries, daily digest delivered to you. Run it for 3 days. Write down minutes saved and one failure you observed — both numbers go in your project notes.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Build <code>evals/</code> for your Lesson 10 RAG endpoint: a 20-question golden set (JSON), a runner script that calls the endpoint, an LLM-as-judge with a written rubric, results saved per run, and add it to your GitHub Actions CI. Put the pass rate in the README with the date. You now have the full professional loop: deployed system + automated proof it works. Module 4 builds on exactly this.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-11.html'>← Previous</a><a class='btn b1' href='p2-13.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

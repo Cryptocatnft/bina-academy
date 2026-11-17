@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Building Your First Agent (No-Code) · בינה BINA</title>
+<title>Shipping a RAG Endpoint (FastAPI + Docker Intro) · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,31 +60,71 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 10/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>Building Your First Agent (No-Code)</h1>
-<div class="goal">🎯 What you'll be able to do: Build and test a working agent in a no-code platform — your first real artifact, live and demoable, by the end of this lesson.</div>
+<h1>Shipping a RAG Endpoint (FastAPI + Docker Intro)</h1>
+<div class="goal">🎯 What you'll be able to do: Wrap your RAG engine in a FastAPI endpoint, containerize it with Docker, and deploy it to a public URL — the moment your portfolio becomes a link anyone can click.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-10.mp3"></audio></div></div>
-<h2>Pick your platform</h2>
-<p>For a first agent in 2026, choose one of these:</p>
+<h2>FastAPI in fifteen minutes</h2>
+<p>FastAPI turns a function into a URL:</p>
+<p><code>`</code>python</p>
+<p>from fastapi import FastAPI</p>
+<p>from pydantic import BaseModel</p>
+<p>app = FastAPI()</p>
+<p>class Ask(BaseModel):</p>
+<p>question: str</p>
+<p>class Answer(BaseModel):</p>
+<p>answer: str</p>
+<p>sources: list[str]</p>
+<p>@app.post("/ask", response_model=Answer)</p>
+<p>def ask(body: Ask) -> Answer:</p>
+<p>hits = retrieve(body.question)</p>
+<p>return Answer(answer=generate(body.question, hits),</p>
+<p>sources=[h["id"] for h in hits])</p>
+<p><code>`</code></p>
+<p>Pydantic (Lesson 7) validates both directions automatically, and <code>/docs</code> gives you a live test page for free. Load the index at startup, not per request, and add a <code>/health</code> endpoint — deploy platforms ping it. This is the exact shape of every AI microservice you'll build in Module 4.</p>
+<h2>Docker: the shipping container</h2>
+<p>'Works on my machine' is not a deployment. Docker packs your app + Python + dependencies into one image that runs identically on your laptop, a cloud VM, or a Kubernetes pod (that last one is 21% of agentic postings — this lesson is your doorway). The whole file:</p>
+<p><code>`</code>dockerfile</p>
+<p>FROM python:3.12-slim</p>
+<p>WORKDIR /app</p>
+<p>COPY requirements.txt .</p>
+<p>RUN pip install --no-cache-dir -r requirements.txt</p>
+<p>COPY . .</p>
+<p>EXPOSE 8000</p>
+<p>CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]</p>
+<p><code>`</code></p>
+<p>Build with <code>docker build -t rag-api .</code>, run with <code>docker run -p 8000:8000 rag-api</code>. One command, and your environment is reproducible forever. List <code>docker</code> on your CV only after this works — then list it proudly.</p>
+<h2>Deploy it: a URL anyone can click</h2>
+<p>Free and near-free tiers make shipping painless in 2026: Railway, Render, Fly.io, Hugging Face Spaces, or a small cloud VM — pick one and learn it. The universal checklist: set your API key as a <strong>platform environment variable</strong> (never in the image), include a <code>/health</code> route, and keep a persistent disk (or re-embed at startup) for your vector index. After deploy, your README gets its most important line: <code>Live demo: https://your-app.example.com/docs</code>. Every Module 4 project repeats this loop, so invest an extra hour now to make it smooth — deployment fluency is a compounding skill, and 'deployed' is the word that separates your portfolio from every course graduate who only has localhost.</p>
+<h2>Basic CI: tests on every push</h2>
+<p>One small GitHub Actions file and your repo starts proving itself:</p>
+<p><code>`</code>yaml</p>
+<p># .github/workflows/ci.yml</p>
+<p>on: [push]</p>
+<p>jobs:</p>
+<p>test:</p>
+<p>runs-on: ubuntu-latest</p>
+<p>steps:</p>
 <ul>
-<li><strong>Custom GPTs (ChatGPT)</strong> or <strong>Claude Projects</strong> — fastest start: system message + files + web access, shareable link. Great for knowledge assistants.</li>
-<li><strong>Zapier Agents</strong> — agents wired directly to thousands of app actions. Great when the agent should *do* things in other apps.</li>
-<li><strong>n8n or Make</strong> — visual workflows with an AI Agent node; the most 'real world' of the bunch and what many employers actually run. Slightly steeper curve.</li>
+<li>uses: actions/checkout@v4</li>
+<li>uses: actions/setup-python@v5</li>
 </ul>
-<p>Start with a Custom GPT or Claude Project today — build the brain first, connect the hands in Lesson 12. Pick based on what you'll demo, not what's trendy.</p>
-<h2>Define the job, then the brain</h2>
-<p>An agent needs a *specific* job, not a mission statement. Bad: "help me with my job search." Good: "answer interview prep questions for data analyst roles, using my CV, and give feedback." Write the job as one sentence with a noun and a verb, then build the system message with the six blocks from Lesson 8: identity, scope, style, grounding, guardrails, edge behavior. Upload grounding files — your CV, a knowledge base, a FAQ document. A knowledge-grounded agent beats a general one in every test that matters, and it's what employers check: *did you ground it?*</p>
-<h2>Give it one tool</h2>
-<p>Even in no-code, the tool is what makes it an agent and not a chatbot. Simplest meaningful toolset: <strong>web search</strong> (current information), <strong>file reading</strong> (analyze documents users upload), and in Zapier-style platforms, <strong>one real action</strong> — send an email, add a row to a sheet, create a calendar event. One is enough today. The discipline to learn: every tool is a <strong>permission</strong>. Before enabling it, ask what the agent could do with it on a bad day, and set limits — e.g. search yes, purchase no. Autonomy is earned; today's agent gets training wheels, and that's correct.</p>
-<h2>Test like a skeptic, then ship v1</h2>
-<p>Run your 10-message test set: 3 typical requests, 2 out-of-scope, 2 hostile or confusing, 2 knowledge questions it must answer *only* from your files, 1 impossible request. Watch where it fails; patch the system message; re-run. Then write a mini <strong>README</strong>: what the agent does, what it knows, what it may and may not do, and known limitations. Screenshot or record it working. Congratulations — that's your first <strong>portfolio artifact</strong>, and you'll list it as one. v1 shipped beats v2 imagined; you'll iterate it again in Module 4 with real polish.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Help me define my first agent. My context: [YOUR ROLE OR GOAL]. Give me: (1) a one-sentence specific job for the agent, (2) a draft system message under 200 words using the six-block structure, (3) a 10-message test plan with expected behavior for each.</p>
+<p>with: {python-version: "3.12"}</p>
+<ul>
+<li>run: pip install -r requirements.txt</li>
+<li>run: pytest</li>
+</ul>
+<p><code>`</code></p>
+<p>Now every push runs your unit tests (you wrote them in Lesson 7), and a green checkmark appears on your repo. Recruiters may not read the YAML, but engineers do — and 'CI/CD' on your CV now has a public, clickable receipt. Lesson 12 adds your eval suite to this same pipeline.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Review my FastAPI RAG endpoint for production readiness: [PASTE CODE]. Check input validation, error handling, startup cost, secrets handling, and response schema. Give me a prioritized fix list.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>Here is my agent's job: [DESCRIBE IT]. List the 3 highest-risk mistakes it could make with its tools, and one system-message rule to prevent each.</p>
+<div class="prompt"><p>Explain Docker to me like I've never used it: image vs container, why it solves 'works on my machine', and a line-by-line explanation of my Dockerfile: [PASTE].</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Compare Railway, Render, Fly.io, and Hugging Face Spaces for deploying a small FastAPI + Chroma app on a student budget. Table with free tier, cold starts, persistent disk, and Docker support.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Build the agent: pick a platform, write the system message, upload at least one grounding file, enable one tool. Run a 10-message test set, patch twice, and write a 150-word README. Save the shareable link and screenshots in your course folder — this is portfolio artifact #1.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Ship your Lesson 9 RAG: wrap it in FastAPI with <code>/ask</code> and <code>/health</code>, containerize with Docker, deploy to a free tier, and add a passing GitHub Actions workflow. Paste the public <code>/docs</code> URL into your README. Then send the link to one friend and watch them use it — first real user, first real portfolio artifact. Save the screenshot; you'll need it in Module 5.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-09.html'>← Previous</a><a class='btn b1' href='p2-11.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

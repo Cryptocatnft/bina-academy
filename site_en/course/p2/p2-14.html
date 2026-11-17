@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio Project 2: Document Analyzer (RAG Basics) · בינה BINA</title>
+<title>Project 2: Document Analyzer with RAG · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,25 +60,37 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 14/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>Portfolio Project 2: Document Analyzer (RAG Basics)</h1>
-<div class="goal">🎯 What you'll be able to do: Build a question-answering agent over a pile of documents using retrieval — the RAG pattern behind most real-world AI systems.</div>
+<h1>Project 2: Document Analyzer with RAG</h1>
+<div class="goal">🎯 What you'll be able to do: Build a document-intelligence app — upload documents, extract structured fields, ask grounded questions with page-level citations — and deploy it publicly.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-14.mp3"></audio></div></div>
-<h2>Why RAG exists</h2>
-<p>Two hard limits force RAG on us: <strong>context limits</strong> — documents don't fit in the window (Lesson 3) — and <strong>grounding</strong> — models hallucinate when answering from memory (Lesson 4). <strong>RAG</strong> solves both: at build time you split documents into chunks, convert each to an <strong>embedding</strong> (a numeric fingerprint of meaning), and store them in a <strong>vector database</strong>. At question time you embed the *question*, find the most similar chunks, and hand only those to the model to answer from. Simple mental model: RAG is a <strong>search engine feeding a summarizer</strong> — a librarian who fetches the right pages, and a writer who reads only those pages.</p>
-<h2>Step 1: Your corpus and chunking (30 min)</h2>
-<p>Pick 10-20 documents of one type — contracts, policies, research PDFs, or generate them with AI (fine for a portfolio, just say so). <strong>Chunking</strong> is the craft: split each document into pieces of ~300-500 words, with 10-20% overlap so ideas that straddle a boundary survive. Keep <strong>metadata</strong> on every chunk — source filename, section, page — because it becomes your citation. If you use a no-code RAG tool (ChatGPT Projects, Claude Projects, Notion AI, or a vector-store template in n8n/Flowise), chunking happens for you — but you must be able to *explain* it, because interviewers always ask: 'why does chunk size matter?' Now you know.</p>
-<h2>Step 2: Retrieval and the answer (45 min)</h2>
-<p>The user asks a question. Your system embeds it, pulls the top 4-8 most similar chunks, and builds a prompt: "Answer only from the passages below. Cite the source for each claim. If the answer isn't there, say so." The non-negotiable feature: <strong>citations</strong> — every claim tagged with the document and section it came from, because that's what makes output *verifiable* (Lesson 4 habits, systematized). Test the sad path deliberately: ask questions that are NOT in the documents and confirm the agent says 'not found' instead of improvising. A RAG system that admits ignorance is a professional one; one that always answers is a liability.</p>
-<h2>Step 3: Evaluate, document, ship (45 min)</h2>
-<p>Build a 15-question eval set: 10 answerable from the documents (with the correct source noted), 3 that are not, 2 cross-document questions requiring synthesis from multiple files. Score each answer: correct + correctly cited / correct but wrong citation / wrong / hallucinated. Tweak chunk size or retrieval count and re-run — this loop is *the* RAG skill. Write the README with your architecture, a 'how it works' explanation in plain words, the eval table, and design decisions. Deploy wherever your platform allows. This is portfolio artifact #2, and it's the one most likely to get you hired — RAG is what companies actually deploy. Say the words 'retrieval-augmented generation' in your README and in your sleep.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>You are a RAG system. I will give you passages and a question. Answer ONLY from the passages. Cite each claim like [doc1, section 2]. If the answer is not in the passages, say exactly: 'Not found in the provided documents.' Question: [YOUR QUESTION]. Passages: [PASTE CHUNKS]</p>
+<h2>What makes it valuable</h2>
+<p>Support agents deflect tickets; document analyzers save professional hours — reviewing a contract, auditing invoices, summarizing reports. That's budget-line value, which is why 'document AI' and 'intelligent document processing' appear in a huge slice of real postings. Your version: a user uploads PDFs or text files; the app parses them, chunks <strong>on structure</strong> (pages, sections, tables — your Lesson 9 chunking opinions finally matter), embeds into a per-user collection, and offers two modes: <strong>Q&A</strong> with <code>[page N]</code> citations, and <strong>extraction</strong> into Pydantic schemas (e.g. from an invoice: vendor, amounts, dates, line items). Same primitives, productized.</p>
+<h2>The pipeline</h2>
+<p>Architecture in one flow:</p>
+<p><code>`</code></p>
+<p>upload → parse (pypdf) → chunk + metadata(page, section)</p>
+<p>→ embed → Chroma collection per document</p>
+<p>Q&A:   question → retrieve top-5 → grounded answer + citations</p>
+<p>Extract: schema + retrieve relevant chunks → Pydantic-validated fields</p>
+<p><code>`</code></p>
+<p>Two details that separate you from every 'chat with PDF' demo:</p>
+<p>1. <strong>Citations are clickable</strong>: the answer links to the retrieved chunk and its page number, displayed in the UI. Verifiability is the product.</p>
+<p>2. <strong>Extraction is validated</strong>: extraction is a per-field confidence score — and low-confidence fields are flagged, not silently guessed.</p>
+<p>That's grounded, verifiable, production-shaped thinking — exactly what an AI-application interview probes for.</p>
+<h2>Make it demo-able</h2>
+<p>A document tool with no documents is a car with no gas. Ship it with: two pre-loaded public sample documents (a real open-source license agreement, a sample invoice), a drag-and-drop upload box, and a side panel showing retrieved chunks for every answer. Keep the stack honest and clean: FastAPI + your RAG engine + a single-page frontend (plain HTML/JS or Streamlit — the point is the pipeline, not the pixels). Reuse Lesson 10's Docker and deploy loop. Evals: a 20-question golden set on the sample docs with expected citations — faithfulness scored by your Lesson 12 judge. README shows the eval table next to the demo link.</p>
+<h2>Enterprise signals to bake in</h2>
+<p>Small touches that make engineers and hiring managers nod: <strong>per-document collections</strong> deleted when a user removes the doc (data hygiene); a <strong>file-type and size guard</strong> with clear errors; <strong>scan-friendly text extraction</strong> with a fallback note when a PDF is image-only; and a <strong>cost readout</strong> (tokens per question, roughly in dollars). None of these are hard; all of them are what 'production mindset' means concretely. In your README, write one paragraph titled 'what I'd do at 10x scale': batch embedding, a job queue, pgvector, per-tenant isolation. That paragraph is a conversation starter in every interview — it shows you see past the demo.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Design a Pydantic extraction schema for [DOCUMENT TYPE: invoice / contract / lab report] with per-field descriptions that double as model instructions. Include confidence and a required source-page reference per field.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>I'm building a RAG demo over [DOCUMENT TYPE]. Generate a 15-question evaluation set: 10 answerable, 3 deliberately unanswerable, 2 requiring synthesis across documents. For the answerable ones, note the expected answer and source.</p>
+<div class="prompt"><p>My document analyzer retrieves the wrong chunks for table-heavy PDFs. Give me a prioritized improvement plan: parsing, chunking strategy, table handling, query rewriting, hybrid search. One experiment per item.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Write the 'what I'd do at 10x scale' section of my README: assume 10k documents and 100 concurrent users. Cover storage, embedding jobs, queues, cost, and per-tenant isolation — in confident, concrete engineer voice.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Build and ship the analyzer: 10+ documents chunked with metadata, retrieval with citations, 15-question eval set scored and logged, README with architecture and design decisions. Verify the unanswerable questions return 'not found' — that's the behavior that proves you understand grounding.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Ship the document analyzer: upload + Q&A with clickable page citations + schema extraction with confidence flags, two sample docs, 20-question eval with the judge, Dockerized and deployed with a public URL. In the README, include the '10x scale' section. Portfolio artifact two is done — and your RAG story now has two deployed variants, which is exactly what RAG's 26% of job postings wants to see.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-13.html'>← Previous</a><a class='btn b1' href='p2-15.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

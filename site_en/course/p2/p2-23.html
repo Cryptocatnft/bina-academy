@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Take-Home Assignments — and How to Crush Them · בינה BINA</title>
+<title>Take-Home Assignments: Build a RAG or Agent Under Time Pressure · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,47 +60,35 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 23/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>Take-Home Assignments — and How to Crush Them</h1>
-<div class="goal">🎯 What you'll be able to do: Handle AI-role take-home tests professionally — scoping, building, documenting, and presenting so evaluators can't help but be impressed.</div>
+<h1>Take-Home Assignments: Build a RAG or Agent Under Time Pressure</h1>
+<div class="goal">🎯 What you'll be able to do: Master the AI-engineering take-home — scope ruthlessly, build a working RAG or agent in hours not days, and submit with the README and trade-off notes that get you hired.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-23.mp3"></audio></div></div>
-<h2>Reading the brief: what's really tested</h2>
-<p>Take-homes almost never test raw skill alone — they test <strong>judgment under a deadline</strong>. Decode the brief before touching a tool:</p>
+<h2>What they're really grading</h2>
+<p>A take-home rubric usually has four silent criteria: <strong>does it work</strong> (they will run it — a broken submission with great ideas scores below a working one with rough edges); <strong>is the code sane</strong> (small functions, error handling, no 400-line notebook exported as an app); <strong>did you make sensible trade-offs</strong> (documented choices beat hidden perfection); <strong>can I work with this person</strong> (README tone, commit hygiene). What loses points: frameworks you can't explain, no tests, no error handling on API calls, hardcoded keys, and — the classic — spending the whole budget on polish for one path while the main flow breaks on edge cases. Scope to the rubric: working end-to-end first, extras only if time remains.</p>
+<h2>The time-boxed plan</h2>
+<p>For a typical 'small RAG/agent, few days' assignment:</p>
 <ul>
-<li><strong>The explicit ask</strong>: build X with Y constraints. Underline the constraints — they're the grading rubric.</li>
-<li><strong>The implicit tests</strong>: usually three — can you scope realistically? do you document decisions? does it actually run?</li>
-<li><strong>The realistic effort</strong>: ask! 'How many hours do you expect candidates to spend?' is a senior-sounding question, not a weak one. If they say 3 hours, submitting 20 hours of work signals you can't scope — a real failure mode.</li>
+<li><strong>Hour 0 — read and scope.</strong> Extract explicit requirements into a checklist; identify the core loop and mark everything else 'nice to have.' Write the plan at the top of your README.</li>
+<li><strong>Hours 1–3 — walking skeleton.</strong> Data in → model call → answer out, deployed or runnable via one command. Ugly is fine; working is everything.</li>
+<li><strong>Hours 4–8 — quality pass.</strong> Pydantic outputs, retry on API calls, top-k retrieval with citations, a <code>/health</code> route. Reuse your Module 3 patterns — you've built this before.</li>
+<li><strong>Hour 9 — evals, minimum viable.</strong> 10 golden questions, pass rate printed. A take-home *with* an eval loop beats most of the pool.</li>
+<li><strong>Final hour — README and demo.</strong></li>
 </ul>
-<p>Then decide your <strong>intentional scope</strong>: what you'll build, what you'll stub, what you'll list as 'given more time.' Evaluators love a visible <code>future-work.md</code> more than an overbuilt mess.</p>
-<h2>The build: your Module 4 system, on a clock</h2>
-<p>This is why Module 4 existed — take-homes are typically mini versions of your portfolio: a support agent, a RAG demo, a pipeline. Run your known-good loop, timeboxed:</p>
-<ul>
-<li><strong>Hour 1</strong>: skeleton and the riskiest part first — if the core won't work, you want to know in hour one, not hour nine.</li>
-<li><strong>Middle hours</strong>: build the smallest complete version that satisfies every explicit requirement. Complete-but-small beats impressive-but-broken, every time.</li>
-<li><strong>Final third</strong>: testing (your test-set habit — even 10 cases puts you ahead of most candidates) and the README.</li>
-</ul>
-<p>Non-negotiable: <strong>it must run on their machine.</strong> Include exact setup steps, a working demo link, and zero 'it worked on my machine' energy. That sentence has ended candidacies.</p>
-<h2>The README is half your grade</h2>
-<p>Evaluators read the README before or instead of the code. Use your proven structure:</p>
-<ul>
-<li><strong>Problem and approach</strong> in three sentences, human-readable.</li>
-<li><strong>What I built / what I deliberately didn't</strong> — your scope decisions, stated proudly.</li>
-<li><strong>How to run it</strong> — numbered, tested on a clean machine (or a live link).</li>
-<li><strong>Design decisions</strong> — 'I chose X over Y because Z.' This is where judgment becomes visible and gradeable.</li>
-<li><strong>Testing</strong> — your test set and results table.</li>
-<li><strong>Given more time</strong> — 3 bullets. Shows vision plus discipline.</li>
-</ul>
-<p>This is the exact README you've written four times. The take-home rewards exactly the habits you now have. Screenshots and a 60-90 second demo video complete the package — evaluators who feel the demo *work* in two minutes are already on your side.</p>
-<h2>Presenting it — and protecting yourself</h2>
-<p>Many processes end with a walkthrough call. Structure it like your Lesson 22 project tour: problem, approach, one decision story, demo, limits, future work — 5-7 minutes, then invite questions. Expect 'why didn't you…' questions: they test composure, not perfection; 'I considered it and deprioritized it because of the time budget — here's where it would slot in' is a *great* answer.</p>
-<p>And know your rights: a take-home shouldn't exceed roughly 4-8 hours or solve a company's *current real business problem unpaid. If it smells like free work — real data, production scope, no compensation — it's fair to ask about it, or walk. Companies that respect candidates design respectful take-homes; the assignment is often your first look at how they actually operate.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Here is a take-home brief: [PASTE BRIEF]. Give me: (1) what's likely being tested beyond the explicit ask, (2) a ruthless scope plan for a [X]-hour budget — build / stub / skip, (3) the 3 risks that could sink it and how to de-risk each early, (4) 5 clarifying questions worth asking before starting.</p>
+<p>Stop when the plan says stop. Over-building reads as poor judgment, not dedication.</p>
+<h2>The two files that decide it</h2>
+<p>Reviewers open two files first: the <strong>README</strong> and your <strong>main module</strong>. README structure that wins: one-line description; 30-second quickstart (<code>docker compose up</code>); a short 'decisions & trade-offs' section — 'chunked on section headers at ~400 tokens because the docs have strong structure; used Chroma for zero-config local dev; single mini-model for cost; evals: 10 cases, 80% faithful (failures concentrated in table-heavy pages — noted, not fixed, for scope)' — that paragraph is where seniors are made. Then 'what I'd do with more time,' honestly, 3 items. The main module should read like the README promised: clean names, typed functions, <code>try/except</code> around anything that touches the network. And run <code>gitleaks</code> before pushing — a committed key in a take-home is an automatic fail at too many companies.</p>
+<h2>Presenting it and the follow-up call</h2>
+<p>After submission comes the review call — prepare like Lesson 22's drill: a 3-minute walkthrough (problem → design → demo → evals), and answers for the questions your README invites: 'why that chunk size?' 'how would this scale?' 'what broke?' Know your own numbers cold (eval pass rate, cost per query, latency) and volunteer one limitation before they find it — 'table extraction is the weak spot; I'd add a table-aware parser' — because finding your own bugs is exactly the senior signal they're grading. If the assignment demands more than ~8–10 hours for a junior role without pay, it's fair to ask about scope — companies that respect candidates respect the question.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Here is my take-home assignment: [PASTE BRIEF]. Extract the explicit requirements as a checklist, identify the core loop, and propose a time-boxed plan for [HOURS] hours — including what I will deliberately NOT build. Flag any requirement that is ambiguous enough to ask about.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>Review my take-home README like the evaluator: [PASTE README]. Where would I lose points? What's missing? What sentence should I add? Do not rewrite it — give me the fix list.</p>
+<div class="prompt"><p>Write the 'decisions & trade-offs' section of my take-home README from these notes: [PASTE YOUR CHOICES]. Honest engineer voice, one short paragraph plus a 'with more time' list of 3 items.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>I finished my take-home (RAG over [DATASET], evals at [SCORE]). Give me the 10 hardest follow-up questions the reviewer will ask on the call, with strong 30-second answers grounded in my actual work.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Do a timed drill: find a realistic take-home brief (or generate one with AI: 'write a 4-hour take-home for an AI Automation Specialist role'), then execute the full lifecycle in one sitting — scoped build, test set, README, 60-second demo video. Review: where did the time actually go? Fix your process while it's cheap.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Simulate one timed take-home: 4 hours, hard stop — 'build a mini RAG over 20 public FAQ pages with citations, an eval of 10 questions, and a README with trade-offs.' Follow the time-boxed plan exactly, push to GitHub, then have your Lesson 22 AI interviewer grill you on it. Not only is it practice — the repo itself becomes portfolio artifact five.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-22.html'>← Previous</a><a class='btn b1' href='p2-24.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

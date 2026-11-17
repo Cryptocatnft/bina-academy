@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A CV That Passes AI Screeners · בינה BINA</title>
+<title>The CV That Passes AI Screeners (ATS Keywords) · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,35 +60,42 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 17/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>A CV That Passes AI Screeners</h1>
-<div class="goal">🎯 What you'll be able to do: Write a CV that survives the automated filters and human skims standing between you and AI job interviews.</div>
+<h1>The CV That Passes AI Screeners (ATS Keywords)</h1>
+<div class="goal">🎯 What you'll be able to do: Write a CV engineered for both machines and humans — the exact ATS keywords recruiters search, quantified project bullets, and a format that survives any parser.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-17.mp3"></audio></div></div>
 <h2>How screening actually works</h2>
-<p>Two filters run before the human: <strong>AI/ATS screening</strong> — software parses your CV and scores it against the job description for keywords, titles, skills, and experience signals — and <strong>the recruiter skim</strong>, roughly 7 seconds: name, current role, skills, last two jobs. Both fail on the same things: fancy layouts, text inside images, weird section names, missing keywords. So the winning format is boring on purpose: <strong>single column, standard sections</strong> (Summary, Experience, Projects, Skills, Education), normal fonts, .docx or clean PDF. Your design instincts are welcome at the interview; at screening, they're a liability. Boring is the new black.</p>
-<h2>The master CV and the tailoring pass</h2>
-<p>Keep a <strong>master CV</strong> with everything, then tailor a copy per application — 15 minutes, not a rewrite. The tailoring ritual:</p>
-<p>1. <strong>Copy the exact language</strong> of the job description — if they say 'AI automation,' don't write 'workflow AI.' Screeners match strings.</p>
-<p>2. <strong>Reorder skills</strong> so the listed ones come first.</p>
-<p>3. <strong>Rewrite your summary line</strong> to mirror the role's title and mission.</p>
-<p>4. <strong>Match titles where honest</strong> — 'Prompt Engineer' self-descriptions vary wildly; if your work matches 'AI Automation Specialist,' say that on this application.</p>
-<p>Honest mirroring of vocabulary is not lying; it's translation. Lying is lying. Don't.</p>
-<h2>Bullets that carry evidence</h2>
-<p>The formula: <strong>Action + scope + result.</strong> Weak: 'Responsible for automating processes.' Strong: 'Built an n8n agent that triaged 200 support emails weekly, cutting first-response time 40%.' Numbers everywhere you can — rows processed, hours saved, approval rates, pass rates on your test logs. Your Module 4 projects are bullet goldmine: each one already *has* numbers (test pass rates, eval scores, time saved). List them under a <strong>Projects</strong> section with links — GitHub or live demos. In AI hiring of 2026, a linked, tested project outranks any course certificate, including ours — the certificate gets you past HR; the projects get you past the technical screen. You have both.</p>
-<h2>The AI-assisted CV workflow</h2>
-<p>Use AI without sounding like it:</p>
-<p>1. Paste the <strong>job description + your master CV</strong> → ask for a match score and missing keywords.</p>
-<p>2. Ask it to rewrite your 5 weakest bullets into action-scope-result form — then edit by hand until it sounds like you.</p>
-<p>3. Run a <strong>hostile review pass</strong>: 'You are a skeptical recruiter with 7 seconds. What concerns you about this CV?'</p>
-<p>4. <strong>Final human read-aloud</strong> — if a sentence doesn't survive being spoken, rewrite it.</p>
-<p>Warning: recruiters now spot generic AI-CV smell instantly — the same voice, the same hollow phrases. Your voice samples from Lesson 15 are the antidote. AI drafts; you decide. That's the order, always.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Here is a job description and my current CV: [PASTE BOTH]. Give me: (1) keyword match score out of 100, (2) the 5 most important keywords I'm missing, (3) a rewritten summary line and my 3 weakest bullets improved using action-scope-result. Don't invent experience I don't have.</p>
+<p>Applicant tracking systems parse your CV into fields, and recruiters <strong>search by keyword</strong>: 'show me Python AND RAG, junior, open to hybrid.' The keywords that matter in the current agentic market map directly to the demand list from Lesson 2 — Python, RAG, LangChain, LangGraph, MCP, agents, vector database, evals, prompt engineering, Docker, CI/CD, FastAPI, Kubernetes. Rules that keep you parseable: one column, no text in images, no exotic fonts, standard section headers ('Experience', 'Projects', 'Skills'), and a <code>.docx</code> or clean PDF. Test it: paste your CV into any free ATS checker, or into an LLM with the prompt 'extract my skills from this CV' — what comes out is what recruiters can find.</p>
+<h2>The keyword-with-evidence rule</h2>
+<p>A skills list alone proves nothing. The pattern that works: <strong>keyword + artifact + number</strong>:</p>
+<ul>
+<li>'Built and deployed a customer-support agent (LangGraph, RAG over 50-doc knowledge base, Docker, FastAPI) — 30-case eval suite in CI, 88% answer faithfulness; public demo.'</li>
+<li>'Implemented MCP server exposing 4 tools; integrated with external agent clients.'</li>
+<li>'Reduced LLM batch-processing cost 60% by switching classification to mini model with structured outputs.'</li>
+</ul>
+<p>Every line is a claim a recruiter can click — your four deployed repos are the receipts. This is why the course made you ship: the CV almost writes itself. One page, projects above education if the projects are stronger — and yours are.</p>
+<h2>Structure that works in 2026</h2>
+<p>The layout that survives parsing and impresses humans:</p>
+<ul>
+<li><strong>Header</strong>: name, location, LinkedIn, GitHub, portfolio site.</li>
+<li><strong>Summary, 3 lines</strong>: 'Junior software engineer specializing in AI applications. Shipped four deployed LLM systems: agents (LangGraph), RAG, MCP tools, with eval suites and CI. Python, FastAPI, Docker.'</li>
+<li><strong>Projects</strong> (the star section): your four, each 2–3 evidence bullets with links.</li>
+<li><strong>Experience</strong>: any work history, reframed for AI relevance — automated a report, built a script, saved hours.</li>
+<li><strong>Skills</strong>: the keyword block, grouped (Languages / AI & Agents / Infra).</li>
+<li><strong>Education & certificates</strong>: BINA certificate, date, capstone link.</li>
+</ul>
+<p>For career-changers: projects ARE your experience. Lead with them, unapologetically.</p>
+<h2>Tailoring per posting</h2>
+<p>Send a slightly different CV per application — it doubles response rates. The 15-minute routine: paste the job posting into an LLM with your CV and ask: 'List every required keyword missing from my CV, and rewrite my three most relevant bullets to mirror this posting's language — without inventing anything.' Then sanity-check every claim: the LLM embellishes, and you don't lie on a CV — keywords must reflect work you actually did, because Lessons 22–23 will interrogate it. Keep a master CV; generate tailored copies per posting in <code>/cvs</code>. Recruiters search exactly the words in their posting — mirroring their language is fair play; fabricating is career suicide.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Here is my CV: [PASTE]. Here is a job posting: [PASTE]. List every keyword the posting wants that my CV lacks, then rewrite my 3 most relevant bullets to mirror the posting — keep every claim true to my actual work.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>You are a skeptical hiring manager with 7 seconds to skim this CV: [PASTE CV]. List your first 3 impressions, your 3 biggest doubts, and the one change that would most improve interview chances.</p>
+<div class="prompt"><p>Act as an ATS parser: extract every skill, tool, and job title from my CV [PASTE] into a flat list. Then tell me which of these are missing: Python, RAG, LangChain, LangGraph, MCP, agents, vector database, evals, prompt engineering, Docker, FastAPI.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Rewrite these project bullets to be quantified and ATS-friendly without inventing facts: [PASTE YOUR BULLETS]. Keep keyword + artifact + number structure.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Build your master CV with the boring format, quantified bullets from your Module 4 projects, and a Projects section with links. Then tailor it to one real job posting using the 4-step workflow. Save both versions — you'll iterate in Lesson 20.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Produce your master CV: one page, projects-first, four deployed artifacts with links, the full keyword set from this lesson, zero unverifiable claims. Run it through an ATS parser or LLM extraction test and fix what's missing. Save the master and one tailored version for a real posting you saved in Lesson 2. Module 5 continues with LinkedIn next.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-16.html'>← Previous</a><a class='btn b1' href='p2-18.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

@@ -61,31 +61,31 @@ audio{width:100%;height:40px}
 </div></div>
 <main><div class="wrap">
 <h1>How LLMs Actually Work (in Plain Words)</h1>
-<div class="goal">🎯 What you'll be able to do: Understand what really happens inside a large language model so you can predict when AI will shine and when it will fail.</div>
+<div class="goal">🎯 What you'll be able to do: Understand what really happens inside a large language model so you can predict when AI will shine, when it will fail, and how to build systems around its weaknesses.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-01.mp3"></audio></div></div>
 <h2>The world's best autocomplete</h2>
-<p>An LLM generates text one <strong>token</strong> (a word chunk) at a time. Given everything so far, it computes a probability distribution over possible next tokens and picks one — usually a good one, sometimes a lucky one. It repeats this until it decides to stop. There is no lookup table of facts and no internal fact-checker. When a model answers your question, it is generating text that *looks like* a good answer, based on patterns absorbed during training. That's why it can write brilliant poetry and confidently invent a fake citation in the same breath.</p>
+<p>An LLM generates text one <strong>token</strong> (a word chunk) at a time. Given everything so far, it computes a probability distribution over possible next tokens and picks one — usually a good one, sometimes a lucky one. There is no lookup table of facts and no internal fact-checker. When a model answers your question, it is generating text that *looks like* a good answer, based on patterns absorbed during training. That's why the same model can write brilliant code and confidently invent a fake citation in the same breath. Every professional workflow you'll build in this course exists to catch those moments.</p>
 <h2>Training: reading (most of) the internet</h2>
-<p>Models are trained in stages. <strong>Pretraining</strong>: the model reads enormous amounts of text and learns to predict the next token — this is where its knowledge of language, code, and the world comes from. <strong>Fine-tuning</strong>: humans rate model outputs, teaching it to be helpful and follow instructions. <strong>Alignment</strong>: safety and behavior tuning. Practical takeaway: the model's knowledge is frozen at training time, which is why it may not know about last month's news unless it has web search or you paste the information in.</p>
+<p>Models are trained in stages. <strong>Pretraining</strong>: the model reads enormous amounts of text and learns to predict the next token — this is where its knowledge of language, code, and the world comes from. <strong>Fine-tuning</strong>: humans rate outputs or provide examples, teaching it to be helpful and follow instructions. <strong>Alignment</strong>: safety and behavior tuning. Practical takeaway: the model's knowledge is frozen at training time, which is why it may not know last month's news unless it has web search, other tools, or you paste the information in. This is exactly why employers pay for engineers who can wire models to live data.</p>
 <h2>Why this explains everything</h2>
 <p>Once you see the model as a pattern-completion engine, its quirks become predictable:</p>
 <ul>
 <li>It <strong>hallucinates</strong> because plausible text, not truth, is its target.</li>
-<li>It <strong>forgets</strong> earlier parts of a long chat because attention fades over distance.</li>
-<li>It <strong>follows your format</strong> because it imitates patterns — including your typos and your clarity.</li>
-<li>It <strong>does better with context</strong> — a vague prompt gives the pattern engine too many directions to go.</li>
+<li>It <strong>forgets</strong> earlier parts of a long chat because the context window is finite.</li>
+<li>It <strong>follows your format</strong> because it imitates patterns — including your typos.</li>
+<li>It <strong>does better with clear context</strong> — a vague prompt gives the pattern engine too many directions.</li>
 </ul>
-<p>Great prompt engineering is really just giving the autocomplete machine an easy pattern to complete.</p>
+<p>Great prompt engineering is really just giving the autocomplete machine an easy pattern to complete. The 2026 agentic stack — tools, retrieval, evals — is engineering wrapped around this one insight.</p>
 <h2>What it is NOT</h2>
-<p>It is not a search engine, a calculator, or a database — though it can *use* those things when connected to tools, which we'll cover in Module 3. It doesn't "know" it's right, doesn't reason about truth, and doesn't have goals. Treating it like an eager, extremely well-read intern who sometimes bluffs is the right mental model. Your job in this career track: become the person who deploys that intern reliably — with verification, structure, and automation.</p>
+<p>It is not a search engine, a calculator, or a database — though it can *use* those things when connected to tools, which we build in Module 3. It doesn't 'know' it's right and doesn't have goals. The right mental model: an eager, extremely well-read intern who sometimes bluffs. In 2026, employers don't pay you to chat with that intern — they pay you to deploy it reliably inside software: with retrieval for facts, schemas for structure, and evals for trust. Your job in this track: become the person who ships that. Next lesson, we look at exactly what the job market pays for.</p>
 <h2>Copy-ready prompt</h2><div class="prompt"><p>Explain in one paragraph, like I'm a smart 12-year-old, what happens from the moment I send you a message until I see your answer. Then list 3 things you cannot do because of how you work, and why.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>I'm going to describe a task. Tell me whether an LLM alone, an LLM plus tools, or a human is the best fit, and explain your reasoning in 3 bullet points. Task: [YOUR TASK]</p>
+<div class="prompt"><p>I'm going to describe a task. Tell me whether an LLM alone, an LLM plus tools, or a human is the best fit, and explain in 3 bullet points. Task: [YOUR TASK]</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Write your own 3-sentence explanation of how an LLM works, in your own words. Then ask an AI chatbot to find one error or vague point in your explanation, and fix it. Save this — it's a great interview answer later.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Write your own 3-sentence explanation of how an LLM works, in your own words. Then ask an AI chatbot to critique it for one error or vague point, and fix it. Save it — this becomes a real interview answer in Module 6.</p></p></div>
 <div class="nav"><span></span><a class='btn b1' href='p2-02.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chain-of-Thought — and When NOT to Use It · בינה BINA</title>
+<title>Structured Outputs and Schemas (JSON Mode, Pydantic) · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,32 +60,46 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 7/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>Chain-of-Thought — and When NOT to Use It</h1>
-<div class="goal">🎯 What you'll be able to do: Apply step-by-step reasoning where it pays off, use reasoning models wisely, and skip the overhead when it just wastes time and money.</div>
+<h1>Structured Outputs and Schemas (JSON Mode, Pydantic)</h1>
+<div class="goal">🎯 What you'll be able to do: Make LLMs return reliable, validated JSON with schemas and Pydantic — the single technique that turns a chatbot into a component real software can trust.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-07.mp3"></audio></div></div>
-<h2>What chain-of-thought does</h2>
-<p><strong>Chain-of-thought (CoT)</strong> means asking the model to work through a problem step-by-step before giving the final answer: "List the constraints, check each one, then conclude." Why it works: the model's next-token prediction gets *better material* to predict from — each intermediate step becomes context that steers the rest. Effects: dramatically better on math, logic, comparisons, multi-step planning, and anything with constraints. Slightly worse on nothing — except speed and cost. CoT is how a pattern-completion machine borrows a scratchpad, and it's the single biggest quality trick in classic prompting.</p>
-<h2>Reasoning models changed the game</h2>
-<p>Since late 2024, frontier labs ship <strong>reasoning models</strong> that do extended internal thinking before answering — the model does CoT on its own, better than we can prompt for it. In 2026 the practical rule is: <strong>hard problem, use a reasoning model</strong> and simply ask the question; <strong>easy or bulk problem, use a fast model</strong> and don't ask for thinking. What's obsolete: pasting "think step by step" into every prompt out of ritual. What's still yours: decomposing the *problem* — breaking a big ask into ordered subtasks, deciding which model handles each, and defining what 'good' looks like. That judgment is the job.</p>
-<h2>When NOT to use reasoning</h2>
-<p>Skip the thinking when:</p>
-<ul>
-<li><strong>The task is retrieval or style</strong> — summarizing, rewriting, classifying well-known categories. Reasoning adds latency, not accuracy.</li>
-<li><strong>You're running at scale</strong> — 10,000 rows through an API: extra thinking tokens multiply cost by 3-10x.</li>
-<li><strong>Latency matters</strong> — chatbots and real-time UX feel dead above a second or two.</li>
-<li><strong>The reasoning is yours to give</strong> — if *you* can supply the checklist or rubric, a fast model with your structure beats a smart model guessing at your intent.</li>
-</ul>
-<p>"Right-size the thinking" is a phrase that impresses interviewers. Use it.</p>
-<h2>Hybrid patterns for real work</h2>
-<p>The professional pattern is <strong>routing</strong>: a cheap fast model triages every input — is this simple or hard? Hard ones go to a reasoning model; simple ones get instant answers. You'll build exactly this in Module 4. Two more patterns: <strong>verify with a different mind</strong> — have a reasoning model check a fast model's output; and <strong>structured reasoning</strong> — "give me your final answer as JSON, with your key reasoning steps in a <code>reasons</code> field" — thinking you can audit, not just trust. Reasoning you can see beats reasoning you hope happened.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Solve this problem step-by-step. First list the constraints, then check each option against them, then eliminate, and only then state your final answer. Problem: [YOUR PROBLEM — budget, plan, comparison, or decision]</p>
+<h2>Why free text breaks software</h2>
+<p>If a model answers 'Sure! The category is probably billing, I think 😊' — a human shrugs, a program crashes. Downstream code needs predictable structure: <code>{"category": "billing", "confidence": 0.9}</code>. Structured output means constraining the model to emit <strong>valid JSON matching a schema</strong>, every time. The provider-level tricks: <strong>JSON mode</strong> (forces syntactically valid JSON) and newer <strong>schema-constrained outputs</strong>, where you pass the exact shape and the API guarantees it. Combined with Pydantic on your side, you get a contract: if the model deviates, your code catches it — instead of your users catching it.</p>
+<h2>Pydantic: your schema is your validator</h2>
+<p>Pydantic lets you define the shape once and reuse it for prompting and validation:</p>
+<p><code>`</code>python</p>
+<p>from pydantic import BaseModel, Field</p>
+<p>class Ticket(BaseModel):</p>
+<p>category: str = Field(..., description="one of: bug, billing, question")</p>
+<p>urgency: int = Field(..., ge=1, le=5)</p>
+<p>summary: str = Field(..., max_length=120)</p>
+<p>resp = client.beta.chat.completions.parse(</p>
+<p>model="gpt-4o-mini",</p>
+<p>messages=[{"role": "user", "content": ticket_text}],</p>
+<p>response_format=Ticket,</p>
+<p>)</p>
+<p>ticket = resp.choices[0].message.parsed  # a real Ticket object</p>
+<p><code>`</code></p>
+<p>If the model returns garbage, Pydantic raises <code>ValidationError</code> — and you retry (Lesson 6). LangChain, FastAPI, and half the 2026 AI stack speak Pydantic natively. Learn it once, use it everywhere.</p>
+<h2>The full defensive loop</h2>
+<p>Production pattern, memorize it:</p>
+<p>1. Define the schema (Pydantic).</p>
+<p>2. Call the model with <code>response_format=YourSchema</code>.</p>
+<p>3. Validate the parse; on failure, <strong>retry with the error message</strong> — models self-correct well: 'Your last output failed validation: urgency must be 1-5. Return corrected JSON only.'</p>
+<p>4. Cap retries (2–3); then fall back (queue for human review, return <code>None</code>, or use a default).</p>
+<p>This loop — schema, call, validate, retry-with-error — is the backbone of the agents you build in Lessons 11–16. It's also most of what 'LLM application engineering' means in job descriptions. Write it as a reusable function once; import it forever.</p>
+<h2>Enums, lists, and nested shapes</h2>
+<p>Scales of structure: an <code>enum</code> for classification ('bug'/'billing'/'question' — nothing else can come back), a list of nested objects for extraction (every invoice line with amount and date), and unions for routing (this request is a Refund or a Complaint). Practical rules that keep accuracy high: keep schemas <strong>flat and small</strong> — every field is another chance to err; give each field a clear <code>description</code> the model reads as instructions; and prefer many small structured calls over one mega-schema. You'll reuse exactly these schemas in RAG (Lesson 9) and the support agent (Lesson 13).</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Here is my Pydantic model: [PASTE CODE]. Generate 5 diverse test inputs for it and the exact JSON each should produce, so I can unit-test my extraction pipeline.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>You are a quality checker. Here is a task and an AI's answer: [PASTE TASK AND ANSWER]. Work through it step by step, list every error or unsupported assumption, then verdict: CORRECT / NEEDS FIX with the fix.</p>
+<div class="prompt"><p>My LLM sometimes returns invalid JSON despite JSON mode: trailing commas, unescaped quotes, markdown fences. Give me a robust Python `safe_parse` function that handles the common failure modes and retries once with the error fed back to the model.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Design a Pydantic schema for extracting structured data from customer support emails: category, urgency 1-5, entities mentioned, suggested reply. Include field descriptions that work as model instructions.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Find a real decision you need to make (a purchase, a plan, a tradeoff). Ask a fast model directly, then ask a reasoning model (or use CoT prompting) on the same question. Compare answer quality, response time, and length. Write 3 sentences on when you'd pay the reasoning cost.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Extend Lesson 6's ticket classifier: replace free-text classification with a Pydantic <code>Ticket</code> schema, use structured output mode, and add the validate-retry loop with a max of 3 attempts. Write 3 unit tests with fake responses (one valid, one invalid, one rate-limited) proving the loop behaves. Push to GitHub — tested structured-output code is exactly what AI-application job posts ask for.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-06.html'>← Previous</a><a class='btn b1' href='p2-08.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

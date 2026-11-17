@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Function Calling and Tools — the Concepts · בינה BINA</title>
+<title>Agents with LangChain, LangGraph, Function Calling, and MCP · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,32 +60,66 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 11/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>Function Calling and Tools — the Concepts</h1>
-<div class="goal">🎯 What you'll be able to do: Understand how models call functions and APIs — schemas, the tool loop, error handling — without needing to be a programmer.</div>
+<h1>Agents with LangChain, LangGraph, Function Calling, and MCP</h1>
+<div class="goal">🎯 What you'll be able to do: Build real agents — LLMs that decide, call tools, and recover — using function calling, LangGraph state machines, and the Model Context Protocol; the core skills of the 2026 agentic job market.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-11.mp3"></audio></div></div>
-<h2>The menu and the order</h2>
-<p>Function calling works like a restaurant. You (the builder) give the model a <strong>menu</strong>: a list of tools, each with a name, a plain-language description, and a <strong>schema</strong> — the exact fields and types it accepts. The model never executes anything. It reads the task, picks a tool, and returns a structured order: <code>{"tool": "send_email", "to": "dana@corp.com", "subject": "Order confirmed"}</code>. Your code or platform executes it and returns the result. The model reads the result and continues. Menu in, order out, dish back — that's the whole protocol.</p>
-<h2>Writing tool descriptions is prompting</h2>
-<p>The model chooses tools by reading your descriptions — so a vague description means wrong choices. Bad: "a function for dates." Good: "Check availability for a meeting. Use when the user wants to schedule. Requires an email address and a date. Do not use for cancellations." Same few-shot and clarity rules from Module 2 apply verbatim. Practical habits: keep the toolset <strong>small</strong> (5-8 tools; beyond that, models grab the wrong one), give tools <strong>non-overlapping</strong> jobs, prefer enums for parameters, and require an ID everywhere it matters. Most 'dumb agent' bugs are actually a bad menu.</p>
-<h2>When the call fails</h2>
-<p>Real tools fail: the email address doesn't exist, the API times out, the date is invalid. Amateurs let the agent crash or hallucinate success. Professionals design the loop for failure:</p>
+<h2>Function calling: the atom of agency</h2>
+<p>Give the model a menu of tools and it chooses: that's <strong>function calling</strong>. You describe each function — name, purpose, parameters as JSON schema — and the model replies not with text but with a tool request. Your code executes it and feeds the result back:</p>
+<p><code>`</code>python</p>
+<p>tools = [{</p>
+<p>"type": "function",</p>
+<p>"function": {</p>
+<p>"name": "get_order",</p>
+<p>"description": "Fetch order status by ID",</p>
+<p>"parameters": {"properties": {</p>
+<p>"order_id": {"type": "string"}}, "required": ["order_id"]},</p>
+<p>},</p>
+<p>}]</p>
+<p><code>`</code></p>
+<p>The loop — model picks a tool → you run it → result goes back → model continues — is the whole mechanism of ChatGPT's own features and every agent you'll ever build. Everything else is orchestration around this loop. Tool use is 11% of agentic postings; this is that skill, at the metal.</p>
+<h2>LangGraph: agents as state machines</h2>
+<p>A naive agent loop spirals: infinite retries, lost context, unbounded cost. <strong>LangGraph</strong> (in 13% of agentic postings) models the agent as a <strong>graph</strong> — nodes are steps (call model, run tool, human check), edges are transitions, and a state object carries the data. Key disciplines: conditional edges (route on the model's tool choice), a recursion limit (hard cap on steps), and checkpoints (persist state so a long agent survives restarts and can be replayed):</p>
+<p><code>`</code>python</p>
+<p>from langgraph.graph import StateGraph</p>
+<p>g = StateGraph(AgentState)</p>
+<p>g.add_node("model", call_model)</p>
+<p>g.add_node("tools", run_tools)</p>
+<p>g.set_entry_point("model")</p>
+<p>g.add_conditional_edges("model", route, {"tools": "tools", "end": END})</p>
+<p>app = g.compile()</p>
+<p><code>`</code></p>
+<p>LangChain (15% of postings) supplies the surrounding ecosystem — model wrappers, retrievers, prompts. You'll use both; understand the graph underneath.</p>
+<h2>MCP: the universal tool port</h2>
+<p><strong>Model Context Protocol</strong> is 2026's answer to tool chaos: a standard way to expose tools, resources, and prompts to any MCP-capable client — one server, every model. At 27% of agentic postings, it's the fastest-rising skill in the index. You can write an MCP server in a few lines and your tools instantly plug into Claude, Cursor, and countless agents:</p>
+<p><code>`</code>python</p>
+<p>from mcp.server.fastmcp import FastMCP</p>
+<p>mcp = FastMCP("support")</p>
+<p>@mcp.tool()</p>
+<p>def get_order(order_id: str) -> dict:</p>
+<p>"""Fetch order status by ID."""</p>
+<p>return orders.get(order_id, {"status": "unknown"})</p>
+<p><code>`</code></p>
+<p>Mental model: function calling is the *mechanism*; MCP is the *port standard* — USB for AI tools. Interviewers increasingly ask 'what is MCP and why does it matter?' — and now you can whiteboard it.</p>
+<h2>Designing agents that don't embarrass you</h2>
+<p>The difference between a demo and a system:</p>
 <ul>
-<li><strong>Return the error to the model</strong> — <code>{"error": "address not found"}</code> — so it can retry or ask the user. It's surprisingly good at this.</li>
-<li><strong>Set limits</strong> — max 3-5 tool calls per task before stopping and summarizing for a human.</li>
-<li><strong>Log every call</strong> — the timestamped story of what the agent did. Your audit trail and your debugging lifeline, both.</li>
-<li><strong>Validate before executing</strong> — confirm destructive actions (delete, send, pay) with a human or a rule.</li>
+<li><strong>Small tool sets</strong> — 3–6 sharp tools beat 30 vague ones; models confuse themselves with too many.</li>
+<li><strong>Good descriptions</strong> — tool docs are prompts; 'Fetch CURRENT order status from the orders DB, not history' saves hours.</li>
+<li><strong>Hard limits</strong> — recursion cap, token budget, timeout. Agents must be able to *stop*.</li>
+<li><strong>Tracing</strong> — log every step (model call, tool, result); Lesson 12 makes it observable.</li>
+<li><strong>Human gates for irreversible actions</strong> — refunds, deletes, emails get a confirmation node.</li>
 </ul>
-<p>Error handling, not intelligence, is what separates production agents from demos.</p>
-<h2>Where you'll meet this</h2>
-<p>You'll touch function calling in four places: (1) <strong>no-code platforms</strong> — you'll describe tools in their UI, same concepts, no code; (2) <strong>MCP — the Model Context Protocol</strong> — the emerging 2026 standard that lets any agent plug into shared tool servers, dragging ChatGPT, Claude, and IDEs into one ecosystem; (3) <strong>APIs</strong> — calling a model programmatically, where you'll pass tool schemas as JSON; (4) <strong>interviews</strong> — 'explain how function calling works' is a top-5 screening question for AI roles, and now you can answer it in menu-and-order terms. Reading this machinery fluently is your edge as a non-programmer.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>I want to give my agent these capabilities: [LIST — e.g. send email, check calendar, search docs]. For each, write a tool definition: name, one-line description, parameters with types, and when NOT to use it.</p>
+<p>Next lesson: how we prove these agents actually work — evals and observability, the 9% skill that everything else depends on.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>I'm designing an agent that must [TASK: e.g. research a topic and write a report]. Give me: a node-by-node LangGraph design, the tool set with exact names/descriptions/parameters, where to place human gates, and failure modes to guard.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>My agent keeps calling the wrong tool or invents parameters. Here are my tool definitions: [PASTE THEM]. Diagnose the likely causes and rewrite the weakest definition.</p>
+<div class="prompt"><p>Explain MCP (Model Context Protocol) like I'm a senior engineer who knows function calling: what problem it solves vs plain tool use, client vs server roles, and when I'd write my own MCP server instead of inline tools.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>My agent loops forever / burns tokens / picks wrong tools. Give me a prioritized debugging checklist covering prompts, tool descriptions, graph structure, and limits — with one concrete fix each.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Design (on paper or in a no-code platform) a toolset for your Lesson 10 agent: 3-5 tools with full schemas. Then simulate a failure: write what your agent should return to the model when one tool fails, and what it should do on the third consecutive failure.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Build <code>research_agent.py</code>: a LangGraph agent with 3 real tools (web search, a notes store, and your Lesson 10 RAG's <code>/ask</code> endpoint via HTTP), a recursion limit of 8 steps, and full step logging. Then wrap one of the tools as an MCP server too. Give it a real research task and save the trace. Push both to GitHub — 'LangGraph agent + MCP server' covers three of the top-ten agentic skills in one repo.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-10.html'>← Previous</a><a class='btn b1' href='p2-12.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

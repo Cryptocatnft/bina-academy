@@ -61,44 +61,33 @@ audio{width:100%;height:40px}
 </div></div>
 <main><div class="wrap">
 <h1>Hallucinations and How to Catch Them</h1>
-<div class="goal">🎯 What you'll be able to do: Know why AI models invent facts, which tasks are high-risk, and build a verification habit that catches errors before your boss or client does.</div>
+<div class="goal">🎯 What you'll be able to do: Understand why models invent facts, and learn the professional verification techniques — grounding, citations, self-checks, evals — that make AI output trustworthy enough to deploy.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-04.mp3"></audio></div></div>
 <h2>Why models invent things</h2>
-<p>A model's job is producing plausible text, not true text. When it hits a gap in its knowledge, it doesn't say "I don't know" unless trained and prompted to — it fills the gap with something *statistically shaped like* an answer. A fake citation looks exactly like a real one: right author cadence, right year range, right journal vibe. Hallucinations have decreased with each model generation and with reasoning models, but they have not disappeared — and the confident tone never changes. <strong>Never mistake fluency for accuracy.</strong></p>
-<h2>The high-risk categories</h2>
-<p>Some claims deserve automatic suspicion:</p>
+<p>A hallucination is output that is fluent, confident, and wrong. The model isn't lying — it's completing a pattern. When training data was thin or contradictory, the most *plausible* continuation may be invented: a fake API method, a plausible-but-wrong statistic, a citation to a paper that doesn't exist. Classic danger zones: specific numbers, names, dates, quotes, citations, API function signatures, and 'questions where the honest answer is I don't know.' A model asked 'what did the CEO say in the 2024 memo' will often *invent* a quote rather than admit ignorance. Knowing these zones tells you where to point your checks.</p>
+<h2>Grounding: the professional fix</h2>
+<p>The industry-standard answer to hallucination is <strong>grounding</strong>: make the model answer from provided, verified sources rather than memory. Paste the actual memo; retrieve the actual documentation; fetch the live data via a tool. Then instruct: 'Answer ONLY from the provided sources. If the answer is not in them, say so.' Grounded systems are measurably more accurate — and they cite their sources, so a human can verify in seconds. This pattern is RAG (Lesson 9) plus a guardrail, and it's exactly what interviewers mean when they ask 'how do you prevent hallucinations?' Write that answer down now.</p>
+<h2>Catching errors in your own workflow</h2>
+<p>Habits that catch hallucinations before they ship:</p>
 <ul>
-<li><strong>Citations and URLs</strong> — invented papers and dead links are the classic hallucination.</li>
-<li><strong>Numbers and statistics</strong> — "73% of users" is easy to generate, hard to have actually measured.</li>
-<li><strong>Names, dates, legal and medical specifics</strong> — especially for people or events after the training cutoff.</li>
-<li><strong>Tools and APIs that may not exist</strong> — models happily invent configuration options and function parameters.</li>
+<li><strong>Specificity check</strong>: treat every number, name, URL, and citation as guilty until verified. Verify the top three, spot-check the rest.</li>
+<li><strong>Ask for confidence and citations</strong>: 'List each claim with a confidence level and its source' — then check the sources exist.</li>
+<li><strong>Adversarial prompt</strong>: 'Critique your own answer above. What might be wrong or unsupported?'</li>
+<li><strong>Second-model check</strong>: run the output past a different model or a web search.</li>
+<li><strong>Code is self-verifying</strong>: run it. Tests catch hallucinated APIs instantly — one reason shipped, tested code is your strongest portfolio evidence.</li>
 </ul>
-<p>Rule of thumb: the more a claim *costs you if wrong*, the more you verify. Hallucinated haiku: harmless. Hallucinated contract clause: you're fired.</p>
-<h2>The verification workflow</h2>
-<p>Professionals don't hope — they check, proportionally to the stakes:</p>
-<p>1. <strong>Ask for sources and confidence.</strong> "Cite the source for each claim; mark any claim you are unsure about with [VERIFY]."</p>
-<p>2. <strong>Spot-check.</strong> Verify 2-3 specific facts independently (web search, the original document). If they fail, treat the whole output as suspect.</p>
-<p>3. <strong>Cross-examine.</strong> "You stated X. Give me your evidence, and tell me how you could be wrong."</p>
-<p>4. <strong>Separate generation from validation.</strong> Use a second AI pass — or a different model — to review the first: "Find every unverifiable or likely-false claim in this text."</p>
-<p>5. <strong>Human sign-off</strong> for anything legal, medical, financial, or public-facing.</p>
-<h2>Designing hallucination-resistant prompts</h2>
-<p>Prevention beats detection. Strong habits:</p>
-<ul>
-<li><strong>Ground the model</strong>: paste the actual source document and say "answer only from this text; if it's not there, say so."</li>
-<li><strong>Allow the escape hatch</strong>: explicitly permit "I don't know" — models hallucinate most when cornered into answering.</li>
-<li><strong>Ask for structure with an unknown option</strong>: outputs where every field is either sourced or marked <code>unknown</code>.</li>
-</ul>
-<p>In interviews and on the job, saying "here's my verification workflow" signals seniority far more than claiming "the AI is always right" — which, honestly, nobody believes anymore.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Answer only from the text below. If the answer is not in the text, reply exactly: "Not found in the provided text." Cite the paragraph you used for each answer.
-
-[PASTE TEXT]</p>
+<h2>From habits to systems</h2>
+<p>Personal habits don't scale to production. Companies deploy AI behind <strong>evals</strong> — automated test suites for AI output (Lesson 12): golden questions with known answers, LLM-as-judge checks for faithfulness to sources, and observability dashboards that flag suspicious answers. When an employer asks 'how do we trust this agent?', your answer is a pipeline: grounded generation, citations, automated checks, human review for high-stakes answers. That answer is worth salary. For now: every prompt you write in this course should end with a verification step. Make it a reflex.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Answer this question ONLY from the sources I paste below. After each claim, add [S1], [S2] etc. for the source you used. If the sources don't contain the answer, say 'not in sources.' Question: [QUESTION] Sources: [PASTE SOURCES]</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>Review this AI-generated answer for likely hallucinations. List each risky claim, rate it low/medium/high risk, and tell me exactly how to verify it: [PASTE ANSWER]. Do not rewrite the answer.</p>
+<div class="prompt"><p>Critique your previous answer like a skeptical senior reviewer: list every claim that is uncertain, unsourced, or possibly fabricated, and rate each as verified / plausible / suspicious.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Here is a list of 5 facts you told me: [LIST]. For each, tell me whether you are confident from training data, guessing, or extrapolating — be brutally honest.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Ask an AI chat: "Give me 5 recent statistics about remote work, with sources." Verify each source actually exists and says what's claimed. Log the results: how many were real, partially real, or fabricated. This 20-minute drill is the single best hallucination training there is.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Deliberately trigger a hallucination: ask an AI for 'three academic papers about [niche topic] with authors and years.' Then verify each one with web search and record how many were real. Write a 4-sentence reflection on what this means for using AI at work — and keep it; it's a killer interview story about why you build grounded, evaluated systems.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-03.html'>← Previous</a><a class='btn b1' href='p2-05.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

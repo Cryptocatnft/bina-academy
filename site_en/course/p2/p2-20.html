@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Building Your Online Presence: GitHub and Portfolio · בינה BINA</title>
+<title>GitHub Portfolio Polish (README, Demo Links) · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,43 +60,36 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 20/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>Building Your Online Presence: GitHub and Portfolio</h1>
-<div class="goal">🎯 What you'll be able to do: Assemble a public, credible presence — a portfolio site and a GitHub profile — that lets employers verify and test your work in minutes.</div>
+<h1>GitHub Portfolio Polish (README, Demo Links)</h1>
+<div class="goal">🎯 What you'll be able to do: Turn your four project repos into a recruiter-ready portfolio — profile README, pinned repos, consistent quality bar, and demo links that work when clicked at 2am.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-20.mp3"></audio></div></div>
-<h2>The portfolio site: one page, five projects</h2>
-<p>One page is enough — recruiters spend 90 seconds, so design for the skim. Structure:</p>
+<h2>The profile: your landing page</h2>
+<p>github.com/you is a landing page — treat it like one. Create a <strong>profile README</strong> (a repo named exactly like your username): two lines on who you are ('AI engineer — I build and deploy agents, RAG systems, and MCP tools'), the four projects as a linked list with one-line descriptions, stack keywords in compact badges, and links to LinkedIn and your demo video. Then <strong>pin</strong> the four project repos (not your practice repos). Set your contribution graph visible — a few months of consistent commits is quiet proof of momentum. Check everything in an incognito window: what a stranger sees in 30 seconds is the only thing that counts.</p>
+<h2>The repo quality bar</h2>
+<p>Each project repo must pass this checklist, no exceptions:</p>
 <ul>
-<li><strong>Header</strong>: name, target title, one line of positioning, links (LinkedIn, GitHub, email).</li>
-<li><strong>Projects</strong> — each with a 2-line pitch, a screenshot or short GIF, and three links: <strong>live demo, source, README</strong>. Order by strength, best first.</li>
-<li><strong>About</strong>: 3 sentences, human, with your course and certificate verification number once you have it (Lesson 24).</li>
+<li><strong>Hook line</strong>: 'Customer-support agent: classifies, retrieves, answers with citations, human-gated refunds — deployed.'</li>
+<li><strong>Live demo link at the top</strong> — tested this week, and a screenshot or GIF right below it (links die; screenshots don't).</li>
+<li><strong>Quickstart that actually runs</strong>: <code>cp .env.example .env</code>, <code>docker compose up</code>, done.</li>
+<li><strong>Architecture note</strong>: 4–6 lines or a simple diagram — FastAPI → LangGraph → Chroma → evals in CI.</li>
+<li><strong>Eval table</strong> in the README with dates.</li>
+<li><strong>License</strong> file (MIT).</li>
 </ul>
-<p>Build it wherever is fastest in 2026 — GitHub Pages, Carrd, Notion site, or an AI site-builder; the platform is irrelevant, the *working links* are everything. Test every link on your phone. A dead demo link reads as a dead project.</p>
-<h2>GitHub for the non-programmer</h2>
-<p>Even with zero-code projects, GitHub is where technical evaluators look — it signals you speak their culture. The minimum viable GitHub:</p>
-<p>1. <strong>Real name or consistent handle</strong>, photo, bio with target title ('Building AI agents — n8n, Zapier, LLMs').</p>
-<p>2. <strong>One repo per project</strong> — even if the 'code' is mostly JSON exports, prompts, and READMEs. That's legitimate: your prompts, schemas, and test logs *are* the artifacts.</p>
-<p>3. <strong>A serious README per repo</strong>: what it does, architecture, screenshots, design decisions, test results, limitations. Pin your best repos.</p>
-<p>4. Green squares help but aren't required — a handful of solid repos with excellent READMEs beats a year of commit noise.</p>
-<p>Lesson 23's take-home training will feel familiar if take-homes involve repos — many do. You're pre-building that muscle now.</p>
-<h2>The connecting tissue</h2>
-<p>Credibility compounds when everything cross-links. Checklist:</p>
-<ul>
-<li><strong>Consistent identity</strong>: same name, same photo, same title across LinkedIn, GitHub, and the site — search engines and recruiters both reward coherence.</li>
-<li><strong>Links everywhere</strong>: LinkedIn Featured → site and repos; site → LinkedIn; every README → live demo; your CV's Projects section → all of it.</li>
-<li><strong>Working screenshots</strong>: images that load fast and show the *thing working*, not abstract diagrams.</li>
-<li><strong>Google yourself</strong> (incognito): what actually appears? Fix the top five results you control.</li>
-</ul>
-<p>Also set up a professional email on your domain if you have one — <code>name@yourdomain</code> beats <code>name1234</code> in 2026's trust economy, and it's a 10-minute job.</p>
-<h2>Presence as a habit</h2>
-<p>The site is a living artifact, not a one-time chore. Keep a <strong>build log</strong> — every new project, course milestone, or interesting automation gets a short entry (this pairs perfectly with your Lesson 15 pipeline, which can draft these). Update the site monthly: swap in the newest project, refresh numbers in your results ('12 agents shipped', '40% faster triage'). Small consistent public evidence beats sporadic brilliance — six months of a visible build log is a track record, and a track record is the single most convincing object in the 2026 job market, because it's the one thing that can't be faked in an interview. You've been building one all course. Now it's public.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Here are my five projects with one-line descriptions: [LIST THEM]. Write the copy for a one-page portfolio: a positioning line, a 2-line pitch per project in priority order with suggested screenshots, and a 3-sentence About. Human tone, no buzzwords.</p>
+<p>The polish pass: archive or make private the tutorial repos, fix the broken READMEs you'd be embarrassed by, and remove any file named <code>final_v2_REAL.py</code>. Your history is fine — messy *front doors* are not.</p>
+<h2>Demo links that survive 2am</h2>
+<p>A recruiter clicking your link at 2am must see something working. Free-tier apps sleep — so: add a warm-up or a fast cold start, a friendly loading state, and a <strong>static fallback</strong>: a pre-run demo page or recording for when the live demo hiccups ('Live demo — if it's sleeping, watch the 90-second video'). Keep two sample datasets pre-loaded in every app (Lesson 14 rule) so no link ever shows an empty screen. Then monitor: put a <code>/health</code> check on a free uptime monitor so you get an email before a recruiter gets an error page. 'Deployed and maintained' is the whole message — the difference between a portfolio and a graveyard is whether the links work six months later, and interviews are exactly when you find out.</p>
+<h2>The portfolio site (optional but strong)</h2>
+<p>One page that ties it together — GitHub Pages is free: your one-liner, the four projects with screenshots and live links, the demo video, and contact. Design bar: clean and readable, not fancy — dark-mode-friendly, mobile-friendly, no frameworks needed. If you built the multi-agent content pipeline (Lesson 15), let it write your first drafts — dogfooding your own AI system is itself a talking point. Cross-link everything: site → repos → LinkedIn → CV. When Module 6's applications ask for 'portfolio URL,' this is the link you give. One hour of assembly, permanent professional presence.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Review my GitHub profile like a hiring engineer with 30 seconds: [PASTE PROFILE README + LIST OF REPOS]. Score it, list what's confusing, and give me the 5 highest-impact fixes.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>Review this README like a technical hiring manager deciding in 90 seconds: [PASTE README]. What's missing? What would make me doubt the project is real? Give me the 3 highest-impact fixes.</p>
+<div class="prompt"><p>Write hook lines (one sentence each) for my four project repos: support agent, document analyzer, multi-agent pipeline, personal assistant with MCP. Make each concrete with one number or capability — no adjectives.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Create a README quality checklist I can run against any repo, in table form, with pass/fail criteria: hook, demo link, screenshot, quickstart, architecture, evals, license. Then apply it to [PASTE MY README] and report gaps.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Ship the public layer: one-page portfolio site with all projects linked, GitHub account with a repo and serious README for your best project, consistent identity across all three surfaces, every link tested on mobile. Google yourself in incognito and note what a recruiter sees.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Do the full polish pass: profile README, four pinned repos upgraded to the quality bar, all demo links tested (fix or add fallbacks), messy repos archived, and optionally the portfolio site. Then send your GitHub URL to one person outside tech and ask what they think you do — if they can't tell, fix the top of the profile. Module 6 starts the actual hunt.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-19.html'>← Previous</a><a class='btn b1' href='p2-21.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

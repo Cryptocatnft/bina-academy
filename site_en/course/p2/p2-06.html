@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Few-Shot Patterns: Teaching by Example · בינה BINA</title>
+<title>Calling LLM APIs from Code (SDKs, Keys, Costs, Retries) · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,40 +60,60 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 6/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>Few-Shot Patterns: Teaching by Example</h1>
-<div class="goal">🎯 What you'll be able to do: Use example-driven prompting to lock in format, tone, and judgment — and know exactly how many examples any task needs.</div>
+<h1>Calling LLM APIs from Code (SDKs, Keys, Costs, Retries)</h1>
+<div class="goal">🎯 What you'll be able to do: Call GPT and Claude models from Python like a professional: SDKs, secure API keys, token costs, caching, rate limits, and retry logic that survives the real internet.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-06.mp3"></audio></div></div>
-<h2>Show, don't tell</h2>
-<p><strong>Zero-shot</strong> means instructions only: "Classify the sentiment of this review." It works for easy tasks. <strong>Few-shot</strong> adds worked examples: here's a review, here's exactly how I want it classified, and here's my label. Models are imitation machines — a concrete example encodes more information per token than a rule ever can. "Be concise and friendly" is vague. Two examples of a concise, friendly reply are a spec. Rule of thumb: the more your task involves *style, format, or judgment*, the more examples beat instructions.</p>
-<h2>Designing a good example set</h2>
-<p>A strong few-shot set is small — <strong>2 to 5 examples</strong> usually. Beyond that you burn context and returns flatten. Choose them like test cases:</p>
-<ul>
-<li>One <strong>typical case</strong> — the happy path.</li>
-<li>One or two <strong>edge cases</strong> — the ambiguous ones where you show the judgment call you want.</li>
-<li>Optionally one <strong>exception case</strong> — showing what to output when the task doesn't apply.</li>
-</ul>
-<p>Keep every example in exactly the same format — the model copies your inconsistencies as faithfully as your rules. Diversity matters: five near-identical examples teach almost nothing.</p>
-<h2>Patterns worth stealing</h2>
-<ul>
-<li><strong>Format-lock</strong>: 2 examples of your exact output shape before asking for the real thing.</li>
-<li><strong>Contrast pairs</strong>: show a bad output and a good output for the same input — "like this, not like that."</li>
-<li><strong>Escalation examples</strong>: in a support agent, include one example of *politely refusing* something and one of *escalating to a human* — the model learns the boundaries, not just the happy path.</li>
-<li><strong>Synthetic few-shot</strong>: ask the AI to generate candidate examples for your task, curate the good ones, then use them as your few-shot set. AI building prompts for AI — very on-brand for this course.</li>
-</ul>
-<p>Each pattern transfers directly to the agents you'll build in Module 3.</p>
-<h2>When few-shot isn't worth it</h2>
-<p>Few-shot costs tokens, money, and clarity. For trivial tasks — "translate to English," "fix this typo" — zero-shot is fine and cheaper. For heavy factual tasks, examples help less than *grounding* (giving source text). And beware the classic trap: <strong>a flawed example poisons everything</strong> — the model will reproduce your typo or your bias at scale, obediently. Audit your examples like code. The final test: run your prompt on 5-10 fresh inputs and see if outputs match the examples. If yes — ship it. If not — add an edge-case example and retry.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Classify each support message, following the pattern of these examples:
-Input: "Where is my order #1234?" → {"category": "order_status", "sentiment": "neutral", "escalate": false}
-Input: "This is the THIRD time it's broken, I'm furious!" → {"category": "complaint", "sentiment": "negative", "escalate": true}
-Now classify: [PASTE MESSAGES, one per line]. Return JSON lines only.</p>
+<h2>Your first API call</h2>
+<p>An API key turns a chat product into a programmable engine. Get a key from OpenAI or Anthropic, store it as an environment variable (<code>export OPENAI_API_KEY=...</code>), and call the model in about five lines:</p>
+<p><code>`</code>python</p>
+<p>import os</p>
+<p>from openai import OpenAI</p>
+<p>client = OpenAI()  # reads OPENAI_API_KEY automatically</p>
+<p>resp = client.chat.completions.create(</p>
+<p>model="gpt-4o-mini",</p>
+<p>messages=[{"role": "user", "content": "Explain RAG in one sentence."}],</p>
+<p>)</p>
+<p>print(resp.choices[0].message.content)</p>
+<p><code>`</code></p>
+<p>The same pattern works for Claude (<code>anthropic</code> SDK), Gemini, and open models. <strong>Never hardcode keys in code</strong> — keys leaked to GitHub get scraped in minutes. In Lesson 8 you'll add <code>.env</code> to <code>.gitignore</code> before it bites you.</p>
+<h2>Tokens, temperature, and cost control</h2>
+<p>APIs bill by <strong>token</strong> — roughly a word chunk — with input and output priced separately. A big prompt with a long pasted document can cost more than the answer is worth. Professional cost control: pick the cheapest model that works (mini variants for bulk tasks), cap <code>max_tokens</code> on outputs, and <strong>cache</strong>: repeated identical prompts can hit prompt-caching and cost a fraction. Watch your usage dashboard the first week until you internalize the economics. Also know <code>temperature</code>: near 0 for deterministic extraction (Lesson 7), higher for creative writing. Choosing model + parameters per task is a real, paid engineering decision — interviewers ask it.</p>
+<h2>Retries, rate limits, and failure</h2>
+<p>The real internet fails: 429 rate limits, 500s, 30-second timeouts. Production code retries:</p>
+<p><code>`</code>python</p>
+<p>import time</p>
+<p>def call_with_retry(fn, attempts=4):</p>
+<p>for i in range(attempts):</p>
+<p>try:</p>
+<p>return fn()</p>
+<p>except Exception as e:</p>
+<p>if i == attempts - 1:</p>
+<p>raise</p>
+<p>wait = 2 ** i  # 1s, 2s, 4s</p>
+<p>time.sleep(wait)</p>
+<p><code>`</code></p>
+<p>This is <strong>exponential backoff</strong>, and every serious AI codebase contains some version of it. The SDKs have built-in retry options too — know both. If your take-home assignment (Lesson 23) has no retry logic, reviewers notice. If it has it, they know you've been in production.</p>
+<h2>From one call to a loop</h2>
+<p>One call is a demo; systems are loops. Real pipelines call the model per item, track failures, log costs, and process in batches with a queue if volume grows. Sketch of the loop you'll build all course:</p>
+<p><code>`</code>python</p>
+<p>results = []</p>
+<p>for msg in messages:</p>
+<p>try:</p>
+<p>results.append(call_with_retry(lambda: classify(client, msg)))</p>
+<p>except Exception as e:</p>
+<p>results.append({"error": str(e), "input": msg})</p>
+<p><code>`</code></p>
+<p>Note the pattern: keep the input with the error so nothing is lost. Add <code>print(f"{i}/{len(messages)}")</code> progress logging and you have the skeleton of every batch job, evaluator, and agent step you'll write in this course.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>I have an OpenAI API key and the Python SDK installed. Walk me through: (1) storing the key safely as an environment variable on my OS, (2) my first chat completion call, (3) printing tokens used and rough cost. Give exact commands.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>I want you to [YOUR TASK, e.g. 'write product descriptions in my style']. Generate 5 diverse example input-output pairs for this task. I will pick the best ones to use as few-shot examples. Present them as a numbered list: Input → Output.</p>
+<div class="prompt"><p>My script calls an LLM API for 1,000 items and sometimes crashes on rate limits. Give me a robust Python retry pattern with exponential backoff, and explain when to use the SDK's built-in retries instead.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Compare running a task on a frontier model vs a mini model: what factors should I consider for cost, speed, and quality? Give me a decision rule I can apply to batch classification of support tickets.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Pick a recurring writing or classification task of yours. Build a few-shot prompt with 3 examples — one typical, one edge case, one exception. Test it on 5 new inputs. Then run the same task zero-shot and compare. Write down what the examples fixed.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Write <code>classify_tickets.py</code>: classify 20 hardcoded support tickets as bug / billing / question using the cheapest sensible model, with retry-with-backoff, per-call token logging, and a final cost summary printed at the end. Store the key in an environment variable. Save the output — it becomes the seed of your Lesson 13 support agent.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-05.html'>← Previous</a><a class='btn b1' href='p2-07.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

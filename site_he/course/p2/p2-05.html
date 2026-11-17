@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>פלטים מובנים: JSON בכל פעם · בינה BINA</title>
+<title>Python קראש-קורס לעבודת AI: רק מה שצריך · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -60,33 +60,56 @@ audio{width:100%;height:40px}
 <span class="crumb">קריירה ב-AI · הקורס 5/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>פלטים מובנים: JSON בכל פעם</h1>
-<div class="goal">🎯 מה תדעו לעשות: לשלוט בפרומפטינג לפלטים קריאים למכונה עם סכמות מאומתות — הכישרון שהופך AI מצעצוע צ'אט לכלי ייצור.</div>
+<h1>Python קראש-קורס לעבודת AI: רק מה שצריך</h1>
+<div class="goal">🎯 מה תדעו לעשות: להתקין סביבת Python מסודרת ולשלוט ביסודות ש-50% ממשרות ה-AI דורשות: משתנים, טיפוסים, פונקציות, רשימות ומילונים, pip ו-virtualenv.</div>
 <div class="audiobox"><img src="../assets/noa.png" alt="נועה">
 <div style="flex:1"><span>נועה · השמע את המרצה</span>
 <audio controls preload="none" src="../assets/audio/p2-05.mp3"></audio></div></div>
-<h2>למה JSON מנהל את העולם</h2>
-<p><strong>JSON</strong> הוא הפורמט האוניברסלי שבו תוכנה מחליפה דאטה: <code>{"name": "Dana", "score": 8}</code>. כש-AI מחזיר JSON, הוא יכול לזרום ישר לגיליון, למסד נתונים, לאתר או לצעד הבא באוטומציה. ברגע שלפלט יש סכמה, עברתם מ*צ'אט* ל*צינור עיבוד*. כל מוצר AI רציני — מיון פניות תמיכה, העשרת לידים, עיבוד מסמכים — הוא פלט מובנה מתחת למכסה המנוע. אם לומדים כישרון מקצועי אחד מהמודול הזה — שיהיה זה.</p>
-<h2>אנטומיה של פרומפט סכמה</h2>
-<p>פרומפט מבני ברמת ייצור מורכב מארבעה חלקים:</p>
-<p>1. <strong>המשימה</strong> במילים פשוטות.</p>
-<p>2. <strong>הסכמה המדויקת</strong> — שמות שדות, טיפוסים, ערכים מותרים. היו קפדנים.</p>
-<p>3. <strong>כללים לאי-ודאות</strong> — מה עושים עם דאטה חסרה (<code>null</code>, <code>"unknown"</code>, מערך ריק — בחרו אחד ואכפו אותו).</p>
-<p>4. <strong>דוגמה אחת</strong> — פלט מלא, תקין וממולא.</p>
-<p>דוגמה לשדה: <code>"sentiment": אחד מ-"positive" | "negative" | "neutral" | "mixed"</code>. תנו למודל אוצר מילים מפורש — והוא יפסיק להמציא כזה משלו. המודל יחקה את צורת הדוגמה שלכם כמעט בשלמות.</p>
-<h2>וולידציה: תסמכו, אבל תבדקו</h2>
-<p>גם עם פרומפט מושלם, מודלים מקיאים מדי פעם JSON שבור — פסיק תועה, הערה, גדרות markdown סביב הפלט. הרגל המקצועי: <strong>תמיד לאמת</strong>. להדביק לבודק JSON, או בקוד להריץ <code>json.loads()</code> ולתפוס שגיאה. כללים הגנתיים בפרומפט: 'החזר JSON גולמי בלבד, בלי markdown, בלי פרשנות, בלי גדרות קוד.' ולתכנן סכמות <strong>סלחניות בעיצובן</strong>: enums במקום טקסט חופשי, מספרים איפה שאפשר, ומערך <code>"uncertain_fields"</code> — שיהיה למודל לאן הוגן לשים ספק. כשלים צריכים להיות נראים, לא שקטים.</p>
-<h2>מעבר ל-JSON</h2>
-<p>אותה משמעת תקפה לפורמטים אחרים: שורות CSV לגיליונות, YAML לקונפיגורציה, SQL שהמודל כותב בשבילכם, ואפילו XML כשמערכת ישנה דורשת. העיקרון קבוע: <strong>קודם מחליטים את הצורה, אחר כך מפרומפטים אותה</strong>. שימו לב: להרבה API-ים וכלי צ'אט יש היום מצב 'פלט מובנה' או JSON מובנה — תשתמשו בו כשיש, אבל תדעו לעשות את זה ביד, כי ראיונות ומערכות ישנות לא תמיד מגישות לכם את כפתור הקלות.</p>
-<h2>פרומפט מוכן להעתקה</h2><div class="prompt"><p>חלץ דאטה מובנית מהטקסט שלמטה. החזר JSON גולמי בלבד (בלי גדרות markdown, בלי פרשנות) שתואם בדיוק לסכמה:
-{"company": string, "industry": string, "urgency": "low"|"medium"|"high", "key_points": string[], "next_action": string, "missing_info": string[]}
-כללים: null לכל דבר שלא צוין. לא לנחש. אם ערך דו-משמעי — שים אותו ב-missing_info.
-טקסט: [הדביקו טקסט]</p>
+<h2>סביבת עבודה: venv ו-pip</h2>
+<p>לפני שכותבים קוד — סביבה נקייה. <strong>virtualenv</strong> הוא תיק שמכיל את כל החבילות של הפרויקט שלכם, מנותק מהשאר, כך שפרויקט אחד לא שובר את השני. <strong>pip</strong> הוא מתקין החבילות. בטרמינל:</p>
+<p><code>`</code>bash</p>
+<p>python3 -m venv .venv</p>
+<p>source .venv/bin/activate   # Windows: .venv\Scripts\activate</p>
+<p>pip install requests</p>
+<p><code>`</code></p>
+<p>כשהסביבה פעילה רואים <code>(.venv)</code> בשורת הפקודה. חשוב: קובץ <code>requirements.txt</code> עם רשימת החבילות (אפשר לייצר עם <code>pip freeze > requirements.txt</code>) — זה מה שמאפשר למישהו אחר, כמו למשל המראיין שלכם, להריץ את הקוד שלכם.</p>
+<h2>משתנים, טיפוסים ומחרוזות</h2>
+<p><code>`</code>python</p>
+<p>name = "נועה"            # מחרוזת (str)</p>
+<p>salary = 28000           # מספר שלם (int)</p>
+<p>success_rate = 0.87      # מספר עשרוני (float)</p>
+<p>is_remote = True         # בוליאני (bool)</p>
+<p>print(f"{name} מרוויחה {salary:,} ש"ח")</p>
+<p><code>`</code></p>
+<p>ב-LLM בעבודה, כמעט הכול זה מחרוזות: הפרומפט שאתם שולחים, התשובה שחוזרת. f-strings (ה-f לפני המרכאות) מאפשרים להזריק משתנים לתוך טקסט — תשתמשו בזה אלף פעמים. שימו לב לניקוד מחרוזות ולמרכאות כפולות בתוך עברית ואנגלית מעורבת — מקור קלאסי לשגיאות.</p>
+<h2>רשימות ומילונים: הדלק והתיק של AI</h2>
+<p><strong>רשימות</strong> — סדרה של דברים; <strong>מילונים</strong> — זוגות מפתח-ערך:</p>
+<p><code>`</code>python</p>
+<p>messages = [</p>
+<p>{"role": "user", "content": "שלום!"},</p>
+<p>{"role": "assistant", "content": "מה נשמע?"},</p>
+<p>]</p>
+<p>user = {"name": "דנה", "tickets": 12, "plan": "pro"}</p>
+<p>print(user["plan"])              # pro</p>
+<p>print(len(messages))            # 2</p>
+<p><code>`</code></p>
+<p>שימו לב למבנה <code>messages</code>: רשימה של מילונים עם <code>role</code> ו-<code>content</code> — <strong>זה בדיוק הפורמט שכל API של LLM מקבל</strong>. כל שיחה עם מודל, בכל SDK, נראית כך. כשתבינו רשימות ומילונים — הבנתם את מבנה הנתונים של כל תעשיית ה-AI.</p>
+<h2>פונקציות: קוד שאפשר להשתמש בו שוב</h2>
+<p><code>`</code>python</p>
+<p>def estimate_cost(tokens: int, price_per_1k: float = 0.005) -> float:</p>
+<p>"""מחשב עלות משוערת של קריאה ל-LLM."""</p>
+<p>return tokens / 1000 * price_per_1k</p>
+<p>print(estimate_cost(12000))   # 0.06 דולר</p>
+<p><code>`</code></p>
+<p>פונקציה לוקחת קלטים, מחזירה פלט, ולא מערבבת את עצמה בקוד שמסביב. <code>def</code> מגדיר, שם הפונקציה באנגלית, פרמטרים עם טיפוסים, ומחרוזת תיעוד (docstring). מספיק לכם זה. בעולם אמיתי תכתבו בעיקר פונקציות קצרות שקוראות ל-API-ים ומעבדות טקסט — בדיוק מה שנעשה בשיעור הבא.</p>
+<h2>פרומפט מוכן להעתקה</h2><div class="prompt"><p>אני לומד Python לעבודת AI. תכתוב לי 10 תרגילים קצרים ברמת מתחיל סביב תרחישי LLM: ספירת טוקנים, מבנה הודעות, חישוב עלויות. לכל תרגיל תן את הקוד הפתור רק אחרי שאבקש.</p>
 <button class="copy" onclick="cp(this)">העתק</button></div>
-<div class="prompt"><p>תתנהג כמאמת קפדן. הנה הסכמה שלי: [הדביקו סכמה]. הנה פלט שנוצר ב-AI: [הדביקו פלט]. רשום כל שדה שמפר את הסכמה, כל ערך מוזר, והחזר את ה-JSON המתוקן.</p>
+<div class="prompt"><p>הנה קוד Python שכתבתי והוא זורק שגיאה: [הדבק קוד ושגיאה]. הסבר לי את השגיאה בעברית פשוטה, מה השורה הבעייתית עושה, ותן תיקון.</p>
+<button class="copy" onclick="cp(this)">העתק</button></div>
+<div class="prompt"><p>בדוק את הפונקציה שלי ותציע 3 שיפורים בסגנון מקצועי (שמות, טיפוסים, קצוות): [הדבק פונקציה]</p>
 <button class="copy" onclick="cp(this)">העתק</button></div>
 
-<div class="exbox"><h3>💪 תרגיל</h3><p><p>קחו 5 מיילים או הודעות אמיתיות. כתבו פרומפט סכמה שמחלץ כל אחת ל-JSON עם שדות כמו sender_intent, urgency, deadline, action_items. הריצו את כל החמישה, ואמתו כל פלט בבודק JSON. תעדו את אחוז השגיאות ותקנו את הפרומפט עד שכולם עוברים נקי.</p></p></div>
+<div class="exbox"><h3>💪 תרגיל</h3><p><p>התקינו venv חדש בתיקיית פרויקט, כתבו קובץ <code>cost.py</code> עם פונקציה שמקבלת רשימה של שיחות (רשימת מילוני messages) ומחזירה אורך כולל בהודעות. הריצו על דוגמה של 3 שיחות. צלמו את הפלט — זה הראפ שלכם על ידע Python עובד.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-04.html'>← שיעור קודם</a><a class='btn b1' href='p2-06.html'>שיעור הבא →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">סמן כהושלם ✓</button>
 </div></main>

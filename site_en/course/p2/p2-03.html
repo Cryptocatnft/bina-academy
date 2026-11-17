@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Context Windows and Why AI 'Forgets' · בינה BINA</title>
+<title>Context Windows and Why AI Forgets · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,29 +60,30 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 3/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>Context Windows and Why AI 'Forgets'</h1>
-<div class="goal">🎯 What you'll be able to do: Understand tokens and context windows, and learn the practical techniques that keep long AI conversations and documents from falling apart.</div>
+<h1>Context Windows and Why AI Forgets</h1>
+<div class="goal">🎯 What you'll be able to do: Understand tokens and context windows, and learn the professional techniques — summarize, compress, retrieve — that keep long conversations and big documents from falling apart.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-03.mp3"></audio></div></div>
 <h2>Tokens: the unit of memory</h2>
-<p>Models don't read words — they read <strong>tokens</strong>, chunks of text roughly three-quarters of a word in English (Hebrew usually costs more tokens per word). The <strong>context window</strong> is everything the model can "see" at once: your instructions, the conversation history, pasted documents, and its own previous answers. In 2026, windows range from about 128K tokens (roughly a 300-page book) to over a million on some models. Sounds huge — but everything you *add* eats space, and every reply accumulates. Long chats die by a thousand crumbs.</p>
+<p>Models don't read words — they read <strong>tokens</strong>, chunks of text roughly three-quarters of a word in English (Hebrew usually costs more tokens per word). The <strong>context window</strong> is everything the model can 'see' at once: your instructions, the conversation history, pasted documents, and its own previous answers. In 2026, windows range from about 128K tokens (roughly a 300-page book) to over a million on some models. Sounds huge — but everything you *add* eats space, every reply accumulates, and long chats die by a thousand crumbs. API pricing is also per token, so wasted context is wasted money.</p>
 <h2>Lost in the middle</h2>
-<p>Here's the catch nobody puts on the marketing page: models are strongest with information at the <strong>beginning and end</strong> of their context, and noticeably weaker with the middle. Stuff 200 pages into a model and ask about page 97, and quality drops — sometimes badly. Bigger windows made "just paste it all in" possible; it did not make it *good*. Professionals treat the context window like a whiteboard: put the important stuff at the top, keep it tidy, and erase what you no longer need.</p>
+<p>The catch nobody puts on the marketing page: models are strongest with information at the <strong>beginning and end</strong> of their context, and noticeably weaker with the middle. Stuff 200 pages into a model and ask about page 97, and quality drops — sometimes badly. Bigger windows made 'just paste it all in' *possible*; they did not make it *good*. Professionals treat the context window like a whiteboard: put the important stuff at the top, keep it tidy, and erase what you no longer need. This is also why naive 'chat with your PDF' apps disappoint — the good ones use retrieval, which you'll build yourself in Lesson 9.</p>
 <h2>Three techniques that fix forgetting</h2>
-<p><strong>1. Summarize and restart.</strong> When a long chat starts drifting, ask: *"Summarize our decisions, constraints, and open questions in a compact block."* Start a fresh chat and paste that block in. You keep the knowledge, drop the noise.</p>
-<p><strong>2. Compress with standing instructions.</strong> Keep a short, fixed block — your goals, format rules, key facts — at the top of every chat, and reference it instead of re-explaining.</p>
-<p><strong>3. Retrieve instead of remembering.</strong> For large document collections, don't paste everything — fetch only the relevant chunks. That's RAG (retrieval-augmented generation), and you'll build a mini version in Lesson 14.</p>
-<h2>Reading the signs of context failure</h2>
-<p>Context problems announce themselves: the model contradicts instructions you gave earlier, re-asks questions it already answered, loses your output format, or drifts back to generic answers. When you spot two of these, don't fight it — restart with a summary. Also watch your costs: API pricing is per token, so sloppy context isn't just a quality problem, it's a money problem. The habit of *deliberate context management* is one of the clearest marks that separates trained AI users from casual ones — and interviewers notice it.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Summarize this conversation so far into a handoff block for a fresh chat. Include: my goal, decisions made, constraints, current status, and the exact next step. Keep it under 150 words.
-
-[PASTE CONVERSATION OR WRITE 'our conversation so far']</p>
+<p><strong>1. Summarize and restart.</strong> When a long chat drifts, ask: *'Summarize our decisions, constraints, and open questions in a compact block.'* Start a fresh chat and paste that block. You keep the knowledge, drop the noise.</p>
+<p><strong>2. Compress with standing instructions.</strong> Keep a short, fixed block — goals, format rules, key facts — at the top of every chat, and reference it instead of re-explaining.</p>
+<p><strong>3. Retrieve instead of remembering.</strong> For large document collections, don't paste everything — fetch only the relevant chunks per question. That's RAG (retrieval-augmented generation), and it's 26% of agentic job postings. You build one from scratch in Lesson 9.</p>
+<p>Summarize, compress, retrieve: three words to remember.</p>
+<h2>Context in the code you'll write</h2>
+<p>When you build applications in Module 3, context stops being a chat nuisance and becomes an engineering budget. An agent that appends every tool result to its history will blow the window — and the bill — within a day. Real systems manage context deliberately: trim old messages, summarize completed steps, store full outputs in a database and pass only summaries forward. When you hear terms like 'memory management' or 'context engineering' in job interviews, this is what they mean. You'll implement exactly this pattern in the LangGraph agents of Lesson 11.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Summarize our conversation so far into a compact handoff block: decisions made, constraints, open questions, and next steps. Keep it under 150 words so I can paste it into a fresh chat.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>Here is a long document: [PASTE DOCUMENT]. Give me: (1) a 5-bullet executive summary, (2) the 3 most important exact quotes with their section numbers, (3) one important detail a reader might miss in the middle of the text.</p>
+<div class="prompt"><p>Here is a long document: [PASTE DOCUMENT]. Give me: (1) a 5-sentence executive summary, (2) a list of the 5 most important facts with where they appear, (3) any contradictions you noticed. Then tell me roughly how many tokens you think it used.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>I'm designing an AI app where users upload hundreds of documents. Explain lost-in-the-middle and why I should use retrieval instead of pasting everything, in words a product manager would understand.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Take a real long document (a report, contract, or article over 10 pages). Paste it into an AI chat and ask a specific question about a detail in the middle. Then apply the summarize-and-restart technique and ask the same question again. Write 3 sentences comparing the two answers — did context management help?</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Take one long, messy chat you've had with an AI this week. Ask the model to summarize it into a handoff block, start a fresh chat with that block, and verify the new chat is as smart as the old one at its best. Write down 2-3 sentences on what you noticed — this is context management, the first real engineering skill of this course.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-02.html'>← Previous</a><a class='btn b1' href='p2-04.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

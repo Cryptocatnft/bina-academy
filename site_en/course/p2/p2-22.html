@@ -61,31 +61,34 @@ audio{width:100%;height:40px}
 </div></div>
 <main><div class="wrap">
 <h1>Interview Prep with an AI Interviewer</h1>
-<div class="goal">🎯 What you'll be able to do: Rehearse the real AI-role interview — story answers, live prompting tests, portfolio walkthroughs — against an AI interviewer until you're smooth.</div>
+<div class="goal">🎯 What you'll be able to do: Prepare for both technical and behavioral AI-engineering interviews — using an AI interviewer to drill answers — with the question set you'll actually face and stories that prove you ship.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-22.mp3"></audio></div></div>
-<h2>The five question families</h2>
-<p>AI-role interviews circle five families:</p>
-<p>1. <strong>Behavioral</strong> — 'tell me about a time you automated something / handled pushback / shipped under uncertainty.'</p>
-<p>2. <strong>Technical concepts</strong> — 'explain an agent vs. a workflow,' 'why do LLMs hallucinate,' 'what's RAG?' You've answered all of these in this course.</p>
-<p>3. <strong>Live prompting</strong> — 'here's a task, write the prompt' or 'improve this prompt.' Often a shared screen. Module 2 is your muscle memory.</p>
-<p>4. <strong>Portfolio deep-dive</strong> — 'walk me through your support agent. Why this escalation rule?' Employers *test* projects — they'll use your demo and probe design decisions.</p>
-<p>5. <strong>Scenario/problem-solving</strong> — 'our support queue is drowning; what would you do?' They're testing process thinking: ask questions, propose a pilot, define metrics.</p>
-<p>Prepare one story per family and you've covered 80% of any AI interview.</p>
-<h2>The AI interviewer setup</h2>
-<p>Build your sparring partner in one prompt: 'You are a skeptical but fair interviewer for a [TARGET ROLE] position. Ask one question at a time across these five families, tailored to this job description: [PASTE JD]. After each answer, give feedback: what worked, what was vague, what a stronger candidate would add, then a 1-10 score. Push back at least twice during the interview, like a real hiring manager. Don't let me off easy.' Variants worth running: the <strong>recruiter screen</strong> (fit, motivation, salary — practice your range from Lesson 21), the <strong>technical deep-dive</strong> ('explain function calling to a non-technical stakeholder'), and the <strong>stress test</strong> (hostile follow-ups, 'we tried AI and it failed, convince me'). Three personas, one prompt template each.</p>
-<h2>The story format and the walkthrough</h2>
-<p>Behavioral answers land with <strong>STAR</strong>: Situation, Task, Action, Result — with your Result lines carrying *numbers* ('cut triage time 40%, 22-case test log, 90% pass rate'). Your Module 4 projects are story goldmines; each one is a ready-made STAR with evidence.</p>
-<p>The portfolio walkthrough deserves its own rehearsal — a tight 3-minute tour per project: the problem, the architecture, one hard decision and why, the test results, the limits. Practice with your AI interviewer interrupting you: 'why that escalation rule? what breaks at 10x volume?' Knowing your own READMEs cold — including the limitations you wrote — is what 'tested and real' sounds like. Fumbling your own design decisions is the fastest credibility killer; owning the limits is the fastest credibility *builder*.</p>
-<h2>Drill, record, repeat</h2>
-<p>The loop that works: <strong>run a full mock interview on record</strong> (voice or video — AI platforms support voice mode; use it, because speaking ≠ typing), <strong>review the transcript</strong>, note every vague answer, hedges ('kind of', 'I guess'), and missed numbers. Patch the weakest answer. Re-run that family only. Repeat. Cadence: 3 full mocks per week, spread out; daily short drills on the shakiest family. Before the real thing: one final mock the day before, then rest — overdrilling the last 12 hours adds nerves, not polish. Also prep your <strong>own questions</strong> for them (what does success look like in 90 days? how do you decide what to automate next?) — interviews are two-directional, and good questions read as seniority.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>You are a skeptical hiring manager interviewing me for [TARGET ROLE]. Job description: [PASTE JD]. One question at a time across behavioral, technical concepts, live prompting, portfolio deep-dive, and scenario families. After each answer: feedback + score out of 10 + one pushback follow-up. My portfolio: [1-LINE PER PROJECT]. Do not go easy on me.</p>
+<h2>The interview shape in 2026</h2>
+<p>AI-application interviews typically run: (1) a recruiter screen for keywords and salary band; (2) a technical conversation — your projects, live coding in Python, and design questions ('how would you build a support agent for X?'); (3) sometimes a take-home (Lesson 23); (4) a behavioral round. The technical rounds lean hard on <strong>your own repos</strong> — this favors you enormously: you'll be asked about code you wrote, shipped, and evaluated. Question set to prepare: explain RAG end-to-end; agents vs. workflows and when each fits; what MCP is and why it exists; how you prevent hallucinations; how you'd evaluate an agent you didn't build; your eval methodology; cost/latency trade-offs. Every one is a Lesson 9–12 topic — you have real answers.</p>
+<h2>Your AI interviewer</h2>
+<p>Set up a drill loop with a chatbot — this is the prompt to save:</p>
+<p>> 'You are a senior AI engineer interviewing me for a junior AI-application role. One question at a time; wait for my answer. Alternate technical questions about my projects (ask follow-ups like a real interviewer — challenge my design choices) and behavioral questions. After 8 questions, stop and give me a brutally honest scorecard: three things that sounded strong, three that sounded weak or vague, and the exact wording I should have used.'</p>
+<p>Run it 2–3 times a week, on voice where possible. Push paste your actual READMEs and code so the drill targets your real work. Vary the persona: friendly recruiter, skeptical staff engineer, non-technical founder. Nerves fade with repetition — this is a flight simulator for conversations that decide salaries.</p>
+<h2>STAR stories from your own history</h2>
+<p>Behavioral rounds need five prepared stories, and Module 4 gave you every one:</p>
+<p>1. <strong>Shipped under constraints</strong> — the support agent built layer-by-layer with evals ('deadline pressure, prioritized the human-gate and evals over extra features').</p>
+<p>2. <strong>Debugged something hard</strong> — the RAG retrieval you fixed with the bad-answer diagnosis from Lesson 9.</p>
+<p>3. <strong>Made a trade-off</strong> — mini model vs. frontier model with the cost numbers.</p>
+<p>4. <strong>Learned fast</strong> — MCP from zero to a working server in a week.</p>
+<p>5. <strong>Disagreed / took feedback</strong> — any code review you took from the AI interviewer or a peer, then improved.</p>
+<p>Format each as <strong>STAR</strong> — Situation, Task, Action, Result — 60–90 seconds spoken, out loud, timed. Practice with your AI interviewer until each story lands under two minutes with a number at the end.</p>
+<h2>Anti-patterns that sink juniors</h2>
+<p>What kills otherwise-passable candidates: <strong>vagueness</strong> ('it worked pretty well') — always attach a number; <strong>buzzwords without proof</strong> — saying 'MCP' earns a follow-up question, and you can answer it, so no problem — but never name-drop what you can't whiteboard; <strong>claiming solo perfection</strong> — say instead 'my first version had a routing bug; here's how I found it with traces,' because engineers trust people who find their own bugs; <strong>trashing your projects</strong> — confidence with evidence, not apology; <strong>not asking questions back</strong> — prepare three ('how do you eval changes here? what does the agent stack look like? what does success look like in 90 days?'). Questions that assume production reality mark you as someone who's shipped — because you have.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Be my AI interviewer: senior engineer, junior AI-application role, one question at a time. Alternate technical questions about my projects (READMEs: [PASTE]) and behavioral STAR questions; challenge weak answers with follow-ups. After 8 questions, give me a scorecard: 3 strengths, 3 weaknesses, better wording for my worst answer.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>Here is my answer to 'walk me through your favorite project': [PASTE OR DICTATE]. Rewrite it as a tight 3-minute walkthrough: problem, architecture, one hard decision with reasoning, test results with numbers, honest limits. Then give me the 3 questions a technical interviewer would ask about it.</p>
+<div class="prompt"><p>Here are the 10 questions I'm most likely to face in [TARGET ROLE]. For each, give me: what the interviewer is really testing, a strong 60-second answer structure, and the follow-up trap question. My projects: [SUMMARIZE].</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Rewrite my STAR story to be tighter and end with a number: [PASTE STORY]. Keep it under 90 seconds spoken, first person, no jargon unless it earns its place.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Run three full recorded mock interviews this week with your AI interviewer — one per persona (recruiter, hiring manager, technical). Review each recording, patch your two weakest answers, and re-drill just those families. Save your best 3-minute project walkthrough as written notes you can review before any real interview.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Complete three full mock interviews with your AI interviewer this week (one recruiter persona, one skeptical engineer, one founder). After each, write down your weakest answer and drill it twice more. Prepare and rehearse your five STAR stories out loud, timed. Record yourself once — watch it once — then never again. You'll be more rehearsed than almost every competing junior candidate.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-21.html'>← Previous</a><a class='btn b1' href='p2-23.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

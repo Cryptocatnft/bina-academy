@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio Project 1: Customer-Support Agent · בינה BINA</title>
+<title>Project 1: Customer-Support Agent (LangGraph, Deployed) · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,33 +60,45 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 13/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>Portfolio Project 1: Customer-Support Agent</h1>
-<div class="goal">🎯 What you'll be able to do: Build a complete, demo-ready customer-support agent grounded in a real knowledge base, with escalation rules and human handoff.</div>
+<h1>Project 1: Customer-Support Agent (LangGraph, Deployed)</h1>
+<div class="goal">🎯 What you'll be able to do: Build and deploy a complete customer-support agent with LangGraph — classification, RAG over FAQ docs, safe tool actions, human gate for refunds — your first portfolio-grade shipped project.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-13.mp3"></audio></div></div>
-<h2>Step 1: Invent the company (15 min)</h2>
-<p>Choose a small, believable business — a bakery, a VPN service, a plant shop — and write its <strong>knowledge base</strong>: 15-20 realistic FAQ entries covering products, pricing, shipping, returns, and account issues. Include 2-3 genuinely ambiguous cases (a lost order, a refund outside policy window) — these become your escalation tests. Write the KB as clean markdown files. This step is what makes the project *real*: the agent answers from *your* documents, not the model's imagination. Employers consistently check for grounding first; it's the line between a toy and a system.</p>
-<h2>Step 2: The brain (30 min)</h2>
-<p>Write the system message using your six-block structure:</p>
+<h2>The design</h2>
+<p>One repo, one agent, four components you already know:</p>
+<p>1. <strong>Classifier</strong> — structured output (Lesson 7): route each message to <code>faq</code>, <code>order_status</code>, or <code>refund</code>.</p>
+<p>2. <strong>RAG node</strong> — your Lesson 9 engine over a real FAQ/knowledge base.</p>
+<p>3. <strong>Tools</strong> — <code>get_order_status</code>, <code>create_refund</code> (function calling, Lesson 11).</p>
+<p>4. <strong>Human gate</strong> — refunds above a threshold pause for confirmation; everything else flows.</p>
+<p>In LangGraph terms: a classifier node with conditional edges to three branches, tool nodes, and a confirm node. This is a <code>StateGraph</code> with a recursion limit and checkpointer — you wrote that skeleton in Lesson 11. Now it does something a business would pay for: deflect tier-one support tickets with citations, and escalate the rest.</p>
+<h2>Build order that works</h2>
+<p>Build the boring way, test each layer before adding the next:</p>
+<p>1. Data first: 30–50 real FAQ entries (use a public support docs page, or your own company's). Chunk, embed, load Chroma at startup.</p>
+<p>2. Classifier with Pydantic schema — unit-test with 15 hardcoded messages (include typo'd and angry ones).</p>
+<p>3. RAG node with <code>[S#]</code> citations and 'not in sources' behavior.</p>
+<p>4. Tool nodes with mocked order data; log every call.</p>
+<p>5. The refund gate: <code>pending_refunds</code> in state, a <code>/confirm</code> endpoint, and a message to a human channel (even just a log line for the demo).</p>
+<p>Each step is small and provable — that's how professionals de-risk a build, and how your git history tells a story an engineer will respect.</p>
+<h2>Ship it with evals attached</h2>
+<p>Deployment repeats the Lesson 10 loop: FastAPI app, <code>/chat</code> and <code>/health</code> endpoints, Dockerfile, free-tier deploy, CI on push. What makes this portfolio-grade rather than a course exercise:</p>
 <ul>
-<li><strong>Identity</strong>: warm, competent, concise support agent for [company]; max 3 sentences per reply.</li>
-<li><strong>Scope</strong>: orders, returns, products, accounts. Off-topic → politely redirect.</li>
-<li><strong>Grounding</strong>: answer only from the knowledge base; if absent, say so and offer escalation. Never invent prices, policies, or order statuses.</li>
-<li><strong>Guardrails</strong>: never promise refunds or compensation; never reveal internal info; confirm order numbers before discussing specifics.</li>
-<li><strong>Edge behavior</strong>: angry customer → more calm, shorter sentences; three failed attempts → escalate.</li>
+<li><strong>Evals in CI</strong> (Lesson 12): a 30-case golden set — routing accuracy, answer faithfulness, refund-gate correctness — with the pass rate in the README.</li>
+<li><strong>A demo script</strong>: 3 example conversations in the README showing escalation, RAG citation, and the human gate.</li>
+<li><strong>A trace sample</strong>: one logged agent run, pretty-printed — proof you can debug what you ship.</li>
+<li><strong>Cost note</strong>: 'gpt-4o-mini, ~$0.002 per ticket' — engineering judgment on display.</li>
 </ul>
-<p>Add 2-3 few-shot examples: a good refund-policy answer, a graceful 'I don't know,' and one escalation in action.</p>
-<h2>Step 3: Escalation and handoff (45 min)</h2>
-<p>Every real support agent needs an exit. Define <strong>escalation triggers</strong>: policy exceptions, angry or repeat contacts, anything the KB doesn't cover, and legal/billing edge cases. Design the handoff: a structured summary the agent produces — issue, what was tried, customer sentiment, suggested next step — so a human inherits context, not chaos. In no-code platforms, the 'human' can be a form, an email notification, or a Slack message. Build the flow, then test it: send three conversation that *should* escalate and one that shouldn't. Escalating correctly is the behavior employers find most impressive — it shows you designed for the agent's limits, not just its powers.</p>
-<h2>Step 4: Test log, README, ship (30 min)</h2>
-<p>Run your full test set: 10 routine questions, 5 knowledge questions answerable only from the KB, 3 escalations, 2 hostile, 2 off-topic. Log every result in a simple table — input, expected, actual, pass/fail, fix. Iterate until the pass rate is honest (90%+ on routine, correct behavior on all escalations). Then write the <strong>README</strong>: what it does, architecture in one diagram or paragraph, your design decisions (why these guardrails, why this escalation policy), known limitations, and future improvements. Publish the link. That's portfolio artifact #1 — tested, documented, demoable. Keep the test log; showing *how you tested* is what separates you from tutorial followers.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Generate a customer-support knowledge base for a fictional [BUSINESS TYPE]. 18 FAQ entries in markdown, grouped by topic. Include realistic prices and policies, and 3 ambiguous edge cases marked as 'escalate to human.' Keep each entry under 80 words.</p>
+<p>README, code, live link, eval table: that's the full professional package.</p>
+<h2>The story you tell</h2>
+<p>This project maps directly onto the 2026 market: LangGraph (13% of agentic postings), RAG (26%), tool use (11%), evals (9%), Docker + cloud (34%). In interviews it becomes your anchor story: 'I built a support agent with a classification-to-action pipeline, grounded answers with citations, a human gate on refunds, and an eval suite in CI — deployed, here's the link.' Structure it as situation → design choices → one real bug you traced with logs → eval numbers before/after a fix. Next lesson: project two, document intelligence with RAG — the same engine pointed at higher-value data.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Act as a senior reviewer for my support-agent repo: [PASTE README + architecture]. Give me the top 5 weaknesses a hiring engineer would notice, and concrete fixes for each.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>Review my support agent test results: [PASTE YOUR TEST TABLE]. For each failure, diagnose whether the fix belongs in (a) the system message, (b) the knowledge base, or (c) the escalation logic — and give me the exact patched text.</p>
+<div class="prompt"><p>Write 30 realistic customer messages for a support agent golden set: 10 FAQ, 10 order-status, 10 refund — include angry, typo'd, ambiguous, and out-of-scope cases, labeled with expected route and behavior.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>My refund human-gate flow: [DESCRIBE]. How should I present it in a 2-minute demo video so the safe-design decision is obvious to a non-technical viewer?</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Complete all four steps and ship: knowledge base, system message with few-shot examples, escalation flow with handoff summary, 22-case test log at 90%+, and a public README. Post the link where a human can see it — that's the point.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Ship the support agent end-to-end: repo with README (demo link, eval table, architecture note), deployed public URL, 30-case eval suite in CI, and a 2-minute demo video or GIF. Post the link where one real person can try it (a community, a friend's Slack). Log what broke and fix it. This is portfolio artifact one of four — make it count.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-12.html'>← Previous</a><a class='btn b1' href='p2-14.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

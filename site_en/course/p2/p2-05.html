@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Structured Outputs: Getting JSON Every Time · בינה BINA</title>
+<title>Python Crash Course for AI Work · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,33 +60,55 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 5/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>Structured Outputs: Getting JSON Every Time</h1>
-<div class="goal">🎯 What you'll be able to do: Master prompting for machine-readable, schema-validated outputs — the skill that turns AI from a chat toy into a production tool.</div>
+<h1>Python Crash Course for AI Work</h1>
+<div class="goal">🎯 What you'll be able to do: Get functionally fluent in the Python you'll actually use for AI engineering — data structures, functions, modules, pip, and the API-and-JSON patterns that dominate real AI codebases.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-05.mp3"></audio></div></div>
-<h2>Why JSON runs the world</h2>
-<p><strong>JSON</strong> — JavaScript Object Notation — is the universal format that software uses to exchange data: <code>{"name": "Alex", "score": 8}</code>. When AI outputs JSON, it can flow straight into a spreadsheet, a database, a website, or the next step of an automation. The moment your AI output has a schema, you've moved from *chat* to *pipeline*. Every serious AI product — support triage, lead enrichment, document processing — is structured outputs under the hood. If you learn one pro skill from this module, make it this one.</p>
-<h2>Anatomy of a schema prompt</h2>
-<p>A production-grade structured prompt has four parts:</p>
-<p>1. <strong>The task</strong> in plain words.</p>
-<p>2. <strong>The exact schema</strong> — field names, types, allowed values. Be pedantic.</p>
-<p>3. <strong>Rules for uncertainty</strong> — what to do with missing data (<code>null</code>, <code>"unknown"</code>, empty array — pick one and enforce it).</p>
-<p>4. <strong>An example</strong> — one fully filled, valid output.</p>
-<p>Example field spec: <code>"sentiment": one of "positive" | "negative" | "neutral" | "mixed"</code>. Give the model an explicit vocabulary and it stops inventing its own. The model will match your example's shape almost perfectly — that's the few-shot force you'll sharpen in Lesson 6.</p>
-<h2>Validation: trust, then verify</h2>
-<p>Even with a perfect prompt, models occasionally emit broken JSON — a stray comma, a comment, markdown fences around the output. The pro habit: <strong>always validate</strong>. Paste into a JSON checker, or in code run <code>json.loads()</code> and catch the error. Defensive rules for prompts: "Return ONLY raw JSON, no markdown, no commentary, no code fences." And design schemas that are <strong>forgiving by design</strong>: enums instead of free text, numbers where possible, and an <code>"uncertain_fields"</code> array so the model has somewhere honest to put doubt. Failures should be detectable, not silent.</p>
-<h2>Beyond JSON</h2>
-<p>The same discipline applies to other formats: CSV rows for spreadsheets, YAML for config, SQL the model writes for you, even strict XML when an old system demands it. The principle is constant: <strong>decide the shape first, then prompt for it</strong>. Also note: many APIs and chat tools now offer a native "structured output" or JSON mode — use it when available, but know how to do it by hand, because interviews and legacy systems won't always hand you the easy button.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Extract structured data from the text below. Return ONLY raw JSON (no markdown fences, no commentary) matching exactly this schema:
-{"company": string, "industry": string, "urgency": "low"|"medium"|"high", "key_points": string[], "next_action": string, "missing_info": string[]}
-Rules: use null for anything not stated. Do not guess. If a value is ambiguous, put it in missing_info instead.
-Text: [PASTE TEXT]</p>
+<h2>The 20% of Python that does 80% of AI work</h2>
+<p>Real AI code is mostly data plumbing: fetch a request, reshape some JSON, call a model, return a result. The core toolkit:</p>
+<p><code>`</code>python</p>
+<p>user = {"name": "Dana", "tier": "pro", "messages": 3}</p>
+<p>tiers = ["free", "pro", "enterprise"]</p>
+<p>if user["tier"] not in tiers:</p>
+<p>raise ValueError(f"unknown tier: {user['tier']}")</p>
+<p>for i, t in enumerate(tiers):</p>
+<p>print(i, t)</p>
+<p><code>`</code></p>
+<p>Dictionaries and lists carry nearly all data. <code>if/else</code>, <code>for</code> loops, and <code>try/except</code> control the flow. F-strings build every message and log line. Functions package logic for reuse. Master these five things and you can read most production AI code today.</p>
+<h2>Functions, errors, and defensive habits</h2>
+<p>Everything you ship in this course lives inside functions, and every function that touches the outside world needs error handling:</p>
+<p><code>`</code>python</p>
+<p>def extract_topic(text: str, max_words: int = 5) -> str:</p>
+<p>"""Return a short topic label for a support message."""</p>
+<p>if not text.strip():</p>
+<p>raise ValueError("empty message")</p>
+<p>words = text.strip().split()</p>
+<p>return " ".join(words[:max_words]).lower()</p>
+<p><code>`</code></p>
+<p>Note the habits: type hints, a docstring, validation at the top, small pure logic. When an LLM writes code for you in later lessons, *these are the standards you review it against*. Defensive code isn't style — it's what survives contact with real users, and reviewers can smell the difference.</p>
+<h2>The ecosystem: pip, venv, and reading code</h2>
+<p>Python's superpower is its packages. <code>pip install requests</code> and you're talking HTTP; <code>pip install pydantic</code> and you have schemas; later, <code>pip install openai langchain chromadb</code> and you're building agents. Two rules: always work inside a <strong>virtual environment</strong> (<code>python -m venv .venv</code> then activate it) so projects don't poison each other, and pin your dependencies in <code>requirements.txt</code>. Learn to *read* package code on GitHub — being able to open a library's source and find what a function really does is a genuine job skill, and it's how you'll debug agent frameworks in Module 3.</p>
+<h2>Your first AI-shaped script</h2>
+<p>Here's the shape of almost every AI script you'll write this course:</p>
+<p><code>`</code>python</p>
+<p>import json</p>
+<p>def build_prompt(question: str, docs: list[str]) -> str:</p>
+<p>context = "\n".join(f"[{i+1}] {d}" for i, d in enumerate(docs))</p>
+<p>return f"Answer using only these sources:\n{context}\n\nQuestion: {question}"</p>
+<p>if __name__ == "__main__":</p>
+<p>docs = ["Refunds take 5 business days.", "VIP users skip the queue."]</p>
+<p>print(json.dumps({"prompt": build_prompt("How long is a refund?", docs)}))</p>
+<p><code>`</code></p>
+<p>Build data in, model call in the middle (Lesson 6), structured data out (Lesson 7). That's the whole profession in one pattern. You'll grow this exact file into your first deployed project.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>I'm learning Python for AI engineering. Give me 10 exercises, increasing difficulty, focused on dicts, lists, functions, error handling, and JSON — the patterns used in LLM application code. No classes, no algorithms.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>Act as a strict validator. Here is my JSON schema: [PASTE SCHEMA]. Here is AI-generated output: [PASTE OUTPUT]. List every field that violates the schema, every hallucinated value, and return the corrected JSON.</p>
+<div class="prompt"><p>Here is my Python function: [PASTE CODE]. Review it like a senior engineer: correctness, edge cases, naming, and one concrete improvement. Be specific, not polite.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Explain what this Python code does line by line for a beginner: [PASTE CODE]. Then tell me one bug or bad habit it contains.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Take 5 real emails or messages. Write a schema prompt that extracts each into JSON with fields like sender_intent, urgency, deadline, action_items. Run all 5, then validate every output in a JSON checker. Record your error rate and fix your prompt until all 5 parse cleanly.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Write and run a script <code>topic_report.py</code> that takes a list of 10 support messages (hardcode them), extracts a topic from each using your own function, counts topics with a dictionary, and prints a summary report. Handle empty messages gracefully with try/except. Commit it to the GitHub repo you'll create in Lesson 8 — this is portfolio artifact number one.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-04.html'>← Previous</a><a class='btn b1' href='p2-06.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Certificate Exam and Your Final Project · בינה BINA</title>
+<title>Certificate Exam Prep + Final Project Submission · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,40 +60,43 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 24/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>The Certificate Exam and Your Final Project</h1>
-<div class="goal">🎯 What you'll be able to do: Pass the BINA completion exam, submit final project five — your personal assistant agent — and claim your certificate with its verification number.</div>
+<h1>Certificate Exam Prep + Final Project Submission</h1>
+<div class="goal">🎯 What you'll be able to do: Consolidate everything for the BINA certificate exam and final submission — the knowledge check covering all 24 lessons, the project package checklist, and the career sprint that starts the day after.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-24.mp3"></audio></div></div>
-<h2>Project 5: the personal assistant agent</h2>
-<p>Your capstone combines everything: build an agent that runs a real part of your week. Minimum scope: <strong>(1) inbox triage</strong> (Lesson 12's read-only digest), <strong>(2) calendar proposals</strong> (reads availability, suggests slots, human confirms), <strong>(3) document work</strong> (summarize attachments, extract key fields to a sheet — reuse your Lesson 16 cleaning skills), <strong>(4) a daily briefing</strong> — one message each morning: today's meetings, priority emails, open tasks. Architecture: your platform's agent node, a system message with all six blocks, the smallest safe toolset, guardrails from Lesson 12 (read-only where possible, human fence on anything irreversible), and a change/action log. Keep it running for at least five days — real usage data is your results section, and 'I use it daily' is the strongest sentence in any interview.</p>
-<h2>The exam: what it covers</h2>
-<p>The completion exam checks working knowledge across all six modules:</p>
+<h2>The exam: what it covers and how to review</h2>
+<p>The certificate exam checks working understanding, not memorization. Areas, mapped to modules: LLM fundamentals — tokens, context, hallucinations, grounding (Lessons 1, 3–4); Python and API practice — schemas, retries, cost control (5–7); RAG — chunking, embeddings, vector search, citations (9); deployment — FastAPI, Docker, CI (10); agents — function calling, LangGraph, MCP, safety gates (11); evals — golden sets, LLM-as-judge, traces (12); career — market data, ATS keywords, interview structure (2, 17, 22). Review method: for each area, explain it out loud in 60 seconds without notes — the same fluency the interviewers will test. Where you stall, re-read that lesson's sections and re-run its exercise. Your projects are your notes: every concept is something you shipped.</p>
+<h2>The submission package</h2>
+<p>Final submission checklist — everything due together:</p>
 <ul>
-<li><strong>M1</strong>: how LLMs work, context windows, hallucination categories and verification workflow.</li>
-<li><strong>M2</strong>: structured-output schemas, few-shot design, when reasoning pays, system-message blocks.</li>
-<li><strong>M3</strong>: the agent loop, tools and function calling concepts, permission and safety design.</li>
-<li><strong>M4</strong>: the anatomy of your five projects — what you built and the decisions you made.</li>
-<li><strong>M5</strong>: CV keywords and tailoring, LinkedIn zones, portfolio evidence.</li>
-<li><strong>M6</strong>: the job map, interview families, take-home lifecycle.</li>
+<li><strong>Capstone repo</strong>: assistant agent with memory, tools, MCP server — passing CI with evals.</li>
+<li><strong>Deployed URL</strong>: live and health-checked (Lesson 20's uptime monitor running).</li>
+<li><strong>Demo video</strong>: the 3-minute walkthrough from Lesson 16.</li>
+<li><strong>Design-decisions doc</strong>: one page, what you chose and rejected, and why.</li>
+<li><strong>Portfolio set</strong>: all four project repos passing the Lesson 20 quality bar, pinned, with the profile README.</li>
+<li><strong>Career assets</strong>: master CV, LinkedIn optimized, one application already sent (Lesson 21's exercise).</li>
 </ul>
-<p>Format: multiple choice plus short practicals — write a schema, diagnose a broken prompt, spot the hallucination risk. It's open-notes and open-internet, like real work. Study method: reread your own project READMEs and exercise notes; you wrote the exam's answers already, in your own words.</p>
-<h2>Submission checklist</h2>
-<p>Submit the following, complete — partial submissions bounce:</p>
-<p>1. <strong>Final project link or repo</strong> — live demo (or screen recording), source, README with architecture, guardrails, five-day usage log, and your design decisions.</p>
-<p>2. <strong>Test log</strong> — minimum 10-message test set with results, including escalation and failure cases.</p>
-<p>3. <strong>Exam completion</strong> — passed within the allowed attempts (you get retakes; treat them as feedback, not failure).</p>
-<p>4. <strong>Portfolio readiness check</strong> — your Lesson 20 site updated with all five projects, links tested.</p>
-<p>5. <strong>Reflection</strong> — 150 words: what you built, what you'd improve, what you'll automate next.</p>
-<p>Timeline: most finish project five and the exam within one to two weeks of reaching this lesson. The certificate with its <strong>verification number</strong> is issued after all five items pass review — the number is what turns the certificate from a PDF into a checkable claim.</p>
-<h2>After the certificate</h2>
-<p>Certified, five tested projects, a public portfolio — now run the machine you built in Module 5 and 6: tailored applications to your Lesson 21 target list, weekly mock interviews, weekly posts from your content pipeline. Keep the assistant agent running; keep a build log; interviewers ask 'what have you automated lately?' and you'll have a same-week answer. The field will keep changing — the course's own method (AI builds, AI teaches, you verify) is your method now too: when a new model or tool lands, build a small thing with it, test it like Lesson 4 taught you, write the README. That loop — build, test, document, show — is the career. Verification number in hand, go claim the jobs. — Alex, signing off.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Design my final personal assistant agent. My week's pain points: [LIST 3 PAIN POINTS]. Give me: (1) minimum viable scope across inbox/calendar/documents/briefing, (2) the exact toolset with permission level for each tool, (3) the guardrails and human-confirmation points, (4) a 10-message test plan.</p>
+<p>Verify like an engineer would: run every link from an incognito browser, run <code>gitleaks</code>, re-run the CI suites. If the package passes your own review, it passes ours.</p>
+<h2>Where you now stand</h2>
+<p>Look at what you can put on a CV, with links: Python, structured LLM outputs, RAG built from scratch, FastAPI + Docker + CI deployment, LangGraph agents, LangChain, function calling, MCP servers, evals and observability — mapped almost one-to-one onto the 2026 demand list: Python (50% of agentic postings), cloud (34%), MCP (27%), RAG (26%), LangChain (15%), LangGraph (13%), vector DBs (13%), tool use (11%), evals (9%). Four deployed systems with public URLs — when only ~4% of AI-engineer postings are entry-level, shipped proof is exactly how you compete. And the working habits — test it, measure it, cite it, ship it — are the ones employers keep. That combination is your credential; the certificate just makes it official.</p>
+<h2>The 30-day sprint</h2>
+<p>Passing the exam is a milestone, not a finish line. Run the next 30 days like a project:</p>
+<ul>
+<li><strong>Week 1</strong>: five tailored applications to Lesson 2 target companies; share the capstone demo on LinkedIn; tell your network you're looking.</li>
+<li><strong>Week 2</strong>: five more applications plus direct outreach — three short messages (Lesson 19 formula) to engineers at target companies; keep one build-in-public post a week.</li>
+<li><strong>Week 3</strong>: keep the AI-interviewer drills at twice a week until offers arrive; do one timed take-home simulation if any are pending.</li>
+<li><strong>Week 4</strong>: iterate on feedback — track which applications convert, fix your weakest interview answer, and consider the internal-transfer path (Lesson 21, bucket 4).</li>
+</ul>
+<p>Treat 'land the role' exactly like your capstone: scope it, measure it, ship it.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Run my BINA certificate exam review: quiz me across all modules — LLM fundamentals, Python/APIs, structured outputs, RAG, deployment, agents, MCP, evals, career. One question at a time, mix recall with judgment questions, correct me immediately with the right answer and the lesson it came from. 20 questions, then a score report with my weak areas.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>Quiz me for my completion exam. 20 questions across: LLM fundamentals, context and hallucinations, structured outputs, few-shot, agent loop and tools, safety design, job-search strategy. One at a time, multiple choice or short answer, correct answer and explanation after each. Keep score.</p>
+<div class="prompt"><p>Review my final submission package like the BINA reviewer: [PASTE LINKS: capstone repo, deployed URL, video, portfolio, CV]. Give me a pass/fail per checklist item and the top 3 fixes before I submit.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Build my 30-day post-certificate sprint plan: [MY SITUATION: hours available, target market, current status]. Weekly goals, application quota, outreach messages, interview drills, and one metric to review each Friday.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Build, run, and submit: personal assistant agent live for five days with a usage log, 10-message test log, exam passed, portfolio site updated with all five projects, and your 150-word reflection. Then claim your certificate and verification number — and put that number on your CV and LinkedIn the same day.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Take the certificate exam. Then submit the full package: capstone repo link, deployed URL, demo video, design doc, portfolio URL, and CV. The day after submission, start Week 1 of the sprint: five applications, one LinkedIn post shipping your capstone to the world. You started this course as an AI user; you're finishing it as an AI engineer with four deployed systems. Go.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-23.html'>← Previous</a><a class='btn b1' href='index.html'>All tracks →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>

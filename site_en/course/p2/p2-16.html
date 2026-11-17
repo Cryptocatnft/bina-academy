@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio Project 4: Data-Cleaning Agent · בינה BINA</title>
+<title>Project 4 + Capstone: Personal-Assistant Agent with Tool Use · בינה BINA</title>
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -60,27 +60,50 @@ audio{width:100%;height:40px}
 <span class="crumb">AI Career · Course 16/24</span>
 </div></div>
 <main><div class="wrap">
-<h1>Portfolio Project 4: Data-Cleaning Agent</h1>
-<div class="goal">🎯 What you'll be able to do: Build an agent that fixes messy data — validating, correcting, and auditing CSV records — with an audit trail no spreadsheet jockey can match.</div>
+<h1>Project 4 + Capstone: Personal-Assistant Agent with Tool Use</h1>
+<div class="goal">🎯 What you'll be able to do: Build your capstone — a personal-assistant agent with MCP tools, memory, and a web UI — deployed, evaluated, and packaged as the centerpiece of your portfolio and your course certificate.</div>
 <div class="audiobox"><img src="../assets/alex.png" alt="Alex">
 <div style="flex:1"><span>Alex · Play the lecturer</span>
 <audio controls preload="none" src="../assets/audio/p2-16.mp3"></audio></div></div>
-<h2>Step 1: Your messy dataset (20 min)</h2>
-<p>Generate (or download) a realistic dirty CSV — customer records are ideal: 200+ rows with inconsistent names ("Dana LEVI", "dana levy"), emails in five formats, dates in three conventions, missing phones, duplicated rows, and a category field where 'corporate', 'Corporate', and 'B2B' all mean the same thing. Realism is everything here — this exact mess is what every operations team actually lives with. Define the target <strong>schema</strong>: the clean field names, formats, and allowed values — your canonical 'single source of truth.' Write your cleaning rules in plain language: how names are normalized, what counts as a duplicate, what to do with a missing email. Rules first, agent second. Always.</p>
-<h2>Step 2: The cleaning loop (45 min)</h2>
-<p>The agent processes records in small batches — 10-25 rows at a time, to keep context clean (Lesson 3 forever). For each batch it returns <strong>structured JSON</strong> (Lesson 5): the corrected record, a list of changes made, a confidence level per change, and a <code>needs_human</code> flag for anything ambiguous — a duplicate that might actually be two people, an email with a likely typo. Two golden rules: <strong>never silently invent data</strong> (missing phone stays missing, flagged) and <strong>every change gets a reason</strong> (<code>"field": "email", "change": "fixed typo dana@gmial.com → dana@gmail.com", "confidence": "high"</code>). That change log is the entire soul of this project — it's what turns 'AI touched my data' from a threat into an audited blessing.</p>
-<h2>Step 3: Validation and the audit trail (45 min)</h2>
-<p>Cleaning without validation is just different dirt. Build checks: email format regex, dates parse to ISO, every category is in the allowed list, no duplicate IDs survived. Run the checks *after* the agent and log results — a validation report, not a vibe. Then assemble the <strong>audit trail</strong>: a spreadsheet of every change (row, field, before, after, reason, confidence), plus summary stats — rows processed, changes by type, records flagged for human review. Export three artifacts: <code>clean_data.csv</code>, <code>change_log.csv</code>, <code>validation_report.md</code>. Compare effort and error rate against cleaning 50 rows by hand — that comparison is your results section. 'What took 6 hours now takes 12 minutes with a full audit log' is a sentence that gets people hired.</p>
-<h2>Step 4: README, and looking ahead (30 min)</h2>
-<p>Write the README around the audit trail: problem (messy data, fear of AI changes), solution (rules + LLM judgment + validation + full change log), architecture diagram, results with your real numbers, decisions (why batch size, why flags instead of guesses), limitations (what it shouldn't touch — financial records without review), next steps. Record a 60-second demo: dirty rows in, clean CSV + change log out. That's portfolio artifact #4 — four of five, with project five, your <strong>personal assistant agent</strong>, waiting as the course-final in Lesson 24. This data-cleaner becomes its skill: your final agent will know how to fix a spreadsheet, triage an inbox, and summarize documents. Keep the files; the band gets back together soon.</p>
-<h2>Copy-ready prompt</h2><div class="prompt"><p>Clean these customer records. Return ONLY JSON lines, one per record:
-{"id": ..., "clean": {"name": ..., "email": ..., "date": "YYYY-MM-DD", "category": one of [corp, smb, personal]}, "changes": [{"field": ..., "before": ..., "after": ..., "reason": ..., "confidence": "low|medium|high"}], "needs_human": true/false}
-Rules: never invent values; normalize dates to ISO; if unsure, set needs_human=true. Records: [PASTE ROWS]</p>
+<h2>The spec</h2>
+<p>Your assistant does five things, each mapping to a skill from the market index:</p>
+<p>1. <strong>Natural conversation</strong> — a LangGraph agent with a short system persona and a recursion limit.</p>
+<p>2. <strong>Memory</strong> — long-term facts (name, preferences, projects) stored outside the context window: extract with a structured-output step, store in SQLite, inject a compact summary into each session. This is Lesson 3's 'summarize, compress, retrieve' as engineering.</p>
+<p>3. <strong>Task tools</strong> — add/complete/list to-dos and calendar events (function calling).</p>
+<p>4. <strong>Web answer tool</strong> — search + fetch, with sources in every answer.</p>
+<p>5. <strong>MCP exposure</strong> — the task tools also served via an MCP server, so Claude or any MCP client can drive your assistant.</p>
+<p>Docker + deploy + evals + README: the full Lesson 13–15 treatment, with a real UI and a memory demo you can show in 30 seconds.</p>
+<h2>Memory and context engineering</h2>
+<p>Memory is where beginners show and engineers shine. Design:</p>
+<p><code>`</code>python</p>
+<p>class Memory(BaseModel):</p>
+<p>facts: list[Fact]  # {key, value, confidence, updated_at}</p>
+<p>async def remember(state: AgentState) -> AgentState:</p>
+<p>extracted = await extract_facts(state.messages)   # structured output</p>
+<p>upsert(db, extracted)                            # SQLite</p>
+<p>state.system_extra = compact_summary(db)         # ≤150 tokens</p>
+<p>return state</p>
+<p><code>`</code></p>
+<p>Run <code>remember</code> at session end, inject the compact summary at session start. Two rules keep it sane: memory is <strong>extracted, not raw</strong> (store 'prefers short answers', not the whole chat) and <strong>bounded</strong> (a summary under 150 tokens, or you've rebuilt the context-window problem). 'How would you add memory to an agent?' is a standard interview question — you'll answer with code you shipped.</p>
+<h2>Prove it works</h2>
+<p>The capstone eval suite is your certificate's technical core:</p>
+<ul>
+<li><strong>Memory tests</strong>: tell it a fact in session 1, assert it's recalled in session 2 (5 scripted cases).</li>
+<li><strong>Tool tests</strong>: unit-test each tool; integration-test the routing ('remind me tomorrow at 9' → calendar tool, not chat).</li>
+<li><strong>Web-answer faithfulness</strong>: 10 questions scored by your LLM-as-judge for source-grounding.</li>
+<li><strong>Safety</strong>: one test where the user asks for a destructive action and the agent confirms first.</li>
+</ul>
+<p>All in CI, results in the README, with a <strong>demo script</strong> that walks a viewer through conversation → memory recall → tool use → MCP connection in under three minutes. Record that walkthrough as your demo video. Practice it until smooth; in Module 6 you'll perform a version of it live.</p>
+<h2>Package and submit</h2>
+<p>Final submission for the BINA certificate (exam in Lesson 24): repo link, deployed URL, demo video, README with architecture diagram, eval table, and a one-page 'design decisions' doc covering what you chose, what you rejected, and why. Then re-pin all four portfolio repos at the top of your GitHub profile — support agent, document analyzer, multi-agent pipeline, personal assistant. That's four deployed systems covering Python, RAG, LangGraph, LangChain, MCP, vector DBs, evals, Docker, and cloud — essentially the whole demand list from Lesson 2, with links. Module 5 turns this work into a CV, a LinkedIn, and a story that gets you hired.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Review my capstone spec: [PASTE ARCHITECTURE]. Act as a hiring engineer: what's missing, what's overbuilt, and what one addition would most increase its interview value?</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
-<div class="prompt"><p>Here are my cleaning rules and a sample of change logs: [PASTE BOTH]. Find the 3 riskiest patterns in the changes — places where the agent might be wrong — and write one additional rule to prevent each.</p>
+<div class="prompt"><p>Design memory extraction for a personal assistant: what fact types to store (preferences, people, projects, commitments), the Pydantic schema, when to run extraction, and how to keep the injected summary under 150 tokens.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Write my 3-minute capstone demo script: conversation → memory recall → tool use → MCP connection. Include exact example lines the agent should say, and transitions for a non-technical viewer.</p>
 <button class="copy" onclick="cp(this)">Copy</button></div>
 
-<div class="exbox"><h3>💪 Exercise</h3><p><p>Ship the data-cleaner: dirty dataset of 200+ rows, cleaning rules documented, batch loop with JSON change logs, validation checks, and the three output files. Include your manual-vs-agent comparison numbers in the README. Archive everything — your final-project agent will reuse this skill.</p></p></div>
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Ship the capstone: assistant with memory, task + web tools, MCP server, UI, full eval suite in CI, deployed public URL, demo video, design-decisions doc. Submit per Lesson 24's checklist. Then take an evening off — you've built four deployed AI systems, and that puts you ahead of most applicants for every job you're about to apply to.</p></p></div>
 <div class="nav"><a class='btn b2' href='p2-15.html'>← Previous</a><a class='btn b1' href='p2-17.html'>Next →</a></div>
 <button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
 </div></main>
