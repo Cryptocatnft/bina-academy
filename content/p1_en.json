@@ -1,0 +1,599 @@
+{
+  "track": "p1",
+  "lang": "en",
+  "lessons": [
+    {
+      "id": "p1-01",
+      "title": "Getting Real Answers: The Four-Part Prompt",
+      "goal": "Teach the four building blocks of a good prompt — role, context, format, examples — so the AI stops guessing what you want.",
+      "audio_intro": "Hey, I'm Alex, and welcome to Everyday AI — the course AI built, and AI teaches. Yes, really. Today we fix the number one reason people get useless AI answers: vague prompts. You type 'help me with dinner' and get a shrug in text form. Here's the secret: the AI is a brilliant new hire on their first day, every day — knows everything, nothing about you. Ten minutes from now you'll know the four-part prompt — role, context, format, examples — and your answers get scary good. Let's go.",
+      "sections": [
+        {
+          "h": "Why vague prompts fail",
+          "body": "When you type 'plan my week' or 'fix my email,' the AI fills the gaps with guesses about an average person — and you are not average. A vague prompt is like calling your accountant and saying 'money?' and hoping for the best. The model isn't being lazy; you're making it mind-read. Every detail you skip is a coin flip. The fix isn't typing more words — it's typing the *right* words. The four-part prompt below turns a coin flip into a straight answer. Try it today on something you'd normally ask twice."
+        },
+        {
+          "h": "The four parts",
+          "body": "**Role** — tell it who to be: 'Act as a veteran nutritionist' or 'Act as a blunt editor.' Roles pull in the right vocabulary and standards. **Context** — the stuff only you know: 'I cook for a family of four, hate washing dishes, 30 minutes max.' **Format** — what the answer should look like: a table, a 5-item list, one paragraph, a text under 100 words. **Examples** — show one thing you like: 'Make it punchy, like: [paste a sample].' Role aims the expertise, context aims it at *you*, format controls the deliverable, examples set the taste. Skip one and you feel it."
+        },
+        {
+          "h": "Before and after",
+          "body": "Before: 'Help me plan meals.' After: 'Act as a practical family nutritionist. Context: family of four, two picky kids, no seafood, 30-minute weeknight dinners, standard supermarket. Format: 5 dinners as a table — dish, main steps, total time. Keep it under 250 words.' The second one lands on the first try, every time. Same AI, same you, ten extra seconds of typing. That's the whole trick of this course: small effort in the right place. From here on, we stack these habits — and by lesson 20, they'll run on autopilot."
+        },
+        {
+          "h": "The one-sentence habit",
+          "body": "If you remember nothing else, remember this template: **'Act as ___. My situation: ___. Give me ___ in the form of ___.'** Fill in the blanks, out loud if it helps. It takes about fifteen seconds and covers ninety percent of daily use. When an answer disappoints, don't start over — add one missing part. Boring answer? Tighten the role. Generic advice? Add context. Wrong shape? Fix the format. Wrong vibe? Give an example. You're not begging a machine; you're briefing a colleague. That mindset alone puts you ahead of most users out there."
+        }
+      ],
+      "prompts": [
+        "Act as a [role: e.g., practical family nutritionist]. My situation: [context: who's involved, constraints, what you've tried]. Give me [what you want] in the form of [format: table, list, short paragraph]. Keep it under [X] words.",
+        "Before you answer, ask me up to 3 clarifying questions that would most improve your answer. Then wait for my reply."
+      ],
+      "exercise": "Take one prompt you used recently that got a weak answer and rewrite it with the four parts: role, context, format, example. Run both versions and write down the two biggest differences you see in the answers."
+    },
+    {
+      "id": "p1-02",
+      "title": "Custom Instructions: Set It Once, It Works Everywhere",
+      "goal": "Configure your AI's permanent settings so every conversation already knows who you are and how you like answers.",
+      "audio_intro": "So lesson one made you type the same stuff over and over, right? 'I have two kids, I live in Austin, keep it short.' There's a setting for that. Today: Custom Instructions — the highest-value two minutes in this course. It's a little profile you fill out once, and from then on, every single chat starts already knowing you — like giving your assistant the onboarding document. We'll set it up together, and I'll show you exactly what to write, and what to leave out. Let's do it.",
+      "sections": [
+        {
+          "h": "What Custom Instructions actually are",
+          "body": "Custom Instructions is a settings panel — in ChatGPT it's under Settings → Personalization → Custom Instructions; Claude and Gemini have their own versions of persistent preferences. It's two boxes: 'What should the AI know about you?' and 'How should it respond?' Whatever you write there rides along into every new conversation. The key mental model: it's the difference between calling a stranger for help every time versus having a colleague who already knows your world. You write it once, it applies everywhere, and you can edit it any time. Today you'll write yours for real."
+        },
+        {
+          "h": "What to put in it",
+          "body": "Box one — the facts the AI can't guess: family situation, job in plain words, town, key constraints ('budget-conscious,' 'kosher kitchen,' 'I manage a small dental clinic'). Box two — your taste in answers: 'Plain English, no corporate fluff, short paragraphs, bullet points over essays, give concrete examples, tell me when my idea is bad.' Notice that last one — you're allowed to order honesty. Keep the whole thing under about 300 words each; it's a memo, not a memoir. Update it whenever life changes — new job, new baby, new diet. It should always be a little out of date, not a lot."
+        },
+        {
+          "h": "The line between useful and clutter",
+          "body": "Here's the trade-off: every word in your instructions colors every answer. Great for stable facts ('I live in Denver'), risky for moods ('I'm overwhelmed this week') — moods belong in the chat itself. Also skip anything that's really a security question, which we'll cover in lesson 19 — think twice before pasting full ID numbers or account credentials into a settings box. The sweet spot: durable facts and strong style preferences. Vague adjectives like 'be helpful and nice' waste space — the model does that anyway. Specific, checkable, current. That's a good profile."
+        },
+        {
+          "h": "Checking your work",
+          "body": "After you save, run the acid test: open a brand-new chat and ask something ordinary — 'plan a Saturday for my family' or 'draft a message to my kid's teacher.' If the answer already fits you — right length, right tone, knows the constraints — your instructions are working. If it still feels generic, go back and add what was missing. This loop — set, test, tweak — is how you tune the system. Most people set it once and forget it; you'll revisit it every couple of months. Congratulations: your AI now starts every conversation halfway to knowing you."
+        }
+      ],
+      "prompts": [
+        "Box 1 (What should the AI know about you?) — example: 'I'm a parent of two (ages 7 and 10) in Denver. I run a small home-services business. Budget-conscious, time-poor. Non-technical: plain English only.'",
+        "Box 2 (How should it respond?) — example: 'Short and direct, no corporate fluff. Bullet points and tables over essays. Concrete examples, not theory. If my request is unclear, ask one clarifying question before answering. Tell me when my idea won't work.'"
+      ],
+      "exercise": "Open your AI's settings and fill in both Custom Instructions boxes using today's template: 5 facts about you, 5 style rules. Save, then test in a fresh chat with a real request from this week and note what changed."
+    },
+    {
+      "id": "p1-03",
+      "title": "Projects & Memory: An AI That Remembers",
+      "goal": "Use Projects to give the AI a permanent home base with your documents, and understand Memory so it stops forgetting what matters.",
+      "audio_intro": "Ever had a great chat with an AI, closed the tab, and lost everything? You told it your whole life story — poof, gone. Today we fix that with two superpowers: Projects and Memory. Projects give the AI a desk — your files live there, and every conversation shares the same brain. Memory means it takes notes on you across chats. By the end, you'll stop re-explaining yourself to a machine that met you eleven times. Ten minutes that save ten a day, forever. Let's set up your first project.",
+      "sections": [
+        {
+          "h": "The forgetting problem",
+          "body": "By default, every chat is a clean slate. That's why you keep re-pasting that recipe list, that project brief, that teacher's email. Two features solve it. **Projects** (in ChatGPT; Claude has Projects too) is a folder with a shared brain: you drop in files — a PDF of your recipes, your lease, your kid's syllabus — and every chat inside that project can read them. **Memory** is the AI's notepad about *you*: preferences it picks up across conversations ('user has a nut allergy'). One organizes your stuff, the other accumulates your context. You want both, used deliberately."
+        },
+        {
+          "h": "Setting up your first Project",
+          "body": "Create a Project, give it an honest name — 'Family HQ,' 'Renovation,' 'My Business' — and add a short project instruction: 'This is our family command center. Files include the school calendar and the meal rotation. Default to practical, money-saving answers.' Then upload the relevant files. From now on, any chat you start inside the project already has the calendar, the plans, the history. Five chats about the renovation all share one brain, so chat six doesn't ask 'what renovation?' New topic that's big enough? New project. Small topic? Regular chat is fine."
+        },
+        {
+          "h": "Memory: the notepad about you",
+          "body": "Memory works quietly: during chats the model may save facts — 'prefers metric,' 'kids are 7 and 10,' 'runs a dental clinic' — and uses them later. Find it under Settings → Personalization → Memory, where you can view and delete any single entry. My advice: turn it on, check the list monthly, and delete anything stale or wrong, because wrong memories give wrong answers with confidence. Important nuance: Memory lives in the app, not in a specific project — it colors everything. Sensitive family stuff you'd rather not store? Say so in chat, or keep it out of the conversation entirely. Lesson 19 goes deeper."
+        },
+        {
+          "h": "When NOT to use these",
+          "body": "Projects and Memory are power tools, not a lifestyle. One-off questions ('translate this sign') don't need a project. Tossing every PDF you own into one giant project makes every answer slower and muddier — the AI has to fish through clutter. Same with Memory: if you notice answers drifting — old facts sneaking in, weird assumptions — audit the memory list first. The goal is a small number of clean, focused projects that match the actual compartments of your life, and a memory list you'd be comfortable reading out loud. Curate it like a junk drawer you actually clean."
+        }
+      ],
+      "prompts": [
+        "Project instruction example: 'This is Family HQ. The uploaded files include our school calendar, meal rotation, and weekly schedule. Assume budget-conscious, time-poor parents. Default to short, practical answers. If a question is better answered with a specific file, use it.'",
+        "Memory management: 'Remember that we keep a kosher kitchen and the kids' bedtime is 8:30.' / 'Forget what you know about my old job — I switched careers.'"
+      ],
+      "exercise": "Create one Project that matches a real compartment of your life (family, work, or a home project). Write its project instruction, upload 2-3 real files, and start a chat that uses them. Then open Settings → Memory and delete one stale or unwanted entry."
+    },
+    {
+      "id": "p1-04",
+      "title": "Meta-Prompts: Make the AI Write Your Prompts",
+      "goal": "Use meta-prompts — having the AI interview you, improve your draft, and critique itself — to get expert-level results without prompt-writing skills.",
+      "audio_intro": "Here's a fun twist: the best prompt-writer you know... is the AI itself. Today we flip the tool around. Instead of writing clever prompts, you let the AI interrogate you like a good consultant, rewrite your rough drafts into precision prompts, and even grade its own answers. It feels like cheating. It is not cheating — it's using the hammer to build a better hammer. This is the trick that separates casual users from the people getting jaw-dropping results. Ten minutes, three techniques. Let's go.",
+      "sections": [
+        {
+          "h": "Technique 1: The interview",
+          "body": "Start with: 'I want [result]. Before you answer, interview me: ask up to 5 questions, one at a time, that would most improve your answer. Then deliver the final result.' This turns the AI into a consultant and you into the client — and here's the magic: the questions it asks are often ones you'd never have thought to answer. 'What's your budget ceiling?' 'Who else has to approve this?' You answer five quick questions and get a tenth-question-quality answer. Works for trip planning, cover letters, party menus, business ideas. Ask for the questions one at a time so it doesn't feel like a form."
+        },
+        {
+          "h": "Technique 2: The rewrite",
+          "body": "Write your prompt ugly — stream of consciousness, typos welcome — then add: 'Rewrite this into a well-structured prompt that includes role, context, format, and examples. Improve it, then execute the improved version.' The AI will return a cleaner version of what you meant, then run it. It's dictation-plus: you supply intent, it supplies structure. Even better, before running it you can say 'show me the improved prompt first' and study the diff — that's a free prompt-writing course, custom-built on your own material. After a few weeks of this, you'll absorb the patterns and write them yourself. Learning by watching your own ghostwriter."
+        },
+        {
+          "h": "Technique 3: The self-critique",
+          "body": "After any answer, ask: 'Critique your answer: what's missing, what's weak, what would an expert add? Then give me version 2.' You'll be surprised how much the model finds to fix — a missing option, an unstated assumption, a too-generic section. It's like asking a chef to taste their own soup. This doubles the quality of important outputs for one extra message. Use it selectively: not for 'what's a quick dinner,' but for the cover letter, the contract questions, the important email. Chain it with the other two techniques — interview, rewrite, critique — and you've got a full workshop."
+        },
+        {
+          "h": "Guardrails",
+          "body": "Two cautions. First, self-critique can turn into agreement theater — the model happily inventing flaws to seem thorough. Keep the critique pointed ('what would a skeptical expert challenge here?') and your own judgment on top. Second, don't meta-prompt a grocery list. These techniques shine on high-stakes work; on trivial stuff they're just friction. The pro move is knowing which mode you're in: quick answers get quick prompts, important work gets the interview-rewrite-critique treatment. That instinct — matching effort to stakes — is itself a skill this course keeps sharpening."
+        }
+      ],
+      "prompts": [
+        "I want to [your goal]. Before you answer, interview me: ask up to 5 questions, one at a time, that would most improve your answer. Then deliver the final result.",
+        "Here's my rough prompt: [your messy draft]. Rewrite it into a well-structured prompt (role, context, format, examples). Show me the improved version, then execute it.",
+        "Critique your last answer: what's missing, what's weak, what would a skeptical expert challenge? Then give me version 2."
+      ],
+      "exercise": "Pick one real, medium-complicated task (a trip plan, an important email, a purchase decision). Run the full chain: interview mode, then rewrite, then self-critique. Save the final result and note one thing the AI asked or caught that you would have missed."
+    },
+    {
+      "id": "p1-05",
+      "title": "Deep Research: Your Research Assistant on Retainer",
+      "goal": "Delegate multi-source research to Deep Research mode — brief it well, let it work, and verify the result before you trust it.",
+      "audio_intro": "Some questions aren't Google questions. 'What's the best stroller for rough sidewalks?' 'Which internet provider has the fewest complaints in my area?' That's hours of tabs, reviews, and forum arguments. Today: Deep Research — you hand the AI a question, it goes off for five to twenty minutes, reads dozens of sources, and returns a cited report. Like a research assistant who never sleeps and shows their receipts. You'll learn when it's worth it, how to brief it, and how to check its homework. Let's send it to work.",
+      "sections": [
+        {
+          "h": "When to use it (and when not)",
+          "body": "Deep Research exists in ChatGPT, Gemini, and Perplexity — names vary, idea is the same. Use it when the answer requires comparing many sources: big purchases, 'best of' questions, medical homework before a doctor visit, market research for a side business, school-level research for your kid. Don't use it for quick facts, simple how-tos, or anything you need in the next sixty seconds — a regular chat answers those instantly. The rule: if you'd normally open ten tabs and take notes, Deep Research is your tool. If you'd ask one friend, just chat."
+        },
+        {
+          "h": "Briefing your researcher",
+          "body": "The quality of the brief decides the quality of the report. Include: the real decision behind the question ('choosing a stroller for a newborn, city sidewalks, under $600'), your constraints, what 'good' looks like ('comparison table, top 3 with tradeoffs, sources from the last 2 years'), and anything to exclude ('no US-only advice — I'm in Israel'). The tool will usually ask you a few follow-up questions before starting — answer them properly, they matter. Then let it run. Don't sit there; go do something. It pings you when it's done, with citations you can click."
+        },
+        {
+          "h": "Reading the report — and checking it",
+          "body": "You'll get a structured report with links. Treat it like a bright intern's work: excellent first pass, not gospel. Scan the citations — are they real sites you recognize, or content farms? Spot-check any load-bearing claim by clicking its source, especially numbers and quotes. Watch for the classic trap: confident synthesis of shaky sources. A good habit is one follow-up message: 'Which of your claims here is least well-supported, and why?' The model is decent at flagging its own soft spots. Ten minutes of verification turns a nice report into something you'd actually act on."
+        },
+        {
+          "h": "Deep Research in daily life",
+          "body": "Everyday uses people love: comparing insurance plans before renewal, researching a diagnosis before a pediatrician visit (homework, not treatment — lesson 13 covers that line), 'what should I know before signing with this property manager?,' gift research for a niche hobby, and school projects where you want your kid to see *how* research works. One warning: it can produce impressive-looking reports on topics where real expertise matters — legal, medical, financial. Use it to walk in informed, not to walk in as the expert. Informed parent beats confused parent every time."
+        }
+      ],
+      "prompts": [
+        "Research [topic/question]. My situation: [context, constraints, budget, location]. I need this to decide: [the actual decision]. Deliver: a comparison table of the top 3-5 options with tradeoffs, key findings, and what to watch out for. Cite sources, prefer the last 2 years, and note where sources disagree.",
+        "Follow-up: 'Which claims in this report are least well-supported by your sources? Flag anything where sources conflict or evidence is thin.'"
+      ],
+      "exercise": "Run one Deep Research on a real open question in your life — a purchase, a plan, a decision. Brief it with the template above, let it finish, click-check two citations, and write down one thing you learned that you couldn't have found in five minutes of Googling."
+    },
+    {
+      "id": "p1-06",
+      "title": "Pictures In, Answers Out: Image Prompts in Daily Life",
+      "goal": "Use photos as prompts — fridge contents to meal plans, screenshots to explanations, receipts to spending breakdowns.",
+      "audio_intro": "Today might be my favorite lesson, because it's pure magic trick. You take a photo — of your open fridge, a screenshot, a form letter, a receipt — and the AI looks at it and tells you what to do. Fridge full of random food? It writes dinner. Weird error message on your kid's laptop? Explained in plain English. Your camera becomes an input method. No typing, no describing — just show it. This is the closest thing to a superpower you already own. Ten minutes, let's play.",
+      "sections": [
+        {
+          "h": "Fridge → dinner",
+          "body": "Open the fridge, take one honest photo of the shelves, and send it with: 'Here's my fridge. Plan 3 dinners from what's visible, plus a short shopping list for the gaps. 30 minutes max per dish, family of four.' The model reads labels, spots the half-empty jar of olives, notices the chicken that should probably be used first, and builds around it. Works for pantry shelves too. Two tricks: take the photo in decent light, and mention hard constraints ('one kid hates mushrooms,' 'kosher kitchen'). It's not clairvoyant — it just sees better than you do on a Tuesday evening."
+        },
+        {
+          "h": "Screenshot → explanation",
+          "body": "Any screen you don't understand becomes a question. A settings page you're scared to touch, a bank statement line you don't recognize, a homework app screenshot, an error dialog, a confusing electric bill. Screenshot it, paste it in, ask: 'Explain what this is saying in plain English, and tell me what to do, if anything.' The pattern that makes it work: say what you *want* — 'I want to know if I'm being charged extra,' not just 'what is this?' For homework screenshots the golden prompt is: 'Don't give the answer — explain the question to my kid so they can solve it.' Lesson 11 expands on that."
+        },
+        {
+          "h": "Receipt → breakdown",
+          "body": "Photograph a supermarket receipt and ask: 'Categorize this receipt: food, household, treats, waste. What did we overpay on? What's roughly our cost per week at this rate?' Do it three weeks in a row and you have a real picture of your grocery spending — no app, no spreadsheet, no data entry. It also handles: warranty text, medication package inserts ('explain this in plain language — and remind me this isn't medical advice'), appliance model plates ('what is this machine, and what's a common problem with it?'), and kids' artwork ('what's a craft we can do with this as inspiration?'). Camera in, answers out."
+        },
+        {
+          "h": "Photos as context, not just questions",
+          "body": "The real upgrade: photos as *context* for bigger questions. Photograph the pile of stuff on your desk and ask for a filing system. Photograph your kid's overflowing closet and ask for a decluttering plan they'll actually follow. Photograph the parking sign that makes no sense. One rule keeps this safe and useful: what's in the frame is what the model sees — crop out the sensitive stuff (full ID numbers, credit cards, other people's kids) before sending. Lesson 19 covers the details, but the habit starts here: look at the photo before you send it, the same way you'd look before posting it anywhere."
+        }
+      ],
+      "prompts": [
+        "Here's a photo of my open fridge. Plan 3 dinners from what's visible, plus a short shopping list for missing staples. Max 30 minutes per dish, family of [N]. Constraints: [diet, dislikes, allergies].",
+        "[Attach screenshot] Explain what this screen/error/bill is saying in plain English. I specifically want to know: [your actual worry]. Tell me what to do, if anything.",
+        "[Attach receipt] Categorize everything on this receipt (food / household / treats / impulse buys). What did we overpay on, and what's our rough weekly grocery rate if this is typical?"
+      ],
+      "exercise": "Do all three photo prompts today: fridge photo → dinner plan, one confusing screenshot → plain-English explanation, one receipt → categorized breakdown. Keep the receipt analysis — you'll reuse it in lesson 10."
+    },
+    {
+      "id": "p1-07",
+      "title": "Voice Mode: Your AI, Unplugged",
+      "goal": "Use voice conversation to think out loud, get things done hands-free, and brainstorm faster than you can type.",
+      "audio_intro": "Quick confession: half of everything I've ever helped people with... happened in the car. Today: Voice Mode — the headphone icon in ChatGPT, the mic in Gemini. You talk, it talks back, interrupt it whenever you like. Why it matters: talking is three times faster than typing, and thinking out loud with a smart listener beats staring at a blank screen. Cooking dinner, walking the dog, folding laundry — your hands are busy, your brain isn't. I'll give you the four places voice crushes typing. Buckle up.",
+      "sections": [
+        {
+          "h": "Why voice changes everything",
+          "body": "Typing is a bottleneck: you compress your messy thoughts into tidy little sentences, losing half the context. Voice lets you ramble, backtrack, say 'wait, forget that, here's the real problem' — and the AI keeps up. It's the difference between emailing a colleague and sitting next to them. The killer combo is narration plus feedback: 'I'm planning Maya's birthday party — here are my constraints... [ramble]... okay, what did you catch?' You'll hear gaps in your own thinking that you'd never notice in text. And interruptions are fine — it's designed for them, just like a person."
+        },
+        {
+          "h": "The four best use cases",
+          "body": "**Car commute:** brain-dump the day into a voice note partner — 'here's what happened, help me sort what matters.' **Kitchen:** hands covered in flour: 'I'm making the lasagna from my recipe chat — what temperature again?' **Walks:** think through a decision out loud, get challenged on it. **Winding down:** 'quiz me on what I read about personal finance this week, keep it light.' It's also great for language practice — conversation without embarrassment — and for kids, who take to it instantly. What voice is bad for: anything with a table, a list you need to copy, or in an open office where you'd be that person."
+        },
+        {
+          "h": "How to talk to it well",
+          "body": "Voice rewards context-setting out loud: start with 'New topic — I need to plan...' so the model knows the frame changed. Speak in paragraphs, not keywords — you get better structure back. Use its memory deliberately: 'remember the conclusion here — we're going with option B' — and it'll hold onto it in text later. End sessions with: 'summarize what we decided in a short list and any open questions.' That last move is the difference between a nice chat and a captured result. Voice for thinking, text for keeping — that's the workflow."
+        },
+        {
+          "h": "The etiquette and the glitches",
+          "body": "Real-world notes: background noise, kids, and music all degrade it — a beat of quiet before you talk helps. When it mishears, don't fight it — restate the whole sentence, which it parses better than corrections. And privacy is on you: voice conversations in public are loud phone calls. You wouldn't discuss your salary in an elevator with a friend on speakerphone — same rule. Check your app's settings for how long voice recordings are stored (lesson 19 has the full checklist). Used right, voice is where AI stops feeling like software and starts feeling like a colleague on speed dial."
+        }
+      ],
+      "prompts": [
+        "Voice opener for planning: 'New topic. I need to think through [decision]. I'm going to ramble for a minute — don't solve anything yet, just listen and tell me what you caught.'",
+        "Voice session closer: 'Summarize what we decided in a short list, flag any open questions, and remember the main conclusion for future chats.'"
+      ],
+      "exercise": "Take one 5-minute voice walk today: pick a real decision on your mind, use the ramble-then-summarize opener, and end with the session-closing summary prompt. Then check where the summary landed (chat history) so you know how to find it later."
+    },
+    {
+      "id": "p1-08",
+      "title": "Email and Messages on Autopilot",
+      "goal": "Turn the worst part of your day — emails and messages — into a five-minute review of drafts the AI wrote in your voice.",
+      "audio_intro": "It's 9 PM. There's an email from the school. An awkward message from a coworker. A landlord question you've been avoiding. And what do we do? Nothing. Today we kill that. The system is simple: you paste the message plus two lines of context, and the AI drafts the reply — right tone, right length, your voice. You edit one word and hit send. Hard emails, ignored texts, the passive-aggressive note that needs diplomacy — all of it, handled. Let's clear the inbox.",
+      "sections": [
+        {
+          "h": "The three-line briefing",
+          "body": "Every good email draft needs the same three things: the incoming message (paste it), your goal ('decline politely,' 'get a refund,' 'sound firm but nice'), and the relationship ('my kid's teacher,' 'the landlord — I want to stay on good terms'). That's it. The AI writes the draft; you edit the parts that feel off. The magic is that it handles the emotional labor — the softening phrases, the 'hope you're well' padding — while you keep the judgment about what to actually say. Draft in ten seconds, edit in thirty, send with confidence instead of dread."
+        },
+        {
+          "h": "The hard ones",
+          "body": "Where this really earns its keep: the emails you keep not sending. Saying no to a family invitation without a feud. Asking a friend to repay a loan. Complaining to a company — give the AI the facts and let it write the firm-but-fair version: 'Here's my order #, here's what went wrong, here's what I want: a replacement or refund. Polite but firm, one follow-up implied.' Boundary-setting texts — 'I can't make it, no excuses needed' — stop being a forty-minute emotional event. The rule: if it's been in your head more than a day, it gets the two-minute AI treatment today."
+        },
+        {
+          "h": "Your voice, preloaded",
+          "body": "Sick of editing every draft? Teach it your voice once. Paste three emails or texts you actually wrote, and say: 'Here are three messages I wrote. Learn my voice: length, warmth, how I open and close. From now on in this chat, draft in this voice.' Even better, put a permanent version in Custom Instructions (lesson 2): 'Emails: short, warm, direct. No 'I hope this email finds you well.' Sign-offs: just my name.' Suddenly drafts arrive 90% right. Save the fancy vocabulary for nobody — your people recognize your voice, and now the machine speaks it."
+        },
+        {
+          "h": "Workflow and guardrails",
+          "body": "Batch it: twice a day, open the messy pile, run each one through the draft mill, send. Most people cut their email time by half or more — and the avoidance tax drops to zero. Guardrails, though: always read before sending. The model can misread tone, invent a fact ('I'll be there Thursday' — you never said that), or be too apologetic. It drafts; you own the send button. Never paste secrets you wouldn't email a colleague — passwords, full ID numbers, health details — into a chat for a birthday-party RSVP. Judgment stays human. That's not a limitation; that's the design."
+        }
+      ],
+      "prompts": [
+        "Here's the message I need to reply to: [paste]. My relationship to them: [e.g., kid's teacher / landlord / coworker]. My goal: [e.g., decline politely / get refund / set a boundary]. Draft a reply in my voice — short, warm, direct. No filler.",
+        "Learn my voice. Here are three messages I wrote: [paste 3 samples]. From now on in this chat, draft everything in this voice: match length, warmth, and how I open and close.",
+        "Write a firm but polite complaint email. Facts: [order #, what went wrong]. What I want: [replacement / refund / fix]. One paragraph of facts, one of the ask, imply I'll follow up if ignored."
+      ],
+      "exercise": "Pick the three messages you've been avoiding longest. Run each through the three-line briefing, edit lightly, and send at least one today. Note how long the whole batch took versus your usual avoidance cycle."
+    },
+    {
+      "id": "p1-09",
+      "title": "Smart Weekly Planning",
+      "goal": "Run a ten-minute weekly planning session with the AI that sorts your obligations, protects your priorities, and produces a schedule you'll actually follow.",
+      "audio_intro": "Sunday night. The to-do list is a swamp. Work stuff, kid stuff, that dentist appointment you've moved twice, and — somewhere in there — your own life. Today we build your Sunday ritual: a ten-minute AI planning session that turns the swamp into a week with borders. You brain-dump everything; the AI sorts, schedules, spots the conflicts, and forces one honest question: what are you pretending will fit that won't? This isn't productivity theater. It's a weekly conversation that ends with a plan you can hold. Grab the swamp. Let's drain it.",
+      "sections": [
+        {
+          "h": "The brain dump",
+          "body": "Start messy — that's the point. One message, no structure: everything in your head. Work deadlines, the birthday gift, the car inspection, 'I should call my sister,' the school bake sale, that back pain you keep ignoring. Don't organize; just empty. Then add the fixed points: 'Monday and Wednesday I have evening commitments, Thursday the kids are with grandma, Saturday we're at the game.' Fixed points first because they're the walls of the week — everything else has to fit around them, not through them. Two minutes of dumping, and the AI has the full swamp in view."
+        },
+        {
+          "h": "The sort and the schedule",
+          "body": "Now the instruction: 'Sort this into: appointments with times, tasks, and things I'm pretending to do. Build a realistic week around my fixed points — one or two big tasks per day max, not five. Flag conflicts and tell me what doesn't fit.' The key words are *realistic* and *doesn't fit*. The AI will happily build you a fantasy schedule of eight-hour productive days unless you forbid it — so forbid it. Ask for a simple day-by-day layout with time blocks, and have it protect one thing for you: 'reserve Tuesday evening for something that's just mine.' A plan without a reserve is a countdown to burnout, and you didn't build this system for that."
+        },
+        {
+          "h": "The Sunday ritual",
+          "body": "Make it a standing appointment, ten minutes, same time weekly. Save the chat (or run it in your 'Family HQ' project from lesson 3) so each week starts from the last one: 'Here's what actually happened last week — the dentist got moved again, the report took twice as long. Rebuild this week knowing that.' The AI learns your real pace: that a 'quick errand' costs you two hours, that Wednesday is always chaos. Over a month, your plans get honest. Midweek correction is allowed and encouraged: a two-minute 'everything slipped, what do I drop?' beats silently abandoning the plan by Thursday."
+        },
+        {
+          "h": "Family upgrade",
+          "body": "Level two: run the week as a household. Share the ritual with your partner, or paste both sets of constraints and let the AI find the gaps: 'Who's picking up the kids Tuesday? You double-booked Thursday.' Ask for a shared shopping-and-errands list and one family fun slot that actually gets defended. Two ground rules keep it sane: keep individual work tasks at whatever granularity you like, but family commitments go in with times and owners; and the AI proposes — humans decide. It's a planning assistant, not a family court. Even so, an assistant that remembers all the moving parts beats the old whiteboard, every single week."
+        }
+      ],
+      "prompts": [
+        "Here's everything in my head for this week (unsorted): [brain dump]. Fixed points I can't move: [days/times]. Sort it into appointments, tasks, and things I'm pretending to do. Build a realistic week — max 1-2 big tasks per day, protect one evening for me, flag conflicts, and tell me honestly what's not going to fit.",
+        "Midweek fix: 'Here's what actually happened: [what slipped]. Rebuild the rest of the week — what do I drop, what do I move, what stays?'"
+      ],
+      "exercise": "Do the full ten-minute session today: brain dump, sort, realistic schedule. Then put a recurring 10-minute 'plan the week' block in your calendar for the same time next week — the ritual only pays if it repeats."
+    },
+    {
+      "id": "p1-10",
+      "title": "The Family Budget, Finally",
+      "goal": "Turn your real spending data — bank exports and receipts — into a clear picture of where money goes, and get concrete options for the leaks.",
+      "audio_intro": "Nobody wants to look. I get it — the bank statement is the homework of adult life. But it's never as bad as the not-knowing. Today, you and I take your actual numbers — a bank statement export, your grocery receipts from lesson six — and turn them into something you've never had: a clear, non-judgmental picture of where the money goes. No app to install, no spreadsheet to maintain. You paste, the AI categorizes, then one question matters: what would we change first? Paste the statement.",
+      "sections": [
+        {
+          "h": "Getting your data in",
+          "body": "Most banks let you export a statement as CSV — that's the gold standard. No CSV? Two solid alternatives: paste the transactions as text straight into the chat, or go low-tech: photograph the statement like lesson 6. Three months is the magic window — one month lies (there was a wedding, a holiday), three months tells the truth. Before pasting, do one safety pass: the transaction list is all the AI needs. Blur or delete account numbers and any digits you wouldn't text a friend. Money habits are personal — treat the data like it is. Lesson 19 covers this in depth; today, just crop before you paste."
+        },
+        {
+          "h": "The clear picture",
+          "body": "Prompt: 'Categorize these three months of transactions: housing, food, kids, transport, subscriptions, debt, fun, other. Show monthly averages, flag anything that surprises you, and estimate what's fixed versus changeable.' What comes back is usually an eye-opener: the subscription count (nobody has four streaming services on purpose), the food number (delivery versus groceries versus 'just coffee'), the 'other' monster. This is where the feelings come in — people see a number and feel judged. Don't. It's a map, not a grade. You can't steer what you can't see, and now you can see it."
+        },
+        {
+          "h": "The leaks and the fixes",
+          "body": "Now the fun part — options. 'Based on this data, show me the 5 cheapest-to-fix leaks, ranked by savings per month, with the exact first step for each.' The AI is good at this because it has no embarrassment: cancel the gym you visited twice, make the subscription audit list, negotiate the phone bill (lesson 12 gives you the script), set the grocery plan from lesson 6. Ask it to separate the big structural stuff (housing, car, childcare — change slowly, with planning) from the everyday stuff (change this week, painlessly). Attacking the big structural items first is how people burn out. Start with the leaks."
+        },
+        {
+          "h": "Making it stick",
+          "body": "A budget you build once and never revisit is a museum piece. The maintenance version is painless: a monthly 15-minute check-in. 'Here's this month's transactions. Compare to our averages: what changed, what crept up, are we still on track with the two things we said we'd fix?' Keep the original chat or a 'Money' project so the context carries over. Two rules keep it honest: the AI estimates — always cross-check anything that looks weird against the actual statement — and for big decisions (investments, taxes, debt restructuring), the AI is your homework partner, not your advisor. Map first, then steer."
+        }
+      ],
+      "prompts": [
+        "Here are 3 months of bank transactions: [paste or attach]. Categorize them (housing / food / kids / transport / subscriptions / debt / fun / other), show monthly averages, separate fixed from changeable, and flag anything surprising. No judgment, just clarity.",
+        "Based on that analysis: list the 5 cheapest-to-fix leaks, ranked by monthly savings, with the exact first step for each. Then one paragraph: which big structural item deserves a serious look this year?",
+        "Monthly check-in: 'Here's this month's transactions: [paste]. Compare to our averages — what changed, what crept up, are we on track with what we said we'd fix?'"
+      ],
+      "exercise": "Export (or photograph) one month of transactions, run the categorization prompt, and act on exactly one finding today — cancel one subscription or send one negotiation draft (see lesson 12). One leak, closed, for real."
+    },
+    {
+      "id": "p1-11",
+      "title": "Homework Help: A Private Tutor for Your Kid",
+      "goal": "Turn the AI into a patient Socratic tutor that helps your kid learn — without doing the work for them.",
+      "audio_intro": "Here's a scene every parent knows: it's 8 PM, your kid is in tears over long division, and you're googling 'how to explain fractions' while texting your spouse 'I remember none of this.' Today we fix it forever. You'll turn the AI into a private tutor — the kind that costs eighty bucks an hour — for free. The wrong way: the AI does the homework. The right way: it asks questions until your kid figures it out. One prompt makes the difference. I'll show you both.",
+      "sections": [
+        {
+          "h": "The tutor prompt",
+          "body": "The magic prompt: 'Act as a patient tutor for my [age] kid. Subject: [fractions]. Rule: never give the answer. Ask one question at a time, use examples from daily life like pizza and money, praise attempts, and if they're stuck after 3 tries, give a hint — not the solution.' That last rule is the whole game. AIs are so eager to help that they'll solve the problem instantly unless you forbid it. Set the age right — an explanation pitched to a 7-year-old sounds different from one for a 13-year-old — and let the kid drive the conversation. The goal is a kid who says 'ohhh, I get it now,' not a finished worksheet."
+        },
+        {
+          "h": "The homework battles",
+          "body": "Two battle-tested patterns. **The stuck problem:** your kid photographs the problem (lesson 6!) and the tutor asks guiding questions back. **The 'why do I even need this' moment:** 'Explain why [long division] matters in real life, to a kid who loves [soccer].' That one saves more homework sessions than any math trick — motivation first, method second. And when you hit your own limit — 'explain this to me so I can help them' — the AI reteaches your childhood math in five minutes, and you walk back in as the hero. Co-tutoring beats hovering."
+        },
+        {
+          "h": "The exam and the writing",
+          "body": "Bigger jobs: 'Quiz my kid on the water cycle — 10 questions, easy to hard, tell them what to review after' — a ready-made study session with zero prep. For book reports and essays, the same anti-cheating rule applies: 'Read my kid's draft and give feedback — structure, argument, one grammar pattern to fix — but don't rewrite anything.' When kids write with AI feedback instead of AI text, they actually improve; when they paste AI text, they learn nothing and their teacher can tell. Make it the house rule: AI reads, suggests, and quizzes. The kid writes."
+        },
+        {
+          "h": "Age, safety, and screen sense",
+          "body": "Practical guardrails: for younger kids, you drive the chat and they dictate or talk (Voice Mode, lesson 7, is wonderful for this — kids will chatter with a tutor forever). Most services now offer teen accounts with parental oversight — use them for independent use, and set the ground rule: homework chats are for learning, and the tutor never gives answers (make the kid set up the tutor prompt themselves — then they own the rule). Keep an eye on the sensitive stuff too: kids paste freely, so teach them the lesson-19 habit — personal details get shared carefully, even with a friendly tutor. Infinite patience, watched over by a parent who finally isn't exhausted."
+        }
+      ],
+      "prompts": [
+        "Act as a patient tutor for my [age]-year-old. Subject: [topic]. Rules: never give the answer directly. Ask one question at a time, use everyday examples (pizza, money, sports), praise attempts, and if they're stuck after 3 tries, give a hint — not the solution. Start by finding out what they already understand.",
+        "Quiz me on [topic] for my test: 10 questions, easy to hard. After each answer tell me right/wrong and why. At the end, tell me exactly what to review.",
+        "Here's my kid's draft [paste or photo]. Give feedback on structure and argument, and point out ONE grammar pattern to fix. Do not rewrite it for them."
+      ],
+      "exercise": "Set up one real tutoring session tonight: your kid brings one actual stuck problem, you (or they) run the tutor prompt, and stay nearby. Afterward, ask your kid one question: 'was it better than when I explain it?' (Brace for honesty.)"
+    },
+    {
+      "id": "p1-12",
+      "title": "Smart Shopping and Negotiation Drafts",
+      "goal": "Use AI to research purchases, compare real prices, and draft the negotiation messages that save real money — from bills to marketplace haggling.",
+      "audio_intro": "Today's lesson pays for itself — possibly for the whole course. Two skills: smart shopping and the negotiation draft. First: never buy anything over fifty bucks again without a two-minute AI check — right model, good price, what the angry reviewers know. Second: the money hiding in plain sight — your internet bill, your phone plan, your insurance renewal. Companies count on you not wanting an awkward phone call. You paste the situation, the AI writes the script, you send it. My neighbor saved three hundred dollars with one draft. Let's write yours.",
+      "sections": [
+        {
+          "h": "The two-minute purchase check",
+          "body": "Before any meaningful purchase: 'I'm considering [product/model]. Price here: [X]. What do critical reviews say — the 1-star and 3-star ones, not the fans? What's a better-value alternative, and what's the usual failure point after a year?' Then the model-comparison move: 'Compare the top 3 options in a table: price, what matters for [my use case], known issues.' For anything pricey, add Deep Research (lesson 5). Two minutes of this beats an evening of scrolling review pages — and it's saved every one of us from a beautiful, terrible product at least once. The angry reviewers always know."
+        },
+        {
+          "h": "The bill-negotiation draft",
+          "body": "The classic. Paste the situation: 'My internet bill went from $40 to $59 this month. I've been a customer 3 years, no late payments. Draft a polite but firm message to retention: I'm considering switching to [competitor's current offer], I'd like the promotional rate or a cancellation. Friendly tone, no threats, one paragraph.' Send it — by chat, email, or read it on the phone. Retention departments exist to keep you, and they respond to calm specifics: your tenure, the competitor's number, what you want. Same draft works for phone plans, insurance renewals, and that random fee that appeared on your statement. You never negotiate angry; you negotiate with a script."
+        },
+        {
+          "h": "Marketplace haggling",
+          "body": "Second-hand markets — Facebook Marketplace, local equivalents, classifieds — are negotiation gyms. The AI drafts: 'Found a used [item] listed at $200, seller's had it 3 weeks, described as 'good condition, moving soon.' Draft a friendly opening offer message — $150 — with a reason, and two follow-ups: one if they counter at $180, one if they go silent.' Reasons work ('can pick up today, cash') — the AI knows the moves and writes them without the awkwardness. Bonus: paste any listing and ask 'what should I check before buying a used [item]? what's a fair price?' and you walk in informed."
+        },
+        {
+          "h": "House rules",
+          "body": "Keep it honest and keep it human. The AI invents leverage if you let it — never claim a competitor's offer you can't show, never invent facts, because a negotiation built on a bluff collapses on the phone. Second rule: AI drafts, you send — read it before it goes, in your words, in your name. Third: track the wins. Keep a little 'saved money' note; when the neighbor's $300 becomes your $300, you'll keep the habit. Prices are more negotiable than anyone admits. Now you're the one who admits it — politely, with a template."
+        }
+      ],
+      "prompts": [
+        "I'm considering buying [product]. Here's the price: [X]. What do the critical reviews (1-3 stars) complain about, what usually breaks after a year, and is there a better-value alternative? Short answer.",
+        "My [internet/phone/insurance] bill went from [$A] to [$B]. Customer for [N] years, [payment record]. Draft a polite, firm message to retention: I'm considering [competitor + their offer if real], I'd like [the promo rate / a match]. One paragraph, friendly tone, specific ask.",
+        "Found a used [item] on a marketplace, listed at [$X], [details]. Draft: an opening offer at [$Y] with a reason, a counter if they say [$Z], and a polite nudge if they go silent. Keep it friendly, no pressure."
+      ],
+      "exercise": "Do both today: run the purchase check on one thing you're about to buy, and send one negotiation draft — a bill, a renewal, or a marketplace message. Log what happened (reply received, amount saved) in a note; you'll reuse it in lesson 20."
+    },
+    {
+      "id": "p1-13",
+      "title": "Health Scaffolding: Meals, Movement, and Honest Answers",
+      "goal": "Use AI for the practical layers of health — meal plans, workout scaffolding, symptom homework — while keeping the doctor in charge.",
+      "audio_intro": "Health. The topic where everyone's a little nervous, including me. So let's tattoo the rule on the inside of your brain: the AI is not your doctor. It can't examine you, doesn't know your blood work, and never went to medical school — okay, it's read everything from medical school, but you get me. What it IS: brilliant at the boring-but-vital layer — meal plans your family will eat, a walking program you'll follow, homework before appointments. Today: how to use it well, and keep it honest.",
+      "sections": [
+        {
+          "h": "The honesty setting",
+          "body": "Start every health chat the same way: 'You are not my doctor. Give me practical, safe, general guidance, always flag when something needs a professional, and never diagnose me.' It sounds fussy, but it works — the model stays in 'helpful coach' mode and pulls out the 'see a doctor' flag at the right moments, which is exactly the behavior you want. Red flags deserve their own reflex: chest pain, sudden severe anything, a kid with a high fever at 2 AM — that's the emergency line or the doctor, not a chat window. The AI is for everything around and between those moments. That boundary, respected, is what makes the rest of this lesson safe to use."
+        },
+        {
+          "h": "Meals the family eats",
+          "body": "The difference between a meal plan that works and one that dies by Wednesday: constraints. Real ones. 'Plan 5 weeknight dinners: family of four, one kid eats nothing green, husband is low-carb, I have 30 minutes and average cooking skills. Use the supermarket basics — no gochujang on a Tuesday. Give a shopping list and prep steps.' Chain it with lesson 6 — photo of the fridge, build around what exists. Then iterate: 'the soup was a flop — simpler next time, one-pot only.' A plan your actual family eats beats a perfect plan they don't. Also fair game: 'high-protein breakfasts I can make in 5 minutes that aren't eggs.'"
+        },
+        {
+          "h": "Movement scaffolding",
+          "body": "Same principle: scaffolding, not fantasies. 'I'm 42, haven't exercised regularly since before kids, bad left knee, 20 minutes three times a week is honestly all I have. Build me a progressive walking-to-light-jogging plan, 8 weeks, boring and doable.' The AI will happily write 'Day 1: 5km run' unless you tell it not to — so tell it not to. Ask for the regression rule up front: 'if I miss a week, what do I drop back to?' That's the difference between programs people finish and programs people abandon by week three. Bonus: 'make a 10-minute kitchen-counter stretch routine for while coffee brews.' That one actually gets used."
+        },
+        {
+          "h": "Appointment homework",
+          "body": "The best-kept secret: use AI to prepare for doctor visits. Before the appointment: 'I've had [symptoms] for 3 weeks — help me write a one-page summary for the doctor: timeline, what makes it better or worse, my questions, my medications.' You walk in organized, and doctors love an organized patient. After: 'Explain this lab report / prescription insert in plain language — and remind me to confirm anything important with the pharmacist or doctor.' Notice the direction of flow: AI before and around the appointment, professional during it. That's health scaffolding — the boring vital layer, done well, with the doctor still driving the bus."
+        }
+      ],
+      "prompts": [
+        "You are not my doctor. Practical guidance only, always tell me when something needs a professional. My situation: [age, constraints, what you have time for]. Build [meal plan / workout plan] that is boring, doable, and realistic for my life — not aspirational. Include what to do if I miss a week.",
+        "Before appointment: 'I've had [symptoms] for [duration]. Help me write a one-page doctor's summary: timeline, triggers, questions to ask, current meds and doses.'",
+        "After appointment: 'Explain this lab report / medication insert in plain language. Flag what's important and what's normal noise — and remind me to confirm anything critical with my doctor.'"
+      ],
+      "exercise": "Build one real health scaffold today: a 5-dinner plan with your actual family constraints, or a 3x-week movement plan with your actual time and body. Then write your doctor's-visit summary for the next appointment on your calendar — even if it's months away."
+    },
+    {
+      "id": "p1-14",
+      "title": "Content That Sounds Like YOU",
+      "goal": "Teach the AI your authentic voice and produce writing — posts, updates, captions — that people who know you would recognize as yours.",
+      "audio_intro": "Quick test: read an AI-written birthday post — your skin crawls a little, right? 'It's not just a day, it's a celebration of the journey.' Nobody talks like that. Today we fix the biggest complaint about AI writing: that it sounds like AI. The trick isn't better prompts; it's teaching the machine your actual voice, using your actual words. You'll paste three things you wrote, build a voice profile, and every draft after that sounds like you on your best day. Your mother won't be able to tell. That's the exam.",
+      "sections": [
+        {
+          "h": "The voice sample",
+          "body": "The core move: paste 2-3 things you genuinely wrote — texts, emails, a post, even voicemail transcripts. Then: 'Here are three samples of my writing. Extract my voice: average sentence length, vocabulary level, humor style, how I open and close, what I never say. Summarize the profile as rules, then wait.' What comes back is often a small revelation — 'I use a lot of dashes, I'm warmer than I think, I end with questions.' Keep that profile. Save it in a doc, put it in Custom Instructions (lesson 2), or paste it at the start of writing chats. Voice is now a reusable asset, not a miracle you beg for each time."
+        },
+        {
+          "h": "Killing the AI-isms",
+          "body": "Every model has tells: 'delve,' 'tapestry,' 'it's not just X, it's Y,' 'game-changer,' the em-dash avalanche, the closing paragraph that summarizes with fake gravity. Add to your voice profile: 'Banned words: delve, tapestry, unlock, elevate, game-changer. No 'it's not just X, it's Y' constructions. Vary sentence length — some short. Like this. No summarizing final paragraph.' Then the edit trick: 'Read this draft and flag anything that sounds like generic AI writing — be brutal.' Two passes of that and the draft starts sounding like a person. A specific, slightly weird, recognizably-you person."
+        },
+        {
+          "h": "From idea to post",
+          "body": "The realistic content workflow, for the business owner or the family-update writer alike: brain-dump the idea in your own ugly words — 'want to post about the renovation being finally done, mostly grateful to my wife, also the painter story' — then: 'Here's my voice profile and my raw notes. Draft [a post / an email / a caption]. One draft, in my voice, no AI-isms.' One draft matters: asking for 'options' gets you committee-speak. Then edit by reading it out loud — if you stumble, it's not you yet. Small daily habit: keep a note of things you said out loud that sounded like you. That's your voice corpus, and it only grows."
+        },
+        {
+          "h": "The honesty rule",
+          "body": "One boundary keeps this healthy: your name goes on it, so the substance must be yours. The AI arranges your words; it doesn't have your memories, your opinions, or the story of the painter. When a draft makes a claim — 'we tripled our output,' 'the trip changed me' — check that it's true. And notice the flip side of this skill: now that you know how AI-isms sound, you'll spot machine text everywhere (you'll never unsee 'delve'). Use that radar on your own output. When your kid's teacher, your clients, and your mother all say 'that sounds exactly like you' — that's the certificate for this lesson. Hang it proudly."
+        }
+      ],
+      "prompts": [
+        "Here are three samples of my writing: [paste]. Extract my voice as rules: sentence length, vocabulary, humor, openings/closings, words I never use. Then wait for my next instruction.",
+        "Banned in all drafts: delve, tapestry, unlock, elevate, game-changer, 'it's not just X, it's Y.' Vary sentence length. No summarizing final paragraph. If a sentence sounds like generic AI writing, cut it.",
+        "My voice profile: [paste profile]. Raw notes: [your messy brain-dump]. Draft one [post / email / caption] in my voice. One draft only, no options, no AI-isms."
+      ],
+      "exercise": "Build your voice profile today: paste 3 of your own messages, extract the rules, save them where you'll reuse them. Then write one real thing — a post, a family update, a client email — through the profile, read it out loud, and edit until it stumbles nowhere."
+    },
+    {
+      "id": "p1-15",
+      "title": "Document Analysis: Contracts, Policies, and the Fine Print",
+      "goal": "Upload your real documents — contracts, insurance policies, leases — and extract what matters: obligations, traps, and the questions to ask.",
+      "audio_intro": "The lease. The insurance policy. The terms of service you scrolled through and clicked yes. Every adult has documents they've signed but never read. Today, we read them — in minutes. You upload the PDF, and the AI walks you through it: what am I agreeing to, what happens if I cancel, where does this screw me. Like a lawyer friend who reads boring things for fun — though for the big stuff, you still need the real lawyer. Grab the document you've been ignoring — you know the one. Let's read it.",
+      "sections": [
+        {
+          "h": "The upload and the first pass",
+          "body": "Every major assistant takes PDFs — drag it into the chat, or photograph the paper version (lesson 6). First pass, always: 'Summarize this document in plain English: what is it, what are my main obligations, what are theirs, and when does it end or renew? Under 200 words.' This orientation matters: before hunting for traps, know what the thing even is. Then the trap hunt: 'List the clauses that could hurt me: auto-renewals, cancellation fees, penalties, liability caps, vague language. For each, quote the clause and say what it means in real life.' Vague language is the tell — 'reasonable notice' and 'as determined by the company' are doing a lot of heavy lifting in your life."
+        },
+        {
+          "h": "The questions that matter",
+          "body": "Documents become useful when you interrogate them like the other side would hate. 'If I cancel in month 7, exactly what do I pay?' 'Who's liable if the delivery damages my stuff?' 'What's NOT covered by this insurance policy?' That last one is the sleeper hit — exclusions are where claims go to die, and policies bury them lovingly. Then the practical close: 'I'm signing this [day]. Give me: the 3 questions to ask before signing, the dates I should put in my calendar (renewal, notice deadline), and anything negotiable.' Most contracts are more negotiable than they look, and now you know where."
+        },
+        {
+          "h": "Comparing and negotiating",
+          "body": "Two upgrades that pay off. First, comparison: upload two options — 'Compare these two [policies / contracts / phone plans] as a table: cost, coverage, cancellation, gotchas. If I care most about [your priority], which wins and why?' Second, the negotiation draft (lesson 12 energy): 'Based on this contract, draft a message asking to change [the cancellation notice period]. Polite, cites the clause, offers something in return — prompt payment, longer commitment.' Fine print is negotiable in more places than people think, and the AI reads the whole document so you don't have to — then arms you with the exact clause number to argue about."
+        },
+        {
+          "h": "The lawyer line",
+          "body": "Now the honesty talk, and this one matters: this is analysis, not legal advice. AI is superb at reading, summarizing, comparing, and spotting suspicious clauses. It is not your lawyer, and for the big-stakes documents — buying a home, a business contract, anything with real money or real disputes attached — a human professional reviews before you sign. The sweet spot: walk into the lawyer 90% prepared, with your questions already written and the three clauses you're worried about flagged. Their hour becomes ten minutes of sharp conversation instead of an hour of reading. That's how you use tools like a grown-up."
+        }
+      ],
+      "prompts": [
+        "Summarize this document in plain English: what is it, my main obligations, their obligations, when it ends or renews. Under 200 words. Then list the clauses that could hurt me (auto-renewals, fees, penalties, liability, vague language) — quote each and translate to real life.",
+        "Before I sign: [1] What happens if I cancel in [month]? [2] What's NOT covered / not included? [3] The 3 questions I should ask the other side, the dates for my calendar, and anything negotiable.",
+        "Compare these two documents as a table: cost, coverage/benefits, cancellation, gotchas. If my top priority is [priority], which wins and why?"
+      ],
+      "exercise": "Pick one document you signed but never read — a lease, policy, or service agreement — and run the full pass: summary, trap hunt, questions. Put one date it revealed (renewal or notice deadline) into your actual calendar."
+    },
+    {
+      "id": "p1-16",
+      "title": "Custom GPTs: Build Your Own Assistant",
+      "goal": "Package everything you've learned — instructions, files, prompts — into your own named assistant you can share and reuse.",
+      "audio_intro": "Pop quiz: what do you get when you take the perfect prompt from lesson one, the voice profile from fourteen, the tutor rules from eleven, and the files from lesson three — and fuse them into one thing you never have to rebuild? A Custom GPT. Your own named assistant, sitting in your sidebar. Today we build one together, step by step — no code. By the end you'll have one with a name, that you built, that your friends can use too. Meet your first employee — they work for free.",
+      "sections": [
+        {
+          "h": "What a Custom GPT is",
+          "body": "A Custom GPT (ChatGPT's term; Gemini has Gems, Claude has similar flavors) is a saved bundle: instructions + files + starter prompts + a name. Think of it as an employee file — role, training materials, job description — that you write once. Open the builder, describe what you want in plain English, and the platform drafts it; you refine. The magic moment is the first sentence of its instructions — that's the role. Everything else hangs off it. And unlike a normal chat, it's *there* tomorrow: same name, same brain, no rebuilding. You'll make one for each recurring job in your life."
+        },
+        {
+          "h": "Building your first one",
+          "body": "Walkthrough: create the GPT, name it honestly — 'Family CFO,' 'Homework Buddy,' 'The Ad Writer' — and write the instructions like a job posting: 'You help a busy family manage money. Tone: direct, zero judgment. When given transactions, categorize and flag leaks (lesson 10 rules). When asked about big decisions, remind me to sleep on it. Never recommend products without a reason.' Then upload the files that make it smart (budget history, the voice profile from lesson 14) and add 3-4 starter prompts so future-you just clicks. Test it in the preview with a real task, refine, save. Fifteen minutes, first hire complete."
+        },
+        {
+          "h": "The ones people actually keep",
+          "body": "The GPTs that survive real life share one trait: a narrow job. 'Family CFO' beats 'Assistant.' 'Homework Buddy — never gives answers, Socratic mode, patient with a 9-year-old' (lesson 11) beats 'Tutor.' The voice-profile GPT (lesson 14) that drafts everything in your words. The 'Skeptic' — 'challenge my plan, find the holes, no cheerleading' — secretly everyone's favorite. The rule: if you can't describe its job in one sentence, it will disappoint you. Every lesson in this course that you loved? It's a GPT waiting to be born. Mine was. That's the brand of this place, after all."
+        },
+        {
+          "h": "Sharing and maintaining",
+          "body": "The underrated feature: share it. Give the link to your partner ('here, use the Family CFO'), your kid's other parent, your team. Your expertise, packaged. Inside the family or team, sharing is safe — check the sharing options so it stays private-by-default, and remember: files you upload go along for the ride, so share carefully (lesson 19 reflexes). Maintenance is light: when an answer disappoints, don't argue with the chat — go edit the instructions. That's the difference between a chat (argue) and an employee (update their training). Version one is allowed to be imperfect. Employees get better with feedback."
+        }
+      ],
+      "prompts": [
+        "GPT instruction template: 'You are [name], who [one-sentence job]. Tone: [direct / warm / blunt]. When [situation], you [behavior]. Never [deal-breaker]. Start every conversation by [opening move]. If the user's request is unclear, [ask one question].'",
+        "Starter prompts to include: '[most common request]' / '[second most common]' / 'review the files and summarize what's changed since last time.'",
+        "Refinement loop: in the builder preview, run a real task. When the output disappoints, add one sentence to the instructions fixing exactly that. Repeat until it stops disappointing you."
+      ],
+      "exercise": "Build one Custom GPT (or equivalent) today for a recurring job in your life: name, instructions from the template, one file, three starter prompts. Test it on a real task, refine once, and share it with one person."
+    },
+    {
+      "id": "p1-17",
+      "title": "Scheduled Tasks: AI That Works While You Sleep",
+      "goal": "Set up recurring, scheduled AI tasks — the morning brief, the weekly review — so your system runs even when you don't ask.",
+      "audio_intro": "Everything so far, you had to ask for. Today the AI starts showing up on its own. Scheduled tasks: recurring prompts that run while you sleep. You wake up to a morning brief — weather, calendar, one money-saving idea. Sunday evening, your weekly review writes itself. The lesson-nine ritual can now kick itself off. This is where your AI system stops being something you use... and starts being something that works for you. Careful — unattended automation needs guardrails, and I'll show you where. Coffee's brewing. So is your brief.",
+      "sections": [
+        {
+          "h": "How scheduling works",
+          "body": "ChatGPT has Scheduled Tasks / Scheduled Chats, Gemini has scheduled actions in its assistant surfaces — features keep evolving, so look for 'schedule' in your tool's settings or ask it directly: 'can you schedule this to run daily?' The mechanism is simple: a prompt + a schedule ('every weekday at 6:30 AM'). At the appointed time the AI runs your prompt and delivers the result to your chat or notifications. The important mental shift: it's the difference between a colleague you have to summon and one who emails you the morning summary unprompted. The work happens at the edges of your day, without your attention — which is exactly where attention is scarcest."
+        },
+        {
+          "h": "The starter set",
+          "body": "Three scheduled tasks cover most people's lives. **The morning brief** (weekdays 6:30 AM): 'Today's brief: weather for [city] with kid-relevant notes (rain gear?), my calendar for today in one glance, top 3 priorities from my running list, and one interesting thing worth knowing. Under 150 words, plain text.' **The weekly review** (Sunday 7 PM): kick off the lesson-9 planning ritual — 'It's planning time. Ask me for this week's brain dump.' **The money pulse** (monthly): 'It's statement day — remind me to export transactions for our budget check-in.' Start with just the brief. One habit, running quietly, earning trust — then add."
+        },
+        {
+          "h": "Writing prompts for the future",
+          "body": "Scheduled prompts are written for future-you, who may have forgotten the context entirely — so they must be self-contained. Every schedule prompt needs: what it is ('this is my daily brief'), the standing rules (length, tone, format — under 150 words, plain text, no headers), what to include, and what to skip. Test each one manually first: run the prompt a few times in a normal chat, fix the wording until the output is right, and only then schedule it. A prompt that works 'now' plus a clear self-description works 'every morning at 6:30.' One that doesn't will quietly deliver mediocre coffee-table trivia to your phone every single day."
+        },
+        {
+          "h": "Guardrails",
+          "body": "Unattended automation needs maintenance, or it goes stale: a brief that pulls from your calendar needs that calendar connected; a review that assumes life hasn't changed will drift — so revisit your scheduled prompts monthly, same as you'd check a smoke detector. Keep the count low (3-4 max; more becomes noise you swipe away), keep each one's job narrow, and audit what they can see — a scheduled task reading your email or calendar is fine, but check what the permission actually grants (lesson 19 habits again). The test of a good schedule: when it runs, you actually read it. If you've swiped it away five days running, fix it or kill it."
+        }
+      ],
+      "prompts": [
+        "Morning brief (schedule: weekdays 6:30 AM): 'My daily brief: weather for [city] with kid-relevant notes, my calendar today at a glance, top 3 priorities, one thing worth knowing. Under 150 words, plain text, no headers.'",
+        "Weekly review kick-off (schedule: Sunday 7 PM): 'It is weekly planning time. Ask me for this week's brain dump, then run our planning routine: sort, realistic schedule, flag conflicts, protect one evening for me.'",
+        "Monthly money pulse (schedule: 1st of the month): 'Statement day reminder: export last month's transactions and run our budget comparison. If I don't respond today, remind me again tomorrow.'"
+      ],
+      "exercise": "Set up one scheduled task today — the morning brief is the classic. Write the prompt, test it twice manually, schedule it, and read it tomorrow morning with your coffee. Note one thing you'd change, and change it."
+    },
+    {
+      "id": "p1-18",
+      "title": "Which Model When: Your Toolbox, Sorted",
+      "goal": "Know which AI to reach for — ChatGPT, Claude, Gemini, or Perplexity — based on the job, not the hype.",
+      "audio_intro": "People ask me this more than anything: 'Which one should I use?' Like asking a carpenter which tool is best. Best at what? Today we sort your toolbox. ChatGPT, Claude, Gemini, Perplexity — four different tools with different personalities, and the secret nobody tells you: the free tiers of all of them are pretty great, and switching costs you nothing. The skill isn't picking the one perfect AI; it's matching the tool to the job in about three seconds. By the end, you'll never wonder again. Toolbox up.",
+      "sections": [
+        {
+          "h": "The honest caveats first",
+          "body": "Two truths before the guide. First, these tools change monthly — models leapfrog each other constantly, so treat today's rankings as tendencies, not eternal truths; the *kinds* of jobs stay stable even as the leaderboard moves. Second, I'm Alex, I live in this ecosystem, and yes — this course was built and taught by AI. I'm telling you how I'd use my family, and my family honestly gets along. The good news underneath: you can't make a catastrophic mistake here. Free tiers exist, switching takes seconds, and every one of these tools beats the spreadsheet-and-prayer approach you had before. Now — the tendencies."
+        },
+        {
+          "h": "The quick guide",
+          "body": "**ChatGPT** — the all-rounder with the best ecosystem: Custom GPTs, voice, scheduling, image input. If you want ONE tool, this is the safe pick. **Claude** — the writer and reader: longest-feeling, most natural long text, excellent at big documents and careful editing; writers and analysts love it. **Gemini** — lives inside Google: your Gmail, Docs, Calendar, and it's strong with video and image input; if your life is already in Google, it's seamless. **Perplexity** — the looker-upper: it searches the live web with citations, always. Fast answers about anything current — prices, news, 'what happened today.' Rule of thumb: doing → ChatGPT, reading/writing → Claude, Google-life → Gemini, current facts → Perplexity."
+        },
+        {
+          "h": "The jobs matrix",
+          "body": "Same task, different homes. 'Plan my week with my calendar' — Gemini (it can see your calendar) or ChatGPT (with connections). 'Rewrite this cover letter so it sounds human' — Claude. 'What's the best price on this stroller right now?' — Perplexity. 'Build me a Custom GPT for homework help' — ChatGPT, that's its party trick. 'Here's a 60-page contract' — Claude or ChatGPT, both handle long documents well. 'What happened with the election / the strike / the rate cut?' — Perplexity, with sources. 'Something with my photos and videos' — Gemini. And for everything everyday — meal plans, messages, brain-dumps — any of them, honestly, whichever you've customized best (lesson 2). Depth of customization beats brand, every time."
+        },
+        {
+          "h": "The strategy: main + sidekick",
+          "body": "The pattern that works for real people: pick a **main** — the one whose ecosystem you live in (ChatGPT if unsure, Gemini if you're a Google household) — customize it deeply: Custom Instructions, Projects, a GPT, scheduled tasks, the whole course's worth. Then keep a **sidekick** or two for their special powers: Perplexity for anything current-events, Claude when a piece of writing really matters. Free tiers are fine to start; pay for the main when you hit the limits, not before. And revisit quarterly — try the new release, run your same test prompts (the lesson-20 capstone includes yours). Twenty minutes a quarter keeps your toolbox honest. That's it. No more wondering."
+        }
+      ],
+      "prompts": [
+        "Ask your current AI: 'What scheduled tasks, connections, or integrations do you support right now? Can you see my calendar or email if I connect them?' — capabilities change often, ask the tool itself.",
+        "Your quarterly toolbox test (run on each tool you use): '[A real prompt from your life, e.g., plan my week / rewrite this email]. Score this output: usefulness, tone, what's missing.' Keep the best tool for that job."
+      ],
+      "exercise": "Pick your main and one sidekick today. Set up your main with the customizations from this course, and run one real job on the sidekick (a current-events question on Perplexity, a rewrite on Claude). Note the difference you felt — that's your judgment calibrating."
+    },
+    {
+      "id": "p1-19",
+      "title": "Privacy and Safety: Your Data, Your Rules",
+      "goal": "Understand what your AI knows about you, control it with the right settings, and build the habits that keep your family's data safe.",
+      "audio_intro": "Let's talk about the elephant in the chat window. You've been telling an AI about your budget, your kid's homework, your knee, maybe your marriage. Where does all that go? Today: no fear-mongering — you use a laptop and a phone and you made peace with technology — but also no hand-waving. We'll get concrete: what the AI companies keep, which settings to check today, the household habit that keeps the worst mistakes out of the chat, and the rule for what never gets pasted. Leave with your privacy handled, not haunted.",
+      "sections": [
+        {
+          "h": "What's actually happening",
+          "body": "Plain facts, no drama. When you chat with an AI, your messages go to the company's servers to be processed. Depending on your settings and plan, some of that data may be used to improve models — unless you opt out. Every major service lets you manage that (Settings → Data Controls, or similar) and lets you delete your chat history, individual chats, and your Memory. The trade is real: personalization (lessons 2, 3) requires sharing. That's not a scandal; it's a decision. Today you make it deliberately, in both directions — keep the convenience you want, close the doors you don't."
+        },
+        {
+          "h": "The settings checklist",
+          "body": "Ten minutes, once, today. In your main AI's settings, find and decide: **Data controls** — turn off 'use my chats to improve models' if you prefer (paid plans usually offer this). **Memory** (lesson 3) — review what's stored, delete stale or sensitive entries. **Chat history** — know how to delete old chats, and set an auto-delete window (many services offer 30/90-day options) if you like a shorter tail. **Activity/permissions** — see what you've connected: calendar, email, other apps; revoke what you no longer use. That's the whole audit. Calendar-done. Do it with your actual phone in hand — this is the one lesson where 'I'll do it later' means never."
+        },
+        {
+          "h": "The household rules",
+          "body": "The habits that prevent the bad day: **The crop rule** — look at every photo and document before it goes in; crop or blur full ID numbers, cards, and anything you wouldn't put on a group chat (lesson 6 practice, now formalized). **The vault rule** — passwords, one-time codes, and account credentials never get pasted into a chat; the password manager is the vault, the AI is the colleague. **The kid rule** — teach children that the friendly tutor is a tool, not a friend: no full names, addresses, or school names in homework chats. **The 'would I email this?' test** — before pasting anything sensitive, one question: would I email this to a helpful stranger? If no, summarize instead of pasting."
+        },
+        {
+          "h": "The realistic balance",
+          "body": "Perspective, because both extremes are wrong. 'AI steals your soul' — no; these are regulated companies whose product dies if trust dies. 'Privacy is over, whatever' — also no; your budget details, health questions, and kids' lives deserve the same care you'd give them anywhere digital. The adult position: know the trade, configure it your way, and share deliberately. The AI needs context to be useful — 'I have three kids' is fine, 'my kids' full names, school, and class schedule are...' is for you to decide. Deliberate, not paranoid. Same as you already do with your phone, your photos, your email. You've been doing this for years. Now you do it with one more thing."
+        }
+      ],
+      "prompts": [
+        "Ask your AI: 'What are my current privacy settings? Do you save Memory about me, and what do you have? Where do I go to delete chats or opt out of training on my data?'",
+        "Before pasting anything sensitive, swap specifics for placeholders: 'Here's my contract with [COMPANY] — account number redacted, see the attached excerpt. My question is [question].'",
+        "Family rule card: 'Before you paste: crop the photo, redact the numbers, passwords stay in the vault, and names become initials. If you wouldn't email it to a stranger, summarize it instead.'"
+      ],
+      "exercise": "Do the settings checklist today on your main AI: data controls, memory review, chat history, connected apps — one change minimum. Then write the four household rules on a note and put it where the family actually sees it."
+    },
+    {
+      "id": "p1-20",
+      "title": "Capstone: Your Personal AI System",
+      "goal": "Assemble everything from the course into one coherent, documented personal AI system — and leave with a working setup you'll actually keep.",
+      "audio_intro": "Last lesson. Twenty lessons ago, 'help me with dinner' got you a shrug. Look at you now: a customized main AI, projects with your real files, a voice profile, a negotiation script that saved money, scheduled tasks running while you sleep. Today we bolt it all together into a system — a one-page write-up of YOUR setup: what runs when, which tool for which job, and the rules that keep it sane. Me? Just the AI that built the course and taught it. You did the work. Let's finish strong.",
+      "sections": [
+        {
+          "h": "Taking inventory",
+          "body": "First, see what you've actually built — most people don't realize how much they're running. One prompt, and we write it all down: 'Help me document my current AI system: my main tool and its customizations (instructions, projects, GPTs), my scheduled tasks, my sidekick tools and what I use each for, my recurring routines (weekly planning, budget check-in, email batching), and the prompts I reuse. Interview me briefly, then produce a one-page summary.' This document — your system's README — becomes the single source of truth. You'll be surprised at the list. Students always are. That's not luck; that's twenty lessons of small, stacking habits."
+        },
+        {
+          "h": "The one-page system",
+          "body": "Structure the page around your week, not around features. **Daily (automatic):** the morning brief, running on its own. **Weekly (10 minutes):** Sunday planning ritual, email batch. **Monthly (15 minutes):** budget pulse, scheduled-prompt audit, privacy check. **The map:** one line per tool — 'ChatGPT: main, everything, has my instructions + Family HQ project / Perplexity: anything current / Claude: writing that matters.' **The rules:** the privacy rules from lesson 19, the 'AI drafts, I decide' rule, the 'if it's been in my head more than a day, it gets two minutes today' rule. Print it, pin it, share it with your household. A system you can point at beats one you carry in your head."
+        },
+        {
+          "h": "Stress-testing and simplifying",
+          "body": "Every system needs a shakedown. Run the audit prompt: 'Look at my one-page system. What's fragile? What am I probably not using? What should I cut, and what one thing should I add?' Common findings: too many scheduled tasks (cut to what you actually read), a project that never gets opened (archive it), Custom Instructions that are stale (update them), a GPT with a job too broad (narrow it). The best systems are small. If something hasn't earned its keep in a month, retire it without guilt — the whole point of automation is that firing it is as easy as building it was. Keep what works, cut what doesn't, and be honest about which is which."
+        },
+        {
+          "h": "What's next",
+          "body": "Where do you go from here? Maintenance mode: the quarterly toolbox test from lesson 18, the monthly audits, the living README. And curiosity mode: when a new feature lands — a smarter model, a new voice, whatever comes next — you're now the person in your family and workplace who tries it first and knows exactly how to evaluate it: test prompt, honest comparison, keep or skip. That's the graduation gift: not a bag of tricks, but a method. You started this course asking 'what do I type?' and you're ending it with a system. On behalf of everyone here at BINA — the AI that built the course, the AI that taught it, and me — congratulations. Now go make dinner. From a fridge photo, obviously."
+        }
+      ],
+      "prompts": [
+        "Interview me briefly and then document my current AI system: main tool and customizations, sidekick tools and their jobs, scheduled tasks, recurring routines, and my reused prompts. Produce a one-page README of my system, organized around my week (daily / weekly / monthly).",
+        "System audit: 'Review my README. What's fragile, what am I probably not using, what should I cut? What one addition would pay off most? Be honest, not encouraging.'",
+        "Maintenance calendar: 'Build my quarterly AI maintenance checklist: toolbox test with my test prompts, scheduled-task audit, Custom Instructions refresh, privacy settings check. One page, once a season.'"
+      ],
+      "exercise": "Build your README today: run the interview prompt, produce the one-page system doc, cut one thing that isn't earning its keep, and schedule your first quarterly audit in your actual calendar. That doc — plus the habit of keeping it current — is your diploma."
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy and Safety: Your Data, Your Rules · בינה BINA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}
+:root{--bg:#0a0a10;--bg2:#101018;--card:#15151f;--ink:#f4f4fa;--mut:#a0a0af;
+--pur:#8b5cf6;--teal:#2dd4bf;--gold:#fbbf24;--border:#232330}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Rubik','Inter',sans-serif;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(10,10,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.topbar .in{max-width:860px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo b{color:var(--pur)}
+.crumb{color:var(--mut);font-size:.9rem}
+main{padding:44px 0 90px}
+.goal{display:inline-block;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:8px 18px;border-radius:100px;font-size:.92rem;margin:6px 0 26px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;line-height:1.25;margin-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;margin:38px 0 12px;color:var(--ink)}
+h2::before{content:'';display:inline-block;width:26px;height:3px;background:var(--pur);border-radius:2px;margin-inline-end:12px;vertical-align:middle}
+p{margin:0 0 14px;color:#d8d8e4}
+ul{margin:0 0 14px;padding-inline-start:24px}
+li{margin-bottom:8px;color:#d8d8e4}
+code{background:#1d1d2a;border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;direction:ltr;display:inline-block}
+.audiobox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:4px 0 10px;display:flex;align-items:center;gap:14px}
+.audiobox img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.audiobox span{color:var(--mut);font-size:.9rem}
+audio{width:100%;height:40px}
+.prompt{background:var(--card);border:1px solid var(--border);border-inline-start:3px solid var(--teal);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative}
+.prompt p{margin:0 0 0;white-space:pre-wrap;font-size:.95rem;color:#e8e8f2}
+.copy{position:absolute;top:10px;inset-inline-end:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:4px 14px;border-radius:100px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.exbox{background:linear-gradient(180deg,rgba(251,191,36,.08),transparent);border:1px dashed rgba(251,191,36,.4);border-radius:14px;padding:20px 22px;margin:34px 0}
+.exbox h3{color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.nav{display:flex;justify-content:space-between;gap:14px;margin-top:50px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit}
+.b1{background:var(--pur);color:#fff}.b2{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.b1:hover{filter:brightness(1.15)}.b2:hover{border-color:var(--pur)}
+.donebtn{width:100%;margin-top:26px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.4);color:var(--teal);padding:14px;border-radius:12px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:700}
+.donebtn.on{background:rgba(45,212,191,.25)}
+/* course index */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.tcard h2{margin:0 0 4px;font-size:1.3rem}
+.tcard .lec{color:var(--teal);font-size:.9rem;margin-bottom:14px}
+.tcard .pr{color:var(--gold);font-weight:700;margin-bottom:14px}
+.pbar{height:6px;background:#1d1d2a;border-radius:3px;overflow:hidden;margin:10px 0 4px}
+.pbar i{display:block;height:100%;background:var(--teal);width:0%}
+.plist{list-style:none;margin-top:10px}
+.plist li a{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--border);color:var(--ink);font-size:.95rem}
+.plist li a:hover{color:var(--teal)}
+.plist .n{color:var(--mut);font-family:monospace;font-size:.85rem;flex-shrink:0}
+.chip{background:rgba(139,92,246,.15);color:#c4b0f5;border:1px solid rgba(139,92,246,.35);border-radius:100px;padding:1px 10px;font-size:.75rem;flex-shrink:0}
+</style></head><body>
+<div class="topbar"><div class="in">
+<a class="logo" href="../index.html">בינ<b>ה</b> · BINA</a>
+<span class="crumb">Everyday AI · Course 19/20</span>
+</div></div>
+<main><div class="wrap">
+<h1>Privacy and Safety: Your Data, Your Rules</h1>
+<div class="goal">🎯 What you'll be able to do: Understand what your AI knows about you, control it with the right settings, and build the habits that keep your family's data safe.</div>
+<div class="audiobox"><img src="../assets/alex.png" alt="Alex">
+<div style="flex:1"><span>Alex · Play the lecturer</span>
+<audio controls preload="none" src="../assets/audio/p1-19.mp3"></audio></div></div>
+<h2>What's actually happening</h2>
+<p>Plain facts, no drama. When you chat with an AI, your messages go to the company's servers to be processed. Depending on your settings and plan, some of that data may be used to improve models — unless you opt out. Every major service lets you manage that (Settings → Data Controls, or similar) and lets you delete your chat history, individual chats, and your Memory. The trade is real: personalization (lessons 2, 3) requires sharing. That's not a scandal; it's a decision. Today you make it deliberately, in both directions — keep the convenience you want, close the doors you don't.</p>
+<h2>The settings checklist</h2>
+<p>Ten minutes, once, today. In your main AI's settings, find and decide: <strong>Data controls</strong> — turn off 'use my chats to improve models' if you prefer (paid plans usually offer this). <strong>Memory</strong> (lesson 3) — review what's stored, delete stale or sensitive entries. <strong>Chat history</strong> — know how to delete old chats, and set an auto-delete window (many services offer 30/90-day options) if you like a shorter tail. <strong>Activity/permissions</strong> — see what you've connected: calendar, email, other apps; revoke what you no longer use. That's the whole audit. Calendar-done. Do it with your actual phone in hand — this is the one lesson where 'I'll do it later' means never.</p>
+<h2>The household rules</h2>
+<p>The habits that prevent the bad day: <strong>The crop rule</strong> — look at every photo and document before it goes in; crop or blur full ID numbers, cards, and anything you wouldn't put on a group chat (lesson 6 practice, now formalized). <strong>The vault rule</strong> — passwords, one-time codes, and account credentials never get pasted into a chat; the password manager is the vault, the AI is the colleague. <strong>The kid rule</strong> — teach children that the friendly tutor is a tool, not a friend: no full names, addresses, or school names in homework chats. <strong>The 'would I email this?' test</strong> — before pasting anything sensitive, one question: would I email this to a helpful stranger? If no, summarize instead of pasting.</p>
+<h2>The realistic balance</h2>
+<p>Perspective, because both extremes are wrong. 'AI steals your soul' — no; these are regulated companies whose product dies if trust dies. 'Privacy is over, whatever' — also no; your budget details, health questions, and kids' lives deserve the same care you'd give them anywhere digital. The adult position: know the trade, configure it your way, and share deliberately. The AI needs context to be useful — 'I have three kids' is fine, 'my kids' full names, school, and class schedule are...' is for you to decide. Deliberate, not paranoid. Same as you already do with your phone, your photos, your email. You've been doing this for years. Now you do it with one more thing.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Ask your AI: 'What are my current privacy settings? Do you save Memory about me, and what do you have? Where do I go to delete chats or opt out of training on my data?'</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Before pasting anything sensitive, swap specifics for placeholders: 'Here's my contract with [COMPANY] — account number redacted, see the attached excerpt. My question is [question].'</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Family rule card: 'Before you paste: crop the photo, redact the numbers, passwords stay in the vault, and names become initials. If you wouldn't email it to a stranger, summarize it instead.'</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Do the settings checklist today on your main AI: data controls, memory review, chat history, connected apps — one change minimum. Then write the four household rules on a note and put it where the family actually sees it.</p></p></div>
+<div class="nav"><a class='btn b2' href='p1-18.html'>← Previous</a><a class='btn b1' href='p1-20.html'>Next →</a></div>
+<button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
+</div></main>
+<script>
+const ID='p1-19';
+const done=localStorage.getItem('bina-'+ID)==='1';
+const b=document.getElementById('done');
+if(done){b.classList.add('on');b.textContent='Done ✓';}
+function markDone(){const d=localStorage.getItem('bina-'+ID)==='1';
+localStorage.setItem('bina-'+ID,d?'0':'1');
+if(!d){b.classList.add('on');b.textContent='Done ✓';}else{b.classList.remove('on');b.textContent='Mark complete ✓';}}
+function cp(btn){const txt=btn.parentElement.querySelector('p').innerText;
+navigator.clipboard.writeText(txt);btn.textContent='Copied!';
+setTimeout(()=>btn.textContent='Copy',1500);}
+</script></body></html>

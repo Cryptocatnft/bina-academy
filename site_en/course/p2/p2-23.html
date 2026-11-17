@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Take-Home Assignments — and How to Crush Them · בינה BINA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}
+:root{--bg:#0a0a10;--bg2:#101018;--card:#15151f;--ink:#f4f4fa;--mut:#a0a0af;
+--pur:#8b5cf6;--teal:#2dd4bf;--gold:#fbbf24;--border:#232330}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Rubik','Inter',sans-serif;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(10,10,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.topbar .in{max-width:860px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo b{color:var(--pur)}
+.crumb{color:var(--mut);font-size:.9rem}
+main{padding:44px 0 90px}
+.goal{display:inline-block;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:8px 18px;border-radius:100px;font-size:.92rem;margin:6px 0 26px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;line-height:1.25;margin-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;margin:38px 0 12px;color:var(--ink)}
+h2::before{content:'';display:inline-block;width:26px;height:3px;background:var(--pur);border-radius:2px;margin-inline-end:12px;vertical-align:middle}
+p{margin:0 0 14px;color:#d8d8e4}
+ul{margin:0 0 14px;padding-inline-start:24px}
+li{margin-bottom:8px;color:#d8d8e4}
+code{background:#1d1d2a;border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;direction:ltr;display:inline-block}
+.audiobox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:4px 0 10px;display:flex;align-items:center;gap:14px}
+.audiobox img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.audiobox span{color:var(--mut);font-size:.9rem}
+audio{width:100%;height:40px}
+.prompt{background:var(--card);border:1px solid var(--border);border-inline-start:3px solid var(--teal);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative}
+.prompt p{margin:0 0 0;white-space:pre-wrap;font-size:.95rem;color:#e8e8f2}
+.copy{position:absolute;top:10px;inset-inline-end:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:4px 14px;border-radius:100px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.exbox{background:linear-gradient(180deg,rgba(251,191,36,.08),transparent);border:1px dashed rgba(251,191,36,.4);border-radius:14px;padding:20px 22px;margin:34px 0}
+.exbox h3{color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.nav{display:flex;justify-content:space-between;gap:14px;margin-top:50px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit}
+.b1{background:var(--pur);color:#fff}.b2{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.b1:hover{filter:brightness(1.15)}.b2:hover{border-color:var(--pur)}
+.donebtn{width:100%;margin-top:26px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.4);color:var(--teal);padding:14px;border-radius:12px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:700}
+.donebtn.on{background:rgba(45,212,191,.25)}
+/* course index */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.tcard h2{margin:0 0 4px;font-size:1.3rem}
+.tcard .lec{color:var(--teal);font-size:.9rem;margin-bottom:14px}
+.tcard .pr{color:var(--gold);font-weight:700;margin-bottom:14px}
+.pbar{height:6px;background:#1d1d2a;border-radius:3px;overflow:hidden;margin:10px 0 4px}
+.pbar i{display:block;height:100%;background:var(--teal);width:0%}
+.plist{list-style:none;margin-top:10px}
+.plist li a{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--border);color:var(--ink);font-size:.95rem}
+.plist li a:hover{color:var(--teal)}
+.plist .n{color:var(--mut);font-family:monospace;font-size:.85rem;flex-shrink:0}
+.chip{background:rgba(139,92,246,.15);color:#c4b0f5;border:1px solid rgba(139,92,246,.35);border-radius:100px;padding:1px 10px;font-size:.75rem;flex-shrink:0}
+</style></head><body>
+<div class="topbar"><div class="in">
+<a class="logo" href="../index.html">בינ<b>ה</b> · BINA</a>
+<span class="crumb">AI Career · Course 23/24</span>
+</div></div>
+<main><div class="wrap">
+<h1>Take-Home Assignments — and How to Crush Them</h1>
+<div class="goal">🎯 What you'll be able to do: Handle AI-role take-home tests professionally — scoping, building, documenting, and presenting so evaluators can't help but be impressed.</div>
+<div class="audiobox"><img src="../assets/alex.png" alt="Alex">
+<div style="flex:1"><span>Alex · Play the lecturer</span>
+<audio controls preload="none" src="../assets/audio/p2-23.mp3"></audio></div></div>
+<h2>Reading the brief: what's really tested</h2>
+<p>Take-homes almost never test raw skill alone — they test <strong>judgment under a deadline</strong>. Decode the brief before touching a tool:</p>
+<ul>
+<li><strong>The explicit ask</strong>: build X with Y constraints. Underline the constraints — they're the grading rubric.</li>
+<li><strong>The implicit tests</strong>: usually three — can you scope realistically? do you document decisions? does it actually run?</li>
+<li><strong>The realistic effort</strong>: ask! 'How many hours do you expect candidates to spend?' is a senior-sounding question, not a weak one. If they say 3 hours, submitting 20 hours of work signals you can't scope — a real failure mode.</li>
+</ul>
+<p>Then decide your <strong>intentional scope</strong>: what you'll build, what you'll stub, what you'll list as 'given more time.' Evaluators love a visible <code>future-work.md</code> more than an overbuilt mess.</p>
+<h2>The build: your Module 4 system, on a clock</h2>
+<p>This is why Module 4 existed — take-homes are typically mini versions of your portfolio: a support agent, a RAG demo, a pipeline. Run your known-good loop, timeboxed:</p>
+<ul>
+<li><strong>Hour 1</strong>: skeleton and the riskiest part first — if the core won't work, you want to know in hour one, not hour nine.</li>
+<li><strong>Middle hours</strong>: build the smallest complete version that satisfies every explicit requirement. Complete-but-small beats impressive-but-broken, every time.</li>
+<li><strong>Final third</strong>: testing (your test-set habit — even 10 cases puts you ahead of most candidates) and the README.</li>
+</ul>
+<p>Non-negotiable: <strong>it must run on their machine.</strong> Include exact setup steps, a working demo link, and zero 'it worked on my machine' energy. That sentence has ended candidacies.</p>
+<h2>The README is half your grade</h2>
+<p>Evaluators read the README before or instead of the code. Use your proven structure:</p>
+<ul>
+<li><strong>Problem and approach</strong> in three sentences, human-readable.</li>
+<li><strong>What I built / what I deliberately didn't</strong> — your scope decisions, stated proudly.</li>
+<li><strong>How to run it</strong> — numbered, tested on a clean machine (or a live link).</li>
+<li><strong>Design decisions</strong> — 'I chose X over Y because Z.' This is where judgment becomes visible and gradeable.</li>
+<li><strong>Testing</strong> — your test set and results table.</li>
+<li><strong>Given more time</strong> — 3 bullets. Shows vision plus discipline.</li>
+</ul>
+<p>This is the exact README you've written four times. The take-home rewards exactly the habits you now have. Screenshots and a 60-90 second demo video complete the package — evaluators who feel the demo *work* in two minutes are already on your side.</p>
+<h2>Presenting it — and protecting yourself</h2>
+<p>Many processes end with a walkthrough call. Structure it like your Lesson 22 project tour: problem, approach, one decision story, demo, limits, future work — 5-7 minutes, then invite questions. Expect 'why didn't you…' questions: they test composure, not perfection; 'I considered it and deprioritized it because of the time budget — here's where it would slot in' is a *great* answer.</p>
+<p>And know your rights: a take-home shouldn't exceed roughly 4-8 hours or solve a company's *current real business problem unpaid. If it smells like free work — real data, production scope, no compensation — it's fair to ask about it, or walk. Companies that respect candidates design respectful take-homes; the assignment is often your first look at how they actually operate.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Here is a take-home brief: [PASTE BRIEF]. Give me: (1) what's likely being tested beyond the explicit ask, (2) a ruthless scope plan for a [X]-hour budget — build / stub / skip, (3) the 3 risks that could sink it and how to de-risk each early, (4) 5 clarifying questions worth asking before starting.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Review my take-home README like the evaluator: [PASTE README]. Where would I lose points? What's missing? What sentence should I add? Do not rewrite it — give me the fix list.</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Do a timed drill: find a realistic take-home brief (or generate one with AI: 'write a 4-hour take-home for an AI Automation Specialist role'), then execute the full lifecycle in one sitting — scoped build, test set, README, 60-second demo video. Review: where did the time actually go? Fix your process while it's cheap.</p></p></div>
+<div class="nav"><a class='btn b2' href='p2-22.html'>← Previous</a><a class='btn b1' href='p2-24.html'>Next →</a></div>
+<button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
+</div></main>
+<script>
+const ID='p2-23';
+const done=localStorage.getItem('bina-'+ID)==='1';
+const b=document.getElementById('done');
+if(done){b.classList.add('on');b.textContent='Done ✓';}
+function markDone(){const d=localStorage.getItem('bina-'+ID)==='1';
+localStorage.setItem('bina-'+ID,d?'0':'1');
+if(!d){b.classList.add('on');b.textContent='Done ✓';}else{b.classList.remove('on');b.textContent='Mark complete ✓';}}
+function cp(btn){const txt=btn.parentElement.querySelector('p').innerText;
+navigator.clipboard.writeText(txt);btn.textContent='Copied!';
+setTimeout(()=>btn.textContent='Copy',1500);}
+</script></body></html>

@@ -1,0 +1,702 @@
+{
+  "track": "p2",
+  "lang": "en",
+  "lessons": [
+    {
+      "id": "p2-01",
+      "title": "How LLMs Actually Work (in Plain Words)",
+      "goal": "Understand what really happens inside a large language model so you can predict when AI will shine and when it will fail.",
+      "audio_intro": "Hi, I'm Alex, and welcome to the AI Career track. Before we write a single prompt, let's demystify the machine. A large language model is, at its core, the world's most powerful autocomplete. It reads your message, predicts the most likely next piece of text, then the next, and the next — thousands of times per second. That's it. No magic, no database of facts, no little person inside. Once you truly get this, everything else in this course — why AI forgets, why it hallucinates, why prompts matter — suddenly makes sense. Let's build that intuition first. It's the highest-leverage hour you'll spend.",
+      "sections": [
+        {
+          "h": "The world's best autocomplete",
+          "body": "An LLM generates text one **token** (a word chunk) at a time. Given everything so far, it computes a probability distribution over possible next tokens and picks one — usually a good one, sometimes a lucky one. It repeats this until it decides to stop. There is no lookup table of facts and no internal fact-checker. When a model answers your question, it is generating text that *looks like* a good answer, based on patterns absorbed during training. That's why it can write brilliant poetry and confidently invent a fake citation in the same breath."
+        },
+        {
+          "h": "Training: reading (most of) the internet",
+          "body": "Models are trained in stages. **Pretraining**: the model reads enormous amounts of text and learns to predict the next token — this is where its knowledge of language, code, and the world comes from. **Fine-tuning**: humans rate model outputs, teaching it to be helpful and follow instructions. **Alignment**: safety and behavior tuning. Practical takeaway: the model's knowledge is frozen at training time, which is why it may not know about last month's news unless it has web search or you paste the information in."
+        },
+        {
+          "h": "Why this explains everything",
+          "body": "Once you see the model as a pattern-completion engine, its quirks become predictable:\n\n- It **hallucinates** because plausible text, not truth, is its target.\n- It **forgets** earlier parts of a long chat because attention fades over distance.\n- It **follows your format** because it imitates patterns — including your typos and your clarity.\n- It **does better with context** — a vague prompt gives the pattern engine too many directions to go.\n\nGreat prompt engineering is really just giving the autocomplete machine an easy pattern to complete."
+        },
+        {
+          "h": "What it is NOT",
+          "body": "It is not a search engine, a calculator, or a database — though it can *use* those things when connected to tools, which we'll cover in Module 3. It doesn't \"know\" it's right, doesn't reason about truth, and doesn't have goals. Treating it like an eager, extremely well-read intern who sometimes bluffs is the right mental model. Your job in this career track: become the person who deploys that intern reliably — with verification, structure, and automation."
+        }
+      ],
+      "prompts": [
+        "Explain in one paragraph, like I'm a smart 12-year-old, what happens from the moment I send you a message until I see your answer. Then list 3 things you cannot do because of how you work, and why.",
+        "I'm going to describe a task. Tell me whether an LLM alone, an LLM plus tools, or a human is the best fit, and explain your reasoning in 3 bullet points. Task: [YOUR TASK]"
+      ],
+      "exercise": "Write your own 3-sentence explanation of how an LLM works, in your own words. Then ask an AI chatbot to find one error or vague point in your explanation, and fix it. Save this — it's a great interview answer later."
+    },
+    {
+      "id": "p2-02",
+      "title": "The AI Tool Stack of 2026",
+      "goal": "Map the current AI ecosystem — the layers, the names, and what each layer is actually for — so you never feel lost in tool talk again.",
+      "audio_intro": "Alex here. Walk into any AI job interview in 2026 and you'll hear a blur of names: GPT, Claude, Gemini, Copilot, n8n, Make, Zapier, agents, RAG pipelines. Good news — the chaos has a shape. Almost every AI tool on earth fits into five layers: the models, the chat assistants, the API layer, the automation platforms, and the vertical tools built on top. In this lesson we climb the stack layer by layer. By the end, when someone drops a new name, you'll know exactly which drawer it belongs in — and more importantly, which drawer your next project should live in.",
+      "sections": [
+        {
+          "h": "Layer 1: The models",
+          "body": "At the bottom sit the frontier models: OpenAI's GPT family, Anthropic's Claude, Google's Gemini, plus open-weight models like Llama and Mistral that you can run yourself. Key 2026 distinctions: **reasoning models** (slower, think step-by-step, great for hard analysis) versus **fast models** (cheap, instant, great for bulk tasks), and **multimodal** — text, image, audio, video in and out. You don't buy a model directly; you access it through a chat app or an API. Model names change monthly; the *categories* barely change at all."
+        },
+        {
+          "h": "Layer 2: Chat assistants",
+          "body": "ChatGPT, Claude, Gemini, Copilot — the consumer face of AI. This is where most people live, and where most people stop. For our purposes, learn the power features: file uploads, image generation, web search, **Projects/Custom GPTs** (saved instructions plus documents = a mini assistant), and memory. A professional uses a chat assistant the way a carpenter uses a workbench — one surface among many, not the whole workshop. The different assistants have different strengths; professionals keep two or three and match the task to the tool."
+        },
+        {
+          "h": "Layer 3: APIs and automation platforms",
+          "body": "**APIs** let software call a model directly — this is what powers every AI product you'll ever build, and Lesson 11 covers it hands-on. **Automation platforms** — Zapier, Make, n8n — connect APIs to everything else: email, spreadsheets, Slack, databases. n8n is the 2026 favorite for AI work because it's powerful, cheap, and self-hostable, and it has a proper AI-agent node. The pattern to remember: *automation platform = the hands, model = the brain*. Almost every AI Ops and automation job posting lives at this layer."
+        },
+        {
+          "h": "Layer 4: Vertical and coding tools",
+          "body": "On top sit specialized tools: coding assistants (GitHub Copilot, Cursor, Claude Code), AI features baked into Notion, Office, and Salesforce, support bots, AI sales tools, and so on. You don't need to master all of them. You need to (1) recognize which layer a tool belongs to, (2) pick one automation platform and get genuinely good at it, and (3) stay roughly aware of what's new — 15 minutes a week of AI news is enough. Depth in one stack beats shallow knowledge of twenty."
+        }
+      ],
+      "prompts": [
+        "Here are 6 AI tools I've heard of: [LIST THEM]. For each one, tell me which layer of the AI stack it belongs to (model / chat assistant / API+automation / vertical tool), and one realistic use case. Present as a markdown table.",
+        "I want to use AI to automate [YOUR REPETITIVE TASK AT WORK OR HOME]. Recommend a minimal tool stack for a beginner, with a 3-step starting plan. Keep it under 200 words."
+      ],
+      "exercise": "Draw your personal AI stack map: one column per layer (models, chat, automation, vertical tools), filling in the tools you actually use today. Circle gaps. Then commit to ONE automation platform you'll learn deeply during this course — write the choice and why in your notes."
+    },
+    {
+      "id": "p2-03",
+      "title": "Context Windows and Why AI 'Forgets'",
+      "goal": "Understand tokens and context windows, and learn the practical techniques that keep long AI conversations and documents from falling apart.",
+      "audio_intro": "Ever had a chatbot that was brilliant for ten minutes and then suddenly dumb — forgetting your name, your rules, your whole point? That's not the model getting tired. That's the context window doing what it does. In this lesson, Alex takes you inside the model's short-term memory: what a token is, how much a modern model can actually hold — spoiler: a lot, but with catches — and the famous 'lost in the middle' problem. Most importantly, you'll learn the three working techniques professionals use to fight forgetting: summarize, compress, and retrieve. This single lesson will save you hundreds of frustrating chats this year.",
+      "sections": [
+        {
+          "h": "Tokens: the unit of memory",
+          "body": "Models don't read words — they read **tokens**, chunks of text roughly three-quarters of a word in English (Hebrew usually costs more tokens per word). The **context window** is everything the model can \"see\" at once: your instructions, the conversation history, pasted documents, and its own previous answers. In 2026, windows range from about 128K tokens (roughly a 300-page book) to over a million on some models. Sounds huge — but everything you *add* eats space, and every reply accumulates. Long chats die by a thousand crumbs."
+        },
+        {
+          "h": "Lost in the middle",
+          "body": "Here's the catch nobody puts on the marketing page: models are strongest with information at the **beginning and end** of their context, and noticeably weaker with the middle. Stuff 200 pages into a model and ask about page 97, and quality drops — sometimes badly. Bigger windows made \"just paste it all in\" possible; it did not make it *good*. Professionals treat the context window like a whiteboard: put the important stuff at the top, keep it tidy, and erase what you no longer need."
+        },
+        {
+          "h": "Three techniques that fix forgetting",
+          "body": "**1. Summarize and restart.** When a long chat starts drifting, ask: *\"Summarize our decisions, constraints, and open questions in a compact block.\"* Start a fresh chat and paste that block in. You keep the knowledge, drop the noise.\n\n**2. Compress with standing instructions.** Keep a short, fixed block — your goals, format rules, key facts — at the top of every chat, and reference it instead of re-explaining.\n\n**3. Retrieve instead of remembering.** For large document collections, don't paste everything — fetch only the relevant chunks. That's RAG (retrieval-augmented generation), and you'll build a mini version in Lesson 14."
+        },
+        {
+          "h": "Reading the signs of context failure",
+          "body": "Context problems announce themselves: the model contradicts instructions you gave earlier, re-asks questions it already answered, loses your output format, or drifts back to generic answers. When you spot two of these, don't fight it — restart with a summary. Also watch your costs: API pricing is per token, so sloppy context isn't just a quality problem, it's a money problem. The habit of *deliberate context management* is one of the clearest marks that separates trained AI users from casual ones — and interviewers notice it."
+        }
+      ],
+      "prompts": [
+        "Summarize this conversation so far into a handoff block for a fresh chat. Include: my goal, decisions made, constraints, current status, and the exact next step. Keep it under 150 words.\n\n[PASTE CONVERSATION OR WRITE 'our conversation so far']",
+        "Here is a long document: [PASTE DOCUMENT]. Give me: (1) a 5-bullet executive summary, (2) the 3 most important exact quotes with their section numbers, (3) one important detail a reader might miss in the middle of the text."
+      ],
+      "exercise": "Take a real long document (a report, contract, or article over 10 pages). Paste it into an AI chat and ask a specific question about a detail in the middle. Then apply the summarize-and-restart technique and ask the same question again. Write 3 sentences comparing the two answers — did context management help?"
+    },
+    {
+      "id": "p2-04",
+      "title": "Hallucinations and How to Catch Them",
+      "goal": "Know why AI models invent facts, which tasks are high-risk, and build a verification habit that catches errors before your boss or client does.",
+      "audio_intro": "Now for the lesson that keeps AI professionals employed. Models hallucinate — they state invented facts, fake citations, and nonexistent products with total confidence. Not because they're evil, but because they're autocomplete: they generate what a good answer *looks like*. In this lesson, Alex breaks down why hallucinations happen, the four categories of claims that are most dangerous, and the exact verification workflow used in real jobs: spot-check numbers, verify names, demand sources, and know when a human must sign off. The people who get hired and rehired in AI roles are the ones whose work can be trusted. This lesson is how you become one of them.",
+      "sections": [
+        {
+          "h": "Why models invent things",
+          "body": "A model's job is producing plausible text, not true text. When it hits a gap in its knowledge, it doesn't say \"I don't know\" unless trained and prompted to — it fills the gap with something *statistically shaped like* an answer. A fake citation looks exactly like a real one: right author cadence, right year range, right journal vibe. Hallucinations have decreased with each model generation and with reasoning models, but they have not disappeared — and the confident tone never changes. **Never mistake fluency for accuracy.**"
+        },
+        {
+          "h": "The high-risk categories",
+          "body": "Some claims deserve automatic suspicion:\n\n- **Citations and URLs** — invented papers and dead links are the classic hallucination.\n- **Numbers and statistics** — \"73% of users\" is easy to generate, hard to have actually measured.\n- **Names, dates, legal and medical specifics** — especially for people or events after the training cutoff.\n- **Tools and APIs that may not exist** — models happily invent configuration options and function parameters.\n\nRule of thumb: the more a claim *costs you if wrong*, the more you verify. Hallucinated haiku: harmless. Hallucinated contract clause: you're fired."
+        },
+        {
+          "h": "The verification workflow",
+          "body": "Professionals don't hope — they check, proportionally to the stakes:\n\n1. **Ask for sources and confidence.** \"Cite the source for each claim; mark any claim you are unsure about with [VERIFY].\"\n2. **Spot-check.** Verify 2-3 specific facts independently (web search, the original document). If they fail, treat the whole output as suspect.\n3. **Cross-examine.** \"You stated X. Give me your evidence, and tell me how you could be wrong.\"\n4. **Separate generation from validation.** Use a second AI pass — or a different model — to review the first: \"Find every unverifiable or likely-false claim in this text.\"\n5. **Human sign-off** for anything legal, medical, financial, or public-facing."
+        },
+        {
+          "h": "Designing hallucination-resistant prompts",
+          "body": "Prevention beats detection. Strong habits:\n\n- **Ground the model**: paste the actual source document and say \"answer only from this text; if it's not there, say so.\"\n- **Allow the escape hatch**: explicitly permit \"I don't know\" — models hallucinate most when cornered into answering.\n- **Ask for structure with an unknown option**: outputs where every field is either sourced or marked `unknown`.\n\nIn interviews and on the job, saying \"here's my verification workflow\" signals seniority far more than claiming \"the AI is always right\" — which, honestly, nobody believes anymore."
+        }
+      ],
+      "prompts": [
+        "Answer only from the text below. If the answer is not in the text, reply exactly: \"Not found in the provided text.\" Cite the paragraph you used for each answer.\n\n[PASTE TEXT]",
+        "Review this AI-generated answer for likely hallucinations. List each risky claim, rate it low/medium/high risk, and tell me exactly how to verify it: [PASTE ANSWER]. Do not rewrite the answer."
+      ],
+      "exercise": "Ask an AI chat: \"Give me 5 recent statistics about remote work, with sources.\" Verify each source actually exists and says what's claimed. Log the results: how many were real, partially real, or fabricated. This 20-minute drill is the single best hallucination training there is."
+    },
+    {
+      "id": "p2-05",
+      "title": "Structured Outputs: Getting JSON Every Time",
+      "goal": "Master prompting for machine-readable, schema-validated outputs — the skill that turns AI from a chat toy into a production tool.",
+      "audio_intro": "Here's where prompt engineering becomes a profession. Chatting with AI is fun, but businesses need *data* — clean, predictable, machine-readable. In this lesson, Alex teaches you to command JSON from models: defining schemas, demanding valid structure, handling missing values, and validating what comes back. This is the exact skill behind every AI pipeline you'll build in Module 4, and the one hiring managers quietly test in interviews: can you get the model to return reliable structure, not just nice prose? By the end, you'll spec an output like an engineer and get it, every single time. Well — almost every time. That's what validation is for.",
+      "sections": [
+        {
+          "h": "Why JSON runs the world",
+          "body": "**JSON** — JavaScript Object Notation — is the universal format that software uses to exchange data: `{\"name\": \"Alex\", \"score\": 8}`. When AI outputs JSON, it can flow straight into a spreadsheet, a database, a website, or the next step of an automation. The moment your AI output has a schema, you've moved from *chat* to *pipeline*. Every serious AI product — support triage, lead enrichment, document processing — is structured outputs under the hood. If you learn one pro skill from this module, make it this one."
+        },
+        {
+          "h": "Anatomy of a schema prompt",
+          "body": "A production-grade structured prompt has four parts:\n\n1. **The task** in plain words.\n2. **The exact schema** — field names, types, allowed values. Be pedantic.\n3. **Rules for uncertainty** — what to do with missing data (`null`, `\"unknown\"`, empty array — pick one and enforce it).\n4. **An example** — one fully filled, valid output.\n\nExample field spec: `\"sentiment\": one of \"positive\" | \"negative\" | \"neutral\" | \"mixed\"`. Give the model an explicit vocabulary and it stops inventing its own. The model will match your example's shape almost perfectly — that's the few-shot force you'll sharpen in Lesson 6."
+        },
+        {
+          "h": "Validation: trust, then verify",
+          "body": "Even with a perfect prompt, models occasionally emit broken JSON — a stray comma, a comment, markdown fences around the output. The pro habit: **always validate**. Paste into a JSON checker, or in code run `json.loads()` and catch the error. Defensive rules for prompts: \"Return ONLY raw JSON, no markdown, no commentary, no code fences.\" And design schemas that are **forgiving by design**: enums instead of free text, numbers where possible, and an `\"uncertain_fields\"` array so the model has somewhere honest to put doubt. Failures should be detectable, not silent."
+        },
+        {
+          "h": "Beyond JSON",
+          "body": "The same discipline applies to other formats: CSV rows for spreadsheets, YAML for config, SQL the model writes for you, even strict XML when an old system demands it. The principle is constant: **decide the shape first, then prompt for it**. Also note: many APIs and chat tools now offer a native \"structured output\" or JSON mode — use it when available, but know how to do it by hand, because interviews and legacy systems won't always hand you the easy button."
+        }
+      ],
+      "prompts": [
+        "Extract structured data from the text below. Return ONLY raw JSON (no markdown fences, no commentary) matching exactly this schema:\n{\"company\": string, \"industry\": string, \"urgency\": \"low\"|\"medium\"|\"high\", \"key_points\": string[], \"next_action\": string, \"missing_info\": string[]}\nRules: use null for anything not stated. Do not guess. If a value is ambiguous, put it in missing_info instead.\nText: [PASTE TEXT]",
+        "Act as a strict validator. Here is my JSON schema: [PASTE SCHEMA]. Here is AI-generated output: [PASTE OUTPUT]. List every field that violates the schema, every hallucinated value, and return the corrected JSON."
+      ],
+      "exercise": "Take 5 real emails or messages. Write a schema prompt that extracts each into JSON with fields like sender_intent, urgency, deadline, action_items. Run all 5, then validate every output in a JSON checker. Record your error rate and fix your prompt until all 5 parse cleanly."
+    },
+    {
+      "id": "p2-06",
+      "title": "Few-Shot Patterns: Teaching by Example",
+      "goal": "Use example-driven prompting to lock in format, tone, and judgment — and know exactly how many examples any task needs.",
+      "audio_intro": "Stop explaining, start showing. The most powerful upgrade to your prompts isn't more instructions — it's examples. In this lesson, Alex covers few-shot prompting: how two or three well-chosen examples teach a model your format, your tone, and your judgment far better than a paragraph of rules. You'll learn the difference between zero-shot, one-shot, and few-shot, the trick of examples that cover edge cases, and the hidden trap of examples that teach the model the wrong thing. This is the difference between prompts that work on a good day and prompts that work every day. Let's make your AI imitate you — on purpose.",
+      "sections": [
+        {
+          "h": "Show, don't tell",
+          "body": "**Zero-shot** means instructions only: \"Classify the sentiment of this review.\" It works for easy tasks. **Few-shot** adds worked examples: here's a review, here's exactly how I want it classified, and here's my label. Models are imitation machines — a concrete example encodes more information per token than a rule ever can. \"Be concise and friendly\" is vague. Two examples of a concise, friendly reply are a spec. Rule of thumb: the more your task involves *style, format, or judgment*, the more examples beat instructions."
+        },
+        {
+          "h": "Designing a good example set",
+          "body": "A strong few-shot set is small — **2 to 5 examples** usually. Beyond that you burn context and returns flatten. Choose them like test cases:\n\n- One **typical case** — the happy path.\n- One or two **edge cases** — the ambiguous ones where you show the judgment call you want.\n- Optionally one **exception case** — showing what to output when the task doesn't apply.\n\nKeep every example in exactly the same format — the model copies your inconsistencies as faithfully as your rules. Diversity matters: five near-identical examples teach almost nothing."
+        },
+        {
+          "h": "Patterns worth stealing",
+          "body": "- **Format-lock**: 2 examples of your exact output shape before asking for the real thing.\n- **Contrast pairs**: show a bad output and a good output for the same input — \"like this, not like that.\"\n- **Escalation examples**: in a support agent, include one example of *politely refusing* something and one of *escalating to a human* — the model learns the boundaries, not just the happy path.\n- **Synthetic few-shot**: ask the AI to generate candidate examples for your task, curate the good ones, then use them as your few-shot set. AI building prompts for AI — very on-brand for this course.\n\nEach pattern transfers directly to the agents you'll build in Module 3."
+        },
+        {
+          "h": "When few-shot isn't worth it",
+          "body": "Few-shot costs tokens, money, and clarity. For trivial tasks — \"translate to English,\" \"fix this typo\" — zero-shot is fine and cheaper. For heavy factual tasks, examples help less than *grounding* (giving source text). And beware the classic trap: **a flawed example poisons everything** — the model will reproduce your typo or your bias at scale, obediently. Audit your examples like code. The final test: run your prompt on 5-10 fresh inputs and see if outputs match the examples. If yes — ship it. If not — add an edge-case example and retry."
+        }
+      ],
+      "prompts": [
+        "Classify each support message, following the pattern of these examples:\nInput: \"Where is my order #1234?\" → {\"category\": \"order_status\", \"sentiment\": \"neutral\", \"escalate\": false}\nInput: \"This is the THIRD time it's broken, I'm furious!\" → {\"category\": \"complaint\", \"sentiment\": \"negative\", \"escalate\": true}\nNow classify: [PASTE MESSAGES, one per line]. Return JSON lines only.",
+        "I want you to [YOUR TASK, e.g. 'write product descriptions in my style']. Generate 5 diverse example input-output pairs for this task. I will pick the best ones to use as few-shot examples. Present them as a numbered list: Input → Output."
+      ],
+      "exercise": "Pick a recurring writing or classification task of yours. Build a few-shot prompt with 3 examples — one typical, one edge case, one exception. Test it on 5 new inputs. Then run the same task zero-shot and compare. Write down what the examples fixed."
+    },
+    {
+      "id": "p2-07",
+      "title": "Chain-of-Thought — and When NOT to Use It",
+      "goal": "Apply step-by-step reasoning where it pays off, use reasoning models wisely, and skip the overhead when it just wastes time and money.",
+      "audio_intro": "Think before you answer — good advice for models too. Chain-of-thought is the technique of making an AI reason step-by-step instead of blurting out an answer, and it dramatically improves anything involving logic, math, or multi-step decisions. But here's what most tutorials skip: reasoning has a price. It's slower, it costs more tokens, and in 2026, dedicated reasoning models often do it better than your prompt does. In this lesson, Alex shows you when to demand the thinking, when to let a reasoning model do it natively, and — just as important — when plain direct answering beats both. Smart people choosing when to think: that's the lesson.",
+      "sections": [
+        {
+          "h": "What chain-of-thought does",
+          "body": "**Chain-of-thought (CoT)** means asking the model to work through a problem step-by-step before giving the final answer: \"List the constraints, check each one, then conclude.\" Why it works: the model's next-token prediction gets *better material* to predict from — each intermediate step becomes context that steers the rest. Effects: dramatically better on math, logic, comparisons, multi-step planning, and anything with constraints. Slightly worse on nothing — except speed and cost. CoT is how a pattern-completion machine borrows a scratchpad, and it's the single biggest quality trick in classic prompting."
+        },
+        {
+          "h": "Reasoning models changed the game",
+          "body": "Since late 2024, frontier labs ship **reasoning models** that do extended internal thinking before answering — the model does CoT on its own, better than we can prompt for it. In 2026 the practical rule is: **hard problem, use a reasoning model** and simply ask the question; **easy or bulk problem, use a fast model** and don't ask for thinking. What's obsolete: pasting \"think step by step\" into every prompt out of ritual. What's still yours: decomposing the *problem* — breaking a big ask into ordered subtasks, deciding which model handles each, and defining what 'good' looks like. That judgment is the job."
+        },
+        {
+          "h": "When NOT to use reasoning",
+          "body": "Skip the thinking when:\n\n- **The task is retrieval or style** — summarizing, rewriting, classifying well-known categories. Reasoning adds latency, not accuracy.\n- **You're running at scale** — 10,000 rows through an API: extra thinking tokens multiply cost by 3-10x.\n- **Latency matters** — chatbots and real-time UX feel dead above a second or two.\n- **The reasoning is yours to give** — if *you* can supply the checklist or rubric, a fast model with your structure beats a smart model guessing at your intent.\n\n\"Right-size the thinking\" is a phrase that impresses interviewers. Use it."
+        },
+        {
+          "h": "Hybrid patterns for real work",
+          "body": "The professional pattern is **routing**: a cheap fast model triages every input — is this simple or hard? Hard ones go to a reasoning model; simple ones get instant answers. You'll build exactly this in Module 4. Two more patterns: **verify with a different mind** — have a reasoning model check a fast model's output; and **structured reasoning** — \"give me your final answer as JSON, with your key reasoning steps in a `reasons` field\" — thinking you can audit, not just trust. Reasoning you can see beats reasoning you hope happened."
+        }
+      ],
+      "prompts": [
+        "Solve this problem step-by-step. First list the constraints, then check each option against them, then eliminate, and only then state your final answer. Problem: [YOUR PROBLEM — budget, plan, comparison, or decision]",
+        "You are a quality checker. Here is a task and an AI's answer: [PASTE TASK AND ANSWER]. Work through it step by step, list every error or unsupported assumption, then verdict: CORRECT / NEEDS FIX with the fix."
+      ],
+      "exercise": "Find a real decision you need to make (a purchase, a plan, a tradeoff). Ask a fast model directly, then ask a reasoning model (or use CoT prompting) on the same question. Compare answer quality, response time, and length. Write 3 sentences on when you'd pay the reasoning cost."
+    },
+    {
+      "id": "p2-08",
+      "title": "System Messages and Personas",
+      "goal": "Design system prompts and personas that make AI behavior stable, on-brand, and safe — the invisible foundation of every serious deployment.",
+      "audio_intro": "Every professional AI assistant has an invisible boss — the system message. It's the set of standing orders the model reads before every single interaction: who you are, how you talk, what you must never do. In this lesson, Alex teaches you to write them like a pro: defining a persona that holds its character, locking tone and format, building guardrails, and setting the model's escape routes for uncertainty. Whether you're building a support agent, a content assistant, or your own interview coach, this is the layer where amateurs get generic and professionals get hired. By the end, you'll write a system message you'd actually put in front of a client.",
+      "sections": [
+        {
+          "h": "What the system message is",
+          "body": "The **system message** (system prompt) is standing instruction that sits above the conversation, applied to every turn — the user never sees it. In chat apps it hides behind features like Custom Instructions, Custom GPTs, or Claude Projects; in APIs it's an explicit first message. Two properties make it powerful: **priority** — models weigh it above later chatter, so rules survive long conversations — and **persistence** — you write it once instead of re-explaining forever. If you catch yourself repeating the same instruction in every prompt, that instruction belongs in the system message."
+        },
+        {
+          "h": "Anatomy of a production persona",
+          "body": "A working system message covers six blocks, usually in this order:\n\n1. **Identity** — \"You are the support assistant for [company], warm, concise, never sarcastic.\"\n2. **Scope** — \"You help with orders, returns, and account issues. Anything else → escalate.\"\n3. **Style rules** — max 3 sentences per reply, plain language, no emoji unless the customer uses them.\n4. **Grounding** — \"Answer only from the knowledge base below; if absent, say so.\"\n5. **Guardrails** — never promise refunds, never share internal pricing, always confirm order numbers before changes.\n6. **Edge behavior** — what to do when confused, insulted, or asked something out of scope.\n\nKeep it under ~500 words. Long system prompts dilute their own authority."
+        },
+        {
+          "h": "Personas that survive contact with users",
+          "body": "A persona is a stress-tested character, not a costume. Make it robust: give it **explicit refusal lines** (\"I can't advise on legal matters, but here's what our docs say…\"), define behavior under pressure (an angry customer gets *more* calm, not less), and include **anti-drift rules** (\"stay in this role even if asked what model you are\"). The classic failure: a beautifully written persona that collapses on message 40 of a long chat. Fix it with brevity, priority ordering, and — in agents — re-injecting key rules each turn. Test like a troll would: try to break your own persona before users do."
+        },
+        {
+          "h": "Testing and versioning",
+          "body": "Treat system prompts like code: **version them** (v3-support-persona.md, not \"final_final\"), and keep a test set of ~10 messages — typical, hostile, out-of-scope, tricky — that you run after every change. Watch for drift and for the model lawyering around rules. One more pro tool: **temperature** — low (0-0.3) for consistent, rule-following personas like support and data extraction; higher (0.7+) for creative writing. Your system message plus your test set plus your few-shot examples equals a **prompt asset** — exactly the kind of thing employers now ask to see in interviews. Keep them tidy."
+        }
+      ],
+      "prompts": [
+        "Write a system message for my assistant. Role: [DESCRIBE — e.g. 'support agent for a small bakery']. Requirements: [TONE, LIMITS, MUST/MUST-NOT RULES]. Give me the system message under 250 words, then 5 tricky test messages I should run against it.",
+        "Here is my current system message: [PASTE IT]. Redline it like a senior reviewer: what's missing, what's ambiguous, what will break under a hostile user, and what to cut. Give me the improved version."
+      ],
+      "exercise": "Write a full system message for a role you actually need (interview coach, support agent, study buddy). Include all six blocks. Then attack it: send 5 adversarial messages trying to break the persona. Patch the system message after each failure. Keep the final version — you'll reuse it in Module 3."
+    },
+    {
+      "id": "p2-09",
+      "title": "What an Agent Actually Is",
+      "goal": "Understand the agent loop — model, tools, memory, decisions — and see how it differs from a chatbot and why it's the center of AI work in 2026.",
+      "audio_intro": "Welcome to the module that changes your job title. Everyone says 'agent' in 2026; almost nobody can define it. Here's the real definition: an agent is an AI that doesn't just answer — it *acts*. It runs in a loop: decides what to do, uses a tool, looks at the result, decides again, until the job is done. Alex breaks the loop down piece by piece — the model as brain, tools as hands, memory as notebook — and shows why agents are eating whole categories of work. After this lesson, when someone says 'we need an agent,' you'll be the one who knows what that means. Spoiler: usually they're right.",
+      "sections": [
+        {
+          "h": "The agent loop",
+          "body": "A chatbot answers, then waits. An **agent** runs a loop:\n\n1. **Perceive** — read the task and current state.\n2. **Decide** — the model chooses the next action: call a tool, ask the user, or finish.\n3. **Act** — execute: search the web, read email, run code, update a spreadsheet.\n4. **Observe** — feed the result back in.\n5. **Repeat** until done.\n\nThat loop — decide, act, observe — is the entire secret. Everything called 'agentic AI' in 2026, from coding agents to support automation, is this loop with different tools plugged in. Master the loop and you can build any of them."
+        },
+        {
+          "h": "Brain, hands, and notebook",
+          "body": "Three components make the loop work:\n\n- **The model (brain)**: chooses actions and interprets results. Reasoning models make better decision-makers; fast models are fine for simple flows.\n- **Tools (hands)**: functions the agent can call — search, email, calendar, database, file operations, even other agents. Lesson 11 covers how tools are defined.\n- **Memory (notebook)**: anything that survives between steps — a summary of what's been done, a checklist of goals, or long-term storage like a vector database. Without memory, agents repeat themselves; without tools, they just talk.\n\n**Autonomy level** is the fourth dial: from 'suggest every action, human approves' to 'full auto within guardrails.' Start low; earn trust; raise gradually."
+        },
+        {
+          "h": "Agents vs. chatbots vs. automations",
+          "body": "Three cousins worth separating:\n\n- **Chatbot**: text in, text out, human drives every step.\n- **Classic automation** (a Zapier flow): fixed path — when email arrives, forward to Slack. Reliable, dumb, can't handle surprises.\n- **Agent**: the model *decides the path*, handling cases you didn't script.\n\nThe tradeoff is flexibility versus predictability. That's why the winning 2026 pattern is the **hybrid**: deterministic automation for the routine 90%, an agent for the weird 10%, humans for the exceptions. Knowing when *not* to use an agent is a more valuable skill than building one — it's the difference between a demo and a system that runs for a year."
+        },
+        {
+          "h": "Why this is the job market",
+          "body": "Titles like AI Automation Specialist, AI Ops, and AI Solutions Engineer are, underneath the branding, *agent work*: understand a business process, decide which parts to automate deterministically, where the agent goes, and what guardrails it needs. The skills stack directly from this course — prompt engineering (Module 2), tool connections (Lesson 12), and the four portfolio projects (Module 4) are all agent builds. An agent you can demo in an interview, with a README explaining your autonomy and guardrail choices, is worth more than any certificate alone. You'll have five."
+        }
+      ],
+      "prompts": [
+        "Here is a business process: [DESCRIBE A PROCESS — e.g. 'handling new customer emails at a small company']. Break it into steps and mark each one: (a) fixed rule/automation, (b) needs judgment → agent step, (c) human only. Explain each choice in one line.",
+        "I want to build an agent that [GOAL]. List: the 3-5 tools it would need, what it should never be allowed to do, and where a human checkpoint should be. Format as three short lists."
+      ],
+      "exercise": "Pick one recurring task in your week (personal or work). Write its agent loop on paper: the goal, the tools it needs, what it must remember between steps, and the guardrails. Then mark the two riskiest decisions it would make — those are your human checkpoints."
+    },
+    {
+      "id": "p2-10",
+      "title": "Building Your First Agent (No-Code)",
+      "goal": "Build and test a working agent in a no-code platform — your first real artifact, live and demoable, by the end of this lesson.",
+      "audio_intro": "Today you stop studying agents and start running one. No code, no API keys — we build your first live agent in a no-code platform, and you'll have a URL you can actually send people by the end. Alex walks you through choosing a platform, defining the agent's job, writing its system message, feeding it knowledge, connecting a first tool, and — the part everyone skips — testing it like a skeptic. It won't be perfect. Perfect isn't today's goal. Today's goal is *running*, and running beats theoretical every single time. Thirty minutes from now, you'll have an agent of your own. Let's build.",
+      "sections": [
+        {
+          "h": "Pick your platform",
+          "body": "For a first agent in 2026, choose one of these:\n\n- **Custom GPTs (ChatGPT)** or **Claude Projects** — fastest start: system message + files + web access, shareable link. Great for knowledge assistants.\n- **Zapier Agents** — agents wired directly to thousands of app actions. Great when the agent should *do* things in other apps.\n- **n8n or Make** — visual workflows with an AI Agent node; the most 'real world' of the bunch and what many employers actually run. Slightly steeper curve.\n\nStart with a Custom GPT or Claude Project today — build the brain first, connect the hands in Lesson 12. Pick based on what you'll demo, not what's trendy."
+        },
+        {
+          "h": "Define the job, then the brain",
+          "body": "An agent needs a *specific* job, not a mission statement. Bad: \"help me with my job search.\" Good: \"answer interview prep questions for data analyst roles, using my CV, and give feedback.\" Write the job as one sentence with a noun and a verb, then build the system message with the six blocks from Lesson 8: identity, scope, style, grounding, guardrails, edge behavior. Upload grounding files — your CV, a knowledge base, a FAQ document. A knowledge-grounded agent beats a general one in every test that matters, and it's what employers check: *did you ground it?*"
+        },
+        {
+          "h": "Give it one tool",
+          "body": "Even in no-code, the tool is what makes it an agent and not a chatbot. Simplest meaningful toolset: **web search** (current information), **file reading** (analyze documents users upload), and in Zapier-style platforms, **one real action** — send an email, add a row to a sheet, create a calendar event. One is enough today. The discipline to learn: every tool is a **permission**. Before enabling it, ask what the agent could do with it on a bad day, and set limits — e.g. search yes, purchase no. Autonomy is earned; today's agent gets training wheels, and that's correct."
+        },
+        {
+          "h": "Test like a skeptic, then ship v1",
+          "body": "Run your 10-message test set: 3 typical requests, 2 out-of-scope, 2 hostile or confusing, 2 knowledge questions it must answer *only* from your files, 1 impossible request. Watch where it fails; patch the system message; re-run. Then write a mini **README**: what the agent does, what it knows, what it may and may not do, and known limitations. Screenshot or record it working. Congratulations — that's your first **portfolio artifact**, and you'll list it as one. v1 shipped beats v2 imagined; you'll iterate it again in Module 4 with real polish."
+        }
+      ],
+      "prompts": [
+        "Help me define my first agent. My context: [YOUR ROLE OR GOAL]. Give me: (1) a one-sentence specific job for the agent, (2) a draft system message under 200 words using the six-block structure, (3) a 10-message test plan with expected behavior for each.",
+        "Here is my agent's job: [DESCRIBE IT]. List the 3 highest-risk mistakes it could make with its tools, and one system-message rule to prevent each."
+      ],
+      "exercise": "Build the agent: pick a platform, write the system message, upload at least one grounding file, enable one tool. Run a 10-message test set, patch twice, and write a 150-word README. Save the shareable link and screenshots in your course folder — this is portfolio artifact #1."
+    },
+    {
+      "id": "p2-11",
+      "title": "Function Calling and Tools — the Concepts",
+      "goal": "Understand how models call functions and APIs — schemas, the tool loop, error handling — without needing to be a programmer.",
+      "audio_intro": "Under every agent lies one elegant trick: the model doesn't actually send emails or search the web — it *asks* to, in structured JSON, and your code or platform does the doing. That trick is function calling, and in this lesson Alex unpacks it conceptually: how you describe a tool to the model like a menu, how the model picks and orders, what happens when a call fails, and why good tool descriptions are secretly prompt engineering. You won't write much code today — you'll learn to read the machinery, which is exactly what lets non-programmers build, debug, and even interview their way through AI automation jobs.",
+      "sections": [
+        {
+          "h": "The menu and the order",
+          "body": "Function calling works like a restaurant. You (the builder) give the model a **menu**: a list of tools, each with a name, a plain-language description, and a **schema** — the exact fields and types it accepts. The model never executes anything. It reads the task, picks a tool, and returns a structured order: `{\"tool\": \"send_email\", \"to\": \"dana@corp.com\", \"subject\": \"Order confirmed\"}`. Your code or platform executes it and returns the result. The model reads the result and continues. Menu in, order out, dish back — that's the whole protocol."
+        },
+        {
+          "h": "Writing tool descriptions is prompting",
+          "body": "The model chooses tools by reading your descriptions — so a vague description means wrong choices. Bad: \"a function for dates.\" Good: \"Check availability for a meeting. Use when the user wants to schedule. Requires an email address and a date. Do not use for cancellations.\" Same few-shot and clarity rules from Module 2 apply verbatim. Practical habits: keep the toolset **small** (5-8 tools; beyond that, models grab the wrong one), give tools **non-overlapping** jobs, prefer enums for parameters, and require an ID everywhere it matters. Most 'dumb agent' bugs are actually a bad menu."
+        },
+        {
+          "h": "When the call fails",
+          "body": "Real tools fail: the email address doesn't exist, the API times out, the date is invalid. Amateurs let the agent crash or hallucinate success. Professionals design the loop for failure:\n\n- **Return the error to the model** — `{\"error\": \"address not found\"}` — so it can retry or ask the user. It's surprisingly good at this.\n- **Set limits** — max 3-5 tool calls per task before stopping and summarizing for a human.\n- **Log every call** — the timestamped story of what the agent did. Your audit trail and your debugging lifeline, both.\n- **Validate before executing** — confirm destructive actions (delete, send, pay) with a human or a rule.\n\nError handling, not intelligence, is what separates production agents from demos."
+        },
+        {
+          "h": "Where you'll meet this",
+          "body": "You'll touch function calling in four places: (1) **no-code platforms** — you'll describe tools in their UI, same concepts, no code; (2) **MCP — the Model Context Protocol** — the emerging 2026 standard that lets any agent plug into shared tool servers, dragging ChatGPT, Claude, and IDEs into one ecosystem; (3) **APIs** — calling a model programmatically, where you'll pass tool schemas as JSON; (4) **interviews** — 'explain how function calling works' is a top-5 screening question for AI roles, and now you can answer it in menu-and-order terms. Reading this machinery fluently is your edge as a non-programmer."
+        }
+      ],
+      "prompts": [
+        "I want to give my agent these capabilities: [LIST — e.g. send email, check calendar, search docs]. For each, write a tool definition: name, one-line description, parameters with types, and when NOT to use it.",
+        "My agent keeps calling the wrong tool or invents parameters. Here are my tool definitions: [PASTE THEM]. Diagnose the likely causes and rewrite the weakest definition."
+      ],
+      "exercise": "Design (on paper or in a no-code platform) a toolset for your Lesson 10 agent: 3-5 tools with full schemas. Then simulate a failure: write what your agent should return to the model when one tool fails, and what it should do on the third consecutive failure."
+    },
+    {
+      "id": "p2-12",
+      "title": "Connecting AI to Email, Calendar, and Files",
+      "goal": "Safely connect an AI agent to your real Gmail, Google Calendar, and Drive/Notion — the plumbing of actual AI automation work.",
+      "audio_intro": "This is the lesson where AI starts touching your real life. An agent that answers questions is a demo; an agent that reads your inbox, books your meetings, and files your documents is a colleague. Alex walks through connecting AI to Gmail, Google Calendar, and Drive — how the permissions actually work, why you should never grant more access than needed, and the standard patterns pros use: the triage digest, the smart scheduler, the file organizer. We'll also talk security like an adult, because 'the AI had my password' is a sentence nobody wants to say to their boss. Calm, deliberate, powerful. Let's wire it up.",
+      "sections": [
+        {
+          "h": "How the connection works",
+          "body": "Agents reach your apps through **APIs with OAuth** — you click 'connect Gmail,' approve a scoped permission, and the platform gets a token to act on your behalf. What matters is the **scope**: read-only vs. send vs. delete. The professional rule: **minimum viable permission** — start read-only, add write access only when the value justifies the risk. Second rule: know **who holds the token**. In n8n/Make/Zapier you grant it to the platform; treat that platform as a critical system — strong account security, 2FA on, and separate credentials for work vs. personal. 'The agent did it' is never a legal excuse; you're always the operator."
+        },
+        {
+          "h": "Pattern 1: The triage digest",
+          "body": "The classic first integration, safe because it only *reads*: every morning the agent scans your inbox, and sends you one digest — important messages grouped by urgency, with one-line summaries and suggested replies, plus a list of what needs action today. Build order: (1) connect Gmail **read-only**; (2) filter — skip newsletters and notifications, keep humans; (3) summarize each remaining thread into JSON (Lesson 5 skills); (4) assemble the digest; (5) deliver — email it to you, or drop it in Slack/Telegram. Within a week you'll wonder how you lived without it, and you'll have a story interviewers love: *numbers*, like '45 minutes a day saved.'"
+        },
+        {
+          "h": "Pattern 2: The smart scheduler and Pattern 3: the file organizer",
+          "body": "**Smart scheduler**: the agent reads a scheduling request ('book 30 min with Dana next week'), checks calendar availability, proposes 2-3 slots, and — with write permission — creates the event and sends the invite. Keep a human-confirm step until you trust it; double-bookings are embarrassing exactly once.\n\n**File organizer**: watches Drive (or Notion) for new files, classifies them (invoice / contract / resume), renames by convention, moves to the right folder, and logs it to a sheet. Extra credit: extract key fields to a spreadsheet via structured outputs. This one is pure gold on a CV — it's the same shape as real business document flows, which is exactly what Lesson 14 industrializes."
+        },
+        {
+          "h": "Security like an adult",
+          "body": "Non-negotiables for any agent touching your accounts:\n\n- **Least privilege** — read-only by default; separate 'agent' credentials where possible; never the admin account.\n- **Destructive actions need a fence** — delete, send-money, mass-send: human confirmation or a dry-run mode.\n- **Logs and undo** — every action recorded; where possible keep trash/versions enabled so mistakes are reversible.\n- **Data boundaries** — don't point a consumer AI at confidential or regulated data without checking the terms; work data needs work tools.\n- **Audit monthly** — which connections exist, which are still needed. Revoke the rest.\n\nCompanies lose jobs and reputations over this; showing you think this way is a hiring signal in itself."
+        }
+      ],
+      "prompts": [
+        "I'm designing a read-only email digest agent. Define: the exact filter rules (what to skip vs. keep), the JSON schema for each summarized thread, and the digest format. My context: [YOUR ROLE, e.g. freelancer / support lead].",
+        "My agent will have write access to my calendar. List every destructive or embarrassing thing it could do, and one concrete control for each (confirmation rule, guardrail, or log)."
+      ],
+      "exercise": "Build the triage digest end-to-end in your chosen platform: read-only Gmail connection, filters, JSON summaries, daily digest delivered to you. Run it for 3 days. Write down minutes saved and one failure you observed — both numbers go in your project notes."
+    },
+    {
+      "id": "p2-13",
+      "title": "Portfolio Project 1: Customer-Support Agent",
+      "goal": "Build a complete, demo-ready customer-support agent grounded in a real knowledge base, with escalation rules and human handoff.",
+      "audio_intro": "Module 4: where your career actually starts. Employers in 2026 barely read CVs — they test what you've built. So we build, and project one is the employer favorite: a customer-support agent for a fictional company, grounded in a knowledge base you'll write yourself, with tone control, escalation rules, and a human handoff. Alex guides you through every step, in whatever no-code platform you chose in Lesson 10. When you finish, you'll have a public link, a README, and a test log — the three artifacts that turn 'I took a course' into 'look what I shipped.' Pick your company. Let's build it properly.",
+      "sections": [
+        {
+          "h": "Step 1: Invent the company (15 min)",
+          "body": "Choose a small, believable business — a bakery, a VPN service, a plant shop — and write its **knowledge base**: 15-20 realistic FAQ entries covering products, pricing, shipping, returns, and account issues. Include 2-3 genuinely ambiguous cases (a lost order, a refund outside policy window) — these become your escalation tests. Write the KB as clean markdown files. This step is what makes the project *real*: the agent answers from *your* documents, not the model's imagination. Employers consistently check for grounding first; it's the line between a toy and a system."
+        },
+        {
+          "h": "Step 2: The brain (30 min)",
+          "body": "Write the system message using your six-block structure:\n\n- **Identity**: warm, competent, concise support agent for [company]; max 3 sentences per reply.\n- **Scope**: orders, returns, products, accounts. Off-topic → politely redirect.\n- **Grounding**: answer only from the knowledge base; if absent, say so and offer escalation. Never invent prices, policies, or order statuses.\n- **Guardrails**: never promise refunds or compensation; never reveal internal info; confirm order numbers before discussing specifics.\n- **Edge behavior**: angry customer → more calm, shorter sentences; three failed attempts → escalate.\n\nAdd 2-3 few-shot examples: a good refund-policy answer, a graceful 'I don't know,' and one escalation in action."
+        },
+        {
+          "h": "Step 3: Escalation and handoff (45 min)",
+          "body": "Every real support agent needs an exit. Define **escalation triggers**: policy exceptions, angry or repeat contacts, anything the KB doesn't cover, and legal/billing edge cases. Design the handoff: a structured summary the agent produces — issue, what was tried, customer sentiment, suggested next step — so a human inherits context, not chaos. In no-code platforms, the 'human' can be a form, an email notification, or a Slack message. Build the flow, then test it: send three conversation that *should* escalate and one that shouldn't. Escalating correctly is the behavior employers find most impressive — it shows you designed for the agent's limits, not just its powers."
+        },
+        {
+          "h": "Step 4: Test log, README, ship (30 min)",
+          "body": "Run your full test set: 10 routine questions, 5 knowledge questions answerable only from the KB, 3 escalations, 2 hostile, 2 off-topic. Log every result in a simple table — input, expected, actual, pass/fail, fix. Iterate until the pass rate is honest (90%+ on routine, correct behavior on all escalations). Then write the **README**: what it does, architecture in one diagram or paragraph, your design decisions (why these guardrails, why this escalation policy), known limitations, and future improvements. Publish the link. That's portfolio artifact #1 — tested, documented, demoable. Keep the test log; showing *how you tested* is what separates you from tutorial followers."
+        }
+      ],
+      "prompts": [
+        "Generate a customer-support knowledge base for a fictional [BUSINESS TYPE]. 18 FAQ entries in markdown, grouped by topic. Include realistic prices and policies, and 3 ambiguous edge cases marked as 'escalate to human.' Keep each entry under 80 words.",
+        "Review my support agent test results: [PASTE YOUR TEST TABLE]. For each failure, diagnose whether the fix belongs in (a) the system message, (b) the knowledge base, or (c) the escalation logic — and give me the exact patched text."
+      ],
+      "exercise": "Complete all four steps and ship: knowledge base, system message with few-shot examples, escalation flow with handoff summary, 22-case test log at 90%+, and a public README. Post the link where a human can see it — that's the point."
+    },
+    {
+      "id": "p2-14",
+      "title": "Portfolio Project 2: Document Analyzer (RAG Basics)",
+      "goal": "Build a question-answering agent over a pile of documents using retrieval — the RAG pattern behind most real-world AI systems.",
+      "audio_intro": "Time for the pattern that quietly runs the business world: RAG — retrieval-augmented generation. When a lawyer asks 'what do our contracts say about late fees,' you can't paste 400 documents into a chat. You *retrieve* the right chunks and let the AI answer from those. In this project, Alex walks you through building a document analyzer over a set of real files: chunking, embeddings, a vector store, retrieval, and — critically — answers with citations back to the source. No heavy math, no-code where possible. When people in interviews say 'do you know RAG?', you'll say 'here's mine, want the link?' Let's retrieve.",
+      "sections": [
+        {
+          "h": "Why RAG exists",
+          "body": "Two hard limits force RAG on us: **context limits** — documents don't fit in the window (Lesson 3) — and **grounding** — models hallucinate when answering from memory (Lesson 4). **RAG** solves both: at build time you split documents into chunks, convert each to an **embedding** (a numeric fingerprint of meaning), and store them in a **vector database**. At question time you embed the *question*, find the most similar chunks, and hand only those to the model to answer from. Simple mental model: RAG is a **search engine feeding a summarizer** — a librarian who fetches the right pages, and a writer who reads only those pages."
+        },
+        {
+          "h": "Step 1: Your corpus and chunking (30 min)",
+          "body": "Pick 10-20 documents of one type — contracts, policies, research PDFs, or generate them with AI (fine for a portfolio, just say so). **Chunking** is the craft: split each document into pieces of ~300-500 words, with 10-20% overlap so ideas that straddle a boundary survive. Keep **metadata** on every chunk — source filename, section, page — because it becomes your citation. If you use a no-code RAG tool (ChatGPT Projects, Claude Projects, Notion AI, or a vector-store template in n8n/Flowise), chunking happens for you — but you must be able to *explain* it, because interviewers always ask: 'why does chunk size matter?' Now you know."
+        },
+        {
+          "h": "Step 2: Retrieval and the answer (45 min)",
+          "body": "The user asks a question. Your system embeds it, pulls the top 4-8 most similar chunks, and builds a prompt: \"Answer only from the passages below. Cite the source for each claim. If the answer isn't there, say so.\" The non-negotiable feature: **citations** — every claim tagged with the document and section it came from, because that's what makes output *verifiable* (Lesson 4 habits, systematized). Test the sad path deliberately: ask questions that are NOT in the documents and confirm the agent says 'not found' instead of improvising. A RAG system that admits ignorance is a professional one; one that always answers is a liability."
+        },
+        {
+          "h": "Step 3: Evaluate, document, ship (45 min)",
+          "body": "Build a 15-question eval set: 10 answerable from the documents (with the correct source noted), 3 that are not, 2 cross-document questions requiring synthesis from multiple files. Score each answer: correct + correctly cited / correct but wrong citation / wrong / hallucinated. Tweak chunk size or retrieval count and re-run — this loop is *the* RAG skill. Write the README with your architecture, a 'how it works' explanation in plain words, the eval table, and design decisions. Deploy wherever your platform allows. This is portfolio artifact #2, and it's the one most likely to get you hired — RAG is what companies actually deploy. Say the words 'retrieval-augmented generation' in your README and in your sleep."
+        }
+      ],
+      "prompts": [
+        "You are a RAG system. I will give you passages and a question. Answer ONLY from the passages. Cite each claim like [doc1, section 2]. If the answer is not in the passages, say exactly: 'Not found in the provided documents.' Question: [YOUR QUESTION]. Passages: [PASTE CHUNKS]",
+        "I'm building a RAG demo over [DOCUMENT TYPE]. Generate a 15-question evaluation set: 10 answerable, 3 deliberately unanswerable, 2 requiring synthesis across documents. For the answerable ones, note the expected answer and source."
+      ],
+      "exercise": "Build and ship the analyzer: 10+ documents chunked with metadata, retrieval with citations, 15-question eval set scored and logged, README with architecture and design decisions. Verify the unanswerable questions return 'not found' — that's the behavior that proves you understand grounding."
+    },
+    {
+      "id": "p2-15",
+      "title": "Portfolio Project 3: Content Pipeline",
+      "goal": "Build an end-to-end automated content pipeline — from idea to researched draft to published post — the project that markets you while you sleep.",
+      "audio_intro": "This project is deliciously meta: you'll build an AI pipeline that creates content about the AI pipeline you built. Content pipelines are among the most requested freelance and in-house automations of 2026 — marketing teams live on them. Alex takes you from a spreadsheet of ideas through researched drafts, brand-voice checks, and scheduled posts, with a human approval gate where it belongs. You'll combine everything so far: structured outputs, few-shot voice examples, system messages, and your first multi-step orchestration. And the output doubles as your own personal marketing — Module 5 will thank you. Ideas in, posts out. Let's build the machine.",
+      "sections": [
+        {
+          "h": "Step 1: The content engine (45 min)",
+          "body": "Define the pipeline's contract: **input** — a topic row in a spreadsheet (topic, audience, angle, keywords); **output** — a publish-ready draft. Build the stages:\n\n1. **Research**: agent searches the web for 3-5 recent, real sources on the topic (hallucination rules apply — sources must be verifiable).\n2. **Draft**: system message with a **voice file** — 2-3 of your best writing samples as few-shot examples, so every piece sounds like you, not like AI.\n3. **Structure**: a fixed output format per channel — a LinkedIn post under 200 words with a hook line, or a blog outline with H2s.\n4. **Review**: a separate AI pass that checks voice match, factual claims, and banned-words list (\"delve,\" \"tapestry,\" and friends).\n\nEach stage = one node in n8n/Make, or one section in a Custom GPT's instructions."
+        },
+        {
+          "h": "Step 2: The human approval gate (30 min)",
+          "body": "Rule of professional content pipelines: **AI drafts, human approves, automation publishes.** The middle step exists because publishing is a reputational, irreversible action — the exact category Lesson 12 fenced off. Implement it simply: drafts land in a spreadsheet, Notion board, or email with an approve/reject column or buttons. Approved items flow to scheduling (Buffer, native LinkedIn scheduling, or your platform's scheduler); rejected ones return with a one-line reason that feeds back into the voice file. Track the loop's stats — drafts per week, approval rate, edits needed per draft. An improving approval rate is a number that impresses employers and clients more than any adjective."
+        },
+        {
+          "h": "Step 3: Run it for a week (30 min + waiting)",
+          "body": "Load 10 topic rows and let the machine run end-to-end. Your job now is **editor**, not writer: review each draft, approve or reject with reasons, and watch the quality of the batch. Expect to reject your first two or three — that's data, not failure. Patch the voice file with one contrasting example (bad vs. good), tighten the banned-words list, re-run. By batch two, approval rates typically climb sharply. Then publish 2-3 of the best pieces on your own LinkedIn or blog — you now have a working pipeline *and* its output as evidence. This is the most self-marketing artifact a job seeker can own."
+        },
+        {
+          "h": "Step 4: Document and demo (30 min)",
+          "body": "The README writes the story employers want to hear: **problem** ('consistent content takes hours'), **solution** (an automated pipeline with a human approval gate), **architecture** (a simple diagram: sheet → research agent → drafter → reviewer → approval → scheduler), **results** (drafts per week, your approval rate, hours saved — even from one week of data), **decisions** (where the human gate is and why), **limits and next steps**. Record a 60-second demo video of one topic flowing through. That's portfolio artifact #3 — and unlike most portfolio pieces, it produces *ongoing* evidence: your feed fills up while you interview. Machine marketing."
+        }
+      ],
+      "prompts": [
+        "Draft a [CHANNEL: LinkedIn post / blog section] about [TOPIC] for [AUDIENCE]. Voice rules: match the tone of these two samples: [PASTE 2 SAMPLES]. Include one concrete example and one number from research. Banned words: delve, tapestry, unlock, game-changer. End with a question. Under 200 words.",
+        "Act as a strict content reviewer. Check this draft against my voice samples: [PASTE SAMPLES + DRAFT]. Score voice match, originality, and factual risk 1-10 each, list the 3 weakest lines, and mark any claim needing a source. Do not rewrite — I'll do that."
+      ],
+      "exercise": "Ship the full pipeline: spreadsheet of 10 topics, all four stages wired, approval gate enforced, one week of runs logged with stats. Publish at least 2 approved pieces under your own name. Add README + 60-second demo video to your portfolio folder."
+    },
+    {
+      "id": "p2-16",
+      "title": "Portfolio Project 4: Data-Cleaning Agent",
+      "goal": "Build an agent that fixes messy data — validating, correcting, and auditing CSV records — with an audit trail no spreadsheet jockey can match.",
+      "audio_intro": "Every company on earth has a spreadsheet nobody dares to touch: 8,000 rows of inconsistent names, broken dates, and duplicated customers. Cleaning it used to be a junior analyst's rainy weekend. Not anymore. In project four, Alex shows you how to build a data-cleaning agent: one that reads messy CSV records, applies your rules, proposes fixes, and — the killer feature — logs every change it made and why. Full audit trail. This project screams 'I automate real business work,' it's the least crowded portfolio idea in AI, and it's a warm-up for the personal assistant agent you'll build as your final project in Lesson 24. Rubber gloves on. Let's clean.",
+      "sections": [
+        {
+          "h": "Step 1: Your messy dataset (20 min)",
+          "body": "Generate (or download) a realistic dirty CSV — customer records are ideal: 200+ rows with inconsistent names (\"Dana LEVI\", \"dana levy\"), emails in five formats, dates in three conventions, missing phones, duplicated rows, and a category field where 'corporate', 'Corporate', and 'B2B' all mean the same thing. Realism is everything here — this exact mess is what every operations team actually lives with. Define the target **schema**: the clean field names, formats, and allowed values — your canonical 'single source of truth.' Write your cleaning rules in plain language: how names are normalized, what counts as a duplicate, what to do with a missing email. Rules first, agent second. Always."
+        },
+        {
+          "h": "Step 2: The cleaning loop (45 min)",
+          "body": "The agent processes records in small batches — 10-25 rows at a time, to keep context clean (Lesson 3 forever). For each batch it returns **structured JSON** (Lesson 5): the corrected record, a list of changes made, a confidence level per change, and a `needs_human` flag for anything ambiguous — a duplicate that might actually be two people, an email with a likely typo. Two golden rules: **never silently invent data** (missing phone stays missing, flagged) and **every change gets a reason** (`\"field\": \"email\", \"change\": \"fixed typo dana@gmial.com → dana@gmail.com\", \"confidence\": \"high\"`). That change log is the entire soul of this project — it's what turns 'AI touched my data' from a threat into an audited blessing."
+        },
+        {
+          "h": "Step 3: Validation and the audit trail (45 min)",
+          "body": "Cleaning without validation is just different dirt. Build checks: email format regex, dates parse to ISO, every category is in the allowed list, no duplicate IDs survived. Run the checks *after* the agent and log results — a validation report, not a vibe. Then assemble the **audit trail**: a spreadsheet of every change (row, field, before, after, reason, confidence), plus summary stats — rows processed, changes by type, records flagged for human review. Export three artifacts: `clean_data.csv`, `change_log.csv`, `validation_report.md`. Compare effort and error rate against cleaning 50 rows by hand — that comparison is your results section. 'What took 6 hours now takes 12 minutes with a full audit log' is a sentence that gets people hired."
+        },
+        {
+          "h": "Step 4: README, and looking ahead (30 min)",
+          "body": "Write the README around the audit trail: problem (messy data, fear of AI changes), solution (rules + LLM judgment + validation + full change log), architecture diagram, results with your real numbers, decisions (why batch size, why flags instead of guesses), limitations (what it shouldn't touch — financial records without review), next steps. Record a 60-second demo: dirty rows in, clean CSV + change log out. That's portfolio artifact #4 — four of five, with project five, your **personal assistant agent**, waiting as the course-final in Lesson 24. This data-cleaner becomes its skill: your final agent will know how to fix a spreadsheet, triage an inbox, and summarize documents. Keep the files; the band gets back together soon."
+        }
+      ],
+      "prompts": [
+        "Clean these customer records. Return ONLY JSON lines, one per record:\n{\"id\": ..., \"clean\": {\"name\": ..., \"email\": ..., \"date\": \"YYYY-MM-DD\", \"category\": one of [corp, smb, personal]}, \"changes\": [{\"field\": ..., \"before\": ..., \"after\": ..., \"reason\": ..., \"confidence\": \"low|medium|high\"}], \"needs_human\": true/false}\nRules: never invent values; normalize dates to ISO; if unsure, set needs_human=true. Records: [PASTE ROWS]",
+        "Here are my cleaning rules and a sample of change logs: [PASTE BOTH]. Find the 3 riskiest patterns in the changes — places where the agent might be wrong — and write one additional rule to prevent each."
+      ],
+      "exercise": "Ship the data-cleaner: dirty dataset of 200+ rows, cleaning rules documented, batch loop with JSON change logs, validation checks, and the three output files. Include your manual-vs-agent comparison numbers in the README. Archive everything — your final-project agent will reuse this skill."
+    },
+    {
+      "id": "p2-17",
+      "title": "A CV That Passes AI Screeners",
+      "goal": "Write a CV that survives the automated filters and human skims standing between you and AI job interviews.",
+      "audio_intro": "Hard truth before the good news: before a human ever sees your CV, software reads it. Large companies filter with AI and keyword systems, and recruiters skim in seven seconds. The good news: both machines and skimmers reward the same things — clean structure, the exact keywords of the job description, and quantified results. In this lesson, Alex rebuilds your CV for the 2026 reality: one master document, tailored per application, with your portfolio projects front and center, because in AI hiring, tested artifacts beat adjectives. By the end you'll have a CV that a bot passes, a recruiter loves, and you can maintain in fifteen minutes per application.",
+      "sections": [
+        {
+          "h": "How screening actually works",
+          "body": "Two filters run before the human: **AI/ATS screening** — software parses your CV and scores it against the job description for keywords, titles, skills, and experience signals — and **the recruiter skim**, roughly 7 seconds: name, current role, skills, last two jobs. Both fail on the same things: fancy layouts, text inside images, weird section names, missing keywords. So the winning format is boring on purpose: **single column, standard sections** (Summary, Experience, Projects, Skills, Education), normal fonts, .docx or clean PDF. Your design instincts are welcome at the interview; at screening, they're a liability. Boring is the new black."
+        },
+        {
+          "h": "The master CV and the tailoring pass",
+          "body": "Keep a **master CV** with everything, then tailor a copy per application — 15 minutes, not a rewrite. The tailoring ritual:\n\n1. **Copy the exact language** of the job description — if they say 'AI automation,' don't write 'workflow AI.' Screeners match strings.\n2. **Reorder skills** so the listed ones come first.\n3. **Rewrite your summary line** to mirror the role's title and mission.\n4. **Match titles where honest** — 'Prompt Engineer' self-descriptions vary wildly; if your work matches 'AI Automation Specialist,' say that on this application.\n\nHonest mirroring of vocabulary is not lying; it's translation. Lying is lying. Don't."
+        },
+        {
+          "h": "Bullets that carry evidence",
+          "body": "The formula: **Action + scope + result.** Weak: 'Responsible for automating processes.' Strong: 'Built an n8n agent that triaged 200 support emails weekly, cutting first-response time 40%.' Numbers everywhere you can — rows processed, hours saved, approval rates, pass rates on your test logs. Your Module 4 projects are bullet goldmine: each one already *has* numbers (test pass rates, eval scores, time saved). List them under a **Projects** section with links — GitHub or live demos. In AI hiring of 2026, a linked, tested project outranks any course certificate, including ours — the certificate gets you past HR; the projects get you past the technical screen. You have both."
+        },
+        {
+          "h": "The AI-assisted CV workflow",
+          "body": "Use AI without sounding like it:\n\n1. Paste the **job description + your master CV** → ask for a match score and missing keywords.\n2. Ask it to rewrite your 5 weakest bullets into action-scope-result form — then edit by hand until it sounds like you.\n3. Run a **hostile review pass**: 'You are a skeptical recruiter with 7 seconds. What concerns you about this CV?'\n4. **Final human read-aloud** — if a sentence doesn't survive being spoken, rewrite it.\n\nWarning: recruiters now spot generic AI-CV smell instantly — the same voice, the same hollow phrases. Your voice samples from Lesson 15 are the antidote. AI drafts; you decide. That's the order, always."
+        }
+      ],
+      "prompts": [
+        "Here is a job description and my current CV: [PASTE BOTH]. Give me: (1) keyword match score out of 100, (2) the 5 most important keywords I'm missing, (3) a rewritten summary line and my 3 weakest bullets improved using action-scope-result. Don't invent experience I don't have.",
+        "You are a skeptical hiring manager with 7 seconds to skim this CV: [PASTE CV]. List your first 3 impressions, your 3 biggest doubts, and the one change that would most improve interview chances."
+      ],
+      "exercise": "Build your master CV with the boring format, quantified bullets from your Module 4 projects, and a Projects section with links. Then tailor it to one real job posting using the 4-step workflow. Save both versions — you'll iterate in Lesson 20."
+    },
+    {
+      "id": "p2-18",
+      "title": "LinkedIn Profile Optimization",
+      "goal": "Turn your LinkedIn profile into a recruiter magnet — keyword-searchable, credible, and clearly positioned for AI roles.",
+      "audio_intro": "Here's how people actually get AI jobs in 2026: a recruiter searches LinkedIn, your name comes up, and your profile closes the deal in twenty seconds. Recruiters don't browse — they *search*, by keywords like agent, automation, prompt engineering, RAG. If your profile doesn't speak their search language, you're invisible no matter how good you are. In this lesson, Alex optimizes the five zones that matter: headline, about section, experience, skills, and activity. We'll keep it honest, specific, and human — the anti-cringe guide. Twenty minutes of focused editing will still be paying you back a year from now.",
+      "sections": [
+        {
+          "h": "The headline: your search listing",
+          "body": "The headline follows you into every search result, comment, and message — it's 220 characters of prime real estate, and 'Open to new opportunities' wastes every one. Formula: **what you do + tools + value.** Weak: 'Product Manager.' Strong: 'AI Automation Specialist | I build agents with n8n, Zapier & LLMs | Ex-PM — I turn messy processes into pipelines.' Recruiters search role keywords ('AI Automation Specialist', 'Prompt Engineer', 'AI Ops'), so your *target title* must appear verbatim — pick the title from Lesson 21's market map and wear it. Update it as you aim at different roles; it's a label, not a tattoo."
+        },
+        {
+          "h": "The about section: 20 seconds to convince",
+          "body": "Recruiters who click give your About ~20 seconds. Structure it like a landing page:\n\n- **Line 1**: the hook — what you do and for whom. (The first line is all that shows before 'see more' — spend real time on it.)\n- **Proof**: 3-4 lines with your artifacts — 'Built a customer-support agent (live demo), a RAG document analyzer, and a data-cleaning pipeline with full audit logs.' Link them.\n- **Tools & keywords**: one natural-sounding paragraph naming your stack — n8n, Zapier, APIs, function calling, RAG, prompt engineering.\n- **The ask**: 'Open to AI automation, AI Ops, and prompt engineering roles — DM me.'\n\nWrite in first person, human voice, zero clichés ('passionate about leveraging synergies' is a crime). AI can draft it; your voice edits it. Lesson 15's voice file works here too."
+        },
+        {
+          "h": "Experience, skills, and the credibility layer",
+          "body": "**Experience**: each role gets 2-4 bullets in the same action-scope-result format as your CV — including projects done in this course, which can live under a 'BINA Academy — AI Career Track' entry or freelance-style entries. **Skills section**: add everything true — AI automation, n8n, Zapier, prompt engineering, RAG, API integration — because recruiters filter by skill tags, and skills also feed LinkedIn's search index. **Featured section**: your gold shelf — links to live demos, your GitHub, your best post. A recruiter seeing three clickable, working projects in your Featured section is a recruiter half-convinced before any message. Verify every claim is real; you'll be tested on all of it in interviews."
+        },
+        {
+          "h": "Activity: proof of life",
+          "body": "Searchability gets you found; activity gets you trusted. The sustainable minimum: **one post a week** — a lesson learned from a project, a small demo with a screenshot, a question to your network. Your Lesson 15 pipeline literally automates this. Comment thoughtfully on posts in the AI automation space — comments are networking at scale, visible to every reader of that thread. Turn on 'Open to Work' (recruiters-only mode if you prefer discretion). And clean the basics: real photo, real name, location set — profiles missing these drop in search ranking. Activity compounds: six months of weekly evidence is a public track record, which is the one thing a certificate can't fake."
+        }
+      ],
+      "prompts": [
+        "Write 3 headline options for my LinkedIn. Target role: [TARGET TITLE]. My background: [1-2 LINES]. Stack: [TOOLS]. Each under 220 characters, specific, no clichés, human-sounding. Then tell me which one you'd pick as a recruiter and why.",
+        "Here is my draft About section: [PASTE IT], plus my voice samples: [PASTE 2 SAMPLES]. Rewrite it to: hook in line 1, proof with project links, natural keyword paragraph, clear ask. First person, no buzzwords, about 150 words."
+      ],
+      "exercise": "Overhaul all five zones: new headline with your target title, restructured About with proof and links, updated experience bullets, full skills tags, Featured section with your three best artifacts. Schedule your first weekly post using your Lesson 15 pipeline."
+    },
+    {
+      "id": "p2-19",
+      "title": "Cover Letters That Don't Suck",
+      "goal": "Write short, specific, human cover letters that get read — using AI for speed and yourself for the parts that matter.",
+      "audio_intro": "Nobody enjoys writing cover letters, and here's a secret: almost nobody enjoys reading them either. Most are generic AI mush — same opener, same buzzwords, interchangeable company names. Which is exactly your opportunity. In this lesson, Alex shows you the anatomy of a cover letter that actually gets read: four short paragraphs, one specific hook, evidence from your portfolio, and a clear ask. You'll build a reusable system — master letter plus a ten-minute tailoring ritual — so AI does the boring 80% and you supply the human 20% that makes recruiters stop skimming. Short, specific, done. Let's write the letter that gets you the call.",
+      "sections": [
+        {
+          "h": "Why most cover letters die",
+          "body": "The typical fate: skimmed in 15 seconds by someone who has 200 applications to go. What kills them: **generic openers** ('I am writing to express my interest…' — instant delete), **AI-mush voice** (the recruiter has read forty identical 'I am passionate about leveraging cutting-edge AI' letters this week and is professionally numb to it), **all claims, no evidence** ('detail-oriented team player'), and **all about you** instead of what you'll do for them. The fix is the same as every lesson in this course: **specificity beats polish.** One real detail about *their* company is worth a page of perfect adjectives about you. And under 200 words — respect for the skim is itself a signal."
+        },
+        {
+          "h": "The four-paragraph skeleton",
+          "body": "A letter that works, every time:\n\n1. **The hook** (2 sentences): the specific reason *this* company — something from their product, a post their team wrote, a real problem they have. Proves you did homework; no template smell.\n2. **The match** (3-4 sentences): your most relevant 1-2 qualifications *with evidence* — 'I built a support agent handling 200 weekly emails (live demo: link).' Portfolio evidence > adjectives.\n3. **The value** (2 sentences): what you'll do in the first months — 'I'd start by mapping your support flow and piloting an agent like this one.'\n4. **The ask** (1 sentence): a direct, confident close — 'I'd love 15 minutes to show you the demo.'\n\nUnder 200 words, first person, sounds like you."
+        },
+        {
+          "h": "The 10-minute tailoring ritual",
+          "body": "Keep a **master letter** (your best generic version) and a repeatable tailoring loop per application:\n\n1. Collect 3 facts: why this company, what this role owns, one thing they publicly struggle with or celebrate.\n2. Fill paragraph 1 with the *real* reason — a specific product detail, their engineering blog, the job description's own phrasing.\n3. Swap paragraph 2's evidence to the project most relevant to *this* role (support agent for support-heavy roles, RAG analyzer for knowledge roles, pipeline for marketing ops).\n4. Read it aloud — kill any sentence you'd never say.\n\nAI accelerates steps 1-3 (research, drafting, matching) — but the final read-aloud edit is yours, non-negotiable. That edit is what separates your letter from the mush pile."
+        },
+        {
+          "h": "The rules of honest AI use",
+          "body": "Using AI to draft is smart; submitting unedited AI output is malpractice — recruiters in 2026 spot it instantly and it reads as 'doesn't care.' Your guardrails: AI may **draft, research, and tailor**; you must **supply the specific hooks, verify every claim, and do the final voice edit**. Never let the AI invent facts, and never paste a letter that would fit any other company — the interchangeability test: if you could swap the company name and nothing breaks, it's not done. Also: some applications genuinely don't need a letter — spend your energy where a human reads them: smaller companies, referred applications, and roles where the posting clearly wants one. Strategy is part of the craft."
+        }
+      ],
+      "prompts": [
+        "Here is a job description and the company's website text: [PASTE BOTH]. Give me: (1) 5 specific, real hooks I could open a cover letter with — actual details about this company, no flattery, (2) which of my projects best matches this role and why. My projects: [1-LINE EACH].",
+        "Review this cover letter like a tired recruiter with 200 to go: [PASTE LETTER]. Would you keep reading? Kill every cliché, flag every sentence that could apply to any company, and mark the one strongest line. Do not rewrite."
+      ],
+      "exercise": "Write a real letter using the four-paragraph skeleton for a real job posting — under 200 words, one company-specific hook, one piece of portfolio evidence with a link, and your final read-aloud edit. Run it through the interchangeability test before you call it done."
+    },
+    {
+      "id": "p2-20",
+      "title": "Building Your Online Presence: GitHub and Portfolio",
+      "goal": "Assemble a public, credible presence — a portfolio site and a GitHub profile — that lets employers verify and test your work in minutes.",
+      "audio_intro": "Your work exists; now it has to be findable and believable. In 2026, employers don't just read your claims about AI skills — they click them. If a recruiter Googles your name and finds live demos, a tidy GitHub, and proof you actually build things, you skip ahead of every applicant who only has adjectives. In this lesson, Alex sets up your whole public layer: a simple portfolio site with your five projects, a GitHub account with proper READMEs, and the connecting tissue — consistent name, links everywhere, screenshots that load. No web-dev degree needed; an afternoon of focused work. Let's make you look online like the professional you now actually are.",
+      "sections": [
+        {
+          "h": "The portfolio site: one page, five projects",
+          "body": "One page is enough — recruiters spend 90 seconds, so design for the skim. Structure:\n\n- **Header**: name, target title, one line of positioning, links (LinkedIn, GitHub, email).\n- **Projects** — each with a 2-line pitch, a screenshot or short GIF, and three links: **live demo, source, README**. Order by strength, best first.\n- **About**: 3 sentences, human, with your course and certificate verification number once you have it (Lesson 24).\n\nBuild it wherever is fastest in 2026 — GitHub Pages, Carrd, Notion site, or an AI site-builder; the platform is irrelevant, the *working links* are everything. Test every link on your phone. A dead demo link reads as a dead project."
+        },
+        {
+          "h": "GitHub for the non-programmer",
+          "body": "Even with zero-code projects, GitHub is where technical evaluators look — it signals you speak their culture. The minimum viable GitHub:\n\n1. **Real name or consistent handle**, photo, bio with target title ('Building AI agents — n8n, Zapier, LLMs').\n2. **One repo per project** — even if the 'code' is mostly JSON exports, prompts, and READMEs. That's legitimate: your prompts, schemas, and test logs *are* the artifacts.\n3. **A serious README per repo**: what it does, architecture, screenshots, design decisions, test results, limitations. Pin your best repos.\n4. Green squares help but aren't required — a handful of solid repos with excellent READMEs beats a year of commit noise.\n\nLesson 23's take-home training will feel familiar if take-homes involve repos — many do. You're pre-building that muscle now."
+        },
+        {
+          "h": "The connecting tissue",
+          "body": "Credibility compounds when everything cross-links. Checklist:\n\n- **Consistent identity**: same name, same photo, same title across LinkedIn, GitHub, and the site — search engines and recruiters both reward coherence.\n- **Links everywhere**: LinkedIn Featured → site and repos; site → LinkedIn; every README → live demo; your CV's Projects section → all of it.\n- **Working screenshots**: images that load fast and show the *thing working*, not abstract diagrams.\n- **Google yourself** (incognito): what actually appears? Fix the top five results you control.\n\nAlso set up a professional email on your domain if you have one — `name@yourdomain` beats `name1234` in 2026's trust economy, and it's a 10-minute job."
+        },
+        {
+          "h": "Presence as a habit",
+          "body": "The site is a living artifact, not a one-time chore. Keep a **build log** — every new project, course milestone, or interesting automation gets a short entry (this pairs perfectly with your Lesson 15 pipeline, which can draft these). Update the site monthly: swap in the newest project, refresh numbers in your results ('12 agents shipped', '40% faster triage'). Small consistent public evidence beats sporadic brilliance — six months of a visible build log is a track record, and a track record is the single most convincing object in the 2026 job market, because it's the one thing that can't be faked in an interview. You've been building one all course. Now it's public."
+        }
+      ],
+      "prompts": [
+        "Here are my five projects with one-line descriptions: [LIST THEM]. Write the copy for a one-page portfolio: a positioning line, a 2-line pitch per project in priority order with suggested screenshots, and a 3-sentence About. Human tone, no buzzwords.",
+        "Review this README like a technical hiring manager deciding in 90 seconds: [PASTE README]. What's missing? What would make me doubt the project is real? Give me the 3 highest-impact fixes."
+      ],
+      "exercise": "Ship the public layer: one-page portfolio site with all projects linked, GitHub account with a repo and serious README for your best project, consistent identity across all three surfaces, every link tested on mobile. Google yourself in incognito and note what a recruiter sees."
+    },
+    {
+      "id": "p2-21",
+      "title": "Where AI Jobs Actually Are",
+      "goal": "Know the real 2026 AI job map — titles, salary ranges, and where beginners actually get hired — and target the right roles for you.",
+      "audio_intro": "Let's replace hype and doom with a map. Yes, the 'prompt engineer' bubble of 2023 partly deflated — it merged into broader roles. But the AI job market of 2026 is bigger, not smaller: every non-tech company now automates, and they hire people who can build agents and pipelines without a computer science degree. In this lesson, Alex lays out the actual titles, what each really does, realistic salary ranges across the US, Israel, and remote, and — most importantly — where beginners genuinely get hired. No fantasy numbers, no doom. Just the map, so you can aim. Salary note upfront: these are directional ranges, not promises; markets vary.",
+      "sections": [
+        {
+          "h": "The title map of 2026",
+          "body": "The roles that hire people with *your* skillset:\n\n- **AI Automation Specialist / AI Solutions Engineer** — build agents and pipelines inside companies (n8n, Zapier, APIs). The most open to non-programmers.\n- **AI Ops** — keep AI systems running: monitoring, cost control, model routing. Ops people who learn AI are rare and valued.\n- **AI Product Manager / AI Product Owner** — decide *what* to automate; needs process fluency more than code.\n- **Prompt Engineer / AI Content Specialist** — narrower now, mostly inside marketing, localization, and support-ops teams.\n- **AI Consultant / Fractional Automator** — freelance versions of all the above; fastest first dollar.\n\n'AI Engineer' (heavy code) exists too — it's the Python track, not this one, but you'll collaborate with those people constantly."
+        },
+        {
+          "h": "Realistic salary ranges (with honesty)",
+          "body": "Directional 2026 figures — markets vary widely, so verify on local listings:\n\n- **United States**: junior AI automation/solutions roles roughly **$70-110k**; mid-level **$110-160k**; AI Ops similar, often higher with on-call pay. Prompt-engineer-flavored roles: **$60-120k** depending on how technical.\n- **Israel**: junior automation/AI-ops roles roughly **12-18k ILS/month**; experienced **20-35k ILS/month**; the market is hot and Hebrew/English bilinguals get remote premiums.\n- **Remote/global and freelance**: project-based automation from a few hundred dollars per build to $50-150/hour for consultants with a visible portfolio.\n\nThe consistent pattern across all three: **portfolio + numbers beats credentials**. Employers test what you built — that's what Module 4 was for."
+        },
+        {
+          "h": "Where beginners actually get hired",
+          "body": "The entry points that work:\n\n1. **Your current employer** — the #1 path. Volunteer to automate one painful process, ship it, get the title changed or the promotion. Internal converts beat external applicants almost every time.\n2. **Small and mid-size companies** — 20-200 people. No AI team, real automation needs, no patience for credentials theater. They hire people who demo working systems.\n3. **Agencies and consultancies** — automation boutiques and AI consultancies hire juniors who can build and *communicate*.\n3. **Adjacent moves** — support leads becoming AI support specialists; ops people becoming AI Ops; marketers becoming content-automation people. Prior domain + AI skills is the strongest combo in the market.\n\nWhat rarely works for beginners: applying cold to big-tech 'AI Engineer' roles against CS graduates. Aim where your advantage is real."
+        },
+        {
+          "h": "Reading job descriptions like a pro",
+          "body": "Decode postings before applying:\n\n- **Reality check**: 'AI Automation Specialist, must know Python' = hybrid code role. 'n8n/Zapier, workflows, LLM APIs' = your track.\n- **Wish-list vs. requirements**: job ads are wish-lists; meet ~60% and apply anyway.\n- **Translation table**: 'prompt engineering' → what you did in Module 2. 'RAG experience' → Lesson 14. 'Agent frameworks' → Modules 3-4. 'Stakeholder communication' → your READMEs and test logs.\n- **Filter for testability**: postings asking for 'a portfolio or examples of automations built' are *your* postings — they evaluate evidence, not pedigree. Apply to those first.\n\nBuild a tracking spreadsheet this week — title, company, source, status, contact. Job search is a pipeline; treat it like one of your projects, with metrics and weekly reviews."
+        }
+      ],
+      "prompts": [
+        "Here is a job description: [PASTE IT]. Tell me: (1) is this really my track (no-code/low-code automation) or a developer role? (2) which of my five portfolio projects to lead with, (3) the 3 keywords I must mirror in my CV, (4) my honest fit as a % with reasons.",
+        "I'm targeting [YOUR CITY/REMOTE + YOUR BACKGROUND]. List the 10 most realistic job titles for me to search for on LinkedIn and job boards, ranked by entry-friendliness for someone with a portfolio but no CS degree. For each, one line on why."
+      ],
+      "exercise": "Build your job-search pipeline sheet: 15 real open roles that fit your track, sourced from LinkedIn and job boards. For each, note title, salary if listed, the portfolio project you'd lead with, and a fit score. Circle your top 5 — they're your targets for Lessons 22-23 practice."
+    },
+    {
+      "id": "p2-22",
+      "title": "Interview Prep with an AI Interviewer",
+      "goal": "Rehearse the real AI-role interview — story answers, live prompting tests, portfolio walkthroughs — against an AI interviewer until you're smooth.",
+      "audio_intro": "Good news you've earned: AI-role interviews are among the most rehearsable in tech, and you own the perfect sparring partner — an AI interviewer that never gets tired, never judges, and can play the skeptical hiring manager, the friendly recruiter, or the technical screener on demand. In this lesson, Alex sets up your practice system: the five question families you'll face, the story format that makes answers land, the portfolio walkthrough you'll deliver, and the live prompting test employers actually give. Then you drill, on record, until smooth. Nerves die with repetition. Let's get you ready to enjoy this.",
+      "sections": [
+        {
+          "h": "The five question families",
+          "body": "AI-role interviews circle five families:\n\n1. **Behavioral** — 'tell me about a time you automated something / handled pushback / shipped under uncertainty.'\n2. **Technical concepts** — 'explain an agent vs. a workflow,' 'why do LLMs hallucinate,' 'what's RAG?' You've answered all of these in this course.\n3. **Live prompting** — 'here's a task, write the prompt' or 'improve this prompt.' Often a shared screen. Module 2 is your muscle memory.\n4. **Portfolio deep-dive** — 'walk me through your support agent. Why this escalation rule?' Employers *test* projects — they'll use your demo and probe design decisions.\n5. **Scenario/problem-solving** — 'our support queue is drowning; what would you do?' They're testing process thinking: ask questions, propose a pilot, define metrics.\n\nPrepare one story per family and you've covered 80% of any AI interview."
+        },
+        {
+          "h": "The AI interviewer setup",
+          "body": "Build your sparring partner in one prompt: 'You are a skeptical but fair interviewer for a [TARGET ROLE] position. Ask one question at a time across these five families, tailored to this job description: [PASTE JD]. After each answer, give feedback: what worked, what was vague, what a stronger candidate would add, then a 1-10 score. Push back at least twice during the interview, like a real hiring manager. Don't let me off easy.' Variants worth running: the **recruiter screen** (fit, motivation, salary — practice your range from Lesson 21), the **technical deep-dive** ('explain function calling to a non-technical stakeholder'), and the **stress test** (hostile follow-ups, 'we tried AI and it failed, convince me'). Three personas, one prompt template each."
+        },
+        {
+          "h": "The story format and the walkthrough",
+          "body": "Behavioral answers land with **STAR**: Situation, Task, Action, Result — with your Result lines carrying *numbers* ('cut triage time 40%, 22-case test log, 90% pass rate'). Your Module 4 projects are story goldmines; each one is a ready-made STAR with evidence.\n\nThe portfolio walkthrough deserves its own rehearsal — a tight 3-minute tour per project: the problem, the architecture, one hard decision and why, the test results, the limits. Practice with your AI interviewer interrupting you: 'why that escalation rule? what breaks at 10x volume?' Knowing your own READMEs cold — including the limitations you wrote — is what 'tested and real' sounds like. Fumbling your own design decisions is the fastest credibility killer; owning the limits is the fastest credibility *builder*."
+        },
+        {
+          "h": "Drill, record, repeat",
+          "body": "The loop that works: **run a full mock interview on record** (voice or video — AI platforms support voice mode; use it, because speaking ≠ typing), **review the transcript**, note every vague answer, hedges ('kind of', 'I guess'), and missed numbers. Patch the weakest answer. Re-run that family only. Repeat. Cadence: 3 full mocks per week, spread out; daily short drills on the shakiest family. Before the real thing: one final mock the day before, then rest — overdrilling the last 12 hours adds nerves, not polish. Also prep your **own questions** for them (what does success look like in 90 days? how do you decide what to automate next?) — interviews are two-directional, and good questions read as seniority."
+        }
+      ],
+      "prompts": [
+        "You are a skeptical hiring manager interviewing me for [TARGET ROLE]. Job description: [PASTE JD]. One question at a time across behavioral, technical concepts, live prompting, portfolio deep-dive, and scenario families. After each answer: feedback + score out of 10 + one pushback follow-up. My portfolio: [1-LINE PER PROJECT]. Do not go easy on me.",
+        "Here is my answer to 'walk me through your favorite project': [PASTE OR DICTATE]. Rewrite it as a tight 3-minute walkthrough: problem, architecture, one hard decision with reasoning, test results with numbers, honest limits. Then give me the 3 questions a technical interviewer would ask about it."
+      ],
+      "exercise": "Run three full recorded mock interviews this week with your AI interviewer — one per persona (recruiter, hiring manager, technical). Review each recording, patch your two weakest answers, and re-drill just those families. Save your best 3-minute project walkthrough as written notes you can review before any real interview."
+    },
+    {
+      "id": "p2-23",
+      "title": "Take-Home Assignments — and How to Crush Them",
+      "goal": "Handle AI-role take-home tests professionally — scoping, building, documenting, and presenting so evaluators can't help but be impressed.",
+      "audio_intro": "The final gate before most AI-role offers: the take-home. 'Build us a small agent that does X. You have five days.' Some candidates panic and over-build; others submit something that doesn't run. You will do neither — because a take-home is just a Module 4 project with a deadline, and you have four of those plus a system for building them. In this lesson, Alex covers the whole lifecycle: reading the brief for what's actually being tested, scoping ruthlessly, the README that does half your pitching, the demo that proves it runs, and how to present your decisions like a professional. Also: your rights — time budgets and when to push back. Let's crush it.",
+      "sections": [
+        {
+          "h": "Reading the brief: what's really tested",
+          "body": "Take-homes almost never test raw skill alone — they test **judgment under a deadline**. Decode the brief before touching a tool:\n\n- **The explicit ask**: build X with Y constraints. Underline the constraints — they're the grading rubric.\n- **The implicit tests**: usually three — can you scope realistically? do you document decisions? does it actually run?\n- **The realistic effort**: ask! 'How many hours do you expect candidates to spend?' is a senior-sounding question, not a weak one. If they say 3 hours, submitting 20 hours of work signals you can't scope — a real failure mode.\n\nThen decide your **intentional scope**: what you'll build, what you'll stub, what you'll list as 'given more time.' Evaluators love a visible `future-work.md` more than an overbuilt mess."
+        },
+        {
+          "h": "The build: your Module 4 system, on a clock",
+          "body": "This is why Module 4 existed — take-homes are typically mini versions of your portfolio: a support agent, a RAG demo, a pipeline. Run your known-good loop, timeboxed:\n\n- **Hour 1**: skeleton and the riskiest part first — if the core won't work, you want to know in hour one, not hour nine.\n- **Middle hours**: build the smallest complete version that satisfies every explicit requirement. Complete-but-small beats impressive-but-broken, every time.\n- **Final third**: testing (your test-set habit — even 10 cases puts you ahead of most candidates) and the README.\n\nNon-negotiable: **it must run on their machine.** Include exact setup steps, a working demo link, and zero 'it worked on my machine' energy. That sentence has ended candidacies."
+        },
+        {
+          "h": "The README is half your grade",
+          "body": "Evaluators read the README before or instead of the code. Use your proven structure:\n\n- **Problem and approach** in three sentences, human-readable.\n- **What I built / what I deliberately didn't** — your scope decisions, stated proudly.\n- **How to run it** — numbered, tested on a clean machine (or a live link).\n- **Design decisions** — 'I chose X over Y because Z.' This is where judgment becomes visible and gradeable.\n- **Testing** — your test set and results table.\n- **Given more time** — 3 bullets. Shows vision plus discipline.\n\nThis is the exact README you've written four times. The take-home rewards exactly the habits you now have. Screenshots and a 60-90 second demo video complete the package — evaluators who feel the demo *work* in two minutes are already on your side."
+        },
+        {
+          "h": "Presenting it — and protecting yourself",
+          "body": "Many processes end with a walkthrough call. Structure it like your Lesson 22 project tour: problem, approach, one decision story, demo, limits, future work — 5-7 minutes, then invite questions. Expect 'why didn't you…' questions: they test composure, not perfection; 'I considered it and deprioritized it because of the time budget — here's where it would slot in' is a *great* answer. \n\nAnd know your rights: a take-home shouldn't exceed roughly 4-8 hours or solve a company's *current real business problem unpaid. If it smells like free work — real data, production scope, no compensation — it's fair to ask about it, or walk. Companies that respect candidates design respectful take-homes; the assignment is often your first look at how they actually operate."
+        }
+      ],
+      "prompts": [
+        "Here is a take-home brief: [PASTE BRIEF]. Give me: (1) what's likely being tested beyond the explicit ask, (2) a ruthless scope plan for a [X]-hour budget — build / stub / skip, (3) the 3 risks that could sink it and how to de-risk each early, (4) 5 clarifying questions worth asking before starting.",
+        "Review my take-home README like the evaluator: [PASTE README]. Where would I lose points? What's missing? What sentence should I add? Do not rewrite it — give me the fix list."
+      ],
+      "exercise": "Do a timed drill: find a realistic take-home brief (or generate one with AI: 'write a 4-hour take-home for an AI Automation Specialist role'), then execute the full lifecycle in one sitting — scoped build, test set, README, 60-second demo video. Review: where did the time actually go? Fix your process while it's cheap."
+    },
+    {
+      "id": "p2-24",
+      "title": "The Certificate Exam and Your Final Project",
+      "goal": "Pass the BINA completion exam, submit final project five — your personal assistant agent — and claim your certificate with its verification number.",
+      "audio_intro": "Last lesson, and it's the one that turns everything in. Two things happen now: you build final project five — the personal assistant agent that combines every skill from this track — and you take the completion exam covering all six modules. Pass both, and you receive the BINA Academy AI Career Track certificate with a unique verification number any employer can check. This is the course AI built and AI teaches — and now AI certifies that you learned it. Noa's Hebrew version of this journey ends the same way. So: final project, exam prep, submission checklist, and the verification number that makes your certificate real. Let's land this plane. — Alex",
+      "sections": [
+        {
+          "h": "Project 5: the personal assistant agent",
+          "body": "Your capstone combines everything: build an agent that runs a real part of your week. Minimum scope: **(1) inbox triage** (Lesson 12's read-only digest), **(2) calendar proposals** (reads availability, suggests slots, human confirms), **(3) document work** (summarize attachments, extract key fields to a sheet — reuse your Lesson 16 cleaning skills), **(4) a daily briefing** — one message each morning: today's meetings, priority emails, open tasks. Architecture: your platform's agent node, a system message with all six blocks, the smallest safe toolset, guardrails from Lesson 12 (read-only where possible, human fence on anything irreversible), and a change/action log. Keep it running for at least five days — real usage data is your results section, and 'I use it daily' is the strongest sentence in any interview."
+        },
+        {
+          "h": "The exam: what it covers",
+          "body": "The completion exam checks working knowledge across all six modules:\n\n- **M1**: how LLMs work, context windows, hallucination categories and verification workflow.\n- **M2**: structured-output schemas, few-shot design, when reasoning pays, system-message blocks.\n- **M3**: the agent loop, tools and function calling concepts, permission and safety design.\n- **M4**: the anatomy of your five projects — what you built and the decisions you made.\n- **M5**: CV keywords and tailoring, LinkedIn zones, portfolio evidence.\n- **M6**: the job map, interview families, take-home lifecycle.\n\nFormat: multiple choice plus short practicals — write a schema, diagnose a broken prompt, spot the hallucination risk. It's open-notes and open-internet, like real work. Study method: reread your own project READMEs and exercise notes; you wrote the exam's answers already, in your own words."
+        },
+        {
+          "h": "Submission checklist",
+          "body": "Submit the following, complete — partial submissions bounce:\n\n1. **Final project link or repo** — live demo (or screen recording), source, README with architecture, guardrails, five-day usage log, and your design decisions.\n2. **Test log** — minimum 10-message test set with results, including escalation and failure cases.\n3. **Exam completion** — passed within the allowed attempts (you get retakes; treat them as feedback, not failure).\n4. **Portfolio readiness check** — your Lesson 20 site updated with all five projects, links tested.\n5. **Reflection** — 150 words: what you built, what you'd improve, what you'll automate next.\n\nTimeline: most finish project five and the exam within one to two weeks of reaching this lesson. The certificate with its **verification number** is issued after all five items pass review — the number is what turns the certificate from a PDF into a checkable claim."
+        },
+        {
+          "h": "After the certificate",
+          "body": "Certified, five tested projects, a public portfolio — now run the machine you built in Module 5 and 6: tailored applications to your Lesson 21 target list, weekly mock interviews, weekly posts from your content pipeline. Keep the assistant agent running; keep a build log; interviewers ask 'what have you automated lately?' and you'll have a same-week answer. The field will keep changing — the course's own method (AI builds, AI teaches, you verify) is your method now too: when a new model or tool lands, build a small thing with it, test it like Lesson 4 taught you, write the README. That loop — build, test, document, show — is the career. Verification number in hand, go claim the jobs. — Alex, signing off."
+        }
+      ],
+      "prompts": [
+        "Design my final personal assistant agent. My week's pain points: [LIST 3 PAIN POINTS]. Give me: (1) minimum viable scope across inbox/calendar/documents/briefing, (2) the exact toolset with permission level for each tool, (3) the guardrails and human-confirmation points, (4) a 10-message test plan.",
+        "Quiz me for my completion exam. 20 questions across: LLM fundamentals, context and hallucinations, structured outputs, few-shot, agent loop and tools, safety design, job-search strategy. One at a time, multiple choice or short answer, correct answer and explanation after each. Keep score."
+      ],
+      "exercise": "Build, run, and submit: personal assistant agent live for five days with a usage log, 10-message test log, exam passed, portfolio site updated with all five projects, and your 150-word reflection. Then claim your certificate and verification number — and put that number on your CV and LinkedIn the same day."
+    }
+  ]
+}

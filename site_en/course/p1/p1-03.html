@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects & Memory: An AI That Remembers · בינה BINA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif}
+:root{--bg:#0a0a10;--bg2:#101018;--card:#15151f;--ink:#f4f4fa;--mut:#a0a0af;
+--pur:#8b5cf6;--teal:#2dd4bf;--gold:#fbbf24;--border:#232330}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Rubik','Inter',sans-serif;line-height:1.75}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(10,10,16,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.topbar .in{max-width:860px;margin:0 auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo b{color:var(--pur)}
+.crumb{color:var(--mut);font-size:.9rem}
+main{padding:44px 0 90px}
+.goal{display:inline-block;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:8px 18px;border-radius:100px;font-size:.92rem;margin:6px 0 26px}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;line-height:1.25;margin-bottom:8px}
+h2{font-size:1.35rem;font-weight:700;margin:38px 0 12px;color:var(--ink)}
+h2::before{content:'';display:inline-block;width:26px;height:3px;background:var(--pur);border-radius:2px;margin-inline-end:12px;vertical-align:middle}
+p{margin:0 0 14px;color:#d8d8e4}
+ul{margin:0 0 14px;padding-inline-start:24px}
+li{margin-bottom:8px;color:#d8d8e4}
+code{background:#1d1d2a;border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;direction:ltr;display:inline-block}
+.audiobox{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:4px 0 10px;display:flex;align-items:center;gap:14px}
+.audiobox img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.audiobox span{color:var(--mut);font-size:.9rem}
+audio{width:100%;height:40px}
+.prompt{background:var(--card);border:1px solid var(--border);border-inline-start:3px solid var(--teal);border-radius:12px;padding:16px 18px;margin:12px 0;position:relative}
+.prompt p{margin:0 0 0;white-space:pre-wrap;font-size:.95rem;color:#e8e8f2}
+.copy{position:absolute;top:10px;inset-inline-end:10px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.35);color:var(--teal);padding:4px 14px;border-radius:100px;cursor:pointer;font-size:.8rem;font-family:inherit}
+.exbox{background:linear-gradient(180deg,rgba(251,191,36,.08),transparent);border:1px dashed rgba(251,191,36,.4);border-radius:14px;padding:20px 22px;margin:34px 0}
+.exbox h3{color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.nav{display:flex;justify-content:space-between;gap:14px;margin-top:50px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:.95rem;cursor:pointer;border:none;font-family:inherit}
+.b1{background:var(--pur);color:#fff}.b2{background:transparent;color:var(--ink);border:1px solid var(--border)}
+.b1:hover{filter:brightness(1.15)}.b2:hover{border-color:var(--pur)}
+.donebtn{width:100%;margin-top:26px;background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.4);color:var(--teal);padding:14px;border-radius:12px;font-size:1rem;cursor:pointer;font-family:inherit;font-weight:700}
+.donebtn.on{background:rgba(45,212,191,.25)}
+/* course index */
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px}
+.tcard h2{margin:0 0 4px;font-size:1.3rem}
+.tcard .lec{color:var(--teal);font-size:.9rem;margin-bottom:14px}
+.tcard .pr{color:var(--gold);font-weight:700;margin-bottom:14px}
+.pbar{height:6px;background:#1d1d2a;border-radius:3px;overflow:hidden;margin:10px 0 4px}
+.pbar i{display:block;height:100%;background:var(--teal);width:0%}
+.plist{list-style:none;margin-top:10px}
+.plist li a{display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px dashed var(--border);color:var(--ink);font-size:.95rem}
+.plist li a:hover{color:var(--teal)}
+.plist .n{color:var(--mut);font-family:monospace;font-size:.85rem;flex-shrink:0}
+.chip{background:rgba(139,92,246,.15);color:#c4b0f5;border:1px solid rgba(139,92,246,.35);border-radius:100px;padding:1px 10px;font-size:.75rem;flex-shrink:0}
+</style></head><body>
+<div class="topbar"><div class="in">
+<a class="logo" href="../index.html">בינ<b>ה</b> · BINA</a>
+<span class="crumb">Everyday AI · Course 3/20</span>
+</div></div>
+<main><div class="wrap">
+<h1>Projects & Memory: An AI That Remembers</h1>
+<div class="goal">🎯 What you'll be able to do: Use Projects to give the AI a permanent home base with your documents, and understand Memory so it stops forgetting what matters.</div>
+<div class="audiobox"><img src="../assets/alex.png" alt="Alex">
+<div style="flex:1"><span>Alex · Play the lecturer</span>
+<audio controls preload="none" src="../assets/audio/p1-03.mp3"></audio></div></div>
+<h2>The forgetting problem</h2>
+<p>By default, every chat is a clean slate. That's why you keep re-pasting that recipe list, that project brief, that teacher's email. Two features solve it. <strong>Projects</strong> (in ChatGPT; Claude has Projects too) is a folder with a shared brain: you drop in files — a PDF of your recipes, your lease, your kid's syllabus — and every chat inside that project can read them. <strong>Memory</strong> is the AI's notepad about *you*: preferences it picks up across conversations ('user has a nut allergy'). One organizes your stuff, the other accumulates your context. You want both, used deliberately.</p>
+<h2>Setting up your first Project</h2>
+<p>Create a Project, give it an honest name — 'Family HQ,' 'Renovation,' 'My Business' — and add a short project instruction: 'This is our family command center. Files include the school calendar and the meal rotation. Default to practical, money-saving answers.' Then upload the relevant files. From now on, any chat you start inside the project already has the calendar, the plans, the history. Five chats about the renovation all share one brain, so chat six doesn't ask 'what renovation?' New topic that's big enough? New project. Small topic? Regular chat is fine.</p>
+<h2>Memory: the notepad about you</h2>
+<p>Memory works quietly: during chats the model may save facts — 'prefers metric,' 'kids are 7 and 10,' 'runs a dental clinic' — and uses them later. Find it under Settings → Personalization → Memory, where you can view and delete any single entry. My advice: turn it on, check the list monthly, and delete anything stale or wrong, because wrong memories give wrong answers with confidence. Important nuance: Memory lives in the app, not in a specific project — it colors everything. Sensitive family stuff you'd rather not store? Say so in chat, or keep it out of the conversation entirely. Lesson 19 goes deeper.</p>
+<h2>When NOT to use these</h2>
+<p>Projects and Memory are power tools, not a lifestyle. One-off questions ('translate this sign') don't need a project. Tossing every PDF you own into one giant project makes every answer slower and muddier — the AI has to fish through clutter. Same with Memory: if you notice answers drifting — old facts sneaking in, weird assumptions — audit the memory list first. The goal is a small number of clean, focused projects that match the actual compartments of your life, and a memory list you'd be comfortable reading out loud. Curate it like a junk drawer you actually clean.</p>
+<h2>Copy-ready prompt</h2><div class="prompt"><p>Project instruction example: 'This is Family HQ. The uploaded files include our school calendar, meal rotation, and weekly schedule. Assume budget-conscious, time-poor parents. Default to short, practical answers. If a question is better answered with a specific file, use it.'</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+<div class="prompt"><p>Memory management: 'Remember that we keep a kosher kitchen and the kids' bedtime is 8:30.' / 'Forget what you know about my old job — I switched careers.'</p>
+<button class="copy" onclick="cp(this)">Copy</button></div>
+
+<div class="exbox"><h3>💪 Exercise</h3><p><p>Create one Project that matches a real compartment of your life (family, work, or a home project). Write its project instruction, upload 2-3 real files, and start a chat that uses them. Then open Settings → Memory and delete one stale or unwanted entry.</p></p></div>
+<div class="nav"><a class='btn b2' href='p1-02.html'>← Previous</a><a class='btn b1' href='p1-04.html'>Next →</a></div>
+<button class="donebtn" id="done" onclick="markDone()">Mark complete ✓</button>
+</div></main>
+<script>
+const ID='p1-03';
+const done=localStorage.getItem('bina-'+ID)==='1';
+const b=document.getElementById('done');
+if(done){b.classList.add('on');b.textContent='Done ✓';}
+function markDone(){const d=localStorage.getItem('bina-'+ID)==='1';
+localStorage.setItem('bina-'+ID,d?'0':'1');
+if(!d){b.classList.add('on');b.textContent='Done ✓';}else{b.classList.remove('on');b.textContent='Mark complete ✓';}}
+function cp(btn){const txt=btn.parentElement.querySelector('p').innerText;
+navigator.clipboard.writeText(txt);btn.textContent='Copied!';
+setTimeout(()=>btn.textContent='Copy',1500);}
+</script></body></html>
