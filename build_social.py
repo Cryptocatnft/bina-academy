@@ -118,17 +118,30 @@ def build_promo(lang):
     return None
 
 # The functional-painting above got tangled; use a clean generic painter instead:
+def ET(d, xy, s, fnt, fill, anchor="mm", rtl=True, lang="he"):
+    """Render text; a tuple (text, "en") means render LTR with the Latin font."""
+    if isinstance(s, tuple):
+        d.text(xy, s[0], font=en_font(fnt.size if hasattr(fnt,'size') else 60), fill=fill, anchor=anchor)
+    else:
+        T(d, xy, s, fnt, fill, anchor=anchor, rtl=rtl, lang=lang)
+
 def landscape_slide(kind, lang):
     P = PROMOS[lang]
     F = lambda sz: font(P["font"], sz, P["wght"])
     W,H = 1920,1080
+    def R(d, xy, s, sz, fill, lang_=None):
+        if isinstance(s, tuple):
+            f = en_font(int(sz*0.7))
+            d.text(xy, s[0], font=f, fill=fill, anchor="mm")
+        else:
+            d.text(xy, s, font=F(int(sz)), fill=fill, anchor="mm", direction="rtl" if lang_=="ar" else "ltr", language=lang_ or "he")
     if kind == "s1":
         img = base(W,H); img.paste(dim(cover(Image.open(f"{A}/hero.png"),(0,0,W,H)),0.6),(0,0)); d=ImageDraw.Draw(img)
         big,small,l3,l4 = P["s1"]
-        T(d,(W/2,330),big,F(300),INK,lang=P["lang"])
+        R(d,(W/2,330),big,300,INK,P["lang"])
         d.line([(W/2-360,560),(W/2+360,560)],fill=PUR,width=6)
-        d.text((W/2,640),small,font=en_font(64),fill=TEAL,anchor="mm")
-        T(d,(W/2,790),l3,F(92),INK,lang=P["lang"]); T(d,(W/2,910),l4,F(70),GOLD,lang=P["lang"])
+        R(d,(W/2,640),small,92,TEAL,"en")
+        R(d,(W/2,790),l3,92,INK,P["lang"]); R(d,(W/2,910),l4,70,GOLD,P["lang"])
     elif kind == "s2":
         img = base(W,H)
         av = cover(Image.open(f"{A}/{P['avatar']}"),(0,0,1100,H)); img.paste(av,(0,0))
@@ -137,22 +150,22 @@ def landscape_slide(kind, lang):
         img.paste(Image.new("RGB",(700,H),BG),(400,0),grad)
         d=ImageDraw.Draw(img)
         n1,n2,n3 = P["s2"]
-        T(d,(1160,390),n1,F(190),INK,lang=P["lang"])
-        T(d,(1160,550),n2,F(85),TEAL,lang=P["lang"])
-        T(d,(1160,665),n3,F(56),MUT,lang=P["lang"])
+        R(d,(1160,390),n1,190,INK,P["lang"])
+        R(d,(1160,550),n2,85,TEAL,P["lang"])
+        R(d,(1160,665),n3,56,MUT,P["lang"])
     elif kind in ("s3","s4","s5"):
         num = int(kind[1]); img = base(W,H); d=ImageDraw.Draw(img)
         t1,t2 = P[kind]; acc = [TEAL,PUR,GOLD][num-3]
         d.ellipse([(W-420,-180),(W+220,460)],fill=tuple(int(acc[i]*0.18) for i in range(3)))
-        T(d,(140,180),t1,F(84),acc,lang=P["lang"])
-        T(d,(140,360),t2,F(66),INK,lang=P["lang"])
+        R(d,(140,180),t1,84,acc,P["lang"])
+        R(d,(140,360),t2,66,INK,P["lang"])
         d.line([(140,560),(560,560)],fill=acc,width=6)
     else:  # s6
         img = base(W,H)
         img.paste(dim(cover(Image.open(f"{A}/roni.png"),(0,0,W,H)),0.72),(0,0)); d=ImageDraw.Draw(img)
         u,s = P["s6"]
-        d.text((W/2,420),u,font=en_font(130),fill=INK,anchor="mm")
-        T(d,(W/2,580),s,F(72),GOLD,lang=P["lang"])
+        R(d,(W/2,420),u,130,INK,"en")
+        R(d,(W/2,580),s,72,GOLD,P["lang"])
     return img
 
 def ffprobe_dur(p):
