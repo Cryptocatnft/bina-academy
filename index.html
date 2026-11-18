@@ -8,13 +8,9 @@
 <script>
 (function(){
   var langs = ((navigator.languages && navigator.languages.join(",")) || navigator.language || "he").toLowerCase();
-  var target = "site_en/index.html";
-  if (langs.indexOf("he") >= 0) target = "site_he/index.html";
-  else if (langs.indexOf("ar") >= 0) target = "site_ar/index.html";
-  else if (langs.indexOf("ru") >= 0) target = "site_ru/index.html";
-  location.replace(target);
+  location.replace(langs.indexOf("he") >= 0 ? "site_he/index.html" : "site_intl/index.html");
 })();
 </script>
 </head>
-<body><a href="site_he/index.html">עברית</a> · <a href="site_en/index.html">English</a> · <a href="site_ar/index.html">العربية</a> · <a href="site_ru/index.html">Русский</a></body>
+<body><a href="site_he/index.html">עברית</a> · <a href="site_intl/index.html">English · العربية · Русский</a></body>
 </html>
